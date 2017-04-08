@@ -4,3 +4,5 @@
 //    2. Weight (fill in the blanks);
 //    3. Height (fill in the blanks); and
 //    4. Goals (spinner or radio group).
+// Following the questions there will be a contents page that the user will click on, which will take them to the "Table of Contents" page
+// so they can decide what they want to do next.
