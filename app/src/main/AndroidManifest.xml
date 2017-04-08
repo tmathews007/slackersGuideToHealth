@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".MainActivity"/>
 
+        <!--TODO: Different parts of the app go here-->
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
