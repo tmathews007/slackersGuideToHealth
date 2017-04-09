@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class MainActivity extends AppCompatActivity{
-    private BottomNavigationView tabs;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
