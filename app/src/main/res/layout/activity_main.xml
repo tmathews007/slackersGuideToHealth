@@ -10,7 +10,7 @@
     android:weightSum="1">
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/tabs"
+        android:id="@+id/bottomNavigationView"
         android:layout_width="wrap_content"
         android:layout_height="1080dp"
         design:itemIconTint="@color/white"
