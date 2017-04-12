@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity{
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         /* Use this to switch between tabs. */
         removeShiftMode(bottomNavigationView);
-        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+        bottomNavigationView.getMenu().getItem(0).setChecked(false);
         bottomNavigationView.getMenu().getItem(1).setChecked(false);
         bottomNavigationView.getMenu().getItem(2).setChecked(false);
         bottomNavigationView.getMenu().getItem(3).setChecked(false);
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity{
                     //startActivity(i);
                     overridePendingTransition(0,0);
                 } else if (item.getItemId() == R.id.foodItem) {
-                    //Intent i = new Intent(getApplicationContext(), FoodManager.class);
-                    //startActivity(i);
+                    Intent i = new Intent(getApplicationContext(), FoodManager.class);
+                    startActivity(i);
                     overridePendingTransition(0,0);
 
                 } else if (item.getItemId() == R.id.exploreItem) {
