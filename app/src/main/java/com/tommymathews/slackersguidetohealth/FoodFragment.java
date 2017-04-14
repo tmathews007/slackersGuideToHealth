@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
@@ -47,8 +49,29 @@ public class FoodFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 //to fix
-                Intent i = new Intent(getActivity(), FoodActivity.class);
-                startActivity(i);
+                EditText calories = (EditText) view.findViewById(R.id.calories);
+                String cal = calories.getText().toString();
+                int numCal = Integer.parseInt(cal);
+                if(numCal<500){
+                    Intent i = new Intent(getActivity(), FoodActivity.class);
+                    startActivity(i);
+                }
+                else if(numCal>=500 && numCal<750) {
+                    Intent i = new Intent(getActivity(), FoodActivity.class);
+                    startActivity(i);
+                }
+                else if(numCal>=750 && numCal<1000){
+                    Intent i = new Intent(getActivity(), FoodActivity.class);
+                    startActivity(i);
+                }
+                else if(numCal>=1000 && numCal<=1500){
+                    Intent i = new Intent(getActivity(), FoodActivity.class);
+                    startActivity(i);
+                }
+                else{
+                    Toast.makeText(getActivity().getApplicationContext(), "Talk to a professional" +
+                            " to develop a diet plan. Your calorie intake is too high.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
