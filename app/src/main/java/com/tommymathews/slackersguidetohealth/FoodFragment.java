@@ -58,18 +58,18 @@ public class FoodFragment extends Fragment{
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 if (item.getItemId() == R.id.exerciseItem) {
-                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    Intent i = new Intent(getActivity(), ExerciseManager.class);
                     startActivity(i);
-                    ((Activity) getActivity()).overridePendingTransition(0,0);
+                    getActivity().overridePendingTransition(0,0);
                 } else if (item.getItemId() == R.id.foodItem) {
                 } else if (item.getItemId() == R.id.exploreItem) {
-                    //Intent i = new Intent(getActivity(), ExploreMain.class);
-                    //startActivity(i);
-                    ((Activity) getActivity()).overridePendingTransition(0,0);
+                    Intent i = new Intent(getActivity(), ExploreMain.class);
+                    startActivity(i);
+                    getActivity().overridePendingTransition(0,0);
                 } else if (item.getItemId() == R.id.funItem) {
                     //Intent intent = new Intent(getActivity(), Events.class);
                     //startActivity(intent);
-                    ((Activity) getActivity()).overridePendingTransition(0,0);
+                    getActivity().overridePendingTransition(0,0);
                 }
                 return false;
             }
