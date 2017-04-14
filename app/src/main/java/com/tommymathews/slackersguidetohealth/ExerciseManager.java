@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by Ashwin on 4/12/2017.
+ * Created by Thomas on 4/12/2017.
  */
 
 public class ExerciseManager extends Activity {
