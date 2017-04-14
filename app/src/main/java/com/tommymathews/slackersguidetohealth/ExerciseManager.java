@@ -21,10 +21,10 @@ public class ExerciseManager extends Activity {
 
 
         //button/etc areas here;
-        //if user clicks on abs, setOnClickListener{abs fragment}
-        //else if user clicks on back, setOnClickListener{back fragment}
-        //else if user clicks on biceps, setOnClickListener{biceps fragment}
+        //if user clicks on abs, go to abs fragment
+        //else if user clicks on back, go to back fragment
+        //else if user clicks on biceps, go to biceps fragment
         //...
-        //else setOnClickListener{triceps fragment}
+        //else go to triceps fragment
     }
 }
