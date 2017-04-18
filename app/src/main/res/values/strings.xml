@@ -67,4 +67,56 @@
         completions."
     </string>
     <string name="title_activity_sign_up">Sign in</string>
+
+    <!-- ChestWorkout Activity: Dips -->
+    <string name="chest_workout_dips"> Dips, Chair Assisted </string>
+    <string-array name="chest_workout_array">
+        <item> 1. Find a chair and face it forward. </item>
+        <item> 2. Standing backwards, place your hands on the seat of the chair. </item>
+        <item> 3. Go down till your elbows are roughly 90 degrees to the chair. </item>
+        <item> 4. Push yourself up. Repeat this process till you need rest. </item>
+    </string-array>
+
+    <!-- TricepWorkout Activity: Push Ups, Regular Position -->
+    <string name="tricep_workout_push_ups"> Push Ups, Regular Position </string>
+    <string-array name="tricep_workout_array">
+        <item> 1. Lay flat on the floor. </item>
+        <item> 2. Place your hands in front of you at shoulder width. </item>
+        <item> 3. Push up while keeping you body parallel to the ground. </item>
+        <item> 4. Go down till your elbows are roughly 90 degrees to the ground. </item>
+        <item> 5. Continue to repeat this process till you need rest. </item>
+    </string-array>
+
+    <!-- AbsWorkout Activity: Crunches -->
+    <string name="abs_workout_crunches"> Crunches </string>
+    <string-array name="abs_workout_array">
+        <item> 1. Lie on your back with you knees bent and your legs flat on the floor. </item>
+        <item> 2. Place your hands behind your head. </item>
+        <item> 3. Exhale and curl forward till your head, shoulder and neck come off the floor. </item>
+        <item> 4. Hold yourself for 5 seconds and then come down. </item>
+        <item> 5. Repeat this process till you need rest. </item>
+    </string-array>
+
+    <!-- ShoulderWorkout Activity: Barbell Press with Pole -->
+    <string name="shoulder_workout_barbell_press"> Barbell Press with Pole </string>
+    <string-array name="shoulder_workout_array">
+        <item> 1. Find a stick or a pole that is roughly 4-5 feet long. </item>
+        <item> 2. Stand with your back straight. </item>
+        <item> 3. Hold the pole above your head, about shoulder width. </item>
+        <item> 4. Extend your arms above your head till your arms are straight. </item>
+        <item> 5. Bring your arms back down till your arms are about 90 degrees. </item>
+        <item> 6. Repeat this process till you need rest. </item>
+    </string-array>
+
+    <!-- QuadWorkout Activity: Burpees -->
+    <string name="quad_workout_burpees"> Burpees </string>
+    <string-array name="quad_workout_array">
+        <item> 1. Begin in a standing position. </item>
+        <item> 2. Kick back into the push-up position. </item>
+        <item> 3. Lower your body and perform a push-up. </item>
+        <item> 4. Upon coming up, return back into the original standing position. </item>
+        <item> 5. Jump into the air and throw your arms into the air. </item>
+        <item> 6. Repeat this process till you need rest. </item>
+    </string-array>
+
 </resources>
