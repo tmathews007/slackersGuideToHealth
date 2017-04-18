@@ -1,4 +1,11 @@
 <resources>
+    <string name="goals_label">Goals</string>
+    <string-array name="goals_array">
+        <item>To Do</item>
+        <item>In Progress</item>
+        <item>Done</item>
+    </string-array>
+
     <string-array name="workout_levels">
         <item>Please Select Your Workout level</item>
         <item>Beginner</item>
@@ -38,7 +45,7 @@
     <string name="ingredients">Ingredients: 1 cup flour, 1/2 tsp carom seeds, 1/2 tsp salt, 1/2 tsp
     cayenne pepper powder, and a pinch of asafoetida, 5mm raw eggplant slices\n</string>
     <string name="process">Process: Mix the dry ingredients (everything besides the eggplant pieces)
-    well. Add cold water and make sure no lumps are formed. The batter should have the the same consistency as
+    well. Add cold water and make sure no lumps are formed. The batter should have the same consistency as
     pancake batter. Dip the eggplant pieces into the batter and deep fry in hot oil. Reduce the heat after the
     eggplant pieces are dropped in oil and fry until they are a beige-ish color. Then remove them and place them
     on a paper towel to drain excess oil. You can eat them plain, or with ketchup or pulverized cilantro.</string>

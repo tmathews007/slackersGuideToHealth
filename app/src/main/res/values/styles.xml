@@ -20,4 +20,13 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="BoldFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">#FFFF99</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">40pt</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
 </resources>

@@ -1,155 +1,211 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center_horizontal"
-              android:orientation="vertical"
-              android:paddingBottom="@dimen/activity_vertical_margin"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="@dimen/activity_vertical_margin"
-              tools:context="com.tommymathews.slackersguidetohealth.SignUp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.tommymathews.slackersguidetohealth.SignUp">
 
-    <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone"/>
-
-    <ScrollView
-        android:id="@+id/login_form"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/email_login_form"
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingTop="15dp" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingTop="15dp"/>
+
+        <EditText
+            android:id="@+id/pass_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/email"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingTop="15dp"/>
+
+        <EditText
+            android:id="@+id/pass_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pass_one"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:paddingTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender" />
+
+
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:id="@+id/gender_radio_group">
 
-            <AutoCompleteTextView
-                android:id="@+id/email"
+            <RadioButton
+                android:id="@+id/male_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:hint="@string/prompt_email"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:paddingTop="15dp"
-                android:singleLine="true"/>
+                android:layout_alignRight="@id/male_button"
+                android:layout_weight="1"
+                android:text="Male" />
 
-            <EditText
-                android:id="@+id/pass_one"
+            <RadioButton
+                android:id="@+id/female_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/email"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:paddingTop="15dp"/>
+                android:layout_alignParentLeft="true"
+                android:layout_weight="1"
+                android:text="Female" />
+        </RadioGroup>
 
-            <EditText
-                android:id="@+id/pass_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/pass_one"
-                android:ems="10"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:paddingTop="15dp"/>
+        <RelativeLayout
+            android:id="@+id/age_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/weight_layout"
+            android:paddingTop="15dp">
 
-            <RelativeLayout
-                android:id="@+id/weight_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/pass_confirm"
-                android:paddingTop="15dp">
+            <SeekBar
+                android:id="@+id/seekbar_age"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/age_title"
+                android:max="36"
+                android:progress="3" />
 
-                <TextView
-                    android:id="@+id/weight_display_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignTop="@+id/weight_bar"
-                    android:layout_toEndOf="@+id/weight_bar"
-                    android:gravity="center_horizontal"
-                    android:text="TextView"/>
-
-                <SeekBar
-                    android:id="@+id/weight_bar"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/weight_title"
-                    android:max="200"/>
-
-                <TextView
-                    android:id="@+id/weight_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/pass_confirm"
-                    android:text="Weight (lbs):"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/height_Layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/weight_layout"
-                android:paddingTop="15dp">
-
-                <SeekBar
-                    android:id="@+id/seekbar_height"
-                    style="@style/Widget.AppCompat.SeekBar.Discrete"
-                    android:layout_width="150dp"
-                    android:layout_height="30dp"
-                    android:layout_below="@+id/height_title"
-                    android:max="36"
-                    android:progress="3"/>
-
-                <TextView
-                    android:id="@+id/height_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Height"/>
-
-                <TextView
-                    android:id="@+id/txt_height"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/height_title"
-                    android:layout_toRightOf="@+id/seekbar_height"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="TextView"/>
-
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/btn_sign_up"
+            <TextView
+                android:id="@+id/age_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/spinner"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
-                android:text="Sign Up"/>
+                android:text="Age" />
 
-            <Spinner
-                android:id="@+id/spinner"
+            <TextView
+                android:id="@+id/txt_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/height_Layout"
-                android:entries="@array/workout_levels"
-                android:paddingTop="15dp"/>
+                android:layout_below="@+id/age_title"
+                android:layout_toRightOf="@+id/seekbar_age"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="TextView" />
 
         </RelativeLayout>
-    </ScrollView>
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/weight_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/pass_confirm"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:id="@+id/weight_display_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignTop="@+id/weight_bar"
+                android:layout_toEndOf="@+id/weight_bar"
+                android:gravity="center_horizontal"
+                android:text="TextView"/>
+
+            <SeekBar
+                android:id="@+id/weight_bar"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/weight_title"
+                android:max="200"/>
+
+            <TextView
+                android:id="@+id/weight_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight (lbs):"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/height_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/weight_layout"
+            android:paddingTop="15dp">
+
+            <SeekBar
+                android:id="@+id/seekbar_height"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/height_title"
+                android:max="36"
+                android:progress="3"/>
+
+            <TextView
+                android:id="@+id/height_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height"/>
+
+            <TextView
+                android:id="@+id/txt_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/height_title"
+                android:layout_toRightOf="@+id/seekbar_height"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="TextView"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Primary Fitness Goal" />
+
+        <Spinner
+            android:id="@+id/goal_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/height_Layout"
+            android:entries="@array/workout_levels"
+            android:paddingTop="15dp"/>
+
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="right"
+            android:layout_below="@+id/spinner"
+            android:layout_centerHorizontal="true"
+            android:text="Sign Up" />
+
+    </LinearLayout>
+</ScrollView>
