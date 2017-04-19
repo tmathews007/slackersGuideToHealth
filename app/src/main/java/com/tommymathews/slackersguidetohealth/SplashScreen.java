@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.tommymathews.slackersguidetohealth.service.impl.UserSchema;
+
 public class SplashScreen extends Activity {
 
     @Override
@@ -17,14 +19,14 @@ public class SplashScreen extends Activity {
             public void run(){
                 try {
                     sleep(3000);
-                    SharedPreferences sharedPreferences=getSharedPreferences(SignUp.LOGIN,MODE_WORLD_READABLE);
+                    SharedPreferences sharedPreferences=getSharedPreferences(UserSchema.LOGIN,MODE_PRIVATE);
 
-                    String unm=sharedPreferences.getString(SignUp.USERNAME, null);
-                    if (unm != null) {
-                        Intent newIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    String username=sharedPreferences.getString(UserSchema.EMAIL, null);
+                    if (username != null) {
+                        Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(newIntent);
                     } else {
-                        Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent newIntent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(newIntent);
                     }
 

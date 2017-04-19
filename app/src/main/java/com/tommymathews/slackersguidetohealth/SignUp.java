@@ -9,7 +9,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,19 +16,17 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.tommymathews.slackersguidetohealth.service.impl.UserSchema;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * A login screen that offers login via email/password.
- */
 public class SignUp extends Activity {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-    public static final String LOGIN = "LOGIN";
-    public static final String USERNAME = "USERNAME";
 
     // UI references.
     private EditText nameEditText;
@@ -76,9 +73,9 @@ public class SignUp extends Activity {
             }
         });
 
-        passwordEditText = (EditText) findViewById(R.id.password);
+        passwordEditText = (EditText) findViewById(R.id.pass_one);
         confirmPasswordEditText = (EditText) findViewById(R.id.pass_confirm);
-       /** confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
+        confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -92,24 +89,7 @@ public class SignUp extends Activity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (!confirmPasswordEditText.getText().toString().equals(passwordEditText.getText().toString()))
-                    confirmPasswordEditText.setHint("Must match password");
-            }
-        }); **/
-
-        signUpButton = (Button) findViewById(R.id.btn_sign_up);
-        signUpButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //proper checks first
-                if (!attemptLogin()) {
-                    SharedPreferences sharedPreferences=getSharedPreferences(LOGIN, 0);
-                    SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString(USERNAME, nameEditText.getText().toString());
-                    editor.commit();
-                    startActivity(new Intent(SignUp.this, MainActivity.class));
-                    finish();
-                    //store everything in shared preferences for now
-                }
+                    Toast.makeText(getApplicationContext(), "Password must match", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -176,8 +156,26 @@ public class SignUp extends Activity {
         goalSpinner = (Spinner) findViewById(R.id.goal_spinner);
         ArrayAdapter<CharSequence> goalAdapter = ArrayAdapter.createFromResource(this, R.array.goals_array, android.R.layout.simple_spinner_item);
         goalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        goalSpinner.setAdapter(goalAdapter);
+        goalSpinner.setAdapter(goalAdapter); // still need to fill this out
 
+        signUpButton = (Button) findViewById(R.id.btn_sign_up);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!attemptLogin()) {
+                    SharedPreferences sharedPreferences=getSharedPreferences(UserSchema.LOGIN, 0);
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putString(UserSchema.EMAIL, nameEditText.getText().toString());
+                    editor.commit();
+
+                    //put things in sqlite
+
+                    startActivity(new Intent(SignUp.this, MainActivity.class));
+                    finish();
+                    //store everything in shared preferences for now
+                }
+            }
+        });
     }
 
 
@@ -188,6 +186,7 @@ public class SignUp extends Activity {
      */
     private boolean attemptLogin() {
         // Store values at the time of the login attempt.
+
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
@@ -197,7 +196,10 @@ public class SignUp extends Activity {
         if (TextUtils.isEmpty(password)) {
             passwordEditText.setHint("Password required");
             cancel = true;
-        } else if (!isPasswordValid(password)) {
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            confirmPasswordEditText.setHint("Confirm Password required");
             cancel = true;
         }
 
@@ -210,7 +212,7 @@ public class SignUp extends Activity {
         }
 
         if (TextUtils.isEmpty(name)) {
-            emailEditText.setHint("Email required");
+            nameEditText.setHint("Name required");
             cancel = true;
         }
 
@@ -222,9 +224,5 @@ public class SignUp extends Activity {
         return matcher.find();
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
 }
 
