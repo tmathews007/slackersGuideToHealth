@@ -116,8 +116,8 @@
     </string-array>
 
     <!-- QuadWorkout Activity: Burpees -->
-    <string name="quad_workout_burpees"> Burpees </string>
-    <string-array name="quad_workout_array">
+    <string name="quads_workout_burpees"> Burpees </string>
+    <string-array name="quads_workout_array">
         <item> 1. Begin in a standing position. </item>
         <item> 2. Kick back into the push-up position. </item>
         <item> 3. Lower your body and perform a push-up. </item>

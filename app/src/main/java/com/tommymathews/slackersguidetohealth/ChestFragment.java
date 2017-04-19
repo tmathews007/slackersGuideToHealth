@@ -18,6 +18,7 @@ import java.lang.reflect.Field;
 
 public class ChestFragment extends Fragment {
 
+    private TextView chestWorkoutTitle;
     private TextView chestWorkout;
 
     public static ChestFragment newInstance() {
@@ -36,10 +37,13 @@ public class ChestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate( R.layout.fragment_chest, container, false );
 
-        // The textview will contain a picture of the workout on the top along with the directions
-        // on how to do the workout. The directions will be found with a string array from the
-        // values package.
+        // This will be the title of the page. The title will be the workout name.
+        chestWorkoutTitle = ( TextView ) view.findViewById( R.id.chest_workout_title );
+
+        // This will be where the workout directions are. It will be in the third textview, while
+        // the picture of the workout will be in the above textview.
         chestWorkout = ( TextView ) view.findViewById( R.id.chest_workout );
+        chestWorkout.setText( R.array.chest_workout_array );
 
         return view;
     }
