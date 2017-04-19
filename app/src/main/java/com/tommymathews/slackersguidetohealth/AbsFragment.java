@@ -1,16 +1,21 @@
 package com.tommymathews.slackersguidetohealth;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * Created by Ashwin on 4/14/2017.
- */
+public class AbsFragment extends android.support.v4.app.Fragment {
 
-public class AbsFragment extends Fragment{
+    private TextView absWorkout;
+
+    public static AbsFragment newInstance() {
+        AbsFragment fragment = new AbsFragment();
+
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,17 +23,10 @@ public class AbsFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view=null; //inflate with fragment_abs.xml
+        View view = inflater.inflate(R.layout.fragment_abs, container, false);
 
-        //TODO the stuff below
-        //button/etc absWorkoutsButton;
-        /*absWorkoutsButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), AbsActivity.class);
-                startActivity(i);
-            }
-        });*/
+        absWorkout = ( TextView ) view.findViewById( R.id.abs_workout );
+
         return view;
     }
 }

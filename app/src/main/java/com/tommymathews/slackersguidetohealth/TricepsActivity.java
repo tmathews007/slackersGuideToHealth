@@ -1,8 +1,11 @@
 package com.tommymathews.slackersguidetohealth;
 
-/**
- * Created by Thomas on 4/12/2017.
- */
+import android.support.v4.app.Fragment;
 
-public class TricepsActivity {
+public class TricepsActivity extends SingleFragmentActivity {
+
+    @Override
+    protected Fragment createFragment() {
+        return TricepsFragment.newInstance();
+    }
 }

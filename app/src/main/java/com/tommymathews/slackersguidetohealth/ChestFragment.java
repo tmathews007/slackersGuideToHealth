@@ -26,6 +26,11 @@ public class ChestFragment extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,16 +40,6 @@ public class ChestFragment extends Fragment {
         // on how to do the workout. The directions will be found with a string array from the
         // values package.
         chestWorkout = ( TextView ) view.findViewById( R.id.chest_workout );
-
-
-        Button chestWorkouts = (Button) view.findViewById(R.id.chestWorkoutButton);
-        chestWorkouts.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), ChestActivity.class);
-                startActivity(i);
-            }
-        });
 
         return view;
     }
