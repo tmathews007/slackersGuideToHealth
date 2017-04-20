@@ -7,11 +7,7 @@
         <item>Advanced</item>
     </string-array>
 
-<<<<<<< Updated upstream
     <string name="app_name">Slacker\'s Guide to Health</string>
-=======
-    <string name="app_name"> Slackers Guide to Health </string>
->>>>>>> Stashed changes
     <string name="exercise">Exercise</string>
     <string name="food">Food</string>
     <string name="explore">Explore</string>
