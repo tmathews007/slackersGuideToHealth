@@ -11,16 +11,13 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:text="@string/tricep_workout_push_ups"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textStyle="normal" />
+        style="@style/WorkoutFontAndSize" />
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="235dp"
         android:id="@+id/textView3"
-        android:src="@drawable/triceps" />
+        android:src="@drawable/pushup_regular" />
 
     <TextView
         android:layout_width="match_parent"

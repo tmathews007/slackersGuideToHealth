@@ -10,17 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="@string/abs_workout_crunches"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textStyle="normal" />
+        android:text="@string/abs_workout_bicycle_crunches"
+        style="@style/WorkoutFontAndSize" />
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="234dp"
         android:id="@+id/textView2"
-        android:src="@drawable/abs" />
+        android:src="@drawable/bicycle_crunch" />
 
     <TextView
         android:layout_width="match_parent"

@@ -11,12 +11,9 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:text="@string/chest_workout_dips"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textStyle="normal" />
+        style="@style/WorkoutFontAndSize" />
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="223dp"
         android:id="@+id/textView"

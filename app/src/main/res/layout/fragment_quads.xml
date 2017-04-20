@@ -10,16 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="@string/quads_workout_burpees"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textStyle="normal" />
+        android:text="@string/quads_workout_lunges"
+        style="@style/WorkoutFontAndSize" />
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="234dp"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2"
+        android:src="@drawable/alternating_lunges" />
 
     <TextView
         android:layout_width="match_parent"

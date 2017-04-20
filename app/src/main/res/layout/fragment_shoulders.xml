@@ -10,17 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="@string/shoulder_workout_barbell_press"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textStyle="normal" />
+        android:text="@string/shoulder_workout_handstand_push_up"
+        style="@style/WorkoutFontAndSize" />
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="235dp"
         android:id="@+id/textView3"
-        android:src="@drawable/shoulders" />
+        android:src="@drawable/handstand_pushup" />
 
     <TextView
         android:layout_width="match_parent"

@@ -7,7 +7,11 @@
         <item>Advanced</item>
     </string-array>
 
+<<<<<<< Updated upstream
     <string name="app_name">Slacker\'s Guide to Health</string>
+=======
+    <string name="app_name"> Slackers Guide to Health </string>
+>>>>>>> Stashed changes
     <string name="exercise">Exercise</string>
     <string name="food">Food</string>
     <string name="explore">Explore</string>
@@ -103,36 +107,34 @@
         <item> 5. Continue to repeat this process till you need rest. </item>
     </string-array>
 
-    <!-- AbsWorkout Activity: Crunches -->
-    <string name="abs_workout_crunches"> Crunches </string>
+    <!-- AbsWorkout Activity: Bicycle Crunches -->
+    <string name="abs_workout_bicycle_crunches"> Bicycle Crunches </string>
     <string-array name="abs_workout_array">
-        <item> 1. Lie on your back with you knees bent and your legs flat on the floor. </item>
-        <item> 2. Place your hands behind your head. </item>
-        <item> 3. Exhale and curl forward till your head, shoulder and neck come off the floor. </item>
-        <item> 4. Hold yourself for 5 seconds and then come down. </item>
+        <item> 1. Lie on your back with your body flat to the ground. </item>
+        <item> 2. Place your hands behind your head and your elbows flat to the ground. </item>
+        <item> 3. As you curl forward, make sure your left elbow touches your right knee. </item>
+        <item> 4. Rotate your body and let your right elbow touch your left knee. </item>
         <item> 5. Repeat this process till you need rest. </item>
     </string-array>
 
-    <!-- ShoulderWorkout Activity: Barbell Press with Pole -->
-    <string name="shoulder_workout_barbell_press"> Barbell Press with Pole </string>
+    <!-- ShoulderWorkout Activity: Handstand Push Up -->
+    <string name="shoulder_workout_handstand_push_up"> Handstand Push Up </string>
     <string-array name="shoulder_workout_array">
-        <item> 1. Find a stick or a pole that is roughly 4-5 feet long. </item>
-        <item> 2. Stand with your back straight. </item>
-        <item> 3. Hold the pole above your head, about shoulder width. </item>
-        <item> 4. Extend your arms above your head till your arms are straight. </item>
-        <item> 5. Bring your arms back down till your arms are about 90 degrees. </item>
-        <item> 6. Repeat this process till you need rest. </item>
+        <item> 1. Find a wall or a solid vertical surface. </item>
+        <item> 2. Using the wall, perform a handstand. </item>
+        <item> 3. Slowly, go down till your arms are parallel to the ground. </item>
+        <item> 4. Slowly go back up. </item>
+        <item> 5. Repeat this process till you need rest. </item>
     </string-array>
 
-    <!-- QuadWorkout Activity: Burpees -->
-    <string name="quads_workout_burpees"> Burpees </string>
+    <!-- QuadWorkout Activity: Alternating Lunges -->
+    <string name="quads_workout_lunges"> Alternating Lunges </string>
     <string-array name="quads_workout_array">
         <item> 1. Begin in a standing position. </item>
-        <item> 2. Kick back into the push-up position. </item>
-        <item> 3. Lower your body and perform a push-up. </item>
-        <item> 4. Upon coming up, return back into the original standing position. </item>
-        <item> 5. Jump into the air and throw your arms into the air. </item>
-        <item> 6. Repeat this process till you need rest. </item>
+        <item> 2. Step forward with your right leg. </item>
+        <item> 3. Lower your body till the left leg is roughly 90 degrees. </item>
+        <item> 4. Push yourself up with your right leg. </item>
+        <item> 5. Repeat the process alternating the legs. Repeat till you need rest. </item>
     </string-array>
 
 </resources>
