@@ -9,6 +9,12 @@
     tools:context="com.tommymathews.slackersguidetohealth.MainActivity"
     android:weightSum="1">
 
+    <Button
+        android:id="@+id/progressButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/progress_button" />
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="wrap_content"

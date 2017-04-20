@@ -1,5 +1,9 @@
 package com.tommymathews.slackersguidetohealth;
 
+/**
+ * Created by gregs on 4/19/2017.
+ */
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -14,13 +18,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class FitnessFragment extends Fragment {
+public class FitnessFragmentBack extends Fragment {
     private final int MATCH_DISTANCE = 10;
 
-    private final int ABS = Color.BLUE;
-    private final int BICEPS = Color.RED;
-    private final int CHEST = Color.GREEN;
-    private final int QUADS = Color.CYAN;
+    private final int BACK = Color.BLUE;
+    private final int CALFS = Color.CYAN;
+    private final int GLUTES = Color.GREEN;
+    private final int Shoulders = Color.RED;
 
 
     public static FitnessFragment newInstance() {
@@ -34,11 +38,11 @@ public class FitnessFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fitness_fragment, container, false);
 
-        Button backButton = (Button) view.findViewById(R.id.back_button);
+        Button frontButton = (Button) view.findViewById(R.id.front_button);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), FitnessActivityBack.class));
+                startActivity(new Intent(getActivity(), FitnessActivity.class));
             }
         });
 
@@ -48,29 +52,31 @@ public class FitnessFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 int x = (int) event.getX();
                 int y = (int) event.getY();
-                int color = getColor(R.id.fitness_image_front, x, y);
+                int color = getColor(R.id.fitness_image_back, x, y);
 
                 switch(color) {
-                    case ABS:
-                        Log.d("Clicked", "ABS");
-                        startActivity(new Intent(getActivity(), AbsActivity.class));
+
+                    case BACK:
+                        Log.d("Clicked", "BACK");
+                        startActivity(new Intent(getActivity(), BackActivity.class));
                         break;
 
-                    case BICEPS:
-                        Log.d("Clicked", "BICEPS");
-                        startActivity(new Intent(getActivity(), BicepsActivity.class));
+                    case CALFS:
+                        Log.d("Clicked", "CALFS");
+                        startActivity(new Intent(getActivity(), CalfsActivity.class));
                         break;
 
-                    case CHEST:
-                        Log.d("Clicked", "CHEST");
-                        startActivity(new Intent(getActivity(), ChestActivity.class));
+                    case GLUTES:
+                        Log.d("Clicked", "GLUTES");
+                        startActivity(new Intent(getActivity(), GlutesActivity.class));
+                        break;
+
+                    case Shoulders:
+                        Log.d("Clicked", "SHOULDERS");
+                        startActivity(new Intent(getActivity(), ShouldersActivity.class));
                         break;
 
 
-                    case QUADS:
-                        Log.d("Clicked", "QUADS");
-                        startActivity(new Intent(getActivity(), QuadsActivity.class));
-                        break;
 
                 }
                 return true;
