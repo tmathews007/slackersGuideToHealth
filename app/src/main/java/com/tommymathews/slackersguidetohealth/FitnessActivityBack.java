@@ -1,15 +1,14 @@
 package com.tommymathews.slackersguidetohealth;
 
-
 import android.support.v4.app.Fragment;
 
 /**
- * Created by Thomas on 4/12/2017.
+ * Created by gregs on 4/19/2017.
  */
 
-public class FitnessActivity extends SingleFragmentActivity {
+public class FitnessActivityBack extends SingleFragmentActivity{
     @Override
     protected Fragment createFragment() {
-        return FitnessFragment.newInstance();
+        return FitnessFragmentBack.newInstance();
     }
 }
