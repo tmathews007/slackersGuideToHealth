@@ -10,10 +10,10 @@
     android:weightSum="1">
 
     <Button
-        android:id="@+id/progressButton"
+        android:id="@+id/profileButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/progress_button" />
+        android:text="@string/profile_button" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigationView"

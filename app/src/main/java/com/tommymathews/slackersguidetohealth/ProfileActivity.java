@@ -9,13 +9,13 @@ import android.widget.ProgressBar;
  * Created by Ashley on 4/19/17.
  */
 
-public class ProgressActivity extends Activity{
+public class ProfileActivity extends Activity{
     private ProgressBar progressBar;
     private int progressStatus = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_progress);
+        this.setContentView(R.layout.activity_profile);
 
         progressBar = (ProgressBar) this.findViewById(R.id.exerciseProgress);
         progressBar.setVisibility(View.VISIBLE);

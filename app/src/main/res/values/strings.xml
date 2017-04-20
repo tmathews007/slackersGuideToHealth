@@ -84,9 +84,13 @@
         <item>Fun</item>
     </string-array>
 
-    <!-- Strings related to progress bar -->
+    <!-- Strings related to Profile page -->
+    <string name="username">Username</string>
+    <string name="level">Level</string>
     <string name="progress">Progress</string>
-    <string name="progress_button">Check Progress</string>
+    <string name="profile_button">View Profile</string>
+    <string name="badges">Badges</string>
+    <string name="workouts_completed">Workouts Completed</string>
 
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>

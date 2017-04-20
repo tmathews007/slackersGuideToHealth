@@ -16,19 +16,19 @@ import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity{
     private BottomNavigationView bottomNavigationView;
-    private Button progressButton;
+    private Button profileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressButton = (Button) findViewById(R.id.progressButton);
-        progressButton.setOnClickListener(new View.OnClickListener() {
+        profileButton = (Button) findViewById(R.id.profileButton);
+        profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent progressIntent = new Intent(getApplicationContext(), ProgressActivity.class);
-                startActivity(progressIntent);
+                Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(profileIntent);
             }
         });
 
