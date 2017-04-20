@@ -1,6 +1,5 @@
 package com.tommymathews.slackersguidetohealth;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -81,7 +80,7 @@ public class FoodFragment extends Fragment{
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 if (item.getItemId() == R.id.exerciseItem) {
-                    Intent i = new Intent(getActivity(), ExerciseManager.class);
+                    Intent i = new Intent(getActivity(), FitnessActivity.class);
                     startActivity(i);
                     getActivity().overridePendingTransition(0,0);
                 } else if (item.getItemId() == R.id.foodItem) {

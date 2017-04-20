@@ -37,7 +37,7 @@ public class FoodActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 if (item.getItemId() == R.id.exerciseItem) {
-                    Intent i = new Intent(getApplicationContext(), ExerciseManager.class);
+                    Intent i = new Intent(getApplicationContext(), FitnessActivity.class);
                     startActivity(i);
                     overridePendingTransition(0, 0);
                 } else if (item.getItemId() == R.id.foodItem) {
