@@ -9,16 +9,29 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity{
     private BottomNavigationView bottomNavigationView;
+    private Button progressButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressButton = (Button) findViewById(R.id.progressButton);
+        progressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent progressIntent = new Intent(getApplicationContext(), ProgressActivity.class);
+                startActivity(progressIntent);
+            }
+        });
+
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         /* Use this to switch between tabs. */

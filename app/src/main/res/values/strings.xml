@@ -84,6 +84,10 @@
         <item>Fun</item>
     </string-array>
 
+    <!-- Strings related to progress bar -->
+    <string name="progress">Progress</string>
+    <string name="progress_button">Check Progress</string>
+
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>
     <string-array name="chest_workout_array">
