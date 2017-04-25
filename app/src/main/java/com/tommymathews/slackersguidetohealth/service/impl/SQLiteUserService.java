@@ -32,10 +32,10 @@ public class SQLiteUserService implements UserService {
         ContentValues contentValues = getContentValues(user);
         User currUser = getUserByEmail(user.getEmail());
         if (currUser == null) {
-            database.insert(UserSchema.UserTable.NAME, null, contentValues);
+            database.insert(DbSchema.UserTable.NAME, null, contentValues);
         } else {
-            database.update(UserSchema.UserTable.NAME, contentValues,
-                    UserSchema.UserTable.Columns.EMAIL + "=?", new String[]{currUser.getEmail()});
+            database.update(DbSchema.UserTable.NAME, contentValues,
+                    DbSchema.UserTable.Columns.EMAIL + "=?", new String[]{currUser.getEmail()});
         }
     }
 
@@ -44,7 +44,7 @@ public class SQLiteUserService implements UserService {
         if (email == null)
             return null;
 
-        List<User> users = queryUsers(UserSchema.UserTable.Columns.EMAIL,
+        List<User> users = queryUsers(DbSchema.UserTable.Columns.EMAIL,
                 new String[]{email}, null);
 
         for (User user : users) {
@@ -65,7 +65,7 @@ public class SQLiteUserService implements UserService {
         if (whereClause != null)
             whereClause = whereClause + "=?";
 
-        Cursor cursor = database.query(UserSchema.UserTable.NAME, null,
+        Cursor cursor = database.query(DbSchema.UserTable.NAME, null,
                 whereClause, whereArgs, null, null, orderBy);
         UserCursorWrapper wrapper = new UserCursorWrapper(cursor);
 
@@ -76,6 +76,7 @@ public class SQLiteUserService implements UserService {
                 wrapper.moveToNext();
             }
         } finally {
+            cursor.close();
             wrapper.close();
         }
 
@@ -85,13 +86,14 @@ public class SQLiteUserService implements UserService {
     private static ContentValues getContentValues(User user) {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(UserSchema.UserTable.Columns.EMAIL, user.getEmail());
-        contentValues.put(UserSchema.UserTable.Columns.PASSWORD, user.getPassword());
-        contentValues.put(UserSchema.UserTable.Columns.GENDER, user.getGender().toString());
-        contentValues.put(UserSchema.UserTable.Columns.AGE, user.getAge());
-        contentValues.put(UserSchema.UserTable.Columns.WEIGHT, user.getWeight() + "");
-        contentValues.put(UserSchema.UserTable.Columns.HEIGHT, user.getHeight() + "");
-        contentValues.put(UserSchema.UserTable.Columns.FITNESS_GOAL, user.getFitnessGoal().toString());
+        contentValues.put(DbSchema.UserTable.Columns.NAME, user.getName());
+        contentValues.put(DbSchema.UserTable.Columns.EMAIL, user.getEmail());
+        contentValues.put(DbSchema.UserTable.Columns.PASSWORD, user.getPassword());
+        contentValues.put(DbSchema.UserTable.Columns.GENDER, user.getGender().toString());
+        contentValues.put(DbSchema.UserTable.Columns.AGE, user.getAge());
+        contentValues.put(DbSchema.UserTable.Columns.WEIGHT, user.getWeight() + "");
+        contentValues.put(DbSchema.UserTable.Columns.HEIGHT, user.getHeight() + "");
+        contentValues.put(DbSchema.UserTable.Columns.FITNESS_GOAL, user.getFitnessGoal().toString());
 
         return contentValues;
     }
@@ -102,15 +104,16 @@ public class SQLiteUserService implements UserService {
         }
 
         public User getUser() {
-            String email = getString(getColumnIndex(UserSchema.UserTable.Columns.EMAIL));
-            String password = getString(getColumnIndex(UserSchema.UserTable.Columns.PASSWORD));
-            String gender = getString(getColumnIndex(UserSchema.UserTable.Columns.GENDER));
-            int age = getInt(getColumnIndex(UserSchema.UserTable.Columns.AGE));
-            int weight = getInt(getColumnIndex(UserSchema.UserTable.Columns.WEIGHT));
-            int height = getInt(getColumnIndex(UserSchema.UserTable.Columns.HEIGHT));
-            String fitnessGoal = getString(getColumnIndex(UserSchema.UserTable.Columns.FITNESS_GOAL));
+            String name = getString(getColumnIndex(DbSchema.UserTable.Columns.NAME));
+            String email = getString(getColumnIndex(DbSchema.UserTable.Columns.EMAIL));
+            String password = getString(getColumnIndex(DbSchema.UserTable.Columns.PASSWORD));
+            String gender = getString(getColumnIndex(DbSchema.UserTable.Columns.GENDER));
+            int age = getInt(getColumnIndex(DbSchema.UserTable.Columns.AGE));
+            int weight = getInt(getColumnIndex(DbSchema.UserTable.Columns.WEIGHT));
+            int height = getInt(getColumnIndex(DbSchema.UserTable.Columns.HEIGHT));
+            String fitnessGoal = getString(getColumnIndex(DbSchema.UserTable.Columns.FITNESS_GOAL));
 
-            User user = new User(email, password, User.Gender.valueOf(gender),
+            User user = new User(name, email, password, User.Gender.valueOf(gender),
                     age, weight, height, User.Goal.valueOf(fitnessGoal));
 
             return user;

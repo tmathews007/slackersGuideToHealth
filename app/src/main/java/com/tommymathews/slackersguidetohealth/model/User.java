@@ -9,6 +9,7 @@ import java.util.UUID;
 
 public class User implements Serializable{
     private String id;
+    private String name;
     private String email;
     private String password;
     private Gender gender;
@@ -21,9 +22,10 @@ public class User implements Serializable{
         id = UUID.randomUUID().toString();
     }
 
-    public User(String email, String password, int gender, int age, int weight, int height,
+    public User(String name, String email, String password, int gender, int age, int weight, int height,
                 int fitnessGoal) {
         id = UUID.randomUUID().toString();
+        this.name = name;
         this.email = email;
         this.password = password;
         this.gender = Gender.values()[gender % 2];
@@ -31,12 +33,12 @@ public class User implements Serializable{
         this.weight = weight;
         this.height = height;
         this.fitnessGoal = Goal.values()[fitnessGoal % 3];
-
     }
 
-    public User(String email, String password, Gender gender, int age, int weight, int height,
+    public User(String name, String email, String password, Gender gender, int age, int weight, int height,
                 Goal fitnessGoal) {
         id = UUID.randomUUID().toString();
+        this.name = name;
         this.email = email;
         this.password = password;
         this.gender = gender;
@@ -45,6 +47,12 @@ public class User implements Serializable{
         this.height = height;
         this.fitnessGoal = fitnessGoal;
 
+    }
+
+    public String getName() { return name; }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getId() {
@@ -57,7 +65,7 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        return email + " : " + gender + " : " + age + " : " + weight + " : " + convertHeight(height) + " : " + fitnessGoal;
+        return name + " : " + email + " : " + gender + " : " + age + " : " + weight + " : " + convertHeight(height) + " : " + fitnessGoal;
     }
 
     public int getHeight() {
@@ -129,11 +137,11 @@ public class User implements Serializable{
     }
 
     public enum Gender {
-        MALE, FEMALE;
+        MALE, FEMALE
     }
 
     public enum Goal {
-        FITNESS, FOOD, FUN;
+        FITNESS, FOOD, FUN
     }
 }
 

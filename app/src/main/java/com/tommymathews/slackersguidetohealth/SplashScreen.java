@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.tommymathews.slackersguidetohealth.service.impl.UserSchema;
+import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 public class SplashScreen extends Activity {
 
@@ -19,9 +19,9 @@ public class SplashScreen extends Activity {
             public void run(){
                 try {
                     sleep(3000);
-                    SharedPreferences sharedPreferences=getSharedPreferences(UserSchema.LOGIN,MODE_PRIVATE);
+                    SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN,MODE_PRIVATE);
 
-                    String username=sharedPreferences.getString(UserSchema.EMAIL, null);
+                    String username=sharedPreferences.getString(DbSchema.EMAIL, null);
                     if (username != null) {
                         Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(newIntent);

@@ -18,15 +18,24 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + UserSchema.UserTable.NAME + "(" +
+        db.execSQL("create table " + DbSchema.UserTable.NAME + "(" +
                 " _id integer primary key autoincrement, " +
-                UserSchema.UserTable.Columns.EMAIL + ", " +
-                UserSchema.UserTable.Columns.PASSWORD + ", " +
-                UserSchema.UserTable.Columns.GENDER + ", " +
-                UserSchema.UserTable.Columns.AGE + ", " +
-                UserSchema.UserTable.Columns.WEIGHT + ", " +
-                UserSchema.UserTable.Columns.HEIGHT + ", " +
-                UserSchema.UserTable.Columns.FITNESS_GOAL + ")"
+                DbSchema.UserTable.Columns.NAME + ", " +
+                DbSchema.UserTable.Columns.EMAIL + ", " +
+                DbSchema.UserTable.Columns.PASSWORD + ", " +
+                DbSchema.UserTable.Columns.GENDER + ", " +
+                DbSchema.UserTable.Columns.AGE + ", " +
+                DbSchema.UserTable.Columns.WEIGHT + ", " +
+                DbSchema.UserTable.Columns.HEIGHT + ", " +
+                DbSchema.UserTable.Columns.FITNESS_GOAL + ")"
+        );
+
+        db.execSQL("create table " + DbSchema.FoodTable.NAME + "(" +
+                " _id integer primary key autoincrement, " +
+                DbSchema.FoodTable.Columns.NAME + ", " +
+                DbSchema.FoodTable.Columns.CALORIE_LEVEL + ", " +
+                DbSchema.FoodTable.Columns.INGREDIENTS + ", " +
+                DbSchema.FoodTable.Columns.RECIPE + ")"
         );
     }
 

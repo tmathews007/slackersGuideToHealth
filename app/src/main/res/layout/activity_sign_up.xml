@@ -202,7 +202,7 @@
             android:layout_gravity="right"
             android:layout_below="@+id/goal_spinner"
             android:layout_centerHorizontal="true"
-            android:text="Sign Up" />
+            android:text="@string/sign_up" />
 
     </LinearLayout>
 </ScrollView>

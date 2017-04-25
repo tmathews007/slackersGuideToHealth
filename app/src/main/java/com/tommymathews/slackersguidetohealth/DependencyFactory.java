@@ -2,7 +2,9 @@ package com.tommymathews.slackersguidetohealth;
 
 import android.content.Context;
 
+import com.tommymathews.slackersguidetohealth.service.FoodService;
 import com.tommymathews.slackersguidetohealth.service.UserService;
+import com.tommymathews.slackersguidetohealth.service.impl.SQLiteFoodService;
 import com.tommymathews.slackersguidetohealth.service.impl.SQLiteUserService;
 
 /**
@@ -11,12 +13,20 @@ import com.tommymathews.slackersguidetohealth.service.impl.SQLiteUserService;
 
 public class DependencyFactory {
     private static UserService userService;
+    private static FoodService foodService;
 
     public static UserService getUserService(Context context) {
         if (userService == null) {
-            //storyService = new InMemoryStoryService(context);
             userService = new SQLiteUserService(context);
         }
         return userService;
     }
+
+    public static FoodService getFoodService(Context context) {
+        if (foodService == null) {
+            foodService = new SQLiteFoodService(context);
+        }
+        return foodService;
+    }
+
 }

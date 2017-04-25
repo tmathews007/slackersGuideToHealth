@@ -56,6 +56,9 @@
         <activity
             android:name=".ProfileActivity">
         </activity>
+        <activity
+            android:name=".FitnessActivity">
+        </activity>
 
     </application>
 </manifest>

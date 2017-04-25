@@ -18,10 +18,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tommymathews.slackersguidetohealth.service.impl.UserSchema;
+import com.tommymathews.slackersguidetohealth.model.User;
+import com.tommymathews.slackersguidetohealth.service.UserService;
+import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.tommymathews.slackersguidetohealth.R.id.email;
 
 public class SignUp extends Activity {
 
@@ -42,6 +46,9 @@ public class SignUp extends Activity {
     private TextView heightTextView;
     private Spinner goalSpinner;
     private Button signUpButton;
+    private int age;
+    private int weight;
+    private int height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +57,10 @@ public class SignUp extends Activity {
 
         nameEditText = (EditText) findViewById(R.id.name);
         genderRadioGroup = (RadioGroup) findViewById(R.id.gender_radio_group);
+        genderRadioGroup.check(R.id.male_button);
 
         // Set up the login form.
-        emailEditText = (EditText) findViewById(R.id.email);
+        emailEditText = (EditText) findViewById(email);
         emailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -100,6 +108,7 @@ public class SignUp extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 ageTextView.setText((i + 16) + "");
+                age = i + 16;
             }
 
             @Override
@@ -120,6 +129,7 @@ public class SignUp extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 weightTextView.setText((i + 50) + "lbs.");
+                weight = i + 50;
             }
 
             @Override
@@ -140,6 +150,7 @@ public class SignUp extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 heightTextView.setText( (i / 12 + 4) + "' " + (i % 12) + "\"");
+                height = i + 4 * 12;
             }
 
             @Override
@@ -163,12 +174,30 @@ public class SignUp extends Activity {
             @Override
             public void onClick(View view) {
                 if (!attemptLogin()) {
-                    SharedPreferences sharedPreferences=getSharedPreferences(UserSchema.LOGIN, 0);
+                    SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
                     SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString(UserSchema.EMAIL, nameEditText.getText().toString());
+                    editor.putString(DbSchema.EMAIL, emailEditText.getText().toString());
                     editor.commit();
 
                     //put things in sqlite
+                    User user = new User();
+                    user.setName(nameEditText.getText().toString());
+                    user.setEmail(emailEditText.getText().toString());
+                    user.setPassword(passwordEditText.getText().toString());
+                    switch (genderRadioGroup.getCheckedRadioButtonId()) {
+                        case (R.id.female_button):
+                            user.setGender(User.Gender.FEMALE);
+                            break;
+                        default:
+                            user.setGender(User.Gender.MALE);
+                    }
+                    user.setAge(age);
+                    user.setHeight(height);
+                    user.setWeight(weight);
+                    user.setFitnessGoal(goalSpinner.getSelectedItemPosition());
+
+                    UserService userService = DependencyFactory.getUserService(getApplication());
+                    userService.addUser(user);
 
                     startActivity(new Intent(SignUp.this, MainActivity.class));
                     finish();

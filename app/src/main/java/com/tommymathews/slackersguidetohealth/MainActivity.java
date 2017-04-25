@@ -1,22 +1,25 @@
 package com.tommymathews.slackersguidetohealth;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
+
 import java.lang.reflect.Field;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends ActivityWithMenu {
     private BottomNavigationView bottomNavigationView;
     private Button profileButton;
+    private Button logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,22 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(profileIntent);
+            }
+        });
+
+        logoutButton = (Button) findViewById(R.id.logOutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
 
