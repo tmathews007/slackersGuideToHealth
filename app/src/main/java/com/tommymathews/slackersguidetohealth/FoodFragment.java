@@ -53,7 +53,7 @@ public class FoodFragment extends Fragment{
                 int numCal = Integer.parseInt(cal);
                 if(numCal<500){
                     //TODO Ashwin/Christine week of 4/18
-                    Intent i = new Intent(getActivity(), FoodActivity.class);
+                    Intent i = new Intent(getActivity(), FoodActivity2.class);
                     startActivity(i);
                 }
                 else if(numCal>=500 && numCal<750) {
@@ -62,12 +62,12 @@ public class FoodFragment extends Fragment{
                 }
                 else if(numCal>=750 && numCal<1000){
                     //TODO Ashwin/Christine week of 4/18
-                    Intent i = new Intent(getActivity(), FoodActivity.class);
+                    Intent i = new Intent(getActivity(), FoodActivity3.class);
                     startActivity(i);
                 }
                 else if(numCal>=1000 && numCal<=1500){
                     //TODO Ashwin/Christine week of 4/18
-                    Intent i = new Intent(getActivity(), FoodActivity.class);
+                    Intent i = new Intent(getActivity(), FoodActivity4.class);
                     startActivity(i);
                 }
                 else{
