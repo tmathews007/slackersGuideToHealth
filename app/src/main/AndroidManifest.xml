@@ -27,15 +27,8 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <!--TODO: Different parts of the app go here-->
-        <activity android:name=".FitnessActivity"/>
 
-        <activity android:name=".FoodActivity"/>
-        <activity android:name=".ExploreMain"/>
-        <activity
-            android:name=".FoodManager"
-            android:label="@string/title_activity_food_manager"/>
+        <!--TODO: Different parts of the app go here-->
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
@@ -44,6 +37,22 @@
             android:name=".SignUp"
             android:label="@string/title_activity_sign_up">
         </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".FitnessActivity"/>
+        <activity android:name=".AbsActivity"/>
+        <activity android:name=".ChestActivity"/>
+        <activity android:name=".QuadsActivity"/>
+        <activity
+            android:name=".FoodManager"
+            android:label="@string/title_activity_food_manager"/>
+        <activity android:name=".FoodActivity"/>
+        <activity android:name=".FoodActivity2"/>
+        <activity android:name=".FoodActivity3"/>
+        <activity android:name=".FoodActivity4"/>
+
+        <activity android:name=".ExploreMain"/>
+
+
         <activity
             android:name=".ProfileActivity">
         </activity>
