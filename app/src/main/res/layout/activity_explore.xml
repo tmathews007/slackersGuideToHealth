@@ -41,7 +41,7 @@
         android:textColor="@color/orange"
         android:textSize="28dp"
         android:gravity= "center"
-        android:text="Fun Workout Locations \n And Events" />
+        android:text="Work Out Right" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigationView"

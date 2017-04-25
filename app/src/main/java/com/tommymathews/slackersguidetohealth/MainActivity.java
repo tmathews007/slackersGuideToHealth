@@ -80,8 +80,8 @@ public class MainActivity extends ActivityWithMenu {
                     startActivity(i);
                     overridePendingTransition(0,0);
                 } else if (item.getItemId() == R.id.funItem) {
-                    //Intent intent = new Intent(getApplicationContext(), Events.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), Events.class);
+                    startActivity(intent);
                     overridePendingTransition(0,0);
                 }
                 return false;

@@ -52,6 +52,23 @@
 
         <activity android:name=".ExploreMain"/>
 
+        <activity
+            android:name=".Events"
+            android:label="@string/title_activity_events">
+        </activity>
+        <activity
+            android:name=".Danceathon"
+            android:label="@string/title_activity_danceathon">
+        </activity>
+        <activity
+            android:name=".Health"
+            android:label="@string/title_activity_health">
+        </activity>
+        <activity
+            android:name=".Wellness"
+            android:label="@string/title_activity_wellness">
+        </activity>
+
 
         <activity
             android:name=".ProfileActivity">
