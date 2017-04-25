@@ -11,13 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 public class Food extends AppCompatActivity{
     public int calorieLevel=0;
     public String recipe="";
+    public String name="";
+    public String ingredients="";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    public Food(int calLevel, String r){
+    public Food(int calLevel, String r, String n, String i){
         calorieLevel=calLevel;
         recipe=r;
+        name=n;
+        ingredients=i;
     }
 }
