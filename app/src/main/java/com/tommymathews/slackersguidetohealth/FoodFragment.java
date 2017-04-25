@@ -47,7 +47,6 @@ public class FoodFragment extends Fragment{
         nextPageButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                //to fix
                 EditText calories = (EditText) view.findViewById(R.id.calories);
                 String cal = calories.getText().toString();
                 int numCal = Integer.parseInt(cal);
