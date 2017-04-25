@@ -28,9 +28,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-
         <!--TODO: Different parts of the app go here-->
+        <activity android:name=".FitnessActivity"/>
 
+        <activity android:name=".FoodActivity"/>
+        <activity android:name=".ExploreMain"/>
+        <activity
+            android:name=".FoodManager"
+            android:label="@string/title_activity_food_manager"/>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
