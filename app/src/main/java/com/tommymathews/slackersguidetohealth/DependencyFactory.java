@@ -3,17 +3,16 @@ package com.tommymathews.slackersguidetohealth;
 import android.content.Context;
 
 import com.tommymathews.slackersguidetohealth.service.FoodService;
+import com.tommymathews.slackersguidetohealth.service.FitnessService;
 import com.tommymathews.slackersguidetohealth.service.UserService;
+import com.tommymathews.slackersguidetohealth.service.impl.SQLiteFitnessService;
 import com.tommymathews.slackersguidetohealth.service.impl.SQLiteFoodService;
 import com.tommymathews.slackersguidetohealth.service.impl.SQLiteUserService;
-
-/**
- * Created by cj on 4/19/17.
- */
 
 public class DependencyFactory {
     private static UserService userService;
     private static FoodService foodService;
+    private static FitnessService fitnessService;
 
     public static UserService getUserService(Context context) {
         if (userService == null) {
@@ -27,6 +26,13 @@ public class DependencyFactory {
             foodService = new SQLiteFoodService(context);
         }
         return foodService;
+    }
+
+    public static FitnessService getFitnessService(Context context) {
+        if (fitnessService == null) {
+            fitnessService = new SQLiteFitnessService(context);
+        }
+        return fitnessService;
     }
 
 }
