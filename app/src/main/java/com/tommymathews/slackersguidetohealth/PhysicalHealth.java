@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class Health extends Activity {
+public class PhysicalHealth extends Activity {
 
     WebView webViewHealth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_health);
+        setContentView(R.layout.activity_physical_health);
 
         webViewHealth = (WebView) findViewById(R.id.web_health);
-        webViewHealth.loadUrl("https://www.eventbrite.com/e/fitnesshealthwellness-expo-tickets-32798259477");
+        webViewHealth.loadUrl("https://www.eventbrite.com/d/md--hyattsville/physical-health/?crt=regular&sort=best");
     }
 
 }
