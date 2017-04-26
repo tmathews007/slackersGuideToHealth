@@ -33,8 +33,4 @@
         android:id="@+id/profileItem"
         android:title="@string/profile"
         />
-    <item
-        android:id="@+id/purchasesItem"
-        android:title="@string/purchases"
-        />
 </menu>

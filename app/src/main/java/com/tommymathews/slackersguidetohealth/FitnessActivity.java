@@ -55,11 +55,6 @@ public class FitnessActivity extends SingleFragmentActivity {
                 startActivity(intent);
                 overridePendingTransition(0,0);
                 break;
-            case R.id.purchasesItem:
-                intent = new Intent(getApplicationContext(), PurchasesActivity.class);
-                startActivity(intent);
-                overridePendingTransition(0,0);
-                break;
             default:
                 return super.onOptionsItemSelected(item);
         }

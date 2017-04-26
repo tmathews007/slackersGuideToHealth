@@ -69,10 +69,6 @@
         <activity
             android:name=".ProfileActivity">
         </activity>
-        <activity
-            android:name=".PurchasesActivity"
-            android:label="@string/purchases">
-        </activity>
 
     </application>
 </manifest>
