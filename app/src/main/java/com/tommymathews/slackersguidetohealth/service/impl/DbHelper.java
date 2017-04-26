@@ -31,7 +31,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbSchema.FoodTable.Columns.NAME + ", " +
                 DbSchema.FoodTable.Columns.CALORIE_LEVEL + ", " +
                 DbSchema.FoodTable.Columns.INGREDIENTS + ", " +
-                DbSchema.FoodTable.Columns.RECIPE + ")"
+                DbSchema.FoodTable.Columns.RECIPE + "," +
+                DbSchema.FoodTable.Columns.IMAGE + ")"
         );
 
         /**

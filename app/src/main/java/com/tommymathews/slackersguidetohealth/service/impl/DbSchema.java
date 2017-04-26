@@ -29,6 +29,8 @@ public class DbSchema {
             public static final String CALORIE_LEVEL = "CALORIE_LEVEL";
             public static final String INGREDIENTS = "INGREDIENTS";
             public static final String RECIPE = "RECIPE";
+            public static final String IMAGE = "IMAGE";
+
         }
     }
 
