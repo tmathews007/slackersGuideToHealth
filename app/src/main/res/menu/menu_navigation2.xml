@@ -27,10 +27,14 @@
         />
     <item
         android:id="@+id/mainItem"
-        android:title="@string/homePage"
+        android:title="@string/home"
         />
     <item
         android:id="@+id/profileItem"
         android:title="@string/profile_button"
+        />
+    <item
+        android:id="@+id/purchasesItem"
+        android:title="@string/purchases"
         />
 </menu>
