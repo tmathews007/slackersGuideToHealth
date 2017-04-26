@@ -2,12 +2,10 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--Semi-medium fidelity, we can/will change these buttons-->
-
     <item
         android:id="@+id/exerciseItem"
         android:icon="@drawable/run"
-        android:title="@string/exercise"
+        android:title="@string/fitness"
         />
 
     <item

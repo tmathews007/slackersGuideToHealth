@@ -8,7 +8,7 @@
     </string-array>
 
     <string name="app_name">Slacker\'s Guide to Health</string>
-    <string name="exercise">Exercise</string>
+    <string name="fitness">Fitness</string>
     <string name="food">Food</string>
     <string name="explore">Explore</string>
     <string name="fun">Events</string>
@@ -87,9 +87,6 @@
         <item>Fun</item>
     </string-array>
 
-    <!-- Strings related to Oveflow Menu -->
-    <string name="fitness_menu">Fitness</string>
-    <string name="food_menu">Food</string>
 
     <!-- Strings related to Profile page -->
     <string name="username">Username</string>
