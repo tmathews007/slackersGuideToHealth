@@ -14,7 +14,7 @@ public class ActivityWithMenu extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_main_actions, menu);
+        inflater.inflate(R.menu.menu_navigation, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
