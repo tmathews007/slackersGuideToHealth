@@ -36,7 +36,7 @@ public class ActivityWithMenu extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.funItem:
-                intent = new Intent(getApplicationContext(), ExploreMain.class);
+                intent = new Intent(getApplicationContext(), Events.class);
                 startActivity(intent);
                 break;
             default:

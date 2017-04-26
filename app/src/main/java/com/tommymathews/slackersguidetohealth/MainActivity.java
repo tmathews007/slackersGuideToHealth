@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +17,7 @@ import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 import java.lang.reflect.Field;
 
-public class MainActivity extends ActivityWithMenu {
+public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Button profileButton;
     private Button logoutButton;
