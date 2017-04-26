@@ -4,10 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by cj on 4/19/17.
- */
-
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "slackers_guide.db";
     private static final int VERSION = 1;
@@ -36,6 +32,18 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbSchema.FoodTable.Columns.CALORIE_LEVEL + ", " +
                 DbSchema.FoodTable.Columns.INGREDIENTS + ", " +
                 DbSchema.FoodTable.Columns.RECIPE + ")"
+        );
+
+        /**
+         * This is the fitness table that sets the various parts of the table for the database.
+         */
+        db.execSQL( "create table " + DbSchema.FitnessTable.FITNESS_NAME + "( " +
+                " _id integer primary key autoincrement, " +
+                DbSchema.FitnessTable.Columns.BODY_PART + ", " +
+                DbSchema.FitnessTable.Columns.NUM_REPS + ", " +
+                DbSchema.FitnessTable.Columns.INSTRUCTIONS + ", " +
+                DbSchema.FitnessTable.Columns.IMAGE +
+                " )"
         );
     }
 
