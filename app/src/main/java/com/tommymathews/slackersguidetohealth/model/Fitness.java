@@ -1,8 +1,11 @@
 package com.tommymathews.slackersguidetohealth.model;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import java.io.ByteArrayOutputStream;
 
 /**
  * The purpose of this class is to create the database for the user who wants to input a fitness.
@@ -141,5 +144,20 @@ public class Fitness extends AppCompatActivity {
     }
     public enum BodyPart {
         ABS, BACK, BICEPS, CALFS, CHEST, GLUTES, QUADS, SHOULDERS, TRICEPS
+    }
+
+    public class DbBitmapUtility {
+
+        // convert from bitmap to byte array
+        public byte[] getBytes(Bitmap bitmap) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+            return stream.toByteArray();
+        }
+
+        // convert from byte array to bitmap
+        public Bitmap getImage(byte[] image) {
+            return BitmapFactory.decodeByteArray(image, 0, image.length);
+        }
     }
 }
