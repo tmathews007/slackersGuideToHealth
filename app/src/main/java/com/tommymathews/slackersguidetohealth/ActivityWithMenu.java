@@ -58,12 +58,6 @@ public class ActivityWithMenu extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(0,0);
                 break;
-            case R.id.purchasesItem:
-                intent = new Intent(getApplicationContext(), PurchasesActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                overridePendingTransition(0,0);
-                break;
             default:
                 return super.onOptionsItemSelected(item);
 
