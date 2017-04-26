@@ -44,6 +44,30 @@ public class SQLiteFoodService implements FoodService {
     }
 
     @Override
+    public List<Food> getFoodByCalorieRange(int calLow, int calHigh) {
+        List<Food> foods = new ArrayList<Food>();
+        String whereClause = DbSchema.FoodTable.Columns.CALORIE_LEVEL + "<=?" +
+                DbSchema.FoodTable.Columns.CALORIE_LEVEL + ">=";
+
+        Cursor cursor = database.query(DbSchema.FoodTable.NAME, null,
+                whereClause, new String[]{calLow + "", calHigh + ""}, null, null, null);
+        FoodCursorWrapper wrapper = new FoodCursorWrapper(cursor);
+
+        try {
+            wrapper.moveToFirst();
+            while (!wrapper.isAfterLast()) {
+                foods.add(wrapper.getFood());
+                wrapper.moveToNext();
+            }
+        } finally {
+            cursor.close();
+            wrapper.close();
+        }
+
+        return foods;
+    }
+
+    @Override
     public List<Food> getAllFoods() {
         List<Food> foods = queryFood(null, null, null);
         return foods;
@@ -79,6 +103,7 @@ public class SQLiteFoodService implements FoodService {
         contentValues.put(DbSchema.FoodTable.Columns.CALORIE_LEVEL, food.getCalorieLevel());
         contentValues.put(DbSchema.FoodTable.Columns.INGREDIENTS, food.getIngredients());
         contentValues.put(DbSchema.FoodTable.Columns.RECIPE, food.getRecipe());
+        contentValues.put(DbSchema.FoodTable.Columns.IMAGE, DbBitmapUtility.getBytes(food.getImage()));
 
         return contentValues;
     }
@@ -105,8 +130,9 @@ public class SQLiteFoodService implements FoodService {
             int calories = getInt(getColumnIndex(DbSchema.FoodTable.Columns.CALORIE_LEVEL));
             String recipe = getString(getColumnIndex(DbSchema.FoodTable.Columns.RECIPE));
             String ingredients = getString(getColumnIndex(DbSchema.FoodTable.Columns.INGREDIENTS));
+            byte[] image = getBlob(getColumnIndex(DbSchema.FoodTable.Columns.IMAGE));
 
-            Food food = new Food(calories, recipe, name, ingredients);
+            Food food = new Food(calories, recipe, name, ingredients, DbBitmapUtility.getImage(image));
             return food;
         }
     }

@@ -46,9 +46,6 @@
             android:name=".FoodManager"
             android:label="@string/title_activity_food_manager"/>
         <activity android:name=".FoodActivity"/>
-        <activity android:name=".FoodActivity2"/>
-        <activity android:name=".FoodActivity3"/>
-        <activity android:name=".FoodActivity4"/>
 
         <activity android:name=".ExploreMain"/>
 
@@ -71,10 +68,6 @@
 
         <activity
             android:name=".ProfileActivity">
-        </activity>
-        <activity
-            android:name=".PurchasesActivity"
-            android:label="@string/purchases">
         </activity>
 
     </application>

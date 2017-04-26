@@ -1,5 +1,6 @@
 package com.tommymathews.slackersguidetohealth.model;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -12,16 +13,19 @@ public class Food extends AppCompatActivity{
     private String recipe;
     private String name;
     private String ingredients;
+    private Bitmap image;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    public Food(int calLevel, String rec, String name, String ingred){
+    public Food(int calLevel, String rec, String name, String ingred, Bitmap image){
         this.calorieLevel = calLevel;
         this.recipe = rec;
         this.name = name;
         this.ingredients = ingred;
+        this.image = image;
     }
 
     public int getCalorieLevel() {
@@ -40,6 +44,10 @@ public class Food extends AppCompatActivity{
         return ingredients;
     }
 
+    public Bitmap getImage() {
+        return image;
+    }
+
     public void setCalorieLevel(int cal) {
         calorieLevel = cal;
     }
@@ -54,5 +62,9 @@ public class Food extends AppCompatActivity{
 
     public void setIngredients(String ingred) {
         ingredients = ingred;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }

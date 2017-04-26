@@ -12,5 +12,6 @@ import java.util.List;
 public interface FoodService {
     public void addFood(Food food);
     public Food getFoodByName(String food);
+    public List<Food> getFoodByCalorieRange(int calLow, int calHigh);
     public List<Food> getAllFoods();
 }
