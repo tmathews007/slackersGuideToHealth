@@ -28,7 +28,7 @@ public class ActivityWithMenu extends AppCompatActivity {
                 overridePendingTransition(0,0);
                 break;
             case R.id.foodItem:
-                intent = new Intent(getApplicationContext(), FoodActivity.class);
+                intent = new Intent(getApplicationContext(), FoodManager.class);
                 startActivity(intent);
                 overridePendingTransition(0,0);
                 break;
