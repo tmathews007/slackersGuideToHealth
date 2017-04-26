@@ -22,12 +22,21 @@ public class ActivityWithMenu extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.fitness_menu:
+            case R.id.exerciseItem:
                 intent = new Intent(getApplicationContext(), FitnessActivity.class);
                 startActivity(intent);
+                overridePendingTransition(0,0);
                 break;
-            case R.id.food_menu:
+            case R.id.foodItem:
                 intent = new Intent(getApplicationContext(), FoodActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.exploreItem:
+                intent = new Intent(getApplicationContext(), ExploreMain.class);
+                startActivity(intent);
+                break;
+            case R.id.funItem:
+                intent = new Intent(getApplicationContext(), ExploreMain.class);
                 startActivity(intent);
                 break;
             default:
