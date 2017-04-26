@@ -69,9 +69,12 @@
             android:label="@string/title_activity_wellness">
         </activity>
 
-
         <activity
             android:name=".ProfileActivity">
+        </activity>
+        <activity
+            android:name=".PurchasesActivity"
+            android:label="@string/purchases">
         </activity>
 
     </application>
