@@ -54,7 +54,7 @@
 
         <activity
             android:name=".Events"
-            android:label="@string/title_activity_events">
+            android:label="@string/fun">
         </activity>
         <activity
             android:name=".Danceathon"
@@ -72,9 +72,6 @@
 
         <activity
             android:name=".ProfileActivity">
-        </activity>
-        <activity
-            android:name=".FitnessActivity">
         </activity>
 
     </application>

@@ -55,39 +55,6 @@ public class Events extends AppCompatActivity {
                 overridePendingTransition(0,0);
             }
         });
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById
-//                (R.id.bottomNavigationView);
-//        removeShiftMode(bottomNavigationView);
-//        bottomNavigationView.getMenu().getItem(0).setChecked(false);
-//        bottomNavigationView.getMenu().getItem(1).setChecked(false);
-//        bottomNavigationView.getMenu().getItem(2).setChecked(false);
-//        bottomNavigationView.getMenu().getItem(3).setChecked(true);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                if (item.getItemId() == R.id.exerciseItem) {
-//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    startActivity(intent);
-//                    overridePendingTransition(0,0);
-//                } else if (item.getItemId() == R.id.foodItem) {
-//                    //start the food activity
-//                    Intent i = new Intent(getApplicationContext(), FoodManager.class);
-//                    startActivity(i);
-//                    overridePendingTransition(0,0);
-//                } else if (item.getItemId() == R.id.exploreItem) {
-//                    Intent i = new Intent(getApplicationContext(), ExploreMain.class);
-//                    startActivity(i);
-//                    overridePendingTransition(0,0);
-//                } else if (item.getItemId() == R.id.funItem) {
-//                    Intent intent = new Intent(getApplicationContext(), Events.class);
-//                    startActivity(intent);
-//                    overridePendingTransition(0,0);
-//                }
-//                return false;
-//            }
-//        });
     }
 
     @Override
