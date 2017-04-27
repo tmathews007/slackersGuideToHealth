@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
@@ -25,6 +24,8 @@ import java.lang.reflect.Field;
 public class FoodFragment extends Fragment{
     //TODO get the activity here and redirect to the page
     // with the suggestions and recipe
+
+    public final String CALORIES = "CALORIES";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,29 +51,30 @@ public class FoodFragment extends Fragment{
                 EditText calories = (EditText) view.findViewById(R.id.calories);
                 String cal = calories.getText().toString();
                 int numCal = Integer.parseInt(cal);
-                if(numCal<500){
+//                if(numCal<500){
                     //TODO Ashwin/Christine week of 4/18
                     Intent i = new Intent(getActivity(), FoodActivity2.class);
+                    i.putExtra(CALORIES, numCal);
                     startActivity(i);
-                }
-                else if(numCal>=500 && numCal<750) {
-                    Intent i = new Intent(getActivity(), FoodActivity.class);
-                    startActivity(i);
-                }
-                else if(numCal>=750 && numCal<1000){
-                    //TODO Ashwin/Christine week of 4/18
-                    Intent i = new Intent(getActivity(), FoodActivity3.class);
-                    startActivity(i);
-                }
-                else if(numCal>=1000 && numCal<=1500){
-                    //TODO Ashwin/Christine week of 4/18
-                    Intent i = new Intent(getActivity(), FoodActivity4.class);
-                    startActivity(i);
-                }
-                else{
-                    Toast.makeText(getActivity().getApplicationContext(), "Talk to a professional" +
-                            " to develop a diet plan. Your calorie intake is too high.", Toast.LENGTH_SHORT).show();
-                }
+//                }
+//                else if(numCal>=500 && numCal<750) {
+//                    Intent i = new Intent(getActivity(), FoodActivity.class);
+//                    startActivity(i);
+//                }
+//                else if(numCal>=750 && numCal<1000){
+//                    //TODO Ashwin/Christine week of 4/18
+//                    Intent i = new Intent(getActivity(), FoodActivity3.class);
+//                    startActivity(i);
+//                }
+//                else if(numCal>=1000 && numCal<=1500){
+//                    //TODO Ashwin/Christine week of 4/18
+//                    Intent i = new Intent(getActivity(), FoodActivity4.class);
+//                    startActivity(i);
+//                }
+//                else{
+//                    Toast.makeText(getActivity().getApplicationContext(), "Talk to a professional" +
+//                            " to develop a diet plan. Your calorie intake is too high.", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 

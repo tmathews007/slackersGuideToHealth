@@ -58,7 +58,7 @@
             android:label="@string/title_activity_danceathon">
         </activity>
         <activity
-            android:name=".Health"
+            android:name=".PhysicalHealth"
             android:label="@string/title_activity_health">
         </activity>
         <activity
