@@ -2,7 +2,7 @@ package com.tommymathews.slackersguidetohealth;
 
 import android.support.v4.app.Fragment;
 
-public class AbsActivity extends SingleFragmentActivity {
+public class AbsActivity extends ActivityFragmentWithMenu {
 
     @Override
     protected Fragment createFragment() {

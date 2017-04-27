@@ -102,7 +102,7 @@
     <string name="badges">Badges</string>
     <string name="workouts_completed">Workouts Completed</string>
 
-    <string name="intructions"> Instructions </string>
+    <string name="instructions"> Instructions </string>
 
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>

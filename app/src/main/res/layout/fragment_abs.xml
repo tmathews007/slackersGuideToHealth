@@ -20,7 +20,7 @@
         android:src="@drawable/bicycle_crunch" />
 
     <TextView
-        android:text="@string/intructions"
+        android:text="@string/instructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/intructions_title"

@@ -19,8 +19,9 @@
         android:id="@+id/push_up_image"
         android:src="@drawable/pushup_regular" />
 
+
     <TextView
-        android:text="@string/intructions"
+        android:text="@string/instructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/WorkoutFontAndSizeInstructionsTitle"
