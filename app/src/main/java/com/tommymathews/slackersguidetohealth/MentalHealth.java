@@ -6,14 +6,17 @@ import android.webkit.WebView;
 
 public class MentalHealth extends Activity {
 
-    WebView webviewWellness;
+    WebView webViewMental;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health);
 
-        webviewWellness = (WebView) findViewById(R.id.web_health);
-        webviewWellness.loadUrl("https://www.eventbrite.com/d/md--silver-spring/mental-health/?crt=regular&sort=best");
+        webViewMental = (WebView) findViewById(R.id.web_health);
+        String urlPart1 = "https://www.eventbrite.com/d/";
+        String urlPart2 = "/mental-health/?crt=regular&sort=best";
+        String location="md--silver-spring";
+        webViewMental.loadUrl(urlPart1+location+urlPart2);
     }
 
 }

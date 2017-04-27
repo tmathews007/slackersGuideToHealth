@@ -31,7 +31,7 @@
                 android:layout_height="85dp"
                 android:layout_toRightOf="@+id/img_wellness"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="There is a Wellness event coming up on April 30th in Bronx, NY. Tap for more information."/>
+                android:text="@string/mentalHealthDescription"/>
 
             <ImageView
                 android:id="@+id/img_health"
@@ -48,7 +48,7 @@
                 android:layout_below="@+id/img_danceathon"
                 android:layout_toEndOf="@+id/img_danceathon"
                 android:gravity="center_horizontal|center"
-                android:text="There is a Dance-a-thon / 5K run event happening this weekend in Silver Spring! Tap for more information."/>
+                android:text="@string/physicalHealthDescription"/>
 
             <ImageView
                 android:id="@+id/img_wellness"
@@ -65,7 +65,7 @@
                 android:layout_below="@+id/img_health"
                 android:layout_toEndOf="@+id/img_wellness"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="Mental Wellness Expo next month. Tap for ticket informaiton."/>
+                android:text="@string/emotionalHealthDescription"/>
         </RelativeLayout>
 
     </FrameLayout>
