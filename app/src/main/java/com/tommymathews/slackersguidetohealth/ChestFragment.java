@@ -21,6 +21,7 @@ public class ChestFragment extends Fragment {
     private TextView chestWorkoutTitle;
     private TextView chestWorkout;
 
+
     public static ChestFragment newInstance() {
         ChestFragment fragment = new ChestFragment();
 

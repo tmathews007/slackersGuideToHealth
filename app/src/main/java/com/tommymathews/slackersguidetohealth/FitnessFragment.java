@@ -21,9 +21,9 @@ public class FitnessFragment extends Fragment {
     private final int BICEPS = Color.RED;
     private final int CHEST = Color.GREEN;
     private final int QUADS = Color.CYAN;
+    private final int BACKVIEW = Color.YELLOW;
 
-
-    public static FitnessFragment newInstance() {
+    public static Fragment newInstance() {
         FitnessFragment fragment = new FitnessFragment();
 
         return fragment;
@@ -32,15 +32,8 @@ public class FitnessFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fitness_fragment, container, false);
 
-        Button backButton = (Button) view.findViewById(R.id.back_button);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), FitnessActivityBack.class));
-            }
-        });
+        View view = inflater.inflate(R.layout.fitness_fragment, container, false);
 
         //random
         view.setOnTouchListener(new View.OnTouchListener() {
@@ -53,25 +46,29 @@ public class FitnessFragment extends Fragment {
                 switch(color) {
                     case ABS:
                         Log.d("Clicked", "ABS");
-                        startActivity(new Intent(getActivity(), AbsActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
                     case BICEPS:
                         Log.d("Clicked", "BICEPS");
-                        startActivity(new Intent(getActivity(), BicepsActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
                     case CHEST:
                         Log.d("Clicked", "CHEST");
-                        startActivity(new Intent(getActivity(), ChestActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
 
                     case QUADS:
                         Log.d("Clicked", "QUADS");
-                        startActivity(new Intent(getActivity(), QuadsActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
+                    case BACKVIEW:
+                        Log.d("Clicked", "BACKVIEW");
+                        startActivity(new Intent(getActivity(), FitnessActivityBack.class));
+                        break;
                 }
                 return true;
             }

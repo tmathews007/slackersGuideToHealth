@@ -37,8 +37,13 @@
             android:name=".SignUp"
             android:label="@string/title_activity_sign_up">
         </activity>
+
         <activity android:name=".MainActivity"/>
         <activity android:name=".FitnessActivity"/>
+        <activity android:name=".FitnessActivityBack"/>
+        <activity android:name=".FitnessDescriptionActivity"/>
+        <activity android:name=".DisplayFitnessSteps"/>
+        <activity android:name=".FitnessFinishedActivity"/>
         <activity android:name=".AbsActivity"/>
         <activity android:name=".ChestActivity"/>
         <activity android:name=".QuadsActivity"/>
@@ -55,15 +60,15 @@
         </activity>
         <activity
             android:name=".EmotionalHealth"
-            android:label="@string/title_activity_danceathon">
+            android:label="@string/title_activity_emotional_health">
         </activity>
         <activity
             android:name=".PhysicalHealth"
-            android:label="@string/title_activity_health">
+            android:label="@string/title_activity_physical_health">
         </activity>
         <activity
             android:name=".MentalHealth"
-            android:label="@string/title_activity_wellness">
+            android:label="@string/title_activity_mental_health">
         </activity>
 
         <activity

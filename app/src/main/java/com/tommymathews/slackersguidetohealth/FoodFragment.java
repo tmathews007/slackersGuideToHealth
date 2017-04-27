@@ -43,11 +43,11 @@ public class FoodFragment extends Fragment{
         nextPageButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                 String cal = calories.getText().toString();
+                String cal = calories.getText().toString();
                 int numCal = Integer.parseInt(cal);
-                    Intent i = new Intent(getActivity(), FoodActivity.class);
-                    i.putExtra(CALORIES, numCal);
-                    startActivity(i);
+                Intent i = new Intent(getActivity(), FoodActivity.class);
+                i.putExtra(CALORIES, numCal);
+                startActivity(i);
 
             }
         });
