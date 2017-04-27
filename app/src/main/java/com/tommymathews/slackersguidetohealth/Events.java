@@ -10,7 +10,7 @@ public class Events extends ActivityWithMenu {
 
     private TextView mTextMessage;
     public ListView listViewEvents;
-    public TextView dance, wellness, health;
+    public TextView emotional, mental, physical;
 
 
 
@@ -20,11 +20,11 @@ public class Events extends ActivityWithMenu {
         setContentView(R.layout.activity_events);
 
 
-        dance = (TextView) findViewById(R.id.text_dance);
-        wellness = (TextView) findViewById(R.id.txt_wellness_desc);
-        health = (TextView) findViewById(R.id.txt_mental);
+        emotional = (TextView) findViewById(R.id.emotionalHealth);
+        mental = (TextView) findViewById(R.id.mentalHealth);
+        physical = (TextView) findViewById(R.id.physicalHealth);
 
-        dance.setOnClickListener(new View.OnClickListener() {
+        emotional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Events.this, EmotionalHealth.class));
@@ -32,7 +32,7 @@ public class Events extends ActivityWithMenu {
             }
         });
 
-        wellness.setOnClickListener(new View.OnClickListener() {
+        mental.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Events.this, MentalHealth.class));
@@ -40,7 +40,7 @@ public class Events extends ActivityWithMenu {
             }
         });
 
-        health.setOnClickListener(new View.OnClickListener() {
+        physical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Events.this, PhysicalHealth.class));

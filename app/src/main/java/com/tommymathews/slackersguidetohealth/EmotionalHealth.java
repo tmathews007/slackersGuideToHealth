@@ -10,9 +10,9 @@ public class EmotionalHealth extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emotional_health);
+        setContentView(R.layout.activity_health);
 
-        webviewDance = (WebView) findViewById(R.id.webview_dance);
+        webviewDance = (WebView) findViewById(R.id.web_health);
         webviewDance.loadUrl("https://www.eventbrite.com/d/md--silver-spring/emotional-health/?crt=regular&sort=best");
     }
 

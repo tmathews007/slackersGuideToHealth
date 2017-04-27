@@ -10,9 +10,9 @@ public class MentalHealth extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mental_health);
+        setContentView(R.layout.activity_health);
 
-        webviewWellness = (WebView) findViewById(R.id.web_wellness);
+        webviewWellness = (WebView) findViewById(R.id.web_health);
         webviewWellness.loadUrl("https://www.eventbrite.com/d/md--silver-spring/mental-health/?crt=regular&sort=best");
     }
 

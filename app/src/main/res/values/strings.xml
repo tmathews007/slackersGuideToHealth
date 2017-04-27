@@ -47,11 +47,12 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_danceathon">Danceathon</string>
+    <string name="title_activity_mental_health">Mental Health Events</string>
+    <string name="title_activity_physical_health">Physical Health Events</string>
+    <string name="title_activity_emotional_health">Mental Health Events</string>
 
-    <string name="title_activity_wellness">Wellness</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_health">Health</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
