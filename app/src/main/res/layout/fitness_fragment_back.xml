@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_width="match_parent" android:layout_height="match_parent">
     <ImageView
         android:id="@+id/fitness_image_back"
         android:layout_width="fill_parent"
@@ -12,17 +10,11 @@
         android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/fitness_image_overlay"
+        android:id="@+id/fitness_image_back_overlay"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitCenter"
-        android:src="@drawable/test"
+        android:src="@drawable/fitness_image_back_overlay"
         android:visibility="visible" />
-
-    <Button
-        android:id="@+id/front_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Front" />
 
 </FrameLayout>

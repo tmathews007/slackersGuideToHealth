@@ -37,8 +37,13 @@
             android:name=".SignUp"
             android:label="@string/title_activity_sign_up">
         </activity>
+
         <activity android:name=".MainActivity"/>
         <activity android:name=".FitnessActivity"/>
+        <activity android:name=".FitnessActivityBack"/>
+        <activity android:name=".FitnessDescriptionActivity"/>
+        <activity android:name=".DisplayFitnessSteps"/>
+        <activity android:name=".FitnessFinishedActivity"/>
         <activity android:name=".AbsActivity"/>
         <activity android:name=".ChestActivity"/>
         <activity android:name=".QuadsActivity"/>
