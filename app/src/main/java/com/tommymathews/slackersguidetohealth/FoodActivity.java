@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -16,7 +15,7 @@ import java.lang.reflect.Field;
  * Created by Ashwin on 4/4/2017.
  */
 
-public class FoodActivity extends AppCompatActivity {
+public class FoodActivity extends ActivityWithMenu {
     //TODO food suggestions and recipes
 
     @Override
