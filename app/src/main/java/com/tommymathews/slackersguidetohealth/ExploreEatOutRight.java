@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import static com.tommymathews.slackersguidetohealth.FoodActivity.removeShiftMode;
+import static com.tommymathews.slackersguidetohealth.ExploreMain.removeShiftMode;
 
 /**
  * Created by lidya on 4/6/2017.

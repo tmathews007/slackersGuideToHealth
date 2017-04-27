@@ -12,11 +12,8 @@ import android.view.MenuItem;
  */
 
 public class FitnessActivity extends ActivityFragmentWithMenu {
-    //changed the class it extends
-
     @Override
     protected Fragment createFragment() {
         return FitnessFragment.newInstance();
     }
-
 }
