@@ -46,8 +46,8 @@ public class SQLiteFoodService implements FoodService {
     @Override
     public List<Food> getFoodByCalorieRange(int calLow, int calHigh) {
         List<Food> foods = new ArrayList<Food>();
-        String whereClause = DbSchema.FoodTable.Columns.CALORIE_LEVEL + "<=?" +
-                DbSchema.FoodTable.Columns.CALORIE_LEVEL + ">=";
+        String whereClause = DbSchema.FoodTable.Columns.CALORIE_LEVEL + " <=? " +
+                " AND " +DbSchema.FoodTable.Columns.CALORIE_LEVEL + " >=? ";
 
         Cursor cursor = database.query(DbSchema.FoodTable.FOOD_NAME, null,
                 whereClause, new String[]{calLow + "", calHigh + ""}, null, null, null);
