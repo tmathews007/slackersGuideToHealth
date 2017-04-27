@@ -17,7 +17,7 @@
         android:id="@+id/state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/stateEvents"
+        android:hint="@string/stateReq"
         android:text="@string/defaultState"
         android:inputType="text"/>
     <TextView
@@ -28,7 +28,7 @@
         android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/cityEvents"
+        android:hint="@string/cityReq"
         android:text="@string/defaultCity"
         android:inputType="text"/>
 
