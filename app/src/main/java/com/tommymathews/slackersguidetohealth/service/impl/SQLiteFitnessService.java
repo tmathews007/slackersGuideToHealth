@@ -73,20 +73,26 @@ public class SQLiteFitnessService implements FitnessService {
         return fitness;
     }
 
-    private List<Fitness> queryFitness(String whereClause, String[] whereArgs, String orderBy) {
+    private List<Fitness> queryFitness( String whereClause, String[] whereArgs, String orderBy ) {
         List<Fitness> fitness = new ArrayList<Fitness>();
-        if (whereClause != null)
+        if ( whereClause != null )
             whereClause = whereClause + "=?";
 
-        Cursor cursor = database.query(DbSchema.FoodTable.NAME, null,
-                whereClause, whereArgs, null, null, orderBy);
+        Cursor cursor = database.query( DbSchema.FoodTable.NAME,
+                                        null,
+                                        whereClause,
+                                        whereArgs,
+                                        null,
+                                        null,
+                                        orderBy
+        );
 
-        SQLiteFoodService.FitnessCursorWrapper wrapper = new SQLiteFoodService.FitnessCursorWrapper(cursor);
+        FitnessCursorWrapper wrapper = new FitnessCursorWrapper(cursor);
 
         try {
             wrapper.moveToFirst();
             while (!wrapper.isAfterLast()) {
-                foods.add(wrapper.getFood());
+                fitness.add( wrapper.getFitness() );
                 wrapper.moveToNext();
             }
         } finally {
@@ -109,27 +115,27 @@ public class SQLiteFitnessService implements FitnessService {
         return contentValues;
     }
 
-//    private class FitnessCursorWrapper extends CursorWrapper {
-//        public FitnessCursorWrapper(Cursor cursor) {
-//            super(cursor);
-//        }
-//
-//        public Fitness getFitness() {
-//            String name = getString( getColumnIndex( DbSchema.FitnessTable.FITNESS_NAME ) );
-//            int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
-//            int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
-//            String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
-//            String image = getString( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE ) );
-//
-//            Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, image );
-//            fitness.setFitnessName( name );
-//            fitness.setBodyPart( bodyPart );
-//            fitness.setNumReps( numReps );
-//            fitness.setInstructions( instructions );
+    private class FitnessCursorWrapper extends CursorWrapper {
+        public FitnessCursorWrapper(Cursor cursor) {
+            super(cursor);
+        }
+
+        public Fitness getFitness() {
+            String name = getString( getColumnIndex( DbSchema.FitnessTable.FITNESS_NAME ) );
+            int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
+            int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
+            String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
+//            Bitmap image = getString( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE ) );
+
+            Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, null );
+            fitness.setFitnessName( name );
+            fitness.setBodyPart( bodyPart );
+            fitness.setNumReps( numReps );
+            fitness.setInstructions( instructions );
 //            fitness.setImage( image );
-//
-//            return fitness;
-//        }
-//    }
+
+            return fitness;
+        }
+    }
 
 }
