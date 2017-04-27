@@ -2,10 +2,6 @@ package com.tommymathews.slackersguidetohealth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,7 +27,7 @@ public class Events extends ActivityWithMenu {
         dance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Events.this, Danceathon.class));
+                startActivity(new Intent(Events.this, EmotionalHealth.class));
                 overridePendingTransition(0,0);
             }
         });
@@ -39,7 +35,7 @@ public class Events extends ActivityWithMenu {
         wellness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Events.this, Wellness.class));
+                startActivity(new Intent(Events.this, MentalHealth.class));
                 overridePendingTransition(0,0);
             }
         });

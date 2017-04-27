@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class Danceathon extends Activity {
+public class EmotionalHealth extends Activity {
     WebView webviewDance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_danceathon);
+        setContentView(R.layout.activity_emotional_health);
 
         webviewDance = (WebView) findViewById(R.id.webview_dance);
-        webviewDance.loadUrl("http://www.silverspring5k.com/");
+        webviewDance.loadUrl("https://www.eventbrite.com/d/md--silver-spring/emotional-health/?crt=regular&sort=best");
     }
 
 }
