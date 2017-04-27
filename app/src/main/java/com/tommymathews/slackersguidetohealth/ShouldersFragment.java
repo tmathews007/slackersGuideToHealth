@@ -32,10 +32,10 @@ public class ShouldersFragment extends Fragment {
         // This will be the title of the page. The title will be the workout name.
         shouldersWorkoutTitle = ( TextView ) view.findViewById( R.id.shoulders_workout_title );
 
-        // This will be where the workout directions are. It will be in the third textview, while
-        // the picture of the workout will be in the above textview.
-        shouldersWorkout = ( TextView ) view.findViewById( R.id.shoulders_workout );
-        shouldersWorkout.setText( R.array.shoulder_workout_array );
+//        // This will be where the workout directions are. It will be in the third textview, while
+//        // the picture of the workout will be in the above textview.
+//        shouldersWorkout = ( TextView ) view.findViewById( R.id.shoulders_workout );
+//        shouldersWorkout.setText( R.array.shoulder_workout_array );
 
         return view;
     }

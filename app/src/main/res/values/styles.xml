@@ -29,11 +29,24 @@
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
-    <style name="WorkoutFontAndSize" parent="@android:style/TextAppearance.Medium" >
+    <style name="WorkoutFontAndSizeTitle" parent="@android:style/TextAppearance.Medium" >
         <item name="android:gravity"> center </item>
         <item name="android:textSize"> 32dp </item>
         <item name="android:fontFamily"> sans-serif-condensed </item>
         <item name="android:textStyle"> normal </item>
     </style>
 
+    <style name="WorkoutFontAndSizeInstructionsTitle" parent="@android:style/TextAppearance.Medium" >
+        <item name="android:gravity"> center </item>
+        <item name="android:textSize"> 24dp </item>
+        <item name="android:textStyle"> bold </item>
+        <item name="android:fontFamily"> sans-serif-condensed </item>
+    </style>
+
+    <style name="WorkoutFontAndSizeInstructions" parent="@android:style/TextAppearance.Medium" >
+        <item name="android:gravity"> left </item>
+        <item name="android:textSize"> 16dp </item>
+        <item name="android:textStyle"> normal </item>
+        <item name="android:fontFamily"> sans-serif-condensed </item>
+    </style>
 </resources>

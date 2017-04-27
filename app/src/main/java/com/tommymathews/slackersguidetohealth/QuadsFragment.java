@@ -32,10 +32,10 @@ public class QuadsFragment extends Fragment {
         // This will be the title of the page. The title will be the workout name.
         quadsWorkoutTitle = ( TextView ) view.findViewById( R.id.quads_workout_title );
 
-        // This will be where the workout directions are. It will be in the third textview, while
-        // the picture of the workout will be in the above textview.
-        quadsWorkout = ( TextView ) view.findViewById( R.id.quads_workout );
-        quadsWorkout.setText( R.array.quads_workout_array );
+//        // This will be where the workout directions are. It will be in the third textview, while
+//        // the picture of the workout will be in the above textview.
+//        quadsWorkout = ( TextView ) view.findViewById( R.id.quads_workout );
+//        quadsWorkout.setText( R.array.quads_workout_array );
 
         return view;
     }

@@ -11,17 +11,26 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:text="@string/chest_workout_dips"
-        style="@style/WorkoutFontAndSize" />
+        style="@style/WorkoutFontAndSizeTitle" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="223dp"
-        android:id="@+id/textView"
+        android:id="@+id/dips_image"
         android:src="@drawable/dips" />
+
+    <TextView
+        android:text="@string/intructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/instructions_title"
+        style="@style/WorkoutFontAndSizeInstructionsTitle" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/chest_workout" />
+        android:id="@+id/chest_workout"
+        android:text="@string/chest_workout_instructions"
+        style="@style/WorkoutFontAndSizeInstructions" />
 
 </LinearLayout>

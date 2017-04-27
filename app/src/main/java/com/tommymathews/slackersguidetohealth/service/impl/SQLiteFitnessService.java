@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
@@ -110,8 +109,7 @@ public class SQLiteFitnessService implements FitnessService {
         contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().toString() );
         contentValues.put( DbSchema.FitnessTable.Columns.NUM_REPS, fitness.getNumReps() );
         contentValues.put( DbSchema.FitnessTable.Columns.INSTRUCTIONS, fitness.getInstructions() );
-        contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, fitness.getImage().toString() );
-
+        contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, DbBitmapUtility.getBytes( fitness.getImage() ) );
         return contentValues;
     }
 
@@ -125,14 +123,14 @@ public class SQLiteFitnessService implements FitnessService {
             int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
             int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
             String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
-//            Bitmap image = getString( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE ) );
+            byte[] image = getBlob( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE ) );
 
-            Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, null );
+            Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, DbBitmapUtility.getImage( image ) );
             fitness.setFitnessName( name );
             fitness.setBodyPart( bodyPart );
             fitness.setNumReps( numReps );
             fitness.setInstructions( instructions );
-//            fitness.setImage( image );
+            fitness.setImage( DbBitmapUtility.getImage( image ) );
 
             return fitness;
         }

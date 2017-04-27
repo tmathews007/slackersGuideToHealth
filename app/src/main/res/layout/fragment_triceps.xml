@@ -11,25 +11,26 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:text="@string/tricep_workout_push_ups"
-        style="@style/WorkoutFontAndSize" />
+        style="@style/WorkoutFontAndSizeTitle" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="235dp"
-        android:id="@+id/textView3"
+        android:id="@+id/push_up_image"
         android:src="@drawable/pushup_regular" />
 
     <TextView
         android:text="@string/intructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/textView5" />
+        style="@style/WorkoutFontAndSizeInstructionsTitle"
+        android:id="@+id/instructions_title" />
 
     <TextView
         android:layout_height="177dp"
         android:id="@+id/triceps_workout"
         android:text="@string/tricep_workout_instructions"
-        android:layout_width="match_parent" />
+        android:layout_width="match_parent"
+        style="@style/WorkoutFontAndSizeInstructions" />
 
 </LinearLayout>

@@ -145,19 +145,4 @@ public class Fitness extends AppCompatActivity {
     public enum BodyPart {
         ABS, BACK, BICEPS, CALFS, CHEST, GLUTES, QUADS, SHOULDERS, TRICEPS
     }
-
-    public class DbBitmapUtility {
-
-        // convert from bitmap to byte array
-        public byte[] getBytes(Bitmap bitmap) {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
-            return stream.toByteArray();
-        }
-
-        // convert from byte array to bitmap
-        public Bitmap getImage(byte[] image) {
-            return BitmapFactory.decodeByteArray(image, 0, image.length);
-        }
-    }
 }

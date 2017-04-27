@@ -97,58 +97,90 @@
 
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>
-    <string-array name="chest_workout_array">
-        <item> 1. Find a chair and face it forward. </item>
-        <item> 2. Standing backwards, place your hands on the seat of the chair. </item>
-        <item> 3. Go down till your elbows are roughly 90 degrees to the chair. </item>
-        <item> 4. Push yourself up. Repeat this process till you need rest. </item>
-    </string-array>
+    <string name="chest_workout_instructions">
+        \n
+        1. Find a chair and face it forward. \n
+        2. Standing backwards, place your hands on the seat of the chair. \n
+        3. Go down till your elbows are roughly 90 degrees to the chair. \n
+        4. Push yourself up. Repeat this process till you need rest.
+    </string>
+    <!--<string-array name="chest_workout_array">-->
+        <!--<item> 1. Find a chair and face it forward. </item>-->
+        <!--<item> 2. Standing backwards, place your hands on the seat of the chair. </item>-->
+        <!--<item> 3. Go down till your elbows are roughly 90 degrees to the chair. </item>-->
+        <!--<item> 4. Push yourself up. Repeat this process till you need rest. </item>-->
+    <!--</string-array>-->
 
     <!-- TricepWorkout Activity: Push Ups, Regular Position -->
     <string name="tricep_workout_push_ups"> Push Ups, Regular Position </string>
     <string name="tricep_workout_instructions">
+        \n
         1. Lay flat on the floor. \n
         2. Place your hands in front of you at shoulder width. \n
         3. Push up while keeping you body parallel to the ground. \n
         4. Go down till your elbows are roughly 90 degrees to the ground. \n
         5. Continue to repeat this process till you need rest.
     </string>
-    <string-array name="tricep_workout_array">
-        <item> 1. Lay flat on the floor. </item>
-        <item> 2. Place your hands in front of you at shoulder width. </item>
-        <item> 3. Push up while keeping you body parallel to the ground. </item>
-        <item> 4. Go down till your elbows are roughly 90 degrees to the ground. </item>
-        <item> 5. Continue to repeat this process till you need rest. </item>
-    </string-array>
+    <!--<string-array name="tricep_workout_array">-->
+        <!--<item> 1. Lay flat on the floor. </item>-->
+        <!--<item> 2. Place your hands in front of you at shoulder width. </item>-->
+        <!--<item> 3. Push up while keeping you body parallel to the ground. </item>-->
+        <!--<item> 4. Go down till your elbows are roughly 90 degrees to the ground. </item>-->
+        <!--<item> 5. Continue to repeat this process till you need rest. </item>-->
+    <!--</string-array>-->
 
     <!-- AbsWorkout Activity: Bicycle Crunches -->
     <string name="abs_workout_bicycle_crunches"> Bicycle Crunches </string>
-    <string-array name="abs_workout_array">
-        <item> 1. Lie on your back with your body flat to the ground. </item>
-        <item> 2. Place your hands behind your head and your elbows flat to the ground. </item>
-        <item> 3. As you curl forward, make sure your left elbow touches your right knee. </item>
-        <item> 4. Rotate your body and let your right elbow touch your left knee. </item>
-        <item> 5. Repeat this process till you need rest. </item>
-    </string-array>
+    <string name="abs_workout_instructions">
+        \n
+        1. Lie on your back with your body flat to the ground. \n
+        2. Place your hands behind your head and your elbows flat to the ground. \n
+        3. As you curl forward, make sure your left elbow touches your right knee. \n
+        4. Rotate your body and let your right elbow touch your left knee. \n
+        5. Repeat this process till you need rest.
+    </string>
+    <!--<string-array name="abs_workout_array">-->
+        <!--<item> 1. Lie on your back with your body flat to the ground. </item>-->
+        <!--<item> 2. Place your hands behind your head and your elbows flat to the ground. </item>-->
+        <!--<item> 3. As you curl forward, make sure your left elbow touches your right knee. </item>-->
+        <!--<item> 4. Rotate your body and let your right elbow touch your left knee. </item>-->
+        <!--<item> 5. Repeat this process till you need rest. </item>-->
+    <!--</string-array>-->
 
     <!-- ShoulderWorkout Activity: Handstand Push Up -->
     <string name="shoulder_workout_handstand_push_up"> Handstand Push Up </string>
-    <string-array name="shoulder_workout_array">
-        <item> 1. Find a wall or a solid vertical surface. </item>
-        <item> 2. Using the wall, perform a handstand. </item>
-        <item> 3. Slowly, go down till your arms are parallel to the ground. </item>
-        <item> 4. Slowly go back up. </item>
-        <item> 5. Repeat this process till you need rest. </item>
-    </string-array>
+    <string name="shoulder_workout_instructions">
+        \n
+        1. Find a wall or a solid vertical surface. \n
+        2. Using the wall, perform a handstand. \n
+        3. Slowly, go down till your arms are parallel to the ground. \n
+        4. Slowly go back up. \n
+        5. Repeat this process till you need rest.
+    </string>
+    <!--<string-array name="shoulder_workout_array">-->
+        <!--<item> 1. Find a wall or a solid vertical surface. </item>-->
+        <!--<item> 2. Using the wall, perform a handstand. </item>-->
+        <!--<item> 3. Slowly, go down till your arms are parallel to the ground. </item>-->
+        <!--<item> 4. Slowly go back up. </item>-->
+        <!--<item> 5. Repeat this process till you need rest. </item>-->
+    <!--</string-array>-->
 
     <!-- QuadWorkout Activity: Alternating Lunges -->
     <string name="quads_workout_lunges"> Alternating Lunges </string>
-    <string-array name="quads_workout_array">
-        <item> 1. Begin in a standing position. </item>
-        <item> 2. Step forward with your right leg. </item>
-        <item> 3. Lower your body till the left leg is roughly 90 degrees. </item>
-        <item> 4. Push yourself up with your right leg. </item>
-        <item> 5. Repeat the process alternating the legs. Repeat till you need rest. </item>
-    </string-array>
+    <string name="quads_workout_instructions">
+        \n
+        1. Begin in a standing position. \n
+        2. Step forward with your right leg. \n
+        3. Lower your body till the left leg is roughly 90 degrees. \n
+        4. Push yourself up with your right leg. \n
+        5. Repeat the process alternating the legs. Repeat till you need rest.
+    </string>
+    <!--<string-array name="quads_workout_array">-->
+        <!--<item> 1. Begin in a standing position. </item>-->
+        <!--<item> 2. Step forward with your right leg. </item>-->
+        <!--<item> 3. Lower your body till the left leg is roughly 90 degrees. </item>-->
+        <!--<item> 4. Push yourself up with your right leg. </item>-->
+        <!--<item> 5. Repeat the process alternating the legs. Repeat till you need rest. </item>-->
+    <!--</string-array>-->
 
 </resources>

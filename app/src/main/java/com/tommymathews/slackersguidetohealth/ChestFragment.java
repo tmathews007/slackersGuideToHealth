@@ -40,10 +40,10 @@ public class ChestFragment extends Fragment {
         // This will be the title of the page. The title will be the workout name.
         chestWorkoutTitle = ( TextView ) view.findViewById( R.id.chest_workout_title );
 
-        // This will be where the workout directions are. It will be in the third textview, while
-        // the picture of the workout will be in the above textview.
-        chestWorkout = ( TextView ) view.findViewById( R.id.chest_workout );
-        chestWorkout.setText( R.array.chest_workout_array );
+//        // This will be where the workout directions are. It will be in the third textview, while
+//        // the picture of the workout will be in the above textview.
+//        chestWorkout = ( TextView ) view.findViewById( R.id.chest_workout );
+//        chestWorkout.setText( R.array.chest_workout_array );
 
         return view;
     }

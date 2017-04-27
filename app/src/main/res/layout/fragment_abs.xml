@@ -11,17 +11,26 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:text="@string/abs_workout_bicycle_crunches"
-        style="@style/WorkoutFontAndSize" />
+        style="@style/WorkoutFontAndSizeTitle" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="234dp"
-        android:id="@+id/textView2"
+        android:id="@+id/bicycle_crunches_image"
         android:src="@drawable/bicycle_crunch" />
+
+    <TextView
+        android:text="@string/intructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/intructions_title"
+        style="@style/WorkoutFontAndSizeInstructionsTitle" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/abs_workout" />
+        android:id="@+id/abs_workout"
+        android:text="@string/abs_workout_instructions"
+        style="@style/WorkoutFontAndSizeInstructions" />
 
 </LinearLayout>

@@ -31,11 +31,11 @@ public class TricepsFragment extends Fragment {
 
         // This will be the title of the page. The title will be the workout name.
         tricepsWorkoutTitle = ( TextView ) view.findViewById( R.id.triceps_workout_title );
-
-        // This will be where the workout directions are. It will be in the third textview, while
-        // the picture of the workout will be in the above textview.
-        tricepsWorkout = ( TextView ) view.findViewById( R.id.triceps_workout );
-        tricepsWorkout.setText( R.array.tricep_workout_array );
+//
+//        // This will be where the workout directions are. It will be in the third textview, while
+//        // the picture of the workout will be in the above textview.
+//        tricepsWorkout = ( TextView ) view.findViewById( R.id.triceps_workout );
+//        tricepsWorkout.setText( R.array.tricep_workout_array );
 
         return view;
     }

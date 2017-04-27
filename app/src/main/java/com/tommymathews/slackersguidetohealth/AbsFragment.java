@@ -29,10 +29,10 @@ public class AbsFragment extends android.support.v4.app.Fragment {
         // This will be the title of the page. The title will be the workout name.
         absWorkoutTitle = ( TextView ) view.findViewById( R.id.abs_workout_title );
 
-        // This will be where the workout directions are. It will be in the third textview, while
-        // the picture of the workout will be in the above textview.
-        absWorkout = ( TextView ) view.findViewById( R.id.abs_workout );
-        absWorkout.setText( R.array.abs_workout_array );
+//        // This will be where the workout directions are. It will be in the third textview, while
+//        // the picture of the workout will be in the above textview.
+//        absWorkout = ( TextView ) view.findViewById( R.id.abs_workout );
+//        absWorkout.setText( R.array.abs_workout_array );
 
         return view;
     }
