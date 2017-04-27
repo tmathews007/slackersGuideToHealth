@@ -37,6 +37,9 @@ public class Events extends ActivityWithMenu {
         emotional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                yourState=st.getText().toString();
+                yourCity=cy.getText().toString();
+                yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, EmotionalHealth.class));
                 overridePendingTransition(0,0);
             }
@@ -45,6 +48,9 @@ public class Events extends ActivityWithMenu {
         mental.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                yourState=st.getText().toString();
+                yourCity=cy.getText().toString();
+                yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, MentalHealth.class));
                 overridePendingTransition(0,0);
             }
@@ -53,6 +59,9 @@ public class Events extends ActivityWithMenu {
         physical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                yourState=st.getText().toString();
+                yourCity=cy.getText().toString();
+                yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, PhysicalHealth.class));
                 overridePendingTransition(0,0);
             }
