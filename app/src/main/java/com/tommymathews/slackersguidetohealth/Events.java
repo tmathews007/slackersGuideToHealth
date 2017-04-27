@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Events extends AppCompatActivity {
+public class Events extends ActivityWithMenu {
 
     private TextView mTextMessage;
     public ListView listViewEvents;
