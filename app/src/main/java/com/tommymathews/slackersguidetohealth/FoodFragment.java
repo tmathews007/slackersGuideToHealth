@@ -3,13 +3,11 @@ package com.tommymathews.slackersguidetohealth;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,7 +23,10 @@ public class FoodFragment extends Fragment{
     //TODO get the activity here and redirect to the page
     // with the suggestions and recipe
 
-    public final String CALORIES = "CALORIES";
+    public static final String CALORIES = "CALORIES";
+
+    private Button nextPageButton;
+    private EditText calories;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,68 +37,18 @@ public class FoodFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.activity_food, container, false);
 
-        Button nextPageButton = (Button) view.findViewById(R.id.nextPageFood);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) view.findViewById(R.id.bottomNavigationView);
-        removeShiftMode(bottomNavigationView);
-        bottomNavigationView.getMenu().getItem(0).setChecked(false);
-        bottomNavigationView.getMenu().getItem(1).setChecked(true);
-        bottomNavigationView.getMenu().getItem(2).setChecked(false);
-        bottomNavigationView.getMenu().getItem(3).setChecked(false);
-
+        nextPageButton = (Button) view.findViewById(R.id.nextPageFood);
+        calories = (EditText) view.findViewById(R.id.calories);
 
         nextPageButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                EditText calories = (EditText) view.findViewById(R.id.calories);
-                String cal = calories.getText().toString();
+                 String cal = calories.getText().toString();
                 int numCal = Integer.parseInt(cal);
-//                if(numCal<500){
-                    //TODO Ashwin/Christine week of 4/18
-                    Intent i = new Intent(getActivity(), FoodActivity2.class);
+                    Intent i = new Intent(getActivity(), FoodActivity.class);
                     i.putExtra(CALORIES, numCal);
                     startActivity(i);
-//                }
-//                else if(numCal>=500 && numCal<750) {
-//                    Intent i = new Intent(getActivity(), FoodActivity.class);
-//                    startActivity(i);
-//                }
-//                else if(numCal>=750 && numCal<1000){
-//                    //TODO Ashwin/Christine week of 4/18
-//                    Intent i = new Intent(getActivity(), FoodActivity3.class);
-//                    startActivity(i);
-//                }
-//                else if(numCal>=1000 && numCal<=1500){
-//                    //TODO Ashwin/Christine week of 4/18
-//                    Intent i = new Intent(getActivity(), FoodActivity4.class);
-//                    startActivity(i);
-//                }
-//                else{
-//                    Toast.makeText(getActivity().getApplicationContext(), "Talk to a professional" +
-//                            " to develop a diet plan. Your calorie intake is too high.", Toast.LENGTH_SHORT).show();
-//                }
-            }
-        });
 
-        /* Use this to switch between tabs. */
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                if (item.getItemId() == R.id.exerciseItem) {
-                    Intent i = new Intent(getActivity(), FitnessActivity.class);
-                    startActivity(i);
-                    getActivity().overridePendingTransition(0,0);
-                } else if (item.getItemId() == R.id.foodItem) {
-                } else if (item.getItemId() == R.id.exploreItem) {
-                    Intent i = new Intent(getActivity(), ExploreMain.class);
-                    startActivity(i);
-                    getActivity().overridePendingTransition(0,0);
-                } else if (item.getItemId() == R.id.funItem) {
-                    Intent intent = new Intent(getActivity(), Events.class);
-                    startActivity(intent);
-                    getActivity().overridePendingTransition(0,0);
-                }
-                return false;
             }
         });
 

@@ -14,7 +14,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + DbSchema.UserTable.NAME + "(" +
+        db.execSQL("create table " + DbSchema.UserTable.USER_NAME + "(" +
                 " _id integer primary key autoincrement, " +
                 DbSchema.UserTable.Columns.NAME + ", " +
                 DbSchema.UserTable.Columns.EMAIL + ", " +
@@ -26,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbSchema.UserTable.Columns.FITNESS_GOAL + ")"
         );
 
-        db.execSQL("create table " + DbSchema.FoodTable.NAME + "(" +
+        db.execSQL("create table " + DbSchema.FoodTable.FOOD_NAME + "(" +
                 " _id integer primary key autoincrement, " +
                 DbSchema.FoodTable.Columns.NAME + ", " +
                 DbSchema.FoodTable.Columns.CALORIE_LEVEL + ", " +
