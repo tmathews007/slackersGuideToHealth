@@ -49,7 +49,7 @@ public class SQLiteFoodService implements FoodService {
         String whereClause = DbSchema.FoodTable.Columns.CALORIE_LEVEL + "<=?" +
                 DbSchema.FoodTable.Columns.CALORIE_LEVEL + ">=";
 
-        Cursor cursor = database.query(DbSchema.FoodTable.NAME, null,
+        Cursor cursor = database.query(DbSchema.FoodTable.FOOD_NAME, null,
                 whereClause, new String[]{calLow + "", calHigh + ""}, null, null, null);
         FoodCursorWrapper wrapper = new FoodCursorWrapper(cursor);
 
@@ -78,7 +78,7 @@ public class SQLiteFoodService implements FoodService {
         if (whereClause != null)
             whereClause = whereClause + "=?";
 
-        Cursor cursor = database.query(DbSchema.FoodTable.NAME, null,
+        Cursor cursor = database.query(DbSchema.FoodTable.FOOD_NAME, null,
                 whereClause, whereArgs, null, null, orderBy);
         FoodCursorWrapper wrapper = new FoodCursorWrapper(cursor);
 
@@ -113,9 +113,9 @@ public class SQLiteFoodService implements FoodService {
         ContentValues contentValues = getContentValues(food);
         Food currFood = getFoodByName(food.getName());
         if (currFood == null) {
-            database.insert(DbSchema.FoodTable.NAME, null, contentValues);
+            database.insert(DbSchema.FoodTable.FOOD_NAME, null, contentValues);
         } else {
-            database.update(DbSchema.FoodTable.NAME, contentValues,
+            database.update(DbSchema.FoodTable.FOOD_NAME, contentValues,
                     DbSchema.FoodTable.Columns.NAME + "=?", new String[]{currFood.getName()});
         }
     }

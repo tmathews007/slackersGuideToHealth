@@ -32,9 +32,9 @@ public class SQLiteUserService implements UserService {
         ContentValues contentValues = getContentValues(user);
         User currUser = getUserByEmail(user.getEmail());
         if (currUser == null) {
-            database.insert(DbSchema.UserTable.NAME, null, contentValues);
+            database.insert(DbSchema.UserTable.USER_NAME, null, contentValues);
         } else {
-            database.update(DbSchema.UserTable.NAME, contentValues,
+            database.update(DbSchema.UserTable.USER_NAME, contentValues,
                     DbSchema.UserTable.Columns.EMAIL + "=?", new String[]{currUser.getEmail()});
         }
     }
@@ -65,7 +65,7 @@ public class SQLiteUserService implements UserService {
         if (whereClause != null)
             whereClause = whereClause + "=?";
 
-        Cursor cursor = database.query(DbSchema.UserTable.NAME, null,
+        Cursor cursor = database.query(DbSchema.UserTable.USER_NAME, null,
                 whereClause, whereArgs, null, null, orderBy);
         UserCursorWrapper wrapper = new UserCursorWrapper(cursor);
 

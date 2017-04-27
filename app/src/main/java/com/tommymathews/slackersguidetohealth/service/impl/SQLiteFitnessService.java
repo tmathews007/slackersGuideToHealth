@@ -78,7 +78,7 @@ public class SQLiteFitnessService implements FitnessService {
         if ( whereClause != null )
             whereClause = whereClause + "=?";
 
-        Cursor cursor = database.query( DbSchema.FoodTable.NAME,
+        Cursor cursor = database.query( DbSchema.FoodTable.FOOD_NAME,
                                         null,
                                         whereClause,
                                         whereArgs,

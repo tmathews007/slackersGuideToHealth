@@ -9,7 +9,7 @@ public class DbSchema {
     public static final String LOGIN = "LOGIN";
 
     public static final class UserTable {
-        public static final String NAME = "NAME";
+        public static final String USER_NAME = "USER_NAME";
         public static final class Columns {
             public static final String NAME = "NAME";
             public static final String EMAIL = "EMAIL";
@@ -23,7 +23,7 @@ public class DbSchema {
     }
 
     public static final class FoodTable {
-        public static final String NAME = "NAME";
+        public static final String FOOD_NAME = "FOOD_NAME";
         public static final class Columns {
             public static final String NAME = "NAME";
             public static final String CALORIE_LEVEL = "CALORIE_LEVEL";

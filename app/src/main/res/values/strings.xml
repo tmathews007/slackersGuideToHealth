@@ -87,7 +87,6 @@
 
     <!-- Strings related to Profile page -->
     <string name="username">Username</string>
-    <string name="level">Level</string>
     <string name="progress">Progress</string>
     <string name="profile_button">View Profile</string>
     <string name="badges">Badges</string>
