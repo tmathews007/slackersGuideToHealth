@@ -37,6 +37,8 @@ public class Events extends ActivityWithMenu {
         emotional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //necessary because the system won't recognize changes unless you
+                //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString();
                 yourCity=yourCity.replaceAll(" ","-");
@@ -48,6 +50,8 @@ public class Events extends ActivityWithMenu {
         mental.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //necessary because the system won't recognize changes unless you
+                //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString();
                 yourCity=yourCity.replaceAll(" ","-");
@@ -59,6 +63,8 @@ public class Events extends ActivityWithMenu {
         physical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //necessary because the system won't recognize changes unless you
+                //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString();
                 yourCity=yourCity.replaceAll(" ","-");
