@@ -26,12 +26,12 @@
                 app:srcCompat="@drawable/health_expo"/>
 
             <TextView
-                android:id="@+id/txt_wellness_desc"
+                android:id="@+id/mentalHealth"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
                 android:layout_toRightOf="@+id/img_wellness"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="There is a Wellness event coming up on April 30th in Bronx, NY. Tap for more information."/>
+                android:text="@string/mentalHealthDescription"/>
 
             <ImageView
                 android:id="@+id/img_health"
@@ -42,13 +42,13 @@
                 app:srcCompat="@drawable/danceathon"/>
 
             <TextView
-                android:id="@+id/text_dance"
+                android:id="@+id/physicalHealth"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
                 android:layout_below="@+id/img_danceathon"
                 android:layout_toEndOf="@+id/img_danceathon"
                 android:gravity="center_horizontal|center"
-                android:text="There is a Dance-a-thon / 5K run event happening this weekend in Silver Spring! Tap for more information."/>
+                android:text="@string/physicalHealthDescription"/>
 
             <ImageView
                 android:id="@+id/img_wellness"
@@ -59,25 +59,16 @@
                 app:srcCompat="@drawable/wellness_expo"/>
 
             <TextView
-                android:id="@+id/txt_mental"
+                android:id="@+id/emotionalHealth"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
                 android:layout_below="@+id/img_health"
                 android:layout_toEndOf="@+id/img_wellness"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="Mental Wellness Expo next month. Tap for ticket informaiton."/>
+                android:text="@string/emotionalHealthDescription"/>
         </RelativeLayout>
 
     </FrameLayout>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:itemBackground="@color/orange"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/menu_navigation" />
 
 </LinearLayout>

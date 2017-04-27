@@ -43,23 +43,23 @@ public class ProfileActivity extends Activity{
 
         User.Gender gender = user.getGender();
         genderView = (TextView) this.findViewById(R.id.gender);
-        genderView.setText(gender.toString());
+        genderView.setText("Gender: " + gender.toString());
 
         int age = user.getAge();
         ageView = (TextView) this.findViewById(R.id.age);
-        ageView.setText(age);
+        ageView.setText("Age: " + Integer.toString(age));
 
         int height = user.getHeight();
         heightView = (TextView) this.findViewById(R.id.height);
-        heightView.setText(height);
+        heightView.setText("Height: " + Integer.toString(height));
 
         int weight = user.getWeight();
         weightView = (TextView) this.findViewById(R.id.weight);
-        weightView.setText(weight);
+        weightView.setText("Weight: " + Integer.toString(weight));
 
         User.Goal goal = user.getFitnessGoal();
         fitnessGoalView = (TextView) this.findViewById(R.id.fitness_goal);
-        fitnessGoalView.setText(goal.toString());
+        fitnessGoalView.setText("Goal: " + goal.toString());
 
         progressBar = (ProgressBar) this.findViewById(R.id.exerciseProgress);
         progressBar.setVisibility(View.VISIBLE);

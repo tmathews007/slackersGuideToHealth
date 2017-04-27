@@ -46,12 +46,17 @@
     on a paper towel to drain excess oil. You can eat them plain, or with ketchup or pulverized cilantro.</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_activity_danceathon">Danceathon</string>
-
-    <string name="title_activity_wellness">Wellness</string>
+    <string name="title_activity_mental_health">Mental Health Events</string>
+    <string name="title_activity_physical_health">Physical Health Events</string>
+    <string name="title_activity_emotional_health">Mental Health Events</string>
+    <string name="mentalHealthDescription">Click here to view and sign up for mental
+    health-related events in your area.</string>
+    <string name="physicalHealthDescription">Click here to view and sign up for physical
+    health-related events in your area.</string>
+    <string name="emotionalHealthDescription">Click here to view and sign up for emotional
+    health-related events in your area.</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_health">Health</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
