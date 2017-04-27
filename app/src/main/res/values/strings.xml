@@ -55,8 +55,13 @@
     health-related events in your area.</string>
     <string name="emotionalHealthDescription">Click here to view and sign up for emotional
     health-related events in your area.</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="stateEvents">Please enter in the 2-letter abbreviation of your state below.</string>
+    <string name="stateReq">Enter your state abbreviation.</string>
+    <string name="defaultState">md</string>
+    <string name="cityEvents">Please enter in the name of your city below.</string>
+    <string name="cityReq">Enter your city.</string>
+    <string name="defaultCity">Silver Spring</string>
+
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->

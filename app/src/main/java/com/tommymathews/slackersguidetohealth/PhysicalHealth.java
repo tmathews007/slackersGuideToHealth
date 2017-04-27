@@ -14,9 +14,11 @@ public class PhysicalHealth extends Activity {
 
         webViewPhysical = (WebView) findViewById(R.id.web_health);
         String urlPart1 = "https://www.eventbrite.com/d/";
-        String urlPart2 = "/physical-health/?crt=regular&sort=best";
-        String location="md--silver-spring";
-        webViewPhysical.loadUrl(urlPart1+location+urlPart2);
+        String urlPart2 = "--";
+        String urlPart3 = "/physical-health/?crt=regular&sort=best";
+        String state = Events.yourState;
+        String city = Events.yourCity;
+        webViewPhysical.loadUrl(urlPart1+state+urlPart2+city+urlPart3);
     }
 
 }

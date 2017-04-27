@@ -14,9 +14,11 @@ public class EmotionalHealth extends Activity {
 
         webViewEmotional = (WebView) findViewById(R.id.web_health);
         String urlPart1 = "https://www.eventbrite.com/d/";
-        String urlPart2 = "/emotional-health/?crt=regular&sort=best";
-        String location="md--silver-spring";
-        webViewEmotional.loadUrl(urlPart1+location+urlPart2);
+        String urlPart2 = "--";
+        String urlPart3 = "/physical-health/?crt=regular&sort=best";
+        String state = Events.yourState;
+        String city = Events.yourCity;
+        webViewEmotional.loadUrl(urlPart1+state+urlPart2+city+urlPart3);
     }
 
 }

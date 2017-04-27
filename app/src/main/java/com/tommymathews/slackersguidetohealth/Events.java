@@ -3,6 +3,7 @@ package com.tommymathews.slackersguidetohealth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -11,6 +12,9 @@ public class Events extends ActivityWithMenu {
     private TextView mTextMessage;
     public ListView listViewEvents;
     public TextView emotional, mental, physical;
+    public static String yourState="";
+    public static String yourCity="";
+    EditText st, cy;
 
 
 
@@ -19,6 +23,12 @@ public class Events extends ActivityWithMenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
+        st= (EditText) findViewById(R.id.state);
+        cy = (EditText) findViewById(R.id.city);
+
+        yourState=st.getText().toString();
+        yourCity=cy.getText().toString();
+        yourCity=yourCity.replaceAll(" ","-");
 
         emotional = (TextView) findViewById(R.id.emotionalHealth);
         mental = (TextView) findViewById(R.id.mentalHealth);

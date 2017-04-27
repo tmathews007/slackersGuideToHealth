@@ -9,6 +9,29 @@
     android:orientation="vertical"
     tools:context="com.tommymathews.slackersguidetohealth.Events">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stateEvents"/>
+    <EditText
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/stateEvents"
+        android:text="@string/defaultState"
+        android:inputType="text"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cityEvents"/>
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/cityEvents"
+        android:text="@string/defaultCity"
+        android:inputType="text"/>
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
