@@ -85,7 +85,8 @@ public class LoginActivity extends Activity {
         UserService userService = DependencyFactory.getUserService(getApplication());
         User user = userService.getUserByEmail(emailEditText.getText().toString());
         if (user != null) {
-            new AlertDialog.Builder(this)
+            if (!user.getPassword().equals(passwordEditText.getText().toString())) {
+                new AlertDialog.Builder(this)
                     .setTitle("Invalid Password")
                     .setMessage("Password doesn't match user")
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -95,7 +96,7 @@ public class LoginActivity extends Activity {
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
-            if (!user.getPassword().equals(passwordEditText.getText().toString())) {
+
                 cancel = true;
             }
         } else {
