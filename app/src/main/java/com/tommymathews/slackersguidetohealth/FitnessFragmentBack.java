@@ -24,27 +24,20 @@ public class FitnessFragmentBack extends Fragment {
     private final int BACK = Color.BLUE;
     private final int CALFS = Color.CYAN;
     private final int GLUTES = Color.GREEN;
-    private final int Shoulders = Color.RED;
+    private final int SHOULDERS = Color.RED;
+    private final int FRONTVIEW = Color.YELLOW;
 
 
-    public static FitnessFragment newInstance() {
-        FitnessFragment fragment = new FitnessFragment();
-
+    public static Fragment newInstance() {
+        FitnessFragmentBack fragment = new FitnessFragmentBack();
         return fragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fitness_fragment, container, false);
 
-        Button frontButton = (Button) view.findViewById(R.id.front_button);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), FitnessActivity.class));
-            }
-        });
+        View view = inflater.inflate(R.layout.fitness_fragment_back, container, false);
 
         //random
         view.setOnTouchListener(new View.OnTouchListener() {
@@ -58,25 +51,28 @@ public class FitnessFragmentBack extends Fragment {
 
                     case BACK:
                         Log.d("Clicked", "BACK");
-                        startActivity(new Intent(getActivity(), BackActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
                     case CALFS:
                         Log.d("Clicked", "CALFS");
-                        startActivity(new Intent(getActivity(), CalfsActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
                     case GLUTES:
                         Log.d("Clicked", "GLUTES");
-                        startActivity(new Intent(getActivity(), GlutesActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
-                    case Shoulders:
+                    case SHOULDERS:
                         Log.d("Clicked", "SHOULDERS");
-                        startActivity(new Intent(getActivity(), ShouldersActivity.class));
+                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
-
+                    case FRONTVIEW:
+                        Log.d("Clicked", "FRONTVIEW");
+                        startActivity(new Intent(getActivity(), FitnessActivity.class));
+                        break;
 
                 }
                 return true;
