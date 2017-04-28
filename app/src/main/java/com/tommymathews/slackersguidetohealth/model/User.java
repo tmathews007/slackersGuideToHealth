@@ -17,6 +17,9 @@ public class User implements Serializable{
     private int weight;
     private int height;
     private Goal fitnessGoal;
+    private int fitnessProgress;
+    private int foodProgress;
+    private int eventsProgress;
 
     public User() {
         id = UUID.randomUUID().toString();
@@ -33,6 +36,9 @@ public class User implements Serializable{
         this.weight = weight;
         this.height = height;
         this.fitnessGoal = Goal.values()[fitnessGoal % 3];
+        fitnessProgress = 0;
+        foodProgress = 0;
+        eventsProgress = 0;
     }
 
     public User(String name, String email, String password, Gender gender, int age, int weight, int height,
@@ -46,7 +52,41 @@ public class User implements Serializable{
         this.weight = weight;
         this.height = height;
         this.fitnessGoal = fitnessGoal;
+        fitnessProgress = 0;
+        foodProgress = 0;
+        eventsProgress = 0;
+    }
 
+    public User(String name, String email, String password, int gender, int age, int weight, int height,
+                int fitnessGoal, int fitnessProgress, int foodProgress, int eventsProgress) {
+        id = UUID.randomUUID().toString();
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.gender = Gender.values()[gender % 2];
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.fitnessGoal = Goal.values()[fitnessGoal % 3];
+        this.fitnessProgress = fitnessProgress;
+        this.foodProgress = foodProgress;
+        this.eventsProgress = eventsProgress;
+    }
+
+    public User(String name, String email, String password, Gender gender, int age, int weight, int height,
+                Goal fitnessGoal, int fitnessProgress, int foodProgress, int eventsProgress) {
+        id = UUID.randomUUID().toString();
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.fitnessGoal = fitnessGoal;
+        this.fitnessProgress = fitnessProgress;
+        this.foodProgress = foodProgress;
+        this.eventsProgress = eventsProgress;
     }
 
     public String getName() { return name; }
@@ -130,6 +170,30 @@ public class User implements Serializable{
 
     public void setFitnessGoal(int fitnessGoal) {
         this.fitnessGoal = Goal.values()[fitnessGoal % 3];
+    }
+
+    public int getFitnessProgress() {
+        return fitnessProgress;
+    }
+
+    public void setFitnessProgress(int fitnessProgress) {
+        this.fitnessProgress = fitnessProgress;
+    }
+
+    public int getFoodProgress() {
+        return foodProgress;
+    }
+
+    public void setFoodProgress(int foodProgress) {
+        this.foodProgress = foodProgress;
+    }
+
+    public int getEventsProgress() {
+        return eventsProgress;
+    }
+
+    public void setEventsProgress(int eventsProgress) {
+        this.eventsProgress = eventsProgress;
     }
 
     public static String convertHeight(int height) {
