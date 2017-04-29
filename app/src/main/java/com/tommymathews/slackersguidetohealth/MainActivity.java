@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.getMenu().getItem(0).setChecked(false);
         bottomNavigationView.getMenu().getItem(1).setChecked(false);
         bottomNavigationView.getMenu().getItem(2).setChecked(false);
-        bottomNavigationView.getMenu().getItem(3).setChecked(false);
 
 
 
@@ -77,10 +76,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                     overridePendingTransition(0,0);
 
-                } else if (item.getItemId() == R.id.exploreItem) {
-                    Intent i = new Intent(getApplicationContext(), ExploreMain.class);
-                    startActivity(i);
-                    overridePendingTransition(0,0);
                 } else if (item.getItemId() == R.id.funItem) {
                     Intent intent = new Intent(getApplicationContext(), Events.class);
                     startActivity(intent);

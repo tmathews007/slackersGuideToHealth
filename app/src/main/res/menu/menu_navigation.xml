@@ -15,12 +15,6 @@
         />
 
     <item
-        android:id="@+id/exploreItem"
-        android:icon="@drawable/explore"
-        android:title="@string/explore"
-        />
-
-    <item
         android:id="@+id/funItem"
         android:icon="@drawable/fun"
         android:title="@string/fun"
