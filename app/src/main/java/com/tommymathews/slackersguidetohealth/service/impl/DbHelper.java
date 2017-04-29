@@ -23,7 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbSchema.UserTable.Columns.AGE + ", " +
                 DbSchema.UserTable.Columns.WEIGHT + ", " +
                 DbSchema.UserTable.Columns.HEIGHT + ", " +
-                DbSchema.UserTable.Columns.FITNESS_GOAL +
+                DbSchema.UserTable.Columns.FITNESS_GOAL + ", " +
                 DbSchema.UserTable.Columns.FITNESS_PROGRESS + ", " +
                 DbSchema.UserTable.Columns.FOOD_PROGRESS + ", " +
                 DbSchema.UserTable.Columns.EVENTS_PROGRESS + ")"
