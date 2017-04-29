@@ -52,7 +52,6 @@
             android:label="@string/title_activity_food_manager"/>
         <activity android:name=".FoodActivity"/>
 
-        <activity android:name=".ExploreMain"/>
 
         <activity
             android:name=".Events"

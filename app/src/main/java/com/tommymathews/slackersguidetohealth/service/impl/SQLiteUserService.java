@@ -60,6 +60,51 @@ public class SQLiteUserService implements UserService {
         return prioritizedUser;
     }
 
+    @Override
+    public int incrementFitnessProgress(String email) {
+        User user = getUserByEmail(email);
+
+        if (user != null) {
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DbSchema.UserTable.Columns.FITNESS_PROGRESS, (user.getFitnessProgress() + 1));
+
+        return database.update(DbSchema.UserTable.USER_NAME, contentValues,
+                DbSchema.UserTable.Columns.EMAIL + "=?", new String[]{user.getEmail()});
+        }
+        return 0;
+    }
+
+    @Override
+    public int incrementFoodProgress(String email) {
+        User user = getUserByEmail(email);
+
+        if (user != null) {
+            ContentValues contentValues = new ContentValues();
+
+            contentValues.put(DbSchema.UserTable.Columns.FOOD_PROGRESS, (user.getFoodProgress() + 1));
+
+            return database.update(DbSchema.UserTable.USER_NAME, contentValues,
+                    DbSchema.UserTable.Columns.EMAIL + "=?", new String[]{user.getEmail()});
+        }
+        return 0;
+    }
+
+    @Override
+    public int incrementEventsProgress(String email) {
+        User user = getUserByEmail(email);
+
+        if (user != null) {
+            ContentValues contentValues = new ContentValues();
+
+            contentValues.put(DbSchema.UserTable.Columns.EVENTS_PROGRESS, (user.getEventsProgress() + 1));
+
+            return database.update(DbSchema.UserTable.USER_NAME, contentValues,
+                    DbSchema.UserTable.Columns.EMAIL + "=?", new String[]{user.getEmail()});
+        }
+        return 0;
+    }
+
     private List<User> queryUsers(String whereClause, String[] whereArgs, String orderBy) {
         List<User> users = new ArrayList<User>();
         if (whereClause != null)
@@ -112,9 +157,12 @@ public class SQLiteUserService implements UserService {
             int weight = getInt(getColumnIndex(DbSchema.UserTable.Columns.WEIGHT));
             int height = getInt(getColumnIndex(DbSchema.UserTable.Columns.HEIGHT));
             String fitnessGoal = getString(getColumnIndex(DbSchema.UserTable.Columns.FITNESS_GOAL));
+            int fitnessProgress = getInt(getColumnIndex(DbSchema.UserTable.Columns.FITNESS_PROGRESS));
+            int foodProgress = getInt(getColumnIndex(DbSchema.UserTable.Columns.FOOD_PROGRESS));
+            int eventsProgress = getInt(getColumnIndex(DbSchema.UserTable.Columns.EVENTS_PROGRESS));
 
             User user = new User(name, email, password, User.Gender.valueOf(gender),
-                    age, weight, height, User.Goal.valueOf(fitnessGoal));
+                    age, weight, height, User.Goal.valueOf(fitnessGoal), fitnessProgress, foodProgress, eventsProgress);
 
             return user;
         }
