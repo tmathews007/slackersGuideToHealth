@@ -33,12 +33,6 @@ public abstract class ActivityFragmentWithMenu extends SingleFragmentActivity {
                 startActivity(intent);
                 overridePendingTransition(0,0);
                 break;
-            case R.id.exploreItem:
-                intent = new Intent(getApplicationContext(), ExploreMain.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                overridePendingTransition(0,0);
-                break;
             case R.id.funItem:
                 intent = new Intent(getApplicationContext(), Events.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
