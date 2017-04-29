@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+//database that contains a table for users, foods, and fitness ideas
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "slackers_guide.db";
     private static final int VERSION = 1;
