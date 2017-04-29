@@ -195,6 +195,9 @@ public class SignUp extends Activity {
                     user.setHeight(height);
                     user.setWeight(weight);
                     user.setFitnessGoal(goalSpinner.getSelectedItemPosition());
+                    user.setFitnessProgress(0);
+                    user.setFoodProgress(0);
+                    user.setEventsProgress(0);
 
                     UserService userService = DependencyFactory.getUserService(getApplication());
                     userService.addUser(user);

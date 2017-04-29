@@ -139,6 +139,9 @@ public class SQLiteUserService implements UserService {
         contentValues.put(DbSchema.UserTable.Columns.WEIGHT, user.getWeight() + "");
         contentValues.put(DbSchema.UserTable.Columns.HEIGHT, user.getHeight() + "");
         contentValues.put(DbSchema.UserTable.Columns.FITNESS_GOAL, user.getFitnessGoal().toString());
+        contentValues.put(DbSchema.UserTable.Columns.FITNESS_PROGRESS, user.getFitnessProgress());
+        contentValues.put(DbSchema.UserTable.Columns.FOOD_PROGRESS, user.getFoodProgress());
+        contentValues.put(DbSchema.UserTable.Columns.EVENTS_PROGRESS, user.getEventsProgress());
 
         return contentValues;
     }

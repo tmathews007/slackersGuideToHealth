@@ -74,5 +74,9 @@
             android:name=".ProfileActivity">
         </activity>
 
+        <activity
+            android:name=".Settings">
+        </activity>
+
     </application>
 </manifest>
