@@ -14,11 +14,6 @@
         android:title="@string/food"
         />
 
-    <item
-        android:id="@+id/exploreItem"
-        android:icon="@drawable/explore"
-        android:title="@string/explore"
-        />
 
     <item
         android:id="@+id/funItem"
