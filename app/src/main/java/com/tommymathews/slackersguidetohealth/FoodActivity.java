@@ -68,9 +68,14 @@ public class FoodActivity extends ActivityWithMenu {
             picImageView.setImageBitmap(food.getImage());
             //TODO ADD FOOD SUGGEST
             //  foodSuggestionTextView.setText();
+            if (food.getRecommendation().length() == 0) {
+                //TODO ADD FOOD SUGGEST
+            } else {
+                foodSuggestionTextView.setText(food.getRecommendation());
+            }
             recipeIdeaTextView.setText(food.getName());
             ingredientsTextView.setText("Ingredients: "+food.getIngredients());
-            processTextView.setText("Process: "+food.getRecipe());
+            processTextView.setText("Directions: "+food.getRecipe());
         }
 
     }

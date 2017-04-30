@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class Food extends AppCompatActivity{
     private int calorieLevel;
+    private String recommendation;
     private String recipe;
     private String name;
     private String ingredients;
@@ -22,6 +23,15 @@ public class Food extends AppCompatActivity{
 
     public Food(int calLevel, String rec, String name, String ingred, Bitmap image){
         this.calorieLevel = calLevel;
+        this.recipe = rec;
+        this.name = name;
+        this.ingredients = ingred;
+        this.image = image;
+    }
+
+    public Food(int calLevel, String recommendation, String rec, String name, String ingred, Bitmap image){
+        this.calorieLevel = calLevel;
+        this.recommendation = recommendation;
         this.recipe = rec;
         this.name = name;
         this.ingredients = ingred;
@@ -66,5 +76,13 @@ public class Food extends AppCompatActivity{
 
     public void setImage(Bitmap image) {
         this.image = image;
+    }
+
+    public String getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
     }
 }

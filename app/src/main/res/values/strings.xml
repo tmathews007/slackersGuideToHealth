@@ -33,17 +33,76 @@
     <string name="hardCodeInputCons">Breakfast: Cereal Bar.\nLunch: Rice, yogurt, pulverized tomato extract.</string>
     <string name="none">none</string>
     <string name="hardCodeInputDiet">Trying to eat less fat and more food that helps build strength</string>
+
+    <!-- Recipe Default: Eggplant Fries -->
     <string name="foodSuggestion">Since you calorie intake so far today is between 500 and 750, we recommend that you eat
     some type of vegetable dish. Maybe eat some eggplant since it will help you develop strength and has a lot of nutrients
     that you need.</string>
     <string name="recipeIdea">Eggplant Fries</string>
-    <string name="ingredients">Ingredients: 1 cup flour, 1/2 tsp carom seeds, 1/2 tsp salt, 1/2 tsp
+    <string name="ingredients">1 cup flour, 1/2 tsp carom seeds, 1/2 tsp salt, 1/2 tsp
     cayenne pepper powder, and a pinch of asafoetida, 5mm raw eggplant slices\n</string>
-    <string name="process">Process: Mix the dry ingredients (everything besides the eggplant pieces)
+    <string name="process">Mix the dry ingredients (everything besides the eggplant pieces)
     well. Add cold water and make sure no lumps are formed. The batter should have the same consistency as
     pancake batter. Dip the eggplant pieces into the batter and deep fry in hot oil. Reduce the heat after the
     eggplant pieces are dropped in oil and fry until they are a beige-ish color. Then remove them and place them
     on a paper towel to drain excess oil. You can eat them plain, or with ketchup or pulverized cilantro.</string>
+
+    <!-- Recipe 1: Sloppy Joes -->
+    <string name="foodSuggestion1">Starving? Try making some of these 300 calorie sloppy joes.</string>
+    <string name="recipeIdea1">Sloppy Joes</string>
+    <string name="ingredients1">1lb lean ground beef, 1/4 cup chopped onion,  1/2 cup chopped green bell pepper, 1/2 teaspoon garlic powder,
+        1 teaspoon prepared yellow mustard, 3/4 cup ketchup, 3 teaspoons brown sugar</string>
+    <string name="process1">In a medium skillet over medium heat, brown the ground beef, onion, and green pepper; drain off liquids.
+        Stir in the mustard, ketchup, and brown sugar; mix thoroughly. Reduce heat, and simmer for 30 minutes.
+        Season with salt and pepper.</string>
+
+    <!-- Recipe 2: Fish Stew -->
+    <string name="foodSuggestion2">Craving some simple soup comfort food? Try some delicious, 400 calorie seafood soup!</string>
+    <string name="recipeIdea2">Fish Stew</string>
+    <string name="ingredients2">1tbsp olive oil, 1tsp fennel seeds, 2 diced carrots, 2 diced celery sticks, 2 chopped garlic cloves
+    2 sliced leeks, 400g canned chopped tomatoes, 500ml hot fish stock, 2 skinless polic fillets, 85g raw shelled king prawns</string>
+    <string name="process2">Heat the oil in a large pan, add the fennel seeds, carrots, celery and garlic, and cook for 5 mins until
+        starting to soften. Tip in the leeks, tomatoes and stock, season and bring to the boil, then cover and simmer for 15-20 mins until
+        the vegetables are tender and the sauce has thickened and reduced slightly. Add the fish, scatter over the prawns and cook for 2 mins more until
+        lightly cooked. Ladle into bowls and serve with a spoon.</string>
+
+    <!-- Recipe 3: Strawberry Crush -->
+    <string name="foodSuggestion3">Hate dropping your fruit cup everywhere? Just blend it all into a smoothie! This 640 calorie drink is perfect on a hot summer day
+    or a trip to the gym.</string>
+    <string name="recipeIdea3">Strawberry Crush</string>
+    <string name="ingredients3">2 cup frozen straberries, 1/2 cup crushed pineapple, 1/2 cup water, 1 banana, 6tbsp super, 1/4 cup lemon juice,
+    2 tbsp honey</string>
+    <string name="process3">Blend it!</string>
+
+    <!-- Recipe 4: Chocolate Peanut Butter Shake -->
+    <string name="foodSuggestion4">Is it skip day yet? Some high calorie dessert for bulking up, but it still needs to be healthy! Disclaimer: this is 1070 calories!!</string>
+    <string name="recipeIdea4">Chocolate Peanut Butter Shake</string>
+    <string name="ingredients4">1/2 cup heavy whipped cream, 3 tbsp creamy peanut butter, 3 tbsp chocolate syrup, 1.5 cup chocolate ice cream</string>
+    <string name="process4">Blend it!</string>
+
+    <!-- Recipe 5: Donut Muffins -->
+    <string name="foodSuggestion5">Each donut muffin is only 57 calories, but be careful! Don\'t stuff 10 into your mouth in one sitting!</string>
+    <string name="recipeIdea5">Donut Muffins</string>
+    <string name="ingredients5">1 cup white sugar, 1/2 cup melted margarine, 3/4 teaspoon ground nutmeg, 1/2 cup milk, 1 tsp baking powder, 1 cup flour, 1 tsp ground cinnamon</string>
+    <string name="process5">Preheat oven to 375 degrees F (190 degrees C). Grease 24 mini-muffin cups.
+        Mix 1/2 cup sugar, 1/4 cup margarine, and nutmeg in a large bowl. Stir in the milk, then mix in the baking powder and
+        flour until just combined. Fill the prepared mini muffin cups about half full.
+        Bake in the preheated oven until the tops are lightly golden, 15 to 20 minutes. While muffins are baking, place 1/4 cup
+        of melted margarine in a bowl. In a separate bowl, mix together 1/2 cup of sugar with the cinnamon. Remove muffins from
+        their cups, dip each muffin in the melted margarine, and roll in the sugar-cinnamon mixture. Let cool and serve.</string>
+
+    <!-- Recipe 6: Baked Omelet Squares -->
+    <string name="foodSuggestion6">Eggs and ham aren\'t just breakfast foods, but they definitely can be. This is recipe is food for breakfast and lunch at 570 calories.</string>
+    <string name="recipeIdea6">Baked Omelet Squares</string>
+    <string name="ingredients6">1/2 cup butter, 1 small chopped onion, 1.5 shredded cheddar cheese, 1 can sliced mushrooms, 1 can sliced black olives, chopped cooked ham,
+    sliced jalapeno peppers, 12 scrambled eggs, 1/2 cup milk, 1/2 tsp salt and pepper</string>
+    <string name="process6">Preheat oven to 400 degrees F (205 degrees C). Grease a 9x13 inch baking dish.
+        Melt the butter in a skillet over medium heat, and cook the onion until tender. Spread Cheddar cheese in the
+        bottom of the prepared baking dish. Layer with mushrooms, olives, sauteed onion, ham, and jalapeno peppers. In a bowl, scramble eggs
+        together with milk, and season with salt and pepper. Pour egg mixture over ingredients, but do not stir. Bake, uncovered,
+        in the preheated oven for 30 minutes, or until no longer runny in the center and slightly brown on top. Allow to cool slightly,
+        then cut into squares and serve.</string>
+
     <string name="title_activity_mental_health">Mental Health Events</string>
     <string name="title_activity_physical_health">Physical Health Events</string>
     <string name="title_activity_emotional_health">Mental Health Events</string>
