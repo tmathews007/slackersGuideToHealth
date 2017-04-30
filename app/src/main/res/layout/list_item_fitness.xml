@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/fitness_backlog_list">
+
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fitness_layout">
+
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@color/black_overlay"
+            android:id="@+id/list_item_fitness_image" />
+
+        <TextView
+            android:text="Fitness Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item_fitness_name"
+            android:layout_toEndOf="@+id/list_item_fitness_image" />
+
+        <TextView
+            android:text="Body Part"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item_body_part"
+            android:layout_alignBottom="@+id/list_item_fitness_image"
+            android:layout_toEndOf="@+id/list_item_fitness_image" />
+
+        <TextView
+            android:text="Number of Reps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item_num_reps"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/list_item_fitness_image" />
+
+    </RelativeLayout>
+
+</ScrollView>

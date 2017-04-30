@@ -1,5 +1,7 @@
 package com.tommymathews.slackersguidetohealth.service.impl;
 
+import java.util.List;
+
 /**
  * Created by cj on 4/19/17.
  */

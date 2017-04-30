@@ -102,7 +102,33 @@
     <string name="badges">Badges</string>
     <string name="workouts_completed">Workouts Completed</string>
 
+    <string name="create_fitness"> Create Fitness </string>
     <string name="instructions"> Instructions </string>
+    <string name="create_fitness_title"> Create Your Own Workout </string>
+    <string name="fitness_name"> \n Fitness Name </string>
+    <string name="fitness_name_sample"> Push Ups, Wide Grip </string>
+    <string name="body_part"> Body Part </string>
+    <string-array name="spinner_body_part">
+        <item> Abs </item>
+        <item> Back </item>
+        <item> Biceps </item>
+        <item> Calves </item>
+        <item> Chest </item>
+        <item> Glutes </item>
+        <item> Quads </item>
+        <item> Shoulders </item>
+        <item> Triceps </item>
+    </string-array>
+    <string name="num_reps"> Number of Reps (enter a number) </string>
+    <string name="num_reps_sample"> 5 </string>
+    <string name="instructions_sample">
+        1. Lay flat on the floor. \n
+        2. Place your hands in front of you, wider than shoulder width. \n
+        3. Push up while keeping you body parallel to the ground. \n
+        4. Go down till your elbows are roughly 90 degrees to the ground. \n
+        5. Continue to repeat this process till you need rest.
+    </string>
+    <string name="photo"> Photo of Workout </string>
 
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>
