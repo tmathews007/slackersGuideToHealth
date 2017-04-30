@@ -74,8 +74,5 @@
             android:name=".ProfileActivity">
         </activity>
 
-        <activity android:name=".FitnessBacklogActivity"/>
-        <activity android:name=".FitnessQuestionsActivity" />
-
     </application>
 </manifest>

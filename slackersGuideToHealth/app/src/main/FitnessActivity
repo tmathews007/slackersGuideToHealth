@@ -1,0 +1,6 @@
+// First Activity:
+// The purpose of this activity is to create the page that will be user interactive. There will be an image of either a male or a female
+// (depends on what the user inputs at the beginning of the app). The user can click on any major muscle on the picutre, will take them
+// to the associated muscle group activity to access the potential workouts.
+// There will also be a SAMPLE WORKOUT button at the top, which will provide the user a sample workout based on the information they
+// inputted into the app on the second page.

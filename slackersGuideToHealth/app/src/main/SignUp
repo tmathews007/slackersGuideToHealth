@@ -1,0 +1,8 @@
+// The purpose of this page is create a user interactive page that will display various questions so we can get a sense of what the user
+// is looking for in the app. Questions will include:
+//    1. Gender (radio button group); 
+//    2. Weight (fill in the blanks);
+//    3. Height (fill in the blanks); and
+//    4. Goals (spinner or radio group).
+// Following the questions there will be a contents page that the user will click on, which will take them to the "Table of Contents" page
+// so they can decide what they want to do next.

@@ -105,7 +105,7 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        return name + " : " + email + " : " + gender + " : " + age + " : " + weight + " : " + convertHeight(height) + " : " + fitnessGoal;
+        return name + " : " + email + " : " + gender + " : " + age + " : " + weight + " : " + convertHeight(height) + " : " + fitnessGoal + " : " + fitnessProgress + " : " + foodProgress + " : " + eventsProgress;
     }
 
     public int getHeight() {
