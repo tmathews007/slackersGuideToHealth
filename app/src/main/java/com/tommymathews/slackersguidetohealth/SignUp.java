@@ -222,6 +222,7 @@ public class SignUp extends Activity {
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+        String confirmPassword = confirmPasswordEditText.getText().toString();
         boolean cancel = false;
 
         // Check for a valid password, if the user entered one.
@@ -230,8 +231,13 @@ public class SignUp extends Activity {
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(confirmPassword)) {
             confirmPasswordEditText.setHint("Confirm Password required");
+            cancel = true;
+        }
+
+        if (!password.equals(confirmPassword)){
+            Toast.makeText(getApplicationContext(), "Password must match", Toast.LENGTH_LONG).show();
             cancel = true;
         }
 

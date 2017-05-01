@@ -21,6 +21,7 @@ import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
  */
 
 public class ProfileActivity extends Activity{
+    private Button backButton;
     private Button settingsButton;
     private ProgressBar progressBar;
     private int progressStatus = 0;
@@ -47,6 +48,16 @@ public class ProfileActivity extends Activity{
         userService = DependencyFactory.getUserService(getApplicationContext());
         String email = sharedPreferences.getString(DbSchema.EMAIL,null);
         User user = userService.getUserByEmail(email);
+
+        backButton = (Button) this.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         settingsButton = (Button) this.findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(new View.OnClickListener(){

@@ -97,8 +97,7 @@
                 android:layout_width="150dp"
                 android:layout_height="30dp"
                 android:layout_below="@+id/age_title"
-                android:max="100"
-                android:progress="3" />
+                android:max="36" />
 
             <TextView
                 android:id="@+id/age_title"
@@ -139,7 +138,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/weight_title"
-                android:max="250"/>
+                android:max="200"/>
 
             <TextView
                 android:id="@+id/weight_title"
@@ -162,8 +161,7 @@
                 android:layout_width="150dp"
                 android:layout_height="30dp"
                 android:layout_below="@+id/height_title"
-                android:max="84"
-                android:progress="3"/>
+                android:max="36"/>
 
             <TextView
                 android:id="@+id/height_title"
@@ -194,15 +192,24 @@
             android:entries="@array/workout_levels"
             android:paddingTop="15dp"/>
 
-        <Button
-            android:id="@+id/btn_save_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="right"
-            android:layout_below="@+id/goal_spinner"
-            android:layout_centerHorizontal="true"
-            android:text="@string/save_settings_button" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/back_button" />
+
+            <Button
+                android:id="@+id/btn_save_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/save_settings_button" />
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>

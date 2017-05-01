@@ -48,6 +48,7 @@ public class Settings extends Activity {
     private TextView heightTextView;
     private Spinner goalSpinner;
     private UserService userService;
+    private Button backButton;
     private Button saveSettingsButton;
     private int age;
     private int weight;
@@ -122,15 +123,16 @@ public class Settings extends Activity {
             }
         });
 
+        age = user.getAge();
         ageTextView = (TextView) findViewById(R.id.txt_age);
         ageSeekBar = (SeekBar) findViewById(R.id.seekbar_age);
-        ageSeekBar.setProgress(user.getAge());
-        ageTextView.setText(Integer.toString(user.getAge()));
+        ageSeekBar.setProgress(age-16);
+        ageTextView.setText(Integer.toString(age));
         ageSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                ageTextView.setText((i + user.getAge()) + "");
-                age = i + user.getAge();
+                ageTextView.setText((i + 16) + "");
+                age = 16 + i;
             }
 
             @Override
@@ -144,15 +146,16 @@ public class Settings extends Activity {
             }
         });
 
+        weight = user.getWeight();
         weightTextView = (TextView) findViewById(R.id.weight_display_text);
-        weightTextView.setText(Integer.toString(user.getWeight())+ "lbs.");
         weightSeekBar = (SeekBar) findViewById(R.id.weight_bar);
-        weightSeekBar.setProgress(user.getWeight());
+        weightTextView.setText(Integer.toString(weight)+ "lbs.");
+        weightSeekBar.setProgress(weight-50);
         weightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                weightTextView.setText((i + user.getWeight()) + "lbs.");
-                weight = i + user.getWeight();
+                weightTextView.setText((i + 50) + "lbs.");
+                weight = 50 + i;
             }
 
             @Override
@@ -166,15 +169,16 @@ public class Settings extends Activity {
             }
         });
 
+        height = user.getHeight();
         heightTextView = (TextView) findViewById(R.id.txt_height);
         heightSeekBar = (SeekBar) findViewById(R.id.seekbar_height);
-        heightSeekBar.setProgress(user.getHeight());
-        heightTextView.setText(user.convertHeight(user.getHeight()));
+        heightTextView.setText(user.convertHeight(height));
+        heightSeekBar.setProgress(height-12*4);
         heightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                heightTextView.setText( (i / 12) + "' " + (i % 12) + "\"");
-                height = i;
+                heightTextView.setText( (i / 12 + 4) + "' " + (i % 12) + "\"");
+                height = i + 4 * 12;
             }
 
             @Override
@@ -192,6 +196,16 @@ public class Settings extends Activity {
         ArrayAdapter<CharSequence> goalAdapter = ArrayAdapter.createFromResource(this, R.array.goals_array, android.R.layout.simple_spinner_item);
         goalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         goalSpinner.setAdapter(goalAdapter); // still need to fill this out
+
+        backButton = (Button) this.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, ProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         saveSettingsButton = (Button) findViewById(R.id.btn_save_settings);
         saveSettingsButton.setOnClickListener(new View.OnClickListener() {
@@ -241,6 +255,7 @@ public class Settings extends Activity {
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+        String confirmPassword = confirmPasswordEditText.getText().toString();
         boolean cancel = false;
 
         // Check for a valid password, if the user entered one.
@@ -249,8 +264,13 @@ public class Settings extends Activity {
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(confirmPassword)) {
             confirmPasswordEditText.setHint("Confirm Password required");
+            cancel = true;
+        }
+
+        if (!password.equals(confirmPassword)){
+            Toast.makeText(getApplicationContext(), "Password must match", Toast.LENGTH_LONG).show();
             cancel = true;
         }
 
