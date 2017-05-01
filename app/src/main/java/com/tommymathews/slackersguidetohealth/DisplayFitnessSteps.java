@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
  * Created by gregs on 4/26/2017.
  */
 
-public class DisplayFitnessSteps extends SingleFragmentActivity {
+public class DisplayFitnessSteps extends ActivityFragmentWithMenu {
     @Override
     protected Fragment createFragment() {
         return DisplayFitnessStepsFragment.newInstance();

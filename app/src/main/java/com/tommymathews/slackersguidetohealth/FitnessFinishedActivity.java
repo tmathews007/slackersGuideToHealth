@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
  * Created by gregs on 4/26/2017.
  */
 
-public class FitnessFinishedActivity extends SingleFragmentActivity {
+public class FitnessFinishedActivity extends ActivityFragmentWithMenu {
 
     @Override
     protected Fragment createFragment() {
