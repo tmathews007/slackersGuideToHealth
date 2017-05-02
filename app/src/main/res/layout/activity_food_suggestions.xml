@@ -21,7 +21,7 @@
         android:id="@+id/foodSuggestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/foodSuggestion"
+        android:text="@string/foodSuggestion1"
         android:textColor="@color/black"
         design:ignore="RtlHardcoded"
         android:layout_alignBottom="@+id/foodPic"

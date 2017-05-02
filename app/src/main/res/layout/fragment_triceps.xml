@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/triceps_workout_title"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/tricep_workout_push_ups"
-        style="@style/WorkoutFontAndSizeTitle" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="235dp"
-        android:id="@+id/push_up_image"
-        android:src="@drawable/pushup_regular" />
+        <TextView
+            android:id="@+id/triceps_workout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/tricep_workout_push_ups"
+            style="@style/WorkoutFontAndSizeTitle" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            android:id="@+id/push_up_image"
+            android:src="@drawable/pushup_regular" />
 
 
-    <TextView
-        android:text="@string/instructions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/WorkoutFontAndSizeInstructionsTitle"
-        android:id="@+id/instructions_title" />
+        <TextView
+            android:text="@string/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/WorkoutFontAndSizeInstructionsTitle"
+            android:id="@+id/instructions_title" />
 
-    <TextView
-        android:layout_height="177dp"
-        android:id="@+id/triceps_workout"
-        android:text="@string/tricep_workout_instructions"
-        android:layout_width="match_parent"
-        style="@style/WorkoutFontAndSizeInstructions" />
+        <TextView
+            android:layout_height="177dp"
+            android:id="@+id/triceps_workout"
+            android:text="@string/tricep_workout_instructions"
+            android:layout_width="match_parent"
+            style="@style/WorkoutFontAndSizeInstructions" />
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

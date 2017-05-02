@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 
+import com.tommymathews.slackersguidetohealth.R;
 import com.tommymathews.slackersguidetohealth.model.Food;
 import com.tommymathews.slackersguidetohealth.service.FoodService;
 
@@ -21,6 +23,9 @@ public class SQLiteFoodService implements FoodService {
 
     public SQLiteFoodService(Context context) {
         database = new DbHelper(context).getWritableDatabase();
+
+        //prepopulate
+        prepopulate(context);
     }
 
     protected SQLiteDatabase getDatabase() {
@@ -101,6 +106,7 @@ public class SQLiteFoodService implements FoodService {
 
         contentValues.put(DbSchema.FoodTable.Columns.NAME, food.getName());
         contentValues.put(DbSchema.FoodTable.Columns.CALORIE_LEVEL, food.getCalorieLevel());
+        contentValues.put(DbSchema.FoodTable.Columns.RECOMMENDATION, food.getRecommendation());
         contentValues.put(DbSchema.FoodTable.Columns.INGREDIENTS, food.getIngredients());
         contentValues.put(DbSchema.FoodTable.Columns.RECIPE, food.getRecipe());
         contentValues.put(DbSchema.FoodTable.Columns.IMAGE, DbBitmapUtility.getBytes(food.getImage()));
@@ -120,6 +126,58 @@ public class SQLiteFoodService implements FoodService {
         }
     }
 
+    private void prepopulate(Context context) {
+        //eggplant
+        Food food = new Food(120, context.getResources().getString(R.string.foodSuggestion),
+                context.getResources().getString(R.string.process),
+                context.getResources().getString(R.string.recipeIdea),
+                context.getResources().getString(R.string.ingredients),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.eggplant));
+        //sloppy joes
+        Food food1 = new Food(300, context.getResources().getString(R.string.foodSuggestion2),
+                context.getResources().getString(R.string.process2),
+                context.getResources().getString(R.string.recipeIdea2),
+                context.getResources().getString(R.string.ingredients2),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.sloppy_joe));
+        //fish stew
+        Food food2 = new Food(400, context.getResources().getString(R.string.foodSuggestion2),
+                context.getResources().getString(R.string.process2),
+                context.getResources().getString(R.string.recipeIdea2),
+                context.getResources().getString(R.string.ingredients2),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.fish_stew));
+        //strawberry crush
+        Food food3 = new Food(640, context.getResources().getString(R.string.foodSuggestion3),
+                context.getResources().getString(R.string.process3),
+                context.getResources().getString(R.string.recipeIdea3),
+                context.getResources().getString(R.string.ingredients3),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.strawberry_crush));
+        //chocolate peanut butter shake
+        Food food4 = new Food(1070, context.getResources().getString(R.string.foodSuggestion4),
+                context.getResources().getString(R.string.process4),
+                context.getResources().getString(R.string.recipeIdea4),
+                context.getResources().getString(R.string.ingredients4),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.chocolate_pb_shake));
+        //donut muffins
+        Food food5 = new Food(50, context.getResources().getString(R.string.foodSuggestion5),
+                context.getResources().getString(R.string.process5),
+                context.getResources().getString(R.string.recipeIdea5),
+                context.getResources().getString(R.string.ingredients5),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.donut_muffin));
+        //baked omelet squares
+        Food food6 = new Food(570, context.getResources().getString(R.string.foodSuggestion6),
+                context.getResources().getString(R.string.process6),
+                context.getResources().getString(R.string.recipeIdea6),
+                context.getResources().getString(R.string.ingredients6),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.baked_omelet_squares));
+        addFood(food);
+        addFood(food1);
+        addFood(food2);
+        addFood(food3);
+        addFood(food4);
+        addFood(food5);
+        addFood(food6);
+    }
+
     private class FoodCursorWrapper extends CursorWrapper {
         public FoodCursorWrapper(Cursor cursor) {
             super(cursor);
@@ -128,11 +186,12 @@ public class SQLiteFoodService implements FoodService {
         public Food getFood() {
             String name = getString(getColumnIndex(DbSchema.FoodTable.Columns.NAME));
             int calories = getInt(getColumnIndex(DbSchema.FoodTable.Columns.CALORIE_LEVEL));
+            String recommendation = getString(getColumnIndex(DbSchema.FoodTable.Columns.RECOMMENDATION));
             String recipe = getString(getColumnIndex(DbSchema.FoodTable.Columns.RECIPE));
             String ingredients = getString(getColumnIndex(DbSchema.FoodTable.Columns.INGREDIENTS));
             byte[] image = getBlob(getColumnIndex(DbSchema.FoodTable.Columns.IMAGE));
 
-            Food food = new Food(calories, recipe, name, ingredients, DbBitmapUtility.getImage(image));
+            Food food = new Food(calories, recommendation, recipe, name, ingredients, DbBitmapUtility.getImage(image));
             return food;
         }
     }

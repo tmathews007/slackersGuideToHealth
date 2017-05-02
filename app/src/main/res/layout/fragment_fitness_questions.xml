@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_title"
+            android:text="@string/create_fitness_title"
+            style="@style/WorkoutFontAndSizeTitle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fitness_name"
+            android:text="@string/fitness_name" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/fitness_name_sample"
+            android:ems="10"
+            android:id="@+id/fitness_name_edit"
+            style="@style/WorkoutFontAndSizeInstructions" />
+
+        <TextView
+            android:text="@string/body_part"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/body_part" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_fitness"
+            style="@style/WorkoutFontAndSizeInstructions" />
+
+        <TextView
+            android:text="@string/num_reps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/num_reps" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/num_reps_edit"
+            android:text="@string/num_reps_sample"
+            style="@style/WorkoutFontAndSizeInstructions" />
+
+        <TextView
+            android:text="@string/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/instructions" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/instructions_edit"
+            android:text="@string/instructions_sample"
+            style="@style/WorkoutFontAndSizeInstructions" />
+
+        <TextView
+            android:text="@string/photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/photo_workout" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_height="80dp"
+                app:srcCompat="@color/black_overlay"
+                android:id="@+id/photo"
+                android:layout_weight="0.00"
+                android:layout_width="80dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_camera"
+                android:id="@+id/camera"
+                android:layout_weight="0.00" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

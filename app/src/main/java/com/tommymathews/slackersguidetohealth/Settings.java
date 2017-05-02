@@ -25,9 +25,11 @@ import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.tommymathews.slackersguidetohealth.R.id.email;
+/**
+ * Created by Ashley on 4/29/17.
+ */
 
-public class SignUp extends Activity {
+public class Settings extends Activity {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -45,22 +47,41 @@ public class SignUp extends Activity {
     private SeekBar heightSeekBar;
     private TextView heightTextView;
     private Spinner goalSpinner;
-    private Button signUpButton;
+    private UserService userService;
+    private Button backButton;
+    private Button saveSettingsButton;
     private int age;
     private int weight;
     private int height;
 
+    private SharedPreferences sharedPreferences;
+    private String email;
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_settings);
+
+        sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
+
+        userService = DependencyFactory.getUserService(getApplicationContext());
+        email = sharedPreferences.getString(DbSchema.EMAIL,null);
+        user = userService.getUserByEmail(email);
 
         nameEditText = (EditText) findViewById(R.id.name);
+        nameEditText.setText(user.getName());
+
         genderRadioGroup = (RadioGroup) findViewById(R.id.gender_radio_group);
-        genderRadioGroup.check(R.id.male_button);
+        if(user.getGender() == User.Gender.MALE) {
+            genderRadioGroup.check(R.id.male_button);
+        } else {
+            genderRadioGroup.check(R.id.female_button);
+        }
 
         // Set up the login form.
-        emailEditText = (EditText) findViewById(email);
+        emailEditText = (EditText) findViewById(R.id.email);
+        emailEditText.setText(user.getEmail());
         emailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -82,6 +103,7 @@ public class SignUp extends Activity {
         });
 
         passwordEditText = (EditText) findViewById(R.id.pass_one);
+        passwordEditText.setText(user.getPassword());
         confirmPasswordEditText = (EditText) findViewById(R.id.pass_confirm);
         confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -101,14 +123,16 @@ public class SignUp extends Activity {
             }
         });
 
+        age = user.getAge();
         ageTextView = (TextView) findViewById(R.id.txt_age);
         ageSeekBar = (SeekBar) findViewById(R.id.seekbar_age);
-        ageTextView.setText("16");
+        ageSeekBar.setProgress(age-16);
+        ageTextView.setText(Integer.toString(age));
         ageSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 ageTextView.setText((i + 16) + "");
-                age = i + 16;
+                age = 16 + i;
             }
 
             @Override
@@ -122,14 +146,16 @@ public class SignUp extends Activity {
             }
         });
 
+        weight = user.getWeight();
         weightTextView = (TextView) findViewById(R.id.weight_display_text);
-        weightTextView.setText("50 lbs.");
         weightSeekBar = (SeekBar) findViewById(R.id.weight_bar);
+        weightTextView.setText(Integer.toString(weight)+ "lbs.");
+        weightSeekBar.setProgress(weight-50);
         weightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 weightTextView.setText((i + 50) + "lbs.");
-                weight = i + 50;
+                weight = 50 + i;
             }
 
             @Override
@@ -143,9 +169,11 @@ public class SignUp extends Activity {
             }
         });
 
+        height = user.getHeight();
         heightTextView = (TextView) findViewById(R.id.txt_height);
         heightSeekBar = (SeekBar) findViewById(R.id.seekbar_height);
-        heightTextView.setText("4' 0");
+        heightTextView.setText(user.convertHeight(height));
+        heightSeekBar.setProgress(height-12*4);
         heightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -169,18 +197,26 @@ public class SignUp extends Activity {
         goalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         goalSpinner.setAdapter(goalAdapter); // still need to fill this out
 
-        signUpButton = (Button) findViewById(R.id.btn_sign_up);
-        signUpButton.setOnClickListener(new View.OnClickListener() {
+        backButton = (Button) this.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if (!attemptLogin()) {
-                    SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
+                Intent intent = new Intent(Settings.this, ProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        saveSettingsButton = (Button) findViewById(R.id.btn_save_settings);
+        saveSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!attemptSave()) {
+
                     SharedPreferences.Editor editor=sharedPreferences.edit();
                     editor.putString(DbSchema.EMAIL, emailEditText.getText().toString());
                     editor.commit();
 
-                    //put things in sqlite
-                    User user = new User();
                     user.setName(nameEditText.getText().toString());
                     user.setEmail(emailEditText.getText().toString());
                     user.setPassword(passwordEditText.getText().toString());
@@ -195,14 +231,11 @@ public class SignUp extends Activity {
                     user.setHeight(height);
                     user.setWeight(weight);
                     user.setFitnessGoal(goalSpinner.getSelectedItemPosition());
-                    user.setFitnessProgress(0);
-                    user.setFoodProgress(0);
-                    user.setEventsProgress(0);
 
-                    UserService userService = DependencyFactory.getUserService(getApplication());
+//                    UserService userService = DependencyFactory.getUserService(getApplication());
                     userService.addUser(user);
 
-                    startActivity(new Intent(SignUp.this, MainActivity.class));
+                    startActivity(new Intent(Settings.this, ProfileActivity.class));
                     finish();
                     //store everything in shared preferences for now
                 }
@@ -216,8 +249,8 @@ public class SignUp extends Activity {
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private boolean attemptLogin() {
-        // Store values at the time of the login attempt.
+    private boolean attemptSave() {
+        // Store values at the time of the save attempt.
 
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString();
@@ -263,4 +296,5 @@ public class SignUp extends Activity {
     }
 
 }
+
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+//database that contains a table for users, foods, and fitness ideas
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "slackers_guide.db";
     private static final int VERSION = 1;
@@ -23,12 +24,16 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbSchema.UserTable.Columns.AGE + ", " +
                 DbSchema.UserTable.Columns.WEIGHT + ", " +
                 DbSchema.UserTable.Columns.HEIGHT + ", " +
-                DbSchema.UserTable.Columns.FITNESS_GOAL + ")"
+                DbSchema.UserTable.Columns.FITNESS_GOAL + ", " +
+                DbSchema.UserTable.Columns.FITNESS_PROGRESS + ", " +
+                DbSchema.UserTable.Columns.FOOD_PROGRESS + ", " +
+                DbSchema.UserTable.Columns.EVENTS_PROGRESS + ")"
         );
 
         db.execSQL("create table " + DbSchema.FoodTable.FOOD_NAME + "(" +
                 " _id integer primary key autoincrement, " +
                 DbSchema.FoodTable.Columns.NAME + ", " +
+                DbSchema.FoodTable.Columns.RECOMMENDATION + ", " +
                 DbSchema.FoodTable.Columns.CALORIE_LEVEL + ", " +
                 DbSchema.FoodTable.Columns.INGREDIENTS + ", " +
                 DbSchema.FoodTable.Columns.RECIPE + "," +

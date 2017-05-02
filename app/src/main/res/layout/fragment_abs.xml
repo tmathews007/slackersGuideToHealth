@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/abs_workout_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/abs_workout_bicycle_crunches"
-        style="@style/WorkoutFontAndSizeTitle" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="234dp"
-        android:id="@+id/bicycle_crunches_image"
-        android:src="@drawable/bicycle_crunch" />
-
-    <TextView
-        android:text="@string/instructions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/intructions_title"
-        style="@style/WorkoutFontAndSizeInstructionsTitle" />
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/abs_workout"
-        android:text="@string/abs_workout_instructions"
-        style="@style/WorkoutFontAndSizeInstructions" />
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/abs_workout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/abs_workout_bicycle_crunches"
+            style="@style/WorkoutFontAndSizeTitle" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="234dp"
+            android:id="@+id/bicycle_crunches_image"
+            android:src="@drawable/bicycle_crunch" />
+
+        <TextView
+            android:text="@string/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/intructions_title"
+            style="@style/WorkoutFontAndSizeInstructionsTitle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/abs_workout"
+            android:text="@string/abs_workout_instructions"
+            style="@style/WorkoutFontAndSizeInstructions" />
+
+    </LinearLayout>
+
+</ScrollView>

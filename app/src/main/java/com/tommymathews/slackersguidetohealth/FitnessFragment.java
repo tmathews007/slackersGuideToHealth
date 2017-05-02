@@ -1,5 +1,6 @@
 package com.tommymathews.slackersguidetohealth;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -14,7 +15,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.tommymathews.slackersguidetohealth.model.Fitness;
+
 public class FitnessFragment extends Fragment {
+    private final String EXTRA_FITNESS_CREATED = "EXTRA_FITNESS_CREATED";
+
     private final int MATCH_DISTANCE = 10;
 
     private final int ABS = Color.BLUE;
@@ -22,6 +27,12 @@ public class FitnessFragment extends Fragment {
     private final int CHEST = Color.GREEN;
     private final int QUADS = Color.CYAN;
     private final int BACKVIEW = Color.YELLOW;
+
+    private Button createWorkoutButton;
+
+    private Fitness fitness;
+
+    private Button createWorkout;
 
     public static Fragment newInstance() {
         FitnessFragment fragment = new FitnessFragment();
@@ -73,6 +84,17 @@ public class FitnessFragment extends Fragment {
                 return true;
             }
         });
+
+        createWorkoutButton = ( Button ) view.findViewById( R.id.create_workout_button );
+        createWorkoutButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( getActivity(), FitnessBacklogActivity.class );
+                startActivity( intent );
+            }
+        }
+        );
+
         return view;
     }
 

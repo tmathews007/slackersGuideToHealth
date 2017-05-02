@@ -19,6 +19,9 @@ public class DbSchema {
             public static final String WEIGHT = "WEIGHT";
             public static final String HEIGHT = "HEIGHT";
             public static final String FITNESS_GOAL = "FITNESS_GOAL";
+            public static final String FITNESS_PROGRESS = "FITNESS_PROGRESS";
+            public static final String FOOD_PROGRESS = "FOOD_PROGRESS";
+            public static final String EVENTS_PROGRESS = "EVENTS_PROGRESS";
         }
     }
 
@@ -26,6 +29,7 @@ public class DbSchema {
         public static final String FOOD_NAME = "FOOD_NAME";
         public static final class Columns {
             public static final String NAME = "NAME";
+            public static final String RECOMMENDATION = "RECOMMENDATION";
             public static final String CALORIE_LEVEL = "CALORIE_LEVEL";
             public static final String INGREDIENTS = "INGREDIENTS";
             public static final String RECIPE = "RECIPE";
