@@ -14,6 +14,8 @@
     <string name="fun">Events</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="catchPhrase">If you want to be healthy in the age of technology,
+    this is the app for you!</string>
     <string name="calorieCount">Calorie Count</string>
     <string name="calorieIntake">How many calories would you like to consume?</string>
     <string name="workoutChoice">Workout Choice</string>
