@@ -9,17 +9,24 @@
     tools:context="com.tommymathews.slackersguidetohealth.MainActivity"
     android:weightSum="1">
 
-    <Button
-        android:id="@+id/profileButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/profile_button" />
+        android:orientation="vertical"
+        style="@style/margins">
 
-    <Button
-        android:id="@+id/logOutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/logout" />
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_button" />
+
+        <Button
+            android:id="@+id/logOutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/logout" />
+    </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -27,7 +34,7 @@
         android:layout_height="790dp"
         design:itemIconTint="@color/white"
         design:itemTextColor="@color/white"
-        design:itemBackground="@color/orange"
+        design:itemBackground="@color/lightBlue"
         design:menu="@menu/menu_navigation" />
 
 </LinearLayout>

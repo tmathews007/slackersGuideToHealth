@@ -3,5 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/story_recycler_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/margins">
 </android.support.v7.widget.RecyclerView>

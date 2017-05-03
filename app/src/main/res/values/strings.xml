@@ -15,7 +15,7 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="calorieCount">Calorie Count</string>
-    <string name="calorieIntake">Enter your calorie intake for today</string>
+    <string name="calorieIntake">How many calories would you like to consume?</string>
     <string name="workoutChoice">Workout Choice</string>
     <string name="workoutSelect">What Kind Of Workout Would You Like To Do?</string>
     <string name="gymMembership">Do you have a gym membership already?</string>
