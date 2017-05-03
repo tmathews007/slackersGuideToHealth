@@ -16,7 +16,7 @@ import java.io.ByteArrayOutputStream;
 public class Fitness extends AppCompatActivity {
 
     private String fitnessName;
-    private int numReps;
+    private double numReps;
     private BodyPart bodyPart;
     private String instructions;
     private Bitmap image;
@@ -38,40 +38,12 @@ public class Fitness extends AppCompatActivity {
         return this.fitnessName;
     }
 
-    public int getNumReps() {
+    public double getNumReps() {
         return this.numReps;
     }
 
     public BodyPart getBodyPart() {
         return this.bodyPart;
-    }
-
-    public String getInstructions() {
-        return this.instructions;
-    }
-
-    public Bitmap getImage() {
-        return this.image;
-    }
-
-    public void setFitnessName( String fitnessName ) {
-        this.fitnessName = fitnessName;
-    }
-
-    public void setNumReps( int numReps ) {
-        this.numReps = numReps;
-    }
-
-    public void setBodyPart( int bodyPart ) {
-        this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
-    }
-
-    public void setInstructions( String instructions ) {
-        this.instructions = instructions;
-    }
-
-    public void setImage( Bitmap image ) {
-        this.image = image;
     }
 
     public int getBodyPartPosition() {
@@ -97,6 +69,26 @@ public class Fitness extends AppCompatActivity {
             default:
                 return 0;
         }
+    }
+
+    public String getInstructions() {
+        return this.instructions;
+    }
+
+    public Bitmap getImage() {
+        return this.image;
+    }
+
+    public void setFitnessName( String fitnessName ) {
+        this.fitnessName = fitnessName;
+    }
+
+    public void setNumReps( double numReps ) {
+        this.numReps = numReps;
+    }
+
+    public void setBodyPart( BodyPart bodyPart ) {
+        this.bodyPart = bodyPart;
     }
 
     public void setBodyPartPosition(int position) {
@@ -132,6 +124,14 @@ public class Fitness extends AppCompatActivity {
                 this.bodyPart = BodyPart.ABS;
                 break;
         }
+    }
+
+    public void setInstructions( String instructions ) {
+        this.instructions = instructions;
+    }
+
+    public void setImage( Bitmap image ) {
+        this.image = image;
     }
 
     @Override

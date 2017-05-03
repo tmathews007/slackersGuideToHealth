@@ -155,7 +155,7 @@ public class SQLiteFitnessService implements FitnessService {
 
             Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, DbBitmapUtility.getImage( image ) );
             fitness.setFitnessName( name );
-            fitness.setBodyPart( bodyPart );
+            fitness.setBodyPartPosition( bodyPart );
             fitness.setNumReps( numReps );
             fitness.setInstructions( instructions );
             fitness.setImage( DbBitmapUtility.getImage( image ) );

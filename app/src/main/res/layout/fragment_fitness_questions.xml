@@ -26,10 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="@string/fitness_name_sample"
             android:ems="10"
             android:id="@+id/fitness_name_edit"
-            style="@style/WorkoutFontAndSizeInstructions" />
+            style="@style/WorkoutFontAndSizeInstructions"
+            android:hint="@string/fitness_name_sample" />
 
         <TextView
             android:text="@string/body_part"
@@ -55,8 +55,8 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/num_reps_edit"
-            android:text="@string/num_reps_sample"
-            style="@style/WorkoutFontAndSizeInstructions" />
+            style="@style/WorkoutFontAndSizeInstructions"
+            android:hint="@string/num_reps_sample" />
 
         <TextView
             android:text="@string/instructions"
@@ -70,8 +70,8 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/instructions_edit"
-            android:text="@string/instructions_sample"
-            style="@style/WorkoutFontAndSizeInstructions" />
+            style="@style/WorkoutFontAndSizeInstructions"
+            android:hint="@string/instructions_sample" />
 
         <TextView
             android:text="@string/photo"
@@ -97,7 +97,31 @@
                 app:srcCompat="@android:drawable/ic_menu_camera"
                 android:id="@+id/camera"
                 android:layout_weight="0.00" />
+
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="@string/save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/save_fitness_button"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/cancel_fitness_button"
+                android:layout_marginEnd="25dp" />
+
+            <Button
+                android:text="@string/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancel_fitness_button"
+                android:layout_marginEnd="81dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
 
     </LinearLayout>
 

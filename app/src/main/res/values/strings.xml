@@ -189,6 +189,8 @@
         5. Continue to repeat this process till you need rest.
     </string>
     <string name="photo"> Photo </string>
+    <string name="save_button"> Save </string>
+    <string name="cancel_button"> Cancel </string>
 
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>
