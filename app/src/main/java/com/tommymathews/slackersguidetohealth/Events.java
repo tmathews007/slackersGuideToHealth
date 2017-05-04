@@ -73,9 +73,8 @@ public class Events extends ActivityWithMenu {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_EVENT_WEBSITE)
-            if (resultCode == Activity.RESULT_CANCELED)
-                dialog();
+        if(requestCode == REQUEST_CODE_EVENT_WEBSITE && resultCode == Activity.RESULT_CANCELED)
+            dialog();
     }
 
 
