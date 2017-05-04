@@ -51,6 +51,7 @@ public class Events extends ActivityWithMenu {
                 yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, EmotionalHealth.class));
                 overridePendingTransition(0,0);
+                dialog();
             }
         });
 
@@ -64,6 +65,7 @@ public class Events extends ActivityWithMenu {
                 yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, MentalHealth.class));
                 overridePendingTransition(0,0);
+                dialog();
             }
         });
 
@@ -77,9 +79,9 @@ public class Events extends ActivityWithMenu {
                 yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, PhysicalHealth.class));
                 overridePendingTransition(0,0);
+                dialog();
             }
         });
-        dialog();
     }
 
     public void dialog(){
