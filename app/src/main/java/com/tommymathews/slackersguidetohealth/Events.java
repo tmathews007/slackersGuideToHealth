@@ -43,8 +43,7 @@ public class Events extends ActivityWithMenu {
                 //necessary because the system won't recognize changes unless you
                 //update the variables again
                 yourState=st.getText().toString();
-                yourCity=cy.getText().toString();
-                yourCity=yourCity.replaceAll(" ","-");
+                yourCity=cy.getText().toString().replaceAll(" ","-");
                 startActivity(new Intent(Events.this, EmotionalHealth.class));
                 dialog();
                 overridePendingTransition(0,0);
@@ -57,8 +56,7 @@ public class Events extends ActivityWithMenu {
                 //necessary because the system won't recognize changes unless you
                 //update the variables again
                 yourState=st.getText().toString();
-                yourCity=cy.getText().toString();
-                yourCity=yourCity.replaceAll(" ","-");
+                yourCity=cy.getText().toString().replaceAll(" ","-");
                 startActivity(new Intent(Events.this, MentalHealth.class));
                 dialog();
                 overridePendingTransition(0,0);
@@ -71,8 +69,7 @@ public class Events extends ActivityWithMenu {
                 //necessary because the system won't recognize changes unless you
                 //update the variables again
                 yourState=st.getText().toString();
-                yourCity=cy.getText().toString();
-                yourCity=yourCity.replaceAll(" ","-");
+                yourCity=cy.getText().toString().replaceAll(" ","-");
                 startActivity(new Intent(Events.this, PhysicalHealth.class));
                 dialog();
                 overridePendingTransition(0,0);
