@@ -33,10 +33,6 @@ public class Events extends ActivityWithMenu {
         st= (EditText) findViewById(R.id.state);
         cy = (EditText) findViewById(R.id.city);
 
-        yourState=st.getText().toString();
-        yourCity=cy.getText().toString();
-        yourCity=yourCity.replaceAll(" ","-");
-
         emotional = (TextView) findViewById(R.id.emotionalHealth);
         mental = (TextView) findViewById(R.id.mentalHealth);
         physical = (TextView) findViewById(R.id.physicalHealth);
