@@ -50,8 +50,8 @@ public class Events extends ActivityWithMenu {
                 yourCity=cy.getText().toString();
                 yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, EmotionalHealth.class));
-                overridePendingTransition(0,0);
                 dialog();
+                overridePendingTransition(0,0);
             }
         });
 
@@ -64,8 +64,8 @@ public class Events extends ActivityWithMenu {
                 yourCity=cy.getText().toString();
                 yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, MentalHealth.class));
-                overridePendingTransition(0,0);
                 dialog();
+                overridePendingTransition(0,0);
             }
         });
 
@@ -78,8 +78,8 @@ public class Events extends ActivityWithMenu {
                 yourCity=cy.getText().toString();
                 yourCity=yourCity.replaceAll(" ","-");
                 startActivity(new Intent(Events.this, PhysicalHealth.class));
-                overridePendingTransition(0,0);
                 dialog();
+                overridePendingTransition(0,0);
             }
         });
     }

@@ -56,7 +56,7 @@ public class FoodActivity extends ActivityWithMenu {
             high = 1500;
         } else{
             Toast.makeText(this, "Talk to a professional" +
-                    " to develop a diet plan. Your calorie intake is too high.", Toast.LENGTH_SHORT).show();
+                    " to develop a diet plan. Your calorie level is too high.", Toast.LENGTH_SHORT).show();
         }
 
         if (calories <= 1500) {
