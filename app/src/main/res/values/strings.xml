@@ -10,7 +10,6 @@
     <string name="app_name">Slacker\'s Guide to Health</string>
     <string name="fitness">Fitness</string>
     <string name="food">Food</string>
-    <string name="explore">Explore</string>
     <string name="events">Events</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
@@ -107,6 +106,9 @@
 
     <string name="title_activity_food_form">Recipe Submission Tab</string>
 
+    <!--Events-->
+    <string name="eventsDesc">This page will help you find interesting health
+        events in your area.</string>
     <string name="title_activity_mental_health">Mental Health Events</string>
     <string name="title_activity_physical_health">Physical Health Events</string>
     <string name="title_activity_emotional_health">Emotional Health Events</string>
@@ -118,10 +120,8 @@
     health-related events in your area.</string>
     <string name="stateEvents">Please enter in the 2-letter abbreviation of your state below.</string>
     <string name="stateReq">Enter your state abbreviation.</string>
-    <string name="defaultState">MD</string>
     <string name="cityEvents">Please enter in the name of your city below.</string>
     <string name="cityReq">Enter your city.</string>
-    <string name="defaultCity">College Park</string>
 
     <!-- Strings related to login -->
     <string name="prompt_name">Name</string>

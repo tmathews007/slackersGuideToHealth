@@ -13,6 +13,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/eventsDesc"
+        android:textSize="19sp"
+        android:textColor="@color/darkOrchid"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/stateEvents"/>
     <EditText
         android:id="@+id/state"
