@@ -83,7 +83,7 @@ public class SignUp extends Activity {
 
         passwordEditText = (EditText) findViewById(R.id.pass_one);
         confirmPasswordEditText = (EditText) findViewById(R.id.pass_confirm);
-        confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
+/*        confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -99,7 +99,7 @@ public class SignUp extends Activity {
                 if (!confirmPasswordEditText.getText().toString().equals(passwordEditText.getText().toString()))
                     Toast.makeText(getApplicationContext(), "Password must match", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         ageTextView = (TextView) findViewById(R.id.txt_age);
         ageSeekBar = (SeekBar) findViewById(R.id.seekbar_age);

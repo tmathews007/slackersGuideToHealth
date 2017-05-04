@@ -131,6 +131,7 @@ public class SQLiteUserService implements UserService {
     private static ContentValues getContentValues(User user) {
         ContentValues contentValues = new ContentValues();
 
+        contentValues.put(DbSchema.UserTable.Columns.ID, user.getId());
         contentValues.put(DbSchema.UserTable.Columns.NAME, user.getName());
         contentValues.put(DbSchema.UserTable.Columns.EMAIL, user.getEmail());
         contentValues.put(DbSchema.UserTable.Columns.PASSWORD, user.getPassword());

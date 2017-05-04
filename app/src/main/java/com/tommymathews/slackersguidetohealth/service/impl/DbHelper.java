@@ -17,6 +17,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + DbSchema.UserTable.USER_NAME + "(" +
                 " _id integer primary key autoincrement, " +
+                DbSchema.UserTable.Columns.ID + ", " +
                 DbSchema.UserTable.Columns.NAME + ", " +
                 DbSchema.UserTable.Columns.EMAIL + ", " +
                 DbSchema.UserTable.Columns.PASSWORD + ", " +
@@ -32,12 +33,13 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL("create table " + DbSchema.FoodTable.FOOD_NAME + "(" +
                 " _id integer primary key autoincrement, " +
+                DbSchema.FoodTable.Columns.ID + ", " +
                 DbSchema.FoodTable.Columns.NAME + ", " +
                 DbSchema.FoodTable.Columns.RECOMMENDATION + ", " +
                 DbSchema.FoodTable.Columns.CALORIE_LEVEL + ", " +
                 DbSchema.FoodTable.Columns.INGREDIENTS + ", " +
                 DbSchema.FoodTable.Columns.RECIPE + "," +
-                DbSchema.FoodTable.Columns.IMAGE + ")"
+                DbSchema.FoodTable.Columns.IMAGE_PATH + ")"
         );
 
         /**

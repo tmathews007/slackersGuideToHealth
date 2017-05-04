@@ -1,42 +1,48 @@
 package com.tommymathews.slackersguidetohealth.model;
 
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by Ashwin on 4/25/2017.
  */
 
-public class Food extends AppCompatActivity{
+public class Food implements Serializable {
+    private String id = UUID.randomUUID().toString();
     private int calorieLevel;
     private String recommendation;
     private String recipe;
     private String name;
     private String ingredients;
-    private Bitmap image;
+    private String imagePath;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    public Food(int calLevel, String rec, String name, String ingred, Bitmap image){
+    public Food(int calLevel, String rec, String name, String ingred, String image){
         this.calorieLevel = calLevel;
         this.recipe = rec;
         this.name = name;
         this.ingredients = ingred;
-        this.image = image;
+        this.imagePath = image;
     }
 
-    public Food(int calLevel, String recommendation, String rec, String name, String ingred, Bitmap image){
+    public Food(int calLevel, String recommendation, String rec, String name, String ingred, String image){
         this.calorieLevel = calLevel;
         this.recommendation = recommendation;
         this.recipe = rec;
         this.name = name;
         this.ingredients = ingred;
-        this.image = image;
+        this.imagePath = image;
     }
+
+    public Food(String id, int calLevel, String recommendation, String rec, String name, String ingred, String image){
+        this.id = id;
+        this.calorieLevel = calLevel;
+        this.recommendation = recommendation;
+        this.recipe = rec;
+        this.name = name;
+        this.ingredients = ingred;
+        this.imagePath = image;
+    }
+
 
     public int getCalorieLevel() {
         return calorieLevel;
@@ -54,8 +60,8 @@ public class Food extends AppCompatActivity{
         return ingredients;
     }
 
-    public Bitmap getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
     }
 
     public void setCalorieLevel(int cal) {
@@ -74,8 +80,8 @@ public class Food extends AppCompatActivity{
         ingredients = ingred;
     }
 
-    public void setImage(Bitmap image) {
-        this.image = image;
+    public void setImagePath(String image) {
+        this.imagePath = image;
     }
 
     public String getRecommendation() {
@@ -84,5 +90,13 @@ public class Food extends AppCompatActivity{
 
     public void setRecommendation(String recommendation) {
         this.recommendation = recommendation;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

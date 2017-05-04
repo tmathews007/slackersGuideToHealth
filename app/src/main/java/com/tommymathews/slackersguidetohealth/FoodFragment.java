@@ -1,19 +1,23 @@
 package com.tommymathews.slackersguidetohealth;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
-import android.support.design.widget.BottomNavigationView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.lang.reflect.Field;
+import com.tommymathews.slackersguidetohealth.model.Food;
+import com.tommymathews.slackersguidetohealth.service.FoodService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ashwin on 4/4/2017.
@@ -23,7 +27,10 @@ public class FoodFragment extends Fragment{
     //TODO get the activity here and redirect to the page
     // with the suggestions and recipe
 
+    ProgressDialog dialog;
+
     public static final String CALORIES = "CALORIES";
+    public static final String FOOD = "FOOD";
 
     private Button nextPageButton;
     private EditText calories;
@@ -45,9 +52,38 @@ public class FoodFragment extends Fragment{
             public void onClick(View view) {
                 String cal = calories.getText().toString();
                 int numCal = Integer.parseInt(cal);
-                Intent i = new Intent(getActivity(), FoodActivity.class);
-                i.putExtra(CALORIES, numCal);
-                startActivity(i);
+                int low = 0, high = 0;
+                List<Food> foods = new ArrayList<Food>();
+
+                if(numCal < 500){
+                    high = 500;
+                } else if(numCal>=500 && numCal<750) {
+                    low = 500;
+                    high = 750;
+                } else if(numCal>=750 && numCal<1000){
+                    low = 750;
+                    high = 1000;
+                } else if(numCal>=1000 && numCal<=1500){
+                    low = 1000;
+                    high = 1500;
+                } else {
+                    low = -1;
+                }
+
+                if (low != -1)
+                    new ReadFromFoodDB().execute(low,high);
+                else {
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("High Calorie Count").setMessage("This is not the app for you.")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(getActivity(), MainActivity.class);
+                            startActivity(i);
+                            getActivity().finish();
+                        }
+                    }).create().show();
+                }
 
             }
         });
@@ -55,23 +91,65 @@ public class FoodFragment extends Fragment{
         return view;
 
     }
-    static void removeShiftMode(BottomNavigationView view) {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
-        try {
-            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
-            shiftingMode.setAccessible(true);
-            shiftingMode.setBoolean(menuView, false);
-            shiftingMode.setAccessible(false);
-            for (int i = 0; i < menuView.getChildCount(); i++) {
-                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                item.setShiftingMode(false);
-                // set once again checked value, so view will be updated
-                item.setChecked(item.getItemData().isChecked());
+
+    private void passInFood(List<Food> foods) {
+        if (foods == null || foods.isEmpty()) {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle("No Recipes!").setMessage("We couldn't find a recipe fitting your specifications! Do you want to try " +
+                    "to find something else or view a random recipe?")
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(getActivity(), FoodActivity.class);
+                            startActivity(i);
+                            getActivity().finish();
+                        }
+                    })
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(getActivity(), MainActivity.class);
+                            startActivity(i);
+                            getActivity().finish();
+                        }
+                    }).create().show();
+        } else {
+            Food food = foods.get((int)(Math. random() * foods.size()));
+            Intent i = new Intent(getActivity(), FoodActivity.class);
+            i.putExtra(FOOD, food);
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onPause(){
+
+        super.onPause();
+        if(dialog != null)
+            dialog.dismiss();
+    }
+
+    private class ReadFromFoodDB extends AsyncTask<Integer, Void, List<Food>> {
+
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(getActivity());
+            dialog.setMessage("Getting recipe!");
+            dialog.show();
+        }
+
+        @Override
+        protected List<Food> doInBackground(Integer... params) {
+            FoodService foodService = DependencyFactory.getFoodService(getActivity());
+            return foodService.getFoodByCalorieRange(params[0], params[1]);
+        }
+
+        @Override
+        protected void onPostExecute(List<Food> foods) {
+            super.onPostExecute(foods);
+            if (dialog.isShowing()) {
+                dialog.dismiss();
             }
-        } catch (NoSuchFieldException e) {
-            Log.e("ERROR NO SUCH FIELD", "Unable to get shift mode field");
-        } catch (IllegalAccessException e) {
-            Log.e("ERROR ILLEGAL ALG", "Unable to change value of shift mode");
+            passInFood(foods);
         }
     }
 
