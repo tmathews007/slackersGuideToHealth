@@ -30,7 +30,7 @@
     <string name="foodAllergy">List any known food allergies you have; say none if you have none</string>
     <string name="dietPlanDetails">Enter details of your diet plan, if you have one; say "none" if you do not</string>
     <string name="nextPageFood">Done Entering Info</string>
-    <string name="title_activity_food_manager">FoodManager</string>
+    <string name="title_activity_food_manager">Food</string>
     <string name="hardCodeInputCalories">600</string>
     <string name="hardCodeInputCons">Breakfast: Cereal Bar.\nLunch: Rice, yogurt, pulverized tomato extract.</string>
     <string name="none">none</string>
@@ -121,8 +121,6 @@
     <string name="cityReq">Enter your city.</string>
     <string name="defaultCity">College Park</string>
 
-    <string name="title_activity_login">Sign in</string>
-
     <!-- Strings related to login -->
     <string name="prompt_name">Name</string>
     <string name="prompt_email">Email</string>
@@ -147,7 +145,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_sign_up">Sign in</string>
+    <string name="title_activity_sign_up">User Info</string>
+    <string name="title_activity_login">Sign In</string>
     <string name="goals_label">Goals</string>
     <string-array name="goals_array">
         <item>Fitness</item>

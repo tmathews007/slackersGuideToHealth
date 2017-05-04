@@ -43,7 +43,10 @@
         </activity>
 
         <activity android:name=".MainActivity"/>
-        <activity android:name=".FitnessActivity"/>
+        <activity
+            android:name=".FitnessActivity"
+            android:label="@string/fitness"
+            />
         <activity android:name=".FitnessActivityBack"/>
         <activity android:name=".FitnessDescriptionActivity"/>
         <activity android:name=".DisplayFitnessSteps"/>
