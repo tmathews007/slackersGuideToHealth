@@ -11,13 +11,6 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="@string/back_button" />
-
-        <Button
             android:id="@+id/settings_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +74,7 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="100"
+        android:max="15"
         android:visibility="visible"
         tools:visibility="visible" />
 
@@ -97,8 +90,8 @@
         android:orientation="horizontal">
 
         <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent" />
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -109,7 +102,7 @@
                 android:id="@+id/fitness_badge"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                app:srcCompat="@color/black_overlay" />
+                android:src="@drawable/locked" />
 
             <TextView
                 android:id="@+id/fitness_points"
@@ -132,7 +125,7 @@
                 android:id="@+id/food_badge"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                app:srcCompat="@color/black_overlay" />
+                android:src="@drawable/locked"/>
 
             <TextView
                 android:id="@+id/food_points"
@@ -156,7 +149,7 @@
                 android:id="@+id/events_badge"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                app:srcCompat="@color/black_overlay" />
+                android:src="@drawable/locked" />
 
             <TextView
                 android:id="@+id/events_points"
@@ -166,10 +159,6 @@
                 android:text="Events" />
 
         </LinearLayout>
-
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 

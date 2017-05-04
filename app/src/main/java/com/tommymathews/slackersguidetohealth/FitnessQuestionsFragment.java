@@ -1,21 +1,17 @@
 package com.tommymathews.slackersguidetohealth;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +24,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
+import com.tommymathews.slackersguidetohealth.service.UserService;
+import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 import java.io.File;
-import java.io.Serializable;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
 
 public class FitnessQuestionsFragment extends Fragment {
     private final String TAG = getClass().getSimpleName();
@@ -54,6 +52,7 @@ public class FitnessQuestionsFragment extends Fragment {
     private ImageView photoView;
     private Button saveButton;
     private Button cancelButton;
+    private UserService userService;
 
     private File photoFile;
 
@@ -140,6 +139,11 @@ public class FitnessQuestionsFragment extends Fragment {
                 if( fitness == null ) {
                     fitness = new Fitness( null, 0, 0, null, null );
                 }
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
+
+                userService = DependencyFactory.getUserService(getActivity().getApplicationContext());
+                String email = sharedPreferences.getString(DbSchema.EMAIL,null);
+                userService.incrementFitnessProgress(email);
 
                 fitness.setFitnessName( fitnessName.getText().toString() );
                 fitness.setBodyPartPosition( bodyPartSelection.getSelectedItemPosition() );
