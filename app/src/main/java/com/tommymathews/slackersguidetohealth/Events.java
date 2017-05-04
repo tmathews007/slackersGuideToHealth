@@ -16,8 +16,8 @@ import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 public class Events extends ActivityWithMenu {
 
-    private TextView mTextMessage;
-    public ListView listViewEvents;
+    //private TextView mTextMessage;
+    //public ListView listViewEvents;
     public TextView emotional, mental, physical;
     public static String yourState="";
     public static String yourCity="";
