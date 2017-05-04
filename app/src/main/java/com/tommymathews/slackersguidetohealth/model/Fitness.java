@@ -4,8 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.SectionIndexer;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
 /**
  * The purpose of this class is to create the database for the user who wants to input a fitness.
@@ -13,18 +15,13 @@ import java.io.ByteArrayOutputStream;
  * are: the fitness name, the body part(s), the instructions (which will be in the form of an
  * array), and the images (which will also be in the form of an array).
  */
-public class Fitness extends AppCompatActivity {
+public class Fitness implements Serializable {
 
     private String fitnessName;
     private double numReps;
     private BodyPart bodyPart;
     private String instructions;
     private Bitmap image;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     public Fitness( String fitnessName, int bodyPart, int numReps, String instructions, Bitmap image ) {
         this.fitnessName = fitnessName;

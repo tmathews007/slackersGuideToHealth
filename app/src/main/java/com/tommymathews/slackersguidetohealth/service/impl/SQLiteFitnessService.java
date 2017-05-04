@@ -18,6 +18,7 @@ public class SQLiteFitnessService implements FitnessService {
 
     public SQLiteFitnessService(Context context) {
         database = new DbHelper(context).getWritableDatabase();
+//        database.delete(DbSchema.FitnessTable.FITNESS_NAME, null, null );
     }
 
     protected SQLiteDatabase getDatabase() {
@@ -27,8 +28,14 @@ public class SQLiteFitnessService implements FitnessService {
     @Override
     public void addFitness(Fitness fitness) {
         ContentValues contentValues = getContentValues( fitness );
-        Fitness currFitness = getFitnessByName( fitness.getFitnessName() );
-        if ( currFitness == null ) {
+//        Fitness currFitness = getFitnessByName( fitness.getFitnessName() );
+        List<Fitness> queryList = queryFitness(DbSchema.FitnessTable.FITNESS_NAME+ "=?",
+                new String[]{
+                        fitness.getFitnessName()
+                },
+                null
+        );
+        if ( queryList == null ) {
             database.insert( DbSchema.FitnessTable.FITNESS_NAME,
                              null,
                              contentValues
@@ -38,7 +45,7 @@ public class SQLiteFitnessService implements FitnessService {
                              contentValues,
                              DbSchema.FitnessTable.FITNESS_NAME + "=?",
                              new String[] {
-                                     currFitness.getFitnessName()
+                                     fitness.getFitnessName()
                              }
             );
         }
