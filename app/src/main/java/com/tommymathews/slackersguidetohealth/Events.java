@@ -3,11 +3,16 @@ package com.tommymathews.slackersguidetohealth;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.tommymathews.slackersguidetohealth.model.User;
+import com.tommymathews.slackersguidetohealth.service.UserService;
+import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 public class Events extends ActivityWithMenu {
 
@@ -83,7 +88,9 @@ public class Events extends ActivityWithMenu {
         .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //TODO
+                SharedPreferences sp = getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
+                String username = sp.getString(DbSchema.EMAIL, null);
+                DependencyFactory.getUserService(getApplicationContext()).incrementEventsProgress(username);
             }
         }).create().show();
     }
