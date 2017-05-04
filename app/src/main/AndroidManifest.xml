@@ -62,7 +62,7 @@
 
         <activity
             android:name=".Events"
-            android:label="@string/fun">
+            android:label="@string/events">
         </activity>
         <activity
             android:name=".EmotionalHealth"
