@@ -56,7 +56,7 @@
         <activity android:name=".QuadsActivity"/>
         <activity
             android:name=".FoodManager"
-            android:label="@string/title_activity_food_manager"/>
+            android:label="@string/food"/>
         <activity android:name=".FoodActivity"/>
 
 
@@ -78,7 +78,8 @@
         </activity>
 
         <activity
-            android:name=".ProfileActivity">
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile">
         </activity>
 
         <activity

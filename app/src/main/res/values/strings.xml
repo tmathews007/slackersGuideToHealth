@@ -155,6 +155,7 @@
     </string-array>
 
     <!-- Strings related to Profile page -->
+    <string name="title_activity_profile">User Profile</string>
     <string name="username">Username</string>
     <string name="progress">Progress</string>
     <string name="profile_button">View Profile</string>
