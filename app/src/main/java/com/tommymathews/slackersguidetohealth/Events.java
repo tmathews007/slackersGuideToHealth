@@ -1,5 +1,6 @@
 package com.tommymathews.slackersguidetohealth;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +23,7 @@ public class Events extends ActivityWithMenu {
     public static String yourState="";
     public static String yourCity="";
     EditText st, cy;
+    public static final int REQUEST_CODE_EVENT_WEBSITE = 1;
 
 
 
@@ -44,8 +46,7 @@ public class Events extends ActivityWithMenu {
                 //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString().replaceAll(" ","-");
-                startActivity(new Intent(Events.this, EmotionalHealth.class));
-                dialog();
+                startActivityForResult(new Intent(Events.this, EmotionalHealth.class), REQUEST_CODE_EVENT_WEBSITE);
                 overridePendingTransition(0,0);
             }
         });
@@ -57,8 +58,7 @@ public class Events extends ActivityWithMenu {
                 //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString().replaceAll(" ","-");
-                startActivity(new Intent(Events.this, MentalHealth.class));
-                dialog();
+                startActivityForResult(new Intent(Events.this, MentalHealth.class), REQUEST_CODE_EVENT_WEBSITE);
                 overridePendingTransition(0,0);
             }
         });
@@ -70,12 +70,19 @@ public class Events extends ActivityWithMenu {
                 //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString().replaceAll(" ","-");
-                startActivity(new Intent(Events.this, PhysicalHealth.class));
-                dialog();
+                startActivityForResult(new Intent(Events.this, PhysicalHealth.class), REQUEST_CODE_EVENT_WEBSITE);
                 overridePendingTransition(0,0);
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_EVENT_WEBSITE)
+            if (resultCode == Activity.RESULT_CANCELED)
+                dialog();
+    }
+
 
     public void dialog(){
         new AlertDialog.Builder(this)
