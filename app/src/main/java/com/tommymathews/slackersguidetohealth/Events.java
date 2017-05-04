@@ -23,7 +23,7 @@ public class Events extends ActivityWithMenu {
     public static String yourState="";
     public static String yourCity="";
     EditText st, cy;
-    public static final int REQUEST_CODE_EVENT_WEBSITE = 1;
+    public static final int REQUEST_CODE_EVENT_WEBSITE= 1;
 
 
 
