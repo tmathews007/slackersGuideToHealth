@@ -105,6 +105,8 @@
         in the preheated oven for 30 minutes, or until no longer runny in the center and slightly brown on top. Allow to cool slightly,
         then cut into squares and serve.</string>
 
+    <string name="title_activity_food_form">Recipe Submission Tab</string>
+
     <string name="title_activity_mental_health">Mental Health Events</string>
     <string name="title_activity_physical_health">Physical Health Events</string>
     <string name="title_activity_emotional_health">Emotional Health Events</string>

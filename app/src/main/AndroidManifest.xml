@@ -57,8 +57,13 @@
         <activity
             android:name=".FoodManager"
             android:label="@string/food"/>
-        <activity android:name=".FoodActivity"/>
-
+        <activity
+            android:name=".FoodActivity"
+            android:label="@string/food"/>
+        <activity
+            android:name=".FoodForm"
+            android:label="@string/title_activity_food_form"
+            />
 
         <activity
             android:name=".Events"
