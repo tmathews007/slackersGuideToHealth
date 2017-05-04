@@ -1,5 +1,7 @@
 package com.tommymathews.slackersguidetohealth;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -72,6 +74,18 @@ public class Events extends ActivityWithMenu {
                 overridePendingTransition(0,0);
             }
         });
+        dialog();
+    }
+
+    public void dialog(){
+        new AlertDialog.Builder(this)
+            .setTitle("Give Your Thoughts").setMessage("Did you like any events that you viewed?")
+        .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //TODO
+            }
+        }).create().show();
     }
 
 }
