@@ -8,17 +8,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.tommymathews.slackersguidetohealth.model.User;
-import com.tommymathews.slackersguidetohealth.service.UserService;
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 public class Events extends ActivityWithMenu {
 
-    //private TextView mTextMessage;
-    //public ListView listViewEvents;
     public TextView emotional, mental, physical;
     public static String yourState="";
     public static String yourCity="";
