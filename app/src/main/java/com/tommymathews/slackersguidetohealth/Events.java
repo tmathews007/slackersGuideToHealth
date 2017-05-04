@@ -82,8 +82,8 @@ public class Events extends ActivityWithMenu {
 
     public void dialog(){
         new AlertDialog.Builder(this)
-            .setTitle("Give Your Thoughts").setMessage("Did you like any events that you viewed?")
-        .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                .setTitle("Give Your Thoughts").setMessage("Did you like any events that you viewed?")
+                .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SharedPreferences sp = getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
