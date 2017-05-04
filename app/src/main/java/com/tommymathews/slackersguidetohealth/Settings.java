@@ -291,8 +291,7 @@ public class Settings extends Activity {
     }
 
     public static boolean isEmailValid(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
-        return matcher.find();
+        return VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr).find();
     }
 
 }
