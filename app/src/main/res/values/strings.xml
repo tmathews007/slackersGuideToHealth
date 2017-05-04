@@ -152,6 +152,7 @@
     <string-array name="goals_array">
         <item>Fitness</item>
         <item>Food</item>
+        <item>Events</item>
     </string-array>
 
     <!-- Strings related to Profile page -->
