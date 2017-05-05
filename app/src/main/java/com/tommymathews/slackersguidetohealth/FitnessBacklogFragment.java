@@ -32,7 +32,7 @@ public class FitnessBacklogFragment extends Fragment {
 
     private FitnessService fitnessService;
 
-    private RecyclerView storyRecyclerView;
+    private RecyclerView fitnessRecyclerView;
     private FitnessAdapter adapter;
 
     public static FitnessBacklogFragment newInstance() {
@@ -53,8 +53,8 @@ public class FitnessBacklogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fitness_backlog, container, false);
 
-        storyRecyclerView = (RecyclerView)view.findViewById(R.id.story_recycler_view);
-        storyRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        fitnessRecyclerView = (RecyclerView)view.findViewById(R.id.story_recycler_view);
+        fitnessRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
 
@@ -85,7 +85,7 @@ public class FitnessBacklogFragment extends Fragment {
 
         if (adapter == null) {
             adapter = new FitnessAdapter(stories);
-            storyRecyclerView.setAdapter( adapter );
+            fitnessRecyclerView.setAdapter( adapter );
         } else {
             adapter.setStories(stories);
             adapter.notifyDataSetChanged();
@@ -131,7 +131,7 @@ public class FitnessBacklogFragment extends Fragment {
         public void bindStory(Fitness fitness) {
             this.fitness = fitness;
 
-            fitnessImageView.setImageBitmap( fitness.getImage() );
+//            fitnessImageView.setImageBitmap( fitness.getImage() );
             fitnessNameTextView.setText( fitness.getFitnessName() );
             numRepsTextView.setText( "" + fitness.getNumReps() );
             bodyPartTextView.setText( fitness.getBodyPartPosition() );

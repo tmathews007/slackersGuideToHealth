@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.SectionIndexer;
 
+import com.tommymathews.slackersguidetohealth.service.impl.DbBitmapUtility;
+
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 
@@ -18,21 +20,39 @@ import java.io.Serializable;
 public class Fitness implements Serializable {
 
     private String fitnessName;
+    private String fitnessID;
     private double numReps;
     private BodyPart bodyPart;
     private String instructions;
     private Bitmap image;
+    private byte[] byteImageArray;
 
     public Fitness( String fitnessName, int bodyPart, int numReps, String instructions, Bitmap image ) {
         this.fitnessName = fitnessName;
         this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
         this.numReps = numReps;
         this.instructions = instructions;
-        this.image = image;
+        this.byteImageArray = DbBitmapUtility.getBytes( image );
+    }
+
+    public Fitness() {
+        this.fitnessName = null;
+        this.bodyPart = null;
+        this.numReps = 0;
+        this.instructions = null;
+        this.byteImageArray = null;
     }
 
     public String getFitnessName() {
         return this.fitnessName;
+    }
+
+    public String getId() {
+        return this.fitnessID;
+    }
+
+    public void setId( String id ) {
+        this.fitnessID = id;
     }
 
     public double getNumReps() {
@@ -73,7 +93,7 @@ public class Fitness implements Serializable {
     }
 
     public Bitmap getImage() {
-        return this.image;
+        return DbBitmapUtility.getImage( this.byteImageArray );
     }
 
     public void setFitnessName( String fitnessName ) {
@@ -128,12 +148,13 @@ public class Fitness implements Serializable {
     }
 
     public void setImage( Bitmap image ) {
-        this.image = image;
+        this.byteImageArray = DbBitmapUtility.getBytes( image );
     }
 
     @Override
     public String toString() {
         return this.fitnessName + " : " +
+                this.fitnessID + " : " +
                 this.numReps + " : " +
                 this.bodyPart + " : " +
                 this.instructions + " : " +

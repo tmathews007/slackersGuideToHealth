@@ -52,6 +52,7 @@ public class FitnessQuestionsFragment extends Fragment {
     private ImageView photoView;
     private Button saveButton;
     private Button cancelButton;
+    private Bitmap bitmap;
     private UserService userService;
 
     private File photoFile;
@@ -149,10 +150,15 @@ public class FitnessQuestionsFragment extends Fragment {
                 fitness.setBodyPartPosition( bodyPartSelection.getSelectedItemPosition() );
                 fitness.setNumReps( Double.parseDouble( numReps.getText().toString() ));
                 fitness.setInstructions( instructions.getText().toString() );
-                fitness.setImage( cameraImage.getDrawingCache() );
+                if( bitmap == null ) {
+                    bitmap = null;
+                } else {
+                    fitness.setImage( bitmap );
+                }
+//                fitness.setImage( cameraImage.getDrawingCache() );
 
                 Intent data = new Intent();
-//                data.putExtra( EXTRA_FITNESS_CREATED, fitness );
+                data.putExtra( EXTRA_FITNESS_CREATED, fitness );
                 getActivity().setResult(RESULT_OK, data);
                 getActivity().finish();
             }
@@ -196,7 +202,7 @@ public class FitnessQuestionsFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if( requestCode == REQUEST_PHOTO && resultCode == Activity.RESULT_OK ) {
-            Bitmap bitmap = BitmapFactory.decodeFile( photoFile.getPath() );
+            bitmap = BitmapFactory.decodeFile( photoFile.getPath() );
             Log.d( TAG, "FitnessQuestionsFragment - Since the image was accepted, photoView has been set" );
             photoView.setImageBitmap( bitmap );
             galleryAddPic( getContext(), photoPathName );

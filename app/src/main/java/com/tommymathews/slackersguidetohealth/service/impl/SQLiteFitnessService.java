@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.LayoutInflater;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
@@ -29,9 +30,9 @@ public class SQLiteFitnessService implements FitnessService {
     public void addFitness(Fitness fitness) {
         ContentValues contentValues = getContentValues( fitness );
 //        Fitness currFitness = getFitnessByName( fitness.getFitnessName() );
-        List<Fitness> queryList = queryFitness(DbSchema.FitnessTable.FITNESS_NAME+ "=?",
+        List<Fitness> queryList = queryFitness(DbSchema.FitnessTable.Columns.ID + "=?",
                 new String[]{
-                        fitness.getFitnessName()
+                        fitness.getId()
                 },
                 null
         );
@@ -73,26 +74,27 @@ public class SQLiteFitnessService implements FitnessService {
         return null;
     }
 
-//    public Fitness getFitnessByBodypart(String bodyPart ) {
-//        if( bodyPart == null ) {
-//            return null;
-//        }
-//
-//        List<Fitness> bodyPartsList = queryFitness( DbSchema.FitnessTable.Columns.BODY_PART,
-//                new String[] {
-//                        bodyPart
-//                },
-//                null
-//        );
-//
-//        for(Fitness bP : bodyPartsList ) {
-//            if( bP.getFitnesByBodypart.equals( bodyPart ) ) {
-//                return bP;
-//            }
-//        }
-//
-//        return null;
-//    }
+    public Fitness getFitnessById( String id ) {
+        if( id == null ) {
+            return null;
+        }
+
+        List<Fitness> queryList = queryFitness( DbSchema.FitnessTable.Columns.ID + "=?",
+                new String[] {
+                    id
+                },
+                null
+        );
+
+        for( Fitness fit : queryList ) {
+            if( fit.getId() == null ) {
+                return null;
+            }
+            return fit;
+        }
+
+        return null;
+    }
 
     @Override
     public List<Fitness> getAllFitness() {
@@ -105,7 +107,7 @@ public class SQLiteFitnessService implements FitnessService {
         if ( whereClause != null )
             whereClause = whereClause + "=?";
 
-        Cursor cursor = database.query( DbSchema.FoodTable.FOOD_NAME,
+        Cursor cursor = database.query( DbSchema.FitnessTable.FITNESS_NAME,
                                         null,
                                         whereClause,
                                         whereArgs,

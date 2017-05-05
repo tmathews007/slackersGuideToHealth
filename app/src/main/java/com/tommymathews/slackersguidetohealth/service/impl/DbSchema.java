@@ -49,8 +49,9 @@ public class DbSchema {
      *      5. Images to show what to do per step
      */
     public static final class FitnessTable {
-        public static final String FITNESS_NAME = "NAME";
+        public static final String FITNESS_NAME = "FITNESS_NAME";
         public static final class Columns {
+            public static final String ID = "ID";
             public static final String BODY_PART = "BODY_PART";
             public static final String NUM_REPS = "NUM_REPS";
             public static final String INSTRUCTIONS = "INSTRUCTIONS";
