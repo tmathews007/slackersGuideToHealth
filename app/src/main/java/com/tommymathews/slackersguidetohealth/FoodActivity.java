@@ -2,14 +2,15 @@ package com.tommymathews.slackersguidetohealth;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tommymathews.slackersguidetohealth.model.Food;
 
-import java.io.File;
+import java.io.IOException;
 
 import static com.tommymathews.slackersguidetohealth.FoodFragment.FOOD;
 import static com.tommymathews.slackersguidetohealth.R.id.foodPic;
@@ -39,11 +40,15 @@ public class FoodActivity extends ActivityWithMenu {
         Intent intent = getIntent();
         if (intent.getSerializableExtra(FOOD) != null) {
             Food food = (Food) intent.getSerializableExtra(FOOD);
-            File imgFile = new  File(food.getImagePath());
-            if(imgFile.exists()){
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                picImageView.setImageBitmap(myBitmap);
+            Uri uri = Uri.parse(food.getImagePath());
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                picImageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
             //TODO ADD FOOD SUGGEST
             //  foodSuggestionTextView.setText();
             if (food.getRecommendation().length() == 0) {

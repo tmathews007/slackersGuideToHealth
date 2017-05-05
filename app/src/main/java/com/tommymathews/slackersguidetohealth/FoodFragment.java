@@ -16,7 +16,6 @@ import android.widget.EditText;
 import com.tommymathews.slackersguidetohealth.model.Food;
 import com.tommymathews.slackersguidetohealth.service.FoodService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,7 +52,6 @@ public class FoodFragment extends Fragment{
                 String cal = calories.getText().toString();
                 int numCal = Integer.parseInt(cal);
                 int low = 0, high = 0;
-                List<Food> foods = new ArrayList<Food>();
 
                 if(numCal < 500){
                     high = 500;

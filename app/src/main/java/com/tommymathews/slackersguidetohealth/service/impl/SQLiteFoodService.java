@@ -49,26 +49,16 @@ public class SQLiteFoodService implements FoodService {
 
     @Override
     public List<Food> getFoodByCalorieRange(int calLow, int calHigh) {
-        List<Food> foods = new ArrayList<Food>();
-        String whereClause = DbSchema.FoodTable.Columns.CALORIE_LEVEL + " >=? " +
-                " AND " +DbSchema.FoodTable.Columns.CALORIE_LEVEL + " <=? ";
+        List<Food> foods = getAllFoods();
+        List<Food> foodsInRange = new ArrayList<Food>();
 
-        Cursor cursor = database.query(DbSchema.FoodTable.FOOD_NAME, null,
-                whereClause, new String[]{calLow + "", calHigh + ""}, null, null, null);
-        FoodCursorWrapper wrapper = new FoodCursorWrapper(cursor);
-
-        try {
-            wrapper.moveToFirst();
-            while (!wrapper.isAfterLast()) {
-                foods.add(wrapper.getFood());
-                wrapper.moveToNext();
+        for (Food food: foods) {
+            if (food.getCalorieLevel() >= calLow && food.getCalorieLevel() <= calHigh) {
+                foodsInRange.add(food);
             }
-        } finally {
-            cursor.close();
-            wrapper.close();
         }
 
-        return foods;
+        return foodsInRange;
     }
 
     @Override
@@ -132,43 +122,43 @@ public class SQLiteFoodService implements FoodService {
                 context.getResources().getString(R.string.process),
                 context.getResources().getString(R.string.recipeIdea),
                 context.getResources().getString(R.string.ingredients),
-                "drawable://" + R.drawable.eggplant);
+                "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.eggplant);
         //sloppy joes
         Food food1 = new Food(300, context.getResources().getString(R.string.foodSuggestion2),
                 context.getResources().getString(R.string.process2),
                 context.getResources().getString(R.string.recipeIdea2),
                 context.getResources().getString(R.string.ingredients2),
-                "drawable://" +  R.drawable.sloppy_joe);
+                "android.resource://com.tommymathews.slackersguidetohealth/" +  R.drawable.sloppy_joe);
         //fish stew
         Food food2 = new Food(400, context.getResources().getString(R.string.foodSuggestion2),
                 context.getResources().getString(R.string.process2),
                 context.getResources().getString(R.string.recipeIdea2),
                 context.getResources().getString(R.string.ingredients2),
-                "drawable://" +  R.drawable.fish_stew);
+                "android.resource://com.tommymathews.slackersguidetohealth/" +  R.drawable.fish_stew);
         //strawberry crush
         Food food3 = new Food(640, context.getResources().getString(R.string.foodSuggestion3),
                 context.getResources().getString(R.string.process3),
                 context.getResources().getString(R.string.recipeIdea3),
                 context.getResources().getString(R.string.ingredients3),
-                "drawable://" + R.drawable.strawberry_crush);
+                "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.strawberry_crush);
         //chocolate peanut butter shake
         Food food4 = new Food(1070, context.getResources().getString(R.string.foodSuggestion4),
                 context.getResources().getString(R.string.process4),
                 context.getResources().getString(R.string.recipeIdea4),
                 context.getResources().getString(R.string.ingredients4),
-                "drawable://" +  R.drawable.chocolate_pb_shake);
+                "android.resource://com.tommymathews.slackersguidetohealth/" +  R.drawable.chocolate_pb_shake);
         //donut muffins
         Food food5 = new Food(50, context.getResources().getString(R.string.foodSuggestion5),
                 context.getResources().getString(R.string.process5),
                 context.getResources().getString(R.string.recipeIdea5),
                 context.getResources().getString(R.string.ingredients5),
-                "drawable://" + R.drawable.donut_muffin);
+                "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.donut_muffin);
         //baked omelet squares
         Food food6 = new Food(570, context.getResources().getString(R.string.foodSuggestion6),
                 context.getResources().getString(R.string.process6),
                 context.getResources().getString(R.string.recipeIdea6),
                 context.getResources().getString(R.string.ingredients6),
-                "drawable://" + R.drawable.baked_omelet_squares);
+                "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.baked_omelet_squares);
         addFood(food);
         addFood(food1);
         addFood(food2);
