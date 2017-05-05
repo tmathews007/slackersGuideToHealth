@@ -18,7 +18,7 @@ public class SplashScreen extends Activity {
             @Override
             public void run(){
                 try {
-                    sleep(3000);
+                    sleep(2500);
                     SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN,MODE_PRIVATE);
 
                     String username=sharedPreferences.getString(DbSchema.EMAIL, null);
