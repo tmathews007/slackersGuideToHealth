@@ -36,9 +36,8 @@
     <string name="hardCodeInputDiet">Trying to eat less fat and more food that helps build strength</string>
 
     <!-- Recipe Default: Eggplant Fries -->
-    <string name="foodSuggestion">We recommend that you eat a vegetable dish. Try some
-        eggplant; it will help you develop strength and has a lot of important nutrients.
-        This 350 calorie recipe fits more veggies into your diet as a snack instead of as a meal!</string>
+    <string name="foodSuggestion">We recommend that you eat a vegetable dish. Try these 350 calorie
+        eggplant fries; they will help fit more veggies into your diet as a snack instead of as a meal!</string>
     <string name="recipeIdea">Eggplant Fries</string>
     <string name="ingredients">1 cup flour, 1/2 tsp carom seeds, 1/2 tsp salt, 1/2 tsp
     cayenne pepper powder, and a pinch of asafoetida, 5mm raw eggplant slices\n</string>
