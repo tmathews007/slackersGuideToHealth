@@ -136,7 +136,6 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
-    <string name="logout">Logout</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -153,16 +152,17 @@
         <item>Events</item>
     </string-array>
 
+    <string name="profile_text">My Profile</string>
+    <string name="settings_text">Settings</string>
+    <string name="logout_text">Logout</string>
+
     <!-- Strings related to Profile page -->
     <string name="title_activity_profile">User Profile</string>
     <string name="username">Username</string>
     <string name="progress">Progress</string>
-    <string name="profile_button">View Profile</string>
     <string name="badges">Badges</string>
     <string name="workouts_completed">Workouts Completed</string>
     <string name="back_button">Back</string>
-
-    <string name="settings_button">Settings</string>
     <string name="save_settings_button">Save</string>
 
     <string name="instructions"> Instructions </string>

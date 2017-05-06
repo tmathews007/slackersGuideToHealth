@@ -24,6 +24,6 @@
         />
     <item
         android:id="@+id/settingsItem"
-        android:title="@string/settings_button"
+        android:title="@string/settings_text"
         />
 </menu>
