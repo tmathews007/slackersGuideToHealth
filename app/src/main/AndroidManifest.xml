@@ -56,10 +56,13 @@
         <activity android:name=".ChestActivity"/>
         <activity android:name=".QuadsActivity"/>
         <activity
+            android:name=".FoodMain"
+            android:label="@string/food"/>
+        <activity
             android:name=".FoodManager"
             android:label="@string/food"/>
         <activity
-            android:name=".FoodActivity"
+            android:name=".FoodRecipesActivity"
             android:label="@string/food"/>
         <activity
             android:name=".FoodForm"

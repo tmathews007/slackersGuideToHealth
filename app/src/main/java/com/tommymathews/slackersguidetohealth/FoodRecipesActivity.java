@@ -19,7 +19,7 @@ import static com.tommymathews.slackersguidetohealth.R.id.foodPic;
  * Created by Ashwin on 4/4/2017.
  */
 
-public class FoodActivity extends ActivityWithMenu {
+public class FoodRecipesActivity extends ActivityWithMenu {
     private ImageView picImageView;
     private TextView foodSuggestionTextView;
     private TextView recipeIdeaTextView;

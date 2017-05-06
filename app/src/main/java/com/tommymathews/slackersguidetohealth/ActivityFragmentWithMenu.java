@@ -28,7 +28,7 @@ public abstract class ActivityFragmentWithMenu extends SingleFragmentActivity {
                 overridePendingTransition(0,0);
                 break;
             case R.id.foodItem:
-                intent = new Intent(getApplicationContext(), FoodManager.class);
+                intent = new Intent(getApplicationContext(), FoodMain.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 overridePendingTransition(0,0);
@@ -47,6 +47,12 @@ public abstract class ActivityFragmentWithMenu extends SingleFragmentActivity {
                 break;
             case R.id.profileItem:
                 intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+            case R.id.settingsItem:
+                intent = new Intent(getApplicationContext(), Settings.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 overridePendingTransition(0,0);

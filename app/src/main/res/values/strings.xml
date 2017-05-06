@@ -107,8 +107,8 @@
 
     <!--Events-->
     <string name="eventsDesc">This page promotes mental, physical, and emotional health.
-    Click on the respective images to find events in your area, such as a health conference
-    or a 5k marathon.</string>
+    After entering your location, click on the respective images to find events in your area,
+        such as a health conference or a 5k marathon.</string>
     <string name="title_activity_mental_health">Mental Health Events</string>
     <string name="title_activity_physical_health">Physical Health Events</string>
     <string name="title_activity_emotional_health">Emotional Health Events</string>
@@ -162,8 +162,8 @@
     <string name="workouts_completed">Workouts Completed</string>
     <string name="back_button">Back</string>
 
-    <string name="settings_button"> Settings </string>
-    <string name="save_settings_button"> Save </string>
+    <string name="settings_button">Settings</string>
+    <string name="save_settings_button">Save</string>
 
     <string name="instructions"> Instructions </string>
     <string name="create_fitness_title"> Create Your Own Fitness </string>
@@ -247,4 +247,8 @@
         4. Push yourself up with your right leg. \n
         5. Repeat the process alternating the legs. Repeat till you need rest.
     </string>
+
+    <!-- Food Main Page -->
+    <string name="submit_food_recipe_button">Submit a recipe</string>
+    <string name="get_food_recipe_button">Get a recipe</string>
 </resources>

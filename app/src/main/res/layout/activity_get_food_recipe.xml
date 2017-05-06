@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tommymathews.slackersguidetohealth.FoodActivity"
+    tools:context="com.tommymathews.slackersguidetohealth.FoodRecipesActivity"
     style="@style/margins">
 
     <LinearLayout
@@ -82,12 +82,6 @@
             android:layout_weight="1"
             android:text="@string/nextPageFood" />
 
-        <Button
-            android:id="@+id/submitRecipe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/submitRecipe" />
     </LinearLayout>
 
 

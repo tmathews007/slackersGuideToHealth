@@ -1,12 +1,10 @@
 package com.tommymathews.slackersguidetohealth;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,7 +18,6 @@ import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
  */
 
 public class ProfileActivity extends ActivityWithMenu{
-    private Button settingsButton;
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private UserService userService;
@@ -46,16 +43,6 @@ public class ProfileActivity extends ActivityWithMenu{
         userService = DependencyFactory.getUserService(getApplicationContext());
         String email = sharedPreferences.getString(DbSchema.EMAIL,null);
         User user = userService.getUserByEmail(email);
-
-        settingsButton = (Button) this.findViewById(R.id.settings_button);
-        settingsButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, Settings.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         String username = user.getName();
         usernameView = (TextView) this.findViewById(R.id.username);
