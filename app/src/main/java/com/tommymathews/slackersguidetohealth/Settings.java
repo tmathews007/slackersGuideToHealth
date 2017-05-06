@@ -22,7 +22,6 @@ import com.tommymathews.slackersguidetohealth.model.User;
 import com.tommymathews.slackersguidetohealth.service.UserService;
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -201,7 +200,7 @@ public class Settings extends Activity {
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Settings.this, ProfileActivity.class);
+                Intent intent = new Intent(Settings.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -235,7 +234,7 @@ public class Settings extends Activity {
 //                    UserService userService = DependencyFactory.getUserService(getApplication());
                     userService.addUser(user);
 
-                    startActivity(new Intent(Settings.this, ProfileActivity.class));
+                    startActivity(new Intent(Settings.this, MainActivity.class));
                     finish();
                     //store everything in shared preferences for now
                 }

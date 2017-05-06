@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Button profileButton;
+    private Button settingsButton;
     private Button logoutButton;
 
     @Override
@@ -33,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(profileIntent);
+                finish();
+            }
+        });
+
+        settingsButton = (Button) this.findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Settings.class);
+                startActivity(intent);
                 finish();
             }
         });
