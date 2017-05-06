@@ -36,9 +36,8 @@
     <string name="hardCodeInputDiet">Trying to eat less fat and more food that helps build strength</string>
 
     <!-- Recipe Default: Eggplant Fries -->
-    <string name="foodSuggestion">Since you calorie intake so far today is between 500 and 750, we recommend that you eat
-    some type of vegetable dish. Maybe eat some eggplant since it will help you develop strength and has a lot of nutrients
-    that you need.</string>
+    <string name="foodSuggestion">We recommend that you eat some type of vegetable dish. Maybe eat
+        some eggplant since it will help you develop strength and has a lot of nutrients that you need.</string>
     <string name="recipeIdea">Eggplant Fries</string>
     <string name="ingredients">1 cup flour, 1/2 tsp carom seeds, 1/2 tsp salt, 1/2 tsp
     cayenne pepper powder, and a pinch of asafoetida, 5mm raw eggplant slices\n</string>
