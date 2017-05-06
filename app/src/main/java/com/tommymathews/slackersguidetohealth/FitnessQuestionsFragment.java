@@ -115,8 +115,8 @@ public class FitnessQuestionsFragment extends Fragment {
         Log.d( TAG, "FitnessQuestionsFragment - cameraImage created" );
         cameraImage = ( ImageButton ) view.findViewById( R.id.camera );
         cameraImage.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                                            @Override
+                                            public void onClick(View v) {
 //                Log.d( TAG, "FitnessQuestionsFragment - checking for permission" );
 //                int permissionCheck = ContextCompat.checkSelfPermission( getActivity(), Manifest.permission.CAMERA );
 //                Log.d( TAG, "FitnessQuestionsFragment - permission given" );
@@ -124,10 +124,10 @@ public class FitnessQuestionsFragment extends Fragment {
 //                    Log.d( TAG, "FitnessQuestionsFragment - permission given" );
 //                    ActivityCompat.requestPermissions( getActivity(), new String[]{ Manifest.permission.CAMERA }, REQUEST_PHOTO );
 //                } else {
-                  returnIntent();
+                                                returnIntent();
 //                }
-            }
-        }
+                                            }
+                                        }
         );
 
         Log.d( TAG, "FitnessQuestionsFragment - photoView created" );

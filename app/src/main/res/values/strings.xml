@@ -13,8 +13,10 @@
     <string name="events">Events</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
-    <string name="catchPhrase">If you want to be healthy in the age of technology,
-    this is the app for you!</string>
+    <string name="catchPhrase">
+        \"To understand the heart and mind of a person, look not at what he has already achieved, but at what he aspires to do.\"
+        ~ Kahlil Gibran
+    </string>
     <string name="calorieCount">Calorie Count</string>
     <string name="calorieIntake">How many calories would you like to consume?</string>
     <string name="workoutChoice">Workout Choice</string>
@@ -106,9 +108,7 @@
     <string name="title_activity_food_form">Recipe Submission Tab</string>
 
     <!--Events-->
-    <string name="eventsDesc">This page promotes mental, physical, and emotional health.
-    After entering your location, click on the respective images to find events in your area,
-        such as a health conference or a 5k marathon.</string>
+    <string name="eventsDesc">This page promotes mental, physical, and emotional health.</string>
     <string name="title_activity_mental_health">Mental Health Events</string>
     <string name="title_activity_physical_health">Physical Health Events</string>
     <string name="title_activity_emotional_health">Emotional Health Events</string>
@@ -136,7 +136,6 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="sign_up">Sign Up</string>
     <string name="login">Login</string>
-    <string name="logout">Logout</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -153,16 +152,17 @@
         <item>Events</item>
     </string-array>
 
+    <string name="profile_text">My Profile</string>
+    <string name="settings_text">Settings</string>
+    <string name="logout_text">Logout</string>
+
     <!-- Strings related to Profile page -->
     <string name="title_activity_profile">User Profile</string>
     <string name="username">Username</string>
     <string name="progress">Progress</string>
-    <string name="profile_button">View Profile</string>
     <string name="badges">Badges</string>
     <string name="workouts_completed">Workouts Completed</string>
     <string name="back_button">Back</string>
-
-    <string name="settings_button">Settings</string>
     <string name="save_settings_button">Save</string>
 
     <string name="instructions"> Instructions </string>

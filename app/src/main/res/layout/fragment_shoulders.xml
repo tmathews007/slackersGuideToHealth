@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="@string/shoulder_workout_handstand_push_up"
-            style="@style/WorkoutFontAndSizeTitle" />
+            style="@style/FontAndSizeTitle" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -31,14 +31,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/instructions_title"
-            style="@style/WorkoutFontAndSizeInstructionsTitle" />
+            style="@style/FontAndSizeInstructionsTitle" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/shoulders_workout"
             android:text="@string/shoulder_workout_instructions"
-            style="@style/WorkoutFontAndSizeInstructions" />
+            style="@style/FontAndSizeInstructions" />
 
     </LinearLayout>
 

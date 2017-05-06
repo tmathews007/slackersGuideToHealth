@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
@@ -19,16 +19,16 @@ import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-    private Button profileButton;
-    private Button settingsButton;
-    private Button logoutButton;
+    private ImageButton profileButton;
+    private ImageButton settingsButton;
+    private ImageButton logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        profileButton = (Button) findViewById(R.id.profileButton);
+        profileButton = (ImageButton) findViewById(R.id.profileButton);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        settingsButton = (Button) this.findViewById(R.id.settings_button);
+        settingsButton = (ImageButton) this.findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        logoutButton = (Button) findViewById(R.id.logOutButton);
+        logoutButton = (ImageButton) findViewById(R.id.logOutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
