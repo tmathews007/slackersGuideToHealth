@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.SectionIndexer;
 
-import com.tommymathews.slackersguidetohealth.service.impl.DbBitmapUtility;
-
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * The purpose of this class is to create the database for the user who wants to input a fitness.
@@ -20,48 +19,116 @@ import java.io.Serializable;
 public class Fitness implements Serializable {
 
     private String fitnessName;
-    private String fitnessID;
-    private double numReps;
+    private int numReps;
     private BodyPart bodyPart;
+    private String[] steps = {null, null, null, null, null, null, null, null, null, null};
+    private Bitmap[] images = {null, null, null, null, null, null, null, null, null, null};
     private String instructions;
     private Bitmap image;
-    private byte[] byteImageArray;
 
-    public Fitness( String fitnessName, String id, int bodyPart, int numReps, String instructions, Bitmap image ) {
+
+    public Fitness( String fitnessName, int bodyPart, int numReps, String instructions, Bitmap image ) {
         this.fitnessName = fitnessName;
-        this.fitnessID = id;
         this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
         this.numReps = numReps;
         this.instructions = instructions;
-        this.byteImageArray = DbBitmapUtility.getBytes( image );
+        this.image = image;
     }
 
-//    public Fitness() {
-//        this.fitnessName = null;
-//        this.bodyPart = null;
-//        this.numReps = 0;
-//        this.instructions = null;
-//        this.byteImageArray = null;
-//    }
+    public Bitmap[] getImagesDB() {return images;}
+
+    public String[] getStepsDB() {return steps; }
+
+    public ArrayList<String> getSteps () {
+        ArrayList<String> s = new ArrayList<>();
+
+        int i = 0;
+        while (i < steps.length && steps[i] != null) {
+            s.add(steps[i]);
+            ++i;
+        }
+        return s;
+    }
+
+    public ArrayList<Bitmap> getStepImages() {
+        ArrayList<Bitmap> b = new ArrayList<>();
+
+        int i = 0;
+        while (i < images.length && images[i] != null) {
+            b.add(images[i]);
+            ++i;
+        }
+        return b;
+    }
 
     public String getFitnessName() {
         return this.fitnessName;
     }
 
-    public String getId() {
-        return this.fitnessID;
-    }
-
-    public void setId( String id ) {
-        this.fitnessID = id;
-    }
-
-    public double getNumReps() {
+    public int getNumReps() {
         return this.numReps;
     }
 
     public BodyPart getBodyPart() {
         return this.bodyPart;
+    }
+
+    public String getInstructions() {
+        return this.instructions;
+    }
+
+    public Bitmap getImage() {
+        return this.image;
+    }
+
+    public void setFitnessName( String fitnessName ) {
+        this.fitnessName = fitnessName;
+    }
+
+    public void setNumReps( int numReps ) {
+        this.numReps = numReps;
+    }
+
+    public void setBodyPart( int bodyPart ) {
+        this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
+    }
+
+    public void setInstructions( String instructions ) {
+        this.instructions = instructions;
+    }
+
+    public void setImage( Bitmap image ) {
+        this.image = image;
+    }
+
+    public void setImagesDB(Bitmap[] imgs) { images = imgs;}
+
+    public void setStepImages(ArrayList<Bitmap> imgs) {
+        int i = 0;
+        while (i < imgs.size() && i < images.length) {
+            images[i] = imgs.get(i);
+            i++;
+        }
+
+        while (i < steps.length) {
+            images[i] = null;
+            i++;
+        }
+    }
+
+    public void setStepsDB(String[] s) {steps = s;}
+
+    public void setSteps(ArrayList<String> s) {
+        int i = 0;
+        while (i < s.size() && i < steps.length) {
+            steps[i] = s.get(i);
+            i++;
+        }
+
+        while (i < steps.length) {
+            steps[i] = null;
+            i++;
+        }
     }
 
     public int getBodyPartPosition() {
@@ -87,26 +154,6 @@ public class Fitness implements Serializable {
             default:
                 return 0;
         }
-    }
-
-    public String getInstructions() {
-        return this.instructions;
-    }
-
-    public Bitmap getImage() {
-        return DbBitmapUtility.getImage( this.byteImageArray );
-    }
-
-    public void setFitnessName( String fitnessName ) {
-        this.fitnessName = fitnessName;
-    }
-
-    public void setNumReps( double numReps ) {
-        this.numReps = numReps;
-    }
-
-    public void setBodyPart( BodyPart bodyPart ) {
-        this.bodyPart = bodyPart;
     }
 
     public void setBodyPartPosition(int position) {
@@ -144,18 +191,9 @@ public class Fitness implements Serializable {
         }
     }
 
-    public void setInstructions( String instructions ) {
-        this.instructions = instructions;
-    }
-
-    public void setImage( Bitmap image ) {
-        this.byteImageArray = DbBitmapUtility.getBytes( image );
-    }
-
     @Override
     public String toString() {
         return this.fitnessName + " : " +
-                this.fitnessID + " : " +
                 this.numReps + " : " +
                 this.bodyPart + " : " +
                 this.instructions + " : " +

@@ -13,19 +13,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tommymathews.slackersguidetohealth.model.Fitness;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gregs on 4/26/2017.
  */
 
 public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment {
-    /*FitnessService serve = DependencyFactory. getFitnessService(getActivity());
-    List<Fitness> fitnesses = serve.getAllFitness();
-    Fitness fitness = fitnesses.get(0);*/
+    /*FitnessService serve = DependencyFactory. getFitnessService(getActivity());*/
+    Fitness fitness;
 
-    ArrayList<Bitmap>images = new ArrayList<>();
-    ArrayList<String> steps = new ArrayList<>();
+    Bitmap images[] ={null, null, null};
+    List<String> steps;
     Button nextButton;
     Button previousButton;
     TextView stepText;
@@ -44,6 +46,9 @@ public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment
 
         super.onCreateView(inflater, container, savedInstanceState);
 
+        String fitName = getActivity().getIntent().getStringExtra("NAME");
+        fitness = DependencyFactory.getFitnessService(getContext()).getFitnessByName(fitName);
+
         //testing temp file
         Drawable step_1 = getResources().getDrawable(R.drawable.chest);
         Bitmap step1 = ((BitmapDrawable) step_1).getBitmap();
@@ -51,19 +56,18 @@ public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment
         Bitmap step2 = ((BitmapDrawable) step_2).getBitmap();
         Drawable step_3 = getResources().getDrawable(R.drawable.back);
         Bitmap step3 = ((BitmapDrawable) step_3).getBitmap();
-        images.add(step1);
-        images.add(step2);
-        images.add(step3);
-        steps.add("do chest");
-        steps.add("do abs");
-        steps.add("do back");
+        images[0] = step1;
+        images[1] = step2;
+        images[2] = step3;
+
+        steps = fitness.getSteps();
 
         View view = inflater.inflate(R.layout.display_fitness_steps_fragment, container, false);
 
         stepImage = (ImageView) view.findViewById(R.id.step_image);
         stepText = (TextView) view.findViewById(R.id.step_text);
 
-        stepImage.setImageBitmap(images.get(stepCounter));
+        stepImage.setImageBitmap(images[stepCounter]);
         stepText.setText(steps.get(stepCounter));
 
         Button nextButton = (Button) view.findViewById(R.id.next_step_button);
@@ -74,7 +78,7 @@ public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment
             public void onClick(View v) {
                 ++stepCounter;
                 if (stepCounter < steps.size()) {
-                    stepImage.setImageBitmap(images.get(stepCounter));
+                    stepImage.setImageBitmap(images[stepCounter]);
                     stepText.setText(steps.get(stepCounter));
                     previousButton.setVisibility(View.VISIBLE);
                 } else {
@@ -87,7 +91,7 @@ public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment
             @Override
             public void onClick(View v) {
                 --stepCounter;
-                stepImage.setImageBitmap(images.get(stepCounter));
+                stepImage.setImageBitmap(images[stepCounter]);
                 stepText.setText(steps.get(stepCounter));
                 if (stepCounter <= 0) {
                     previousButton.setVisibility(View.GONE);
