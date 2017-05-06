@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                     overridePendingTransition(0,0);
                 } else if (item.getItemId() == R.id.foodItem) {
-                    Intent i = new Intent(getApplicationContext(), FoodManager.class);
+                    Intent i = new Intent(getApplicationContext(), FoodMain.class);
                     startActivity(i);
                     overridePendingTransition(0,0);
 

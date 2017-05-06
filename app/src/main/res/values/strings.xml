@@ -247,4 +247,8 @@
         4. Push yourself up with your right leg. \n
         5. Repeat the process alternating the legs. Repeat till you need rest.
     </string>
+
+    <!-- Food Main Page -->
+    <string name="submit_food_recipe_button">Submit a recipe</string>
+    <string name="get_food_recipe_button">Get a recipe</string>
 </resources>

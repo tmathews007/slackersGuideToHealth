@@ -31,7 +31,7 @@ public class FoodFragment extends Fragment{
     public static final String CALORIES = "CALORIES";
     public static final String FOOD = "FOOD";
 
-    private Button nextPageButton, submitRecipe;
+    private Button nextPageButton;
     private EditText calories;
 
     @Override
@@ -41,22 +41,10 @@ public class FoodFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.activity_food, container, false);
+        View view = inflater.inflate(R.layout.activity_get_food_recipe, container, false);
 
         nextPageButton = (Button) view.findViewById(R.id.nextPageFood);
         calories = (EditText) view.findViewById(R.id.calories);
-
-        submitRecipe = (Button) view.findViewById(R.id.nextPageFood);
-
-        submitRecipe = (Button) view.findViewById(R.id.submitRecipe);
-
-        submitRecipe.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), FoodForm.class);
-                startActivity(i);
-            }
-        });
 
         nextPageButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -110,7 +98,7 @@ public class FoodFragment extends Fragment{
                     .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent i = new Intent(getActivity(), FoodActivity.class);
+                            Intent i = new Intent(getActivity(), FoodRecipesActivity.class);
                             startActivity(i);
                             getActivity().finish();
                         }
@@ -125,7 +113,7 @@ public class FoodFragment extends Fragment{
                     }).create().show();
         } else {
             Food food = foods.get((int)(Math. random() * foods.size()));
-            Intent i = new Intent(getActivity(), FoodActivity.class);
+            Intent i = new Intent(getActivity(), FoodRecipesActivity.class);
             i.putExtra(FOOD, food);
             startActivity(i);
         }
