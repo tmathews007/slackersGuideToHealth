@@ -1,7 +1,5 @@
 package com.tommymathews.slackersguidetohealth.service.impl;
 
-import android.graphics.Bitmap;
-
 /**
  * Created by cj on 4/19/17.
  */
@@ -13,6 +11,7 @@ public class DbSchema {
     public static final class UserTable {
         public static final String USER_NAME = "USER_NAME";
         public static final class Columns {
+            public static final String ID = "ID";
             public static final String NAME = "NAME";
             public static final String EMAIL = "EMAIL";
             public static final String PASSWORD = "PASSWORD";
@@ -30,12 +29,13 @@ public class DbSchema {
     public static final class FoodTable {
         public static final String FOOD_NAME = "FOOD_NAME";
         public static final class Columns {
+            public static final String ID = "ID";
             public static final String NAME = "NAME";
             public static final String RECOMMENDATION = "RECOMMENDATION";
             public static final String CALORIE_LEVEL = "CALORIE_LEVEL";
             public static final String INGREDIENTS = "INGREDIENTS";
             public static final String RECIPE = "RECIPE";
-            public static final String IMAGE = "IMAGE";
+            public static final String IMAGE_PATH = "IMAGE_PATH";
 
         }
     }

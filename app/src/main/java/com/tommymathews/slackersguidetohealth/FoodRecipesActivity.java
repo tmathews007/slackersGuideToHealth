@@ -1,6 +1,9 @@
 package com.tommymathews.slackersguidetohealth;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tommymathews.slackersguidetohealth.model.Food;
+import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 import java.io.IOException;
 
@@ -49,10 +53,9 @@ public class FoodRecipesActivity extends ActivityWithMenu {
                 e.printStackTrace();
             }
 
-            //TODO ADD FOOD SUGGEST
-            //  foodSuggestionTextView.setText();
             if (food.getRecommendation().length() == 0) {
-                //TODO ADD FOOD SUGGEST
+                foodSuggestionTextView.setText("This food must be delicious because it's only "+
+                        food.getCalorieLevel() +" calories!");
             } else {
                 foodSuggestionTextView.setText(food.getRecommendation());
             }
@@ -61,6 +64,37 @@ public class FoodRecipesActivity extends ActivityWithMenu {
             processTextView.setText("Directions: "+food.getRecipe());
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        dialogPopup();
+    }
+
+    private void dialogPopup() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setMessage("Did you make the food?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sp = getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
+                        String username = sp.getString(DbSchema.EMAIL, null);
+                        DependencyFactory.getUserService(getApplicationContext()).incrementFoodProgress(username);
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .show();
     }
 
 }
