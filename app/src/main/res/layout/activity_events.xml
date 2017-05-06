@@ -59,16 +59,12 @@
                 android:id="@+id/physical"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/mental"
                 app:srcCompat="@drawable/danceathon"/>
 
             <ImageView
                 android:id="@+id/emotional"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/physical"
                 app:srcCompat="@drawable/wellness_expo"/>
         </LinearLayout>
 
