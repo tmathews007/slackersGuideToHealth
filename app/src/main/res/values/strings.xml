@@ -107,8 +107,8 @@
 
     <!--Events-->
     <string name="eventsDesc">This page promotes mental, physical, and emotional health.
-    Click on the respective images to find events in your area, such as a health conference
-    or a 5k marathon.</string>
+    After entering your location, click on the respective images to find events in your area,
+        such as a health conference or a 5k marathon.</string>
     <string name="title_activity_mental_health">Mental Health Events</string>
     <string name="title_activity_physical_health">Physical Health Events</string>
     <string name="title_activity_emotional_health">Emotional Health Events</string>
