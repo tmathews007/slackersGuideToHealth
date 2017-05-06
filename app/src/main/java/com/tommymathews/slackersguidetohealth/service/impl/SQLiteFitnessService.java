@@ -75,27 +75,6 @@ public class SQLiteFitnessService implements FitnessService {
         return null;
     }
 
-//    public Fitness getFitnessByBodypart(String bodyPart ) {
-//        if( bodyPart == null ) {
-//            return null;
-//        }
-//
-//        List<Fitness> bodyPartsList = queryFitness( DbSchema.FitnessTable.Columns.BODY_PART,
-//                new String[] {
-//                        bodyPart
-//                },
-//                null
-//        );
-//
-//        for(Fitness bP : bodyPartsList ) {
-//            if( bP.getFitnesByBodypart.equals( bodyPart ) ) {
-//                return bP;
-//            }
-//        }
-//
-//        return null;
-//    }
-
     @Override
     public List<Fitness> getAllFitness() {
         List<Fitness> fitness = queryFitness(null, null, null);

@@ -72,7 +72,7 @@ public class FitnessQuestionsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         String fitnessId = getArguments().getString( ARG_FITNESS_ID );
-        fitness = DependencyFactory.getFitnessService( getActivity().getApplicationContext() ).getFitnessById( fitnessId );
+        fitness = DependencyFactory.getFitnessService( getActivity().getApplicationContext() ).getFitnessByName( fitnessId );
     }
 
     @Nullable
@@ -138,7 +138,7 @@ public class FitnessQuestionsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if( fitness == null ) {
-                    fitness = new Fitness( null, null, 0, 0, null, null );
+                    fitness = new Fitness( null, 0, 0, null, null );
                 }
                 SharedPreferences sharedPreferences = getActivity().getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
 

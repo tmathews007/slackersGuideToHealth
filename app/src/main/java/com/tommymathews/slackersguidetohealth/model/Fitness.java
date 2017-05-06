@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Fitness implements Serializable {
 
     private String fitnessName;
-    private int numReps;
+    private double numReps;
     private BodyPart bodyPart;
     private String[] steps = {null, null, null, null, null, null, null, null, null, null};
     private Bitmap[] images = {null, null, null, null, null, null, null, null, null, null};
@@ -27,7 +27,7 @@ public class Fitness implements Serializable {
     private Bitmap image;
 
 
-    public Fitness( String fitnessName, int bodyPart, int numReps, String instructions, Bitmap image ) {
+    public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, Bitmap image ) {
         this.fitnessName = fitnessName;
         this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
         this.numReps = numReps;
@@ -65,7 +65,7 @@ public class Fitness implements Serializable {
         return this.fitnessName;
     }
 
-    public int getNumReps() {
+    public double getNumReps() {
         return this.numReps;
     }
 
@@ -85,7 +85,7 @@ public class Fitness implements Serializable {
         this.fitnessName = fitnessName;
     }
 
-    public void setNumReps( int numReps ) {
+    public void setNumReps( double numReps ) {
         this.numReps = numReps;
     }
 
