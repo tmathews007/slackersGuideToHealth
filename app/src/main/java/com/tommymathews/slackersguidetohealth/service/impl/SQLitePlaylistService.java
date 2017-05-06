@@ -34,7 +34,7 @@ public class SQLitePlaylistService implements PlaylistService {
         ContentValues contentValues = getContentValues(p );
         Playlist pList = getPlaylistById(p.getId());
         if ( pList == null ) {
-            database.insert( DbSchema.PlayListTable.PLAYLIST_NAME, null, contentValues);
+            database.insert(DbSchema.PlayListTable.PLAYLIST_NAME, null, contentValues);
 
         } else {
             database.update(DbSchema.PlayListTable.PLAYLIST_NAME, contentValues, DbSchema.PlayListTable.Columns.ID + "=?", new String[] {p.getId()});
