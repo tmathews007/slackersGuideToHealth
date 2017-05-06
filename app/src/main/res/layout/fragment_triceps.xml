@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:text="@string/tricep_workout_push_ups"
-            style="@style/WorkoutFontAndSizeTitle" />
+            style="@style/FontAndSizeTitle" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:text="@string/instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/WorkoutFontAndSizeInstructionsTitle"
+            style="@style/FontAndSizeInstructionsTitle"
             android:id="@+id/instructions_title" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:id="@+id/triceps_workout"
             android:text="@string/tricep_workout_instructions"
             android:layout_width="match_parent"
-            style="@style/WorkoutFontAndSizeInstructions" />
+            style="@style/FontAndSizeInstructions" />
 
     </LinearLayout>
 

@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/create_title"
             android:text="@string/create_fitness_title"
-            style="@style/WorkoutFontAndSizeTitle" />
+            style="@style/FontAndSizeTitle" />
 
         <TextView
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/fitness_name_edit"
-            style="@style/WorkoutFontAndSizeInstructions"
+            style="@style/FontAndSizeInstructions"
             android:hint="@string/fitness_name_sample" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinner_fitness"
-            style="@style/WorkoutFontAndSizeInstructions" />
+            style="@style/FontAndSizeInstructions" />
 
         <TextView
             android:text="@string/num_reps"
@@ -55,7 +55,7 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/num_reps_edit"
-            style="@style/WorkoutFontAndSizeInstructions"
+            style="@style/FontAndSizeInstructions"
             android:hint="@string/num_reps_sample" />
 
         <TextView
@@ -70,7 +70,7 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/instructions_edit"
-            style="@style/WorkoutFontAndSizeInstructions"
+            style="@style/FontAndSizeInstructions"
             android:hint="@string/instructions_sample" />
 
         <TextView
