@@ -162,8 +162,8 @@
     <string name="workouts_completed">Workouts Completed</string>
     <string name="back_button">Back</string>
 
-    <string name="settings_button"> Settings </string>
-    <string name="save_settings_button"> Save </string>
+    <string name="settings_button">Settings</string>
+    <string name="save_settings_button">Save</string>
 
     <string name="instructions"> Instructions </string>
     <string name="create_fitness_title"> Create Your Own Fitness </string>

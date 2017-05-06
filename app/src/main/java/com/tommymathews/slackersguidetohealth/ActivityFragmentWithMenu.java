@@ -51,6 +51,12 @@ public abstract class ActivityFragmentWithMenu extends SingleFragmentActivity {
                 startActivity(intent);
                 overridePendingTransition(0,0);
                 break;
+            case R.id.settingsItem:
+                intent = new Intent(getApplicationContext(), Settings.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
             default:
                 return super.onOptionsItemSelected(item);
 
