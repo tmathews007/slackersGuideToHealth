@@ -1,6 +1,7 @@
 package com.tommymathews.slackersguidetohealth;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.tommymathews.slackersguidetohealth.service.FoodService;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
@@ -30,8 +31,11 @@ public class DependencyFactory {
 
     public static FitnessService getFitnessService(Context context) {
         if (fitnessService == null) {
+            Log.d("creates", "new");
             fitnessService = new SQLiteFitnessService(context);
         }
+        Log.d("returns", "done");
+
         return fitnessService;
     }
 

@@ -19,7 +19,7 @@ import com.tommymathews.slackersguidetohealth.model.Fitness;
 
 public class FitnessDescriptionFragment  extends Fragment{
 
-    Fitness fitness;
+    String name;
     TextView title;
     ImageView image;
     TextView description;
@@ -35,22 +35,26 @@ public class FitnessDescriptionFragment  extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fitness_description_fragment, container, false);
 
-        title = (TextView) view.findViewById(R.id.description_title);
-        image = (ImageView) view.findViewById(R.id.description_image);
-        description = (TextView) view.findViewById(R.id.description_text);
+        name = getActivity().getIntent().getStringExtra("NAME");
 
-        /*
-        Implement when you actually use this
-        title.setText("This is a test title");
-        image.setImageBitmap();
-        description.setText("this is the discription");
-        */
+        Fitness temp = DependencyFactory.getFitnessService(getActivity()).getFitnessByName(name);
+
+        title = (TextView) view.findViewById(R.id.description_title);
+        title.setText(temp.getFitnessName());
+
+        image = (ImageView) view.findViewById(R.id.description_image);
+        image.setImageBitmap(temp.getImage());
+
+        description = (TextView) view.findViewById(R.id.description_text);
+        description.setText(temp.getInstructions());
 
         lookAtFitnessButton = (Button) view.findViewById(R.id.look_at_fitness_button);
         lookAtFitnessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), DisplayFitnessSteps.class));
+                Intent temp = new Intent(getActivity(), DisplayFitnessSteps.class);
+                temp.putExtra("NAME", name);
+                startActivity(temp);
             }
         });
 

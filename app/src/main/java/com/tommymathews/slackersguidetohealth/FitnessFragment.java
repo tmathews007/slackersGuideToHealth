@@ -3,7 +3,10 @@ package com.tommymathews.slackersguidetohealth;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +19,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
+import com.tommymathews.slackersguidetohealth.service.FitnessService;
+
+import java.util.ArrayList;
 
 public class FitnessFragment extends Fragment {
     private final String EXTRA_FITNESS_CREATED = "EXTRA_FITNESS_CREATED";
@@ -89,7 +95,42 @@ public class FitnessFragment extends Fragment {
         createWorkoutButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( getActivity(), FitnessBacklogActivity.class );
+                Intent intent = new Intent( getActivity(), FitnessDescriptionActivity.class );
+
+                Drawable step_1 = getResources().getDrawable(R.drawable.chest);
+                Bitmap img = ((BitmapDrawable) step_1).getBitmap();
+
+                Fitness test = new Fitness("Push ups", 2, 4, "Try hard to go up and down", img);
+
+                ArrayList<String> temp = new ArrayList<String>();
+                temp.add("Push up");
+                temp.add("Push down");
+                temp.add("Push around");
+
+                Drawable image1 = getResources().getDrawable(R.drawable.biceps);
+                Bitmap img1 = ((BitmapDrawable) image1).getBitmap();
+
+                Drawable image2 = getResources().getDrawable(R.drawable.abs);
+                Bitmap img2 = ((BitmapDrawable) image2).getBitmap();
+
+                Drawable image3 = getResources().getDrawable(R.drawable.calves);
+                Bitmap img3 = ((BitmapDrawable) image3).getBitmap();
+
+                ArrayList<Bitmap> tempImgs = new ArrayList<Bitmap>();
+
+                tempImgs.add(img1);
+                tempImgs.add(img2);
+                tempImgs.add(img3);
+
+                test.setSteps(temp);
+                test.setStepImages(tempImgs);
+                Log.d("added", "not yet");
+
+                DependencyFactory.getFitnessService(getActivity()).addFitness(test);
+
+                Log.d("added", "maybe");
+
+                intent.putExtra("NAME", "Push ups");
                 startActivity( intent );
             }
         }
