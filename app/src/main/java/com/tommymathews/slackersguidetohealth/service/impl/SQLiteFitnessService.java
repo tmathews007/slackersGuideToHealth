@@ -11,6 +11,9 @@ import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class SQLiteFitnessService implements FitnessService {
@@ -27,73 +30,71 @@ public class SQLiteFitnessService implements FitnessService {
     }
 
     @Override
-    public void addFitness(Fitness fitness) {
+    public void addFitnessToPlaylist( Fitness fitness ) {
         ContentValues contentValues = getContentValues( fitness );
-//        Fitness currFitness = getFitnessByName( fitness.getFitnessName() );
-        List<Fitness> queryList = queryFitness(DbSchema.FitnessTable.Columns.ID + "=?",
-                new String[]{
+        List<Fitness> queryList = queryFitness( DbSchema.FitnessTable.Columns.ID + "=?",
+                new String[] {
                         fitness.getId()
                 },
                 null
         );
-        if ( queryList == null ) {
+
+        if( queryList == null || queryList.size() == 0 ) {
             database.insert( DbSchema.FitnessTable.FITNESS_NAME,
-                             null,
-                             contentValues
+                    null,
+                    contentValues
             );
         } else {
             database.update( DbSchema.FitnessTable.FITNESS_NAME,
-                             contentValues,
-                             DbSchema.FitnessTable.FITNESS_NAME + "=?",
-                             new String[] {
-                                     fitness.getFitnessName()
-                             }
+                    contentValues,
+                    DbSchema.FitnessTable.Columns.ID + "=?",
+                    new String[] {
+                            fitness.getId()
+                    }
             );
         }
     }
 
     @Override
-    public Fitness getFitnessByName(String fitness) {
-        if( fitness == null ) {
-            return null;
-        }
-
-        List<Fitness> fitnessList = queryFitness( DbSchema.FitnessTable.FITNESS_NAME,
-                                                  new String[]{
-                                                          fitness
-                                                  },
-                                                   null
-        );
-
-        for( Fitness fit : fitnessList ) {
-            if( fit.getFitnessName().equals( fitness ) ) {
-                return fit;
-            }
-        }
-
-        return null;
-    }
-
     public Fitness getFitnessById( String id ) {
         if( id == null ) {
             return null;
         }
 
-        List<Fitness> queryList = queryFitness( DbSchema.FitnessTable.Columns.ID + "=?",
+        List<Fitness> queryList = queryFitness( DbSchema.FitnessTable.Columns.ID +"=?",
                 new String[] {
-                    id
+                        id
                 },
                 null
         );
 
-        for( Fitness fit : queryList ) {
-            if( fit.getId() == null ) {
+        for( Fitness getFit : queryList ) {
+            if( getFit.getId() == null ) {
                 return null;
             }
-            return fit;
+
+            return getFit;
         }
 
         return null;
+    }
+
+    public List<Fitness> getAllFitnessesSorted() {
+        List<Fitness> prioritizedFitness = queryFitness( null, null, null );
+
+        Collections.sort(prioritizedFitness, new Comparator<Fitness>() {
+            @Override
+            public int compare(Fitness fit1, Fitness fit2) {
+                if( fit1.getFitnessName().equals( fit2.getFitnessName()) ) {
+                    return fit1.getBodyPart().compareTo( fit2.getBodyPart() );
+                } else {
+                    return fit1.getFitnessName().compareTo( fit2.getFitnessName() );
+                }
+            }
+        }
+        );
+
+        return prioritizedFitness;
     }
 
     @Override
@@ -136,16 +137,11 @@ public class SQLiteFitnessService implements FitnessService {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put( DbSchema.FitnessTable.FITNESS_NAME, fitness.getFitnessName() );
+        contentValues.put( DbSchema.FitnessTable.Columns.ID, fitness.getId().toString() );
         contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().toString() );
         contentValues.put( DbSchema.FitnessTable.Columns.NUM_REPS, fitness.getNumReps() );
         contentValues.put( DbSchema.FitnessTable.Columns.INSTRUCTIONS, fitness.getInstructions() );
         contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, DbBitmapUtility.getBytes( fitness.getImage() ) );
-//        for( int i = 0; i < fitness.getInstructions().size(); i++ ) {
-//            contentValues.put( DbSchema.FitnessTable.Columns.INSTRUCTIONS, fitness.getInstructions().get( i ) );
-//        }
-//        for( int i = 0; i < fitness.getImage().size(); i++ ) {
-//            contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, DbBitmapUtility.getBytes( fitness.getImage().get( i ) ) );
-//        }
 
         return contentValues;
     }
@@ -157,13 +153,15 @@ public class SQLiteFitnessService implements FitnessService {
 
         public Fitness getFitness() {
             String name = getString( getColumnIndex( DbSchema.FitnessTable.FITNESS_NAME ) );
+            String id = getString( getColumnIndex( DbSchema.FitnessTable.Columns.ID ) );
             int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
             int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
             String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
             byte[] image = getBlob( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE ) );
 
-            Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, DbBitmapUtility.getImage( image ) );
+            Fitness fitness = new Fitness( name, id, bodyPart, numReps, instructions, DbBitmapUtility.getImage( image ) );
             fitness.setFitnessName( name );
+            fitness.setId( id );
             fitness.setBodyPartPosition( bodyPart );
             fitness.setNumReps( numReps );
             fitness.setInstructions( instructions );

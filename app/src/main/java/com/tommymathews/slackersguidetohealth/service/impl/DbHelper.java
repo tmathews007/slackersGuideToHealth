@@ -47,6 +47,7 @@ public class DbHelper extends SQLiteOpenHelper {
          */
         db.execSQL( "create table " + DbSchema.FitnessTable.FITNESS_NAME + "( " +
                 " _id integer primary key autoincrement, " +
+                DbSchema.FitnessTable.Columns.ID + ", " +
                 DbSchema.FitnessTable.Columns.BODY_PART + ", " +
                 DbSchema.FitnessTable.Columns.NUM_REPS + ", " +
                 DbSchema.FitnessTable.Columns.INSTRUCTIONS + ", " +

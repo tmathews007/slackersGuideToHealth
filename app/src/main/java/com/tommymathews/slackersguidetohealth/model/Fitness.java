@@ -27,21 +27,22 @@ public class Fitness implements Serializable {
     private Bitmap image;
     private byte[] byteImageArray;
 
-    public Fitness( String fitnessName, int bodyPart, int numReps, String instructions, Bitmap image ) {
+    public Fitness( String fitnessName, String id, int bodyPart, int numReps, String instructions, Bitmap image ) {
         this.fitnessName = fitnessName;
+        this.fitnessID = id;
         this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
         this.numReps = numReps;
         this.instructions = instructions;
         this.byteImageArray = DbBitmapUtility.getBytes( image );
     }
 
-    public Fitness() {
-        this.fitnessName = null;
-        this.bodyPart = null;
-        this.numReps = 0;
-        this.instructions = null;
-        this.byteImageArray = null;
-    }
+//    public Fitness() {
+//        this.fitnessName = null;
+//        this.bodyPart = null;
+//        this.numReps = 0;
+//        this.instructions = null;
+//        this.byteImageArray = null;
+//    }
 
     public String getFitnessName() {
         return this.fitnessName;

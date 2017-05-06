@@ -73,7 +73,7 @@ public class FitnessBacklogFragment extends Fragment {
             }
 
             Fitness fitnessCreated = FitnessQuestionsActivity.getFitnessCreated(data);
-            fitnessService.addFitness( fitnessCreated );
+            fitnessService.addFitnessToPlaylist( fitnessCreated );
             updateUI();
         }
     }
