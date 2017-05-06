@@ -31,7 +31,7 @@ public class FoodFragment extends Fragment{
     public static final String CALORIES = "CALORIES";
     public static final String FOOD = "FOOD";
 
-    private Button nextPageButton;
+    private Button nextPageButton, submitRecipe;
     private EditText calories;
 
     @Override
@@ -45,6 +45,18 @@ public class FoodFragment extends Fragment{
 
         nextPageButton = (Button) view.findViewById(R.id.nextPageFood);
         calories = (EditText) view.findViewById(R.id.calories);
+
+        submitRecipe = (Button) view.findViewById(R.id.nextPageFood);
+
+        submitRecipe = (Button) view.findViewById(R.id.submitRecipe);
+
+        submitRecipe.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), FoodForm.class);
+                startActivity(i);
+            }
+        });
 
         nextPageButton.setOnClickListener(new View.OnClickListener(){
             @Override
