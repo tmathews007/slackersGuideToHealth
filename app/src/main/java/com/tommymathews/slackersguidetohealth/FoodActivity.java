@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import java.io.IOException;
 
 import static com.tommymathews.slackersguidetohealth.FoodFragment.FOOD;
 import static com.tommymathews.slackersguidetohealth.R.id.foodPic;
+import static com.tommymathews.slackersguidetohealth.R.id.submit;
 
 /**
  * Created by Ashwin on 4/4/2017.
@@ -25,6 +28,7 @@ public class FoodActivity extends ActivityWithMenu {
     private TextView recipeIdeaTextView;
     private TextView ingredientsTextView;
     private TextView processTextView;
+    private Button submitRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,17 @@ public class FoodActivity extends ActivityWithMenu {
         recipeIdeaTextView = (TextView) findViewById(R.id.recipeIdea);
         ingredientsTextView = (TextView) findViewById(R.id.ingredients);
         processTextView = (TextView) findViewById(R.id.process);
+
+        submitRecipe = (Button) findViewById(R.id.submitRecipe);
+
+        submitRecipe.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), FoodForm.class);
+                startActivity(i);
+                overridePendingTransition(0,0);
+            }
+        });
 
         Intent intent = getIntent();
         if (intent.getSerializableExtra(FOOD) != null) {

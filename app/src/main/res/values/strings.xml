@@ -29,7 +29,7 @@
     <string name="foodAllergy">List any known food allergies you have; say none if you have none</string>
     <string name="dietPlanDetails">Enter details of your diet plan, if you have one; say "none" if you do not</string>
     <string name="nextPageFood">Done Entering Info</string>
-    <string name="title_activity_food_manager">Food</string>
+    <string name="submitRecipe">Submit Recipe</string>
     <string name="hardCodeInputCalories">600</string>
     <string name="hardCodeInputCons">Breakfast: Cereal Bar.\nLunch: Rice, yogurt, pulverized tomato extract.</string>
     <string name="none">none</string>
