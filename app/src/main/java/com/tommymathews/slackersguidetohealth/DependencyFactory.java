@@ -5,15 +5,18 @@ import android.util.Log;
 
 import com.tommymathews.slackersguidetohealth.service.FoodService;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
+import com.tommymathews.slackersguidetohealth.service.PlaylistService;
 import com.tommymathews.slackersguidetohealth.service.UserService;
 import com.tommymathews.slackersguidetohealth.service.impl.SQLiteFitnessService;
 import com.tommymathews.slackersguidetohealth.service.impl.SQLiteFoodService;
+import com.tommymathews.slackersguidetohealth.service.impl.SQLitePlaylistService;
 import com.tommymathews.slackersguidetohealth.service.impl.SQLiteUserService;
 
 public class DependencyFactory {
     private static UserService userService;
     private static FoodService foodService;
     private static FitnessService fitnessService;
+    private static PlaylistService playlistService;
 
     public static UserService getUserService(Context context) {
         if (userService == null) {
@@ -31,12 +34,16 @@ public class DependencyFactory {
 
     public static FitnessService getFitnessService(Context context) {
         if (fitnessService == null) {
-            Log.d("creates", "new");
             fitnessService = new SQLiteFitnessService(context);
         }
-        Log.d("returns", "done");
-
         return fitnessService;
+    }
+
+    public static PlaylistService getPlaylistService(Context context) {
+        if (playlistService == null) {
+            playlistService = new SQLitePlaylistService(context);
+        }
+        return playlistService;
     }
 
 }

@@ -39,7 +39,7 @@ public class SQLiteFitnessService implements FitnessService {
             );
 
             database.insert(DbSchema.StepsTable.STEPS_NAME, null, stepsContentValues);
-            
+
             database.insert(DbSchema.ImagesTable.IMAGE_NAME, null, imagesContentValues);
         } else {
             database.update( DbSchema.FitnessTable.FITNESS_NAME,
@@ -51,7 +51,7 @@ public class SQLiteFitnessService implements FitnessService {
             );
 
             database.update(DbSchema.StepsTable.STEPS_NAME, stepsContentValues, DbSchema.StepsTable.Columns.STEPN + "=?", new String[] {currFitness.getFitnessName()});
-            
+
             database.update(DbSchema.ImagesTable.IMAGE_NAME, imagesContentValues, DbSchema.ImagesTable.Columns.IMAGEN + "=?", new String[]{currFitness.getFitnessName()});
         }
     }
@@ -71,7 +71,7 @@ public class SQLiteFitnessService implements FitnessService {
                 return fit;
             }
         }
-        
+
         return null;
     }
 
@@ -110,7 +110,7 @@ public class SQLiteFitnessService implements FitnessService {
         Cursor cursor = database.query( DbSchema.FitnessTable.FITNESS_NAME, null, whereClause, whereArgs, null, null, orderBy);
 
         Cursor cursorSteps;
-        
+
         Cursor cursorImages;
 
         if (whereClause.equals(DbSchema.FoodTable.Columns.NAME + "=?")) {
@@ -133,10 +133,10 @@ public class SQLiteFitnessService implements FitnessService {
                 Fitness fit = wrapper.getFitness();
                 String[] steps = stepsWrapper.getSteps();
                 Bitmap[] imgs = imagesWrapper.getImages();
-                
+
                 fit.setStepsDB(steps);
                 fit.setImagesDB(imgs);
-                
+
                 fitness.add(fit);
 
                 wrapper.moveToNext();
@@ -147,7 +147,7 @@ public class SQLiteFitnessService implements FitnessService {
             cursor.close();
             cursorSteps.close();
             cursorImages.close();
-            
+
             wrapper.close();
             stepsWrapper.close();
             imagesWrapper.close();
@@ -160,7 +160,7 @@ public class SQLiteFitnessService implements FitnessService {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put( DbSchema.FitnessTable.Columns.NAME, fitness.getFitnessName());
-        contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().toString() );
+        contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().toString());
         contentValues.put( DbSchema.FitnessTable.Columns.NUM_REPS, fitness.getNumReps() );
         contentValues.put( DbSchema.FitnessTable.Columns.INSTRUCTIONS, fitness.getInstructions() );
         contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, DbBitmapUtility.getBytes( fitness.getImage() ) );
