@@ -8,13 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 public class Events extends ActivityWithMenu {
 
-    public TextView emotional, mental, physical;
+    public ImageView emotional, mental, physical;
     public static String yourState="";
     public static String yourCity="";
     EditText st, cy;
@@ -30,9 +31,9 @@ public class Events extends ActivityWithMenu {
         st= (EditText) findViewById(R.id.state);
         cy = (EditText) findViewById(R.id.city);
 
-        emotional = (TextView) findViewById(R.id.emotionalHealth);
-        mental = (TextView) findViewById(R.id.mentalHealth);
-        physical = (TextView) findViewById(R.id.physicalHealth);
+        emotional = (ImageView) findViewById(R.id.emotional);
+        mental = (ImageView) findViewById(R.id.mental);
+        physical = (ImageView) findViewById(R.id.physical);
 
         emotional.setOnClickListener(new View.OnClickListener() {
             @Override
