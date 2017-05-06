@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/catchPhrase"
             android:layout_gravity="center"
-            android:textSize="25dp"/>
+            style="@style/FontAndSizeInstructions" />
 
         <Button
             android:id="@+id/profileButton"
