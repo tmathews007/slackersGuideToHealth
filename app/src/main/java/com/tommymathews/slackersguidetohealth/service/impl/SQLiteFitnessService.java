@@ -240,9 +240,14 @@ public class SQLiteFitnessService implements FitnessService {
         steps1.add("Bend your arms and have your chin touch the floor");
         steps1.add("Do 20 of these");
         f1.setSteps(steps1);
-        Fitness f2 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f2 = new Fitness("Pull Ups", 1, 20, "Pull Ups are a great back exercise", null);
+        ArrayList<String> steps2 = new ArrayList<>();
+        steps2.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+                "and hang all the way down");
+        steps2.add("Pull yourself up until your chin is above the bar.");
+        steps2.add("Take a slight pause and lower yourself all the way back down");
+        steps2.add("Do 20 of these");
+        f2.setSteps(steps2);
         Fitness f3 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
                 " width apart, and extend your body while keeping your it above the ground. Bend " +
                 "your arms and have your chin touch the floor. Do 20 of these", null);
