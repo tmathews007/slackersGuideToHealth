@@ -31,24 +31,17 @@ public class SQLiteFitnessService implements FitnessService {
         ContentValues contentValues = getContentValues( fitness );
         ContentValues stepsContentValues = getStepContextValues(fitness);
         ContentValues imagesContentValues = getImageContextValues(fitness);
-        Fitness currFitness = getFitnessByName( fitness.getFitnessName() );
+        Fitness currFitness = getFitnessById(fitness.getId());
+
         if ( currFitness == null ) {
-            database.insert( DbSchema.FitnessTable.FITNESS_NAME,
-                             null,
-                             contentValues
-            );
+            database.insert(DbSchema.FitnessTable.FITNESS_NAME, null, contentValues);
 
             database.insert(DbSchema.StepsTable.STEPS_NAME, null, stepsContentValues);
 
             database.insert(DbSchema.ImagesTable.IMAGE_NAME, null, imagesContentValues);
+
         } else {
-            database.update( DbSchema.FitnessTable.FITNESS_NAME,
-                             contentValues,
-                             DbSchema.FitnessTable.Columns.NAME + "=?",
-                             new String[] {
-                                     currFitness.getFitnessName()
-                             }
-            );
+            database.update(DbSchema.FitnessTable.FITNESS_NAME, contentValues, DbSchema.FitnessTable.Columns.ID + "=?", new String[] {currFitness.getId()});
 
             database.update(DbSchema.StepsTable.STEPS_NAME, stepsContentValues, DbSchema.StepsTable.Columns.STEPN + "=?", new String[] {currFitness.getFitnessName()});
 
@@ -56,18 +49,17 @@ public class SQLiteFitnessService implements FitnessService {
         }
     }
 
+    //Finds and returns a fitness with parameter id. If it DNE, returns null.
     @Override
-    public Fitness getFitnessByName(String fitnessName) {
-        Log.d("addFitness", "getting fitness by name");
-        if( fitnessName == null ) {
+    public Fitness getFitnessById(String id) {
+        if( id == null ) {
             return null;
         }
 
-        List<Fitness> fitnessList = queryFitness( DbSchema.FitnessTable.Columns.NAME, new String[]{fitnessName}, null);
+        List<Fitness> fitnessList = queryFitness(DbSchema.FitnessTable.Columns.ID, new String[]{id}, null);
 
         for( Fitness fit : fitnessList ) {
-            if( fit.getFitnessName().equals( fitnessName ) ) {
-                Log.d("addFitness", "get returning " + fit.getFitnessName());
+            if( fit.getId().equals( id ) ) {
                 return fit;
             }
         }
@@ -76,23 +68,49 @@ public class SQLiteFitnessService implements FitnessService {
     }
 
     @Override
+    public List<Fitness> getFitnessesByName(String name) {
+        if( name == null ) {
+            return null;
+        }
+
+        List<Fitness> fitnessList = queryFitness(DbSchema.FitnessTable.Columns.NAME, new String[]{name}, null);
+
+        return fitnessList;
+    }
+
+    //Returns a list of all fitnesses that work out parameter body part.
+    @Override
+    public List<Fitness> getFitnessesByBodyPart(Fitness.BodyPart bodyPart) {
+        List<Fitness> fitness = getAllFitness();
+        ArrayList<Fitness> temp = new ArrayList<Fitness>();
+        for (int i = 0; i < fitness.size(); ++i) {
+            if ((fitness.get(i).getBodyPart()).equals(bodyPart)) {
+                temp.add(fitness.get(i));
+            }
+        }
+        return fitness;
+    }
+
+    //Returns a list of all fitnesses.
+    @Override
     public List<Fitness> getAllFitness() {
         List<Fitness> fitness = queryFitness(null, null, null);
         return fitness;
     }
 
+    //Returns a list of fitnesses that match the given parameter criteria.
     private List<Fitness> queryFitness( String whereClause, String[] whereArgs, String orderBy ) {
         List<Fitness> fitness = new ArrayList<Fitness>();
         if ( whereClause != null )
             whereClause = whereClause + "=?";
 
-        Cursor cursor = database.query( DbSchema.FitnessTable.FITNESS_NAME, null, whereClause, whereArgs, null, null, orderBy);
+        Cursor cursor = database.query(DbSchema.FitnessTable.FITNESS_NAME, null, whereClause, whereArgs, null, null, orderBy);
 
         Cursor cursorSteps;
 
         Cursor cursorImages;
 
-        if (whereClause.equals(DbSchema.FoodTable.Columns.NAME + "=?")) {
+        if (whereClause.equals(DbSchema.FitnessTable.Columns.ID + "=?")) {
             cursorSteps = database.query(DbSchema.StepsTable.STEPS_NAME, null, DbSchema.StepsTable.Columns.STEPN + "=?", whereArgs, null, null, orderBy);
             cursorImages = database.query(DbSchema.ImagesTable.IMAGE_NAME, null, DbSchema.ImagesTable.Columns.IMAGEN + "=?", whereArgs, null, null, orderBy);
         } else {
@@ -122,6 +140,7 @@ public class SQLiteFitnessService implements FitnessService {
                 stepsWrapper.moveToNext();
                 imagesWrapper.moveToNext();
             }
+
         } finally {
             cursor.close();
             cursorSteps.close();
@@ -135,10 +154,14 @@ public class SQLiteFitnessService implements FitnessService {
         return fitness;
     }
 
+
+    //Returns the content value from the given fitness for the fitness storage.
     private static ContentValues getContentValues( Fitness fitness ) {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put( DbSchema.FitnessTable.Columns.NAME, fitness.getFitnessName());
+        contentValues.put( DbSchema.FitnessTable.Columns.ID, fitness.getId());
+        contentValues.put( DbSchema.FitnessTable.Columns.LIKES, fitness.getLikes());
         contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().toString());
         contentValues.put( DbSchema.FitnessTable.Columns.NUM_REPS, fitness.getNumReps() );
         contentValues.put( DbSchema.FitnessTable.Columns.INSTRUCTIONS, fitness.getInstructions() );
@@ -153,9 +176,10 @@ public class SQLiteFitnessService implements FitnessService {
         return contentValues;
     }
 
+    //Returns the content value of the steps
     private static ContentValues getStepContextValues (Fitness fitness) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DbSchema.StepsTable.Columns.STEPN, fitness.getFitnessName());
+        contentValues.put(DbSchema.StepsTable.Columns.STEPN, fitness.getId());
         contentValues.put(DbSchema.StepsTable.Columns.STEP_1, fitness.getStepsDB()[0]);
         contentValues.put(DbSchema.StepsTable.Columns.STEP_2, fitness.getStepsDB()[1]);
         contentValues.put(DbSchema.StepsTable.Columns.STEP_3, fitness.getStepsDB()[2]);
@@ -169,9 +193,10 @@ public class SQLiteFitnessService implements FitnessService {
         return contentValues;
     }
 
+    //Returns the content values of the images.
     private static ContentValues getImageContextValues (Fitness fitness) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DbSchema.ImagesTable.Columns.IMAGEN, fitness.getFitnessName());
+        contentValues.put(DbSchema.ImagesTable.Columns.IMAGEN, fitness.getId());
         if (fitness.getImagesDB()[0] != null) {
             contentValues.put(DbSchema.ImagesTable.Columns.IMAGE_1, DbBitmapUtility.getBytes(fitness.getImagesDB()[0]));
         }
@@ -212,12 +237,16 @@ public class SQLiteFitnessService implements FitnessService {
 
         public Fitness getFitness() {
             String name = getString( getColumnIndex( DbSchema.FitnessTable.Columns.NAME ) );
+            String id = getString( getColumnIndex( DbSchema.FitnessTable.Columns.ID ) );
+            int likes =  getInt( getColumnIndex( DbSchema.FitnessTable.Columns.LIKES ) );
             int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
             int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
             String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
             byte[] image = getBlob( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE ) );
 
             Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, DbBitmapUtility.getImage( image ) );
+            fitness.setId(id);
+            fitness.setLikes(likes);
             fitness.setFitnessName( name );
             fitness.setBodyPart( bodyPart );
             fitness.setNumReps( numReps );

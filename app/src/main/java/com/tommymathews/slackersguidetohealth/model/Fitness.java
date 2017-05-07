@@ -9,6 +9,7 @@ import android.widget.SectionIndexer;
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * The purpose of this class is to create the database for the user who wants to input a fitness.
@@ -23,6 +24,8 @@ public class Fitness implements Serializable {
     private BodyPart bodyPart;
     private String[] steps = {null, null, null, null, null, null, null, null, null, null};
     private Bitmap[] images = {null, null, null, null, null, null, null, null, null, null};
+    private int likes;
+    private String id;
     private String instructions;
     private Bitmap image;
 
@@ -33,6 +36,16 @@ public class Fitness implements Serializable {
         this.numReps = numReps;
         this.instructions = instructions;
         this.image = image;
+        this.id = UUID.randomUUID().toString();
+        this.likes = 0;
+    }
+
+    public String getId(){
+        return id;
+    }
+
+    public int getLikes() {
+        return likes;
     }
 
     public Bitmap[] getImagesDB() {return images;}
@@ -79,6 +92,14 @@ public class Fitness implements Serializable {
 
     public Bitmap getImage() {
         return this.image;
+    }
+
+    public void setId(String i) {
+        id = i;
+    }
+
+    public void setLikes(int i) {
+        likes = i;
     }
 
     public void setFitnessName( String fitnessName ) {

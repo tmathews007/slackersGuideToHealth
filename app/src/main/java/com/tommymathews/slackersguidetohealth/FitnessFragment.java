@@ -124,13 +124,11 @@ public class FitnessFragment extends Fragment {
 
                 test.setSteps(temp);
                 test.setStepImages(tempImgs);
-                Log.d("added", "not yet");
 
                 DependencyFactory.getFitnessService(getActivity()).addFitness(test);
 
-                Log.d("added", "maybe");
 
-                intent.putExtra("NAME", "Push ups");
+                intent.putExtra("ID", test.getId());
                 startActivity( intent );
             }
         }

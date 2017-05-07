@@ -53,7 +53,9 @@ public class DbSchema {
     public static final class FitnessTable {
         public static final String FITNESS_NAME = "FitnessList";
         public static final class Columns {
+            public static final String ID = "ID";
             public static final String NAME = "NAME";
+            public static final String LIKES = "LIKES";
             public static final String BODY_PART = "BODY_PART";
             public static final String NUM_REPS = "NUM_REPS";
             public static final String INSTRUCTIONS = "INSTRUCTIONS";

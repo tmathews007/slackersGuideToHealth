@@ -19,7 +19,7 @@ import com.tommymathews.slackersguidetohealth.model.Fitness;
 
 public class FitnessDescriptionFragment  extends Fragment{
 
-    String name;
+    String id;
     TextView title;
     ImageView image;
     TextView description;
@@ -35,9 +35,9 @@ public class FitnessDescriptionFragment  extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fitness_description_fragment, container, false);
 
-        name = getActivity().getIntent().getStringExtra("NAME");
+        id = getActivity().getIntent().getStringExtra("ID");
 
-        Fitness temp = DependencyFactory.getFitnessService(getActivity()).getFitnessByName(name);
+        Fitness temp = DependencyFactory.getFitnessService(getActivity()).getFitnessById(id);
 
         title = (TextView) view.findViewById(R.id.description_title);
         title.setText(temp.getFitnessName());
@@ -53,7 +53,7 @@ public class FitnessDescriptionFragment  extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent temp = new Intent(getActivity(), DisplayFitnessSteps.class);
-                temp.putExtra("NAME", name);
+                temp.putExtra("ID", id);
                 startActivity(temp);
             }
         });

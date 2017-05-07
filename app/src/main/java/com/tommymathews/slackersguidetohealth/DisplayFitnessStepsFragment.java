@@ -46,8 +46,8 @@ public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment
 
         super.onCreateView(inflater, container, savedInstanceState);
 
-        String fitName = getActivity().getIntent().getStringExtra("NAME");
-        fitness = DependencyFactory.getFitnessService(getContext()).getFitnessByName(fitName);
+        String id = getActivity().getIntent().getStringExtra("ID");
+        fitness = DependencyFactory.getFitnessService(getContext()).getFitnessById(id);
 
         //testing temp file
         Drawable step_1 = getResources().getDrawable(R.drawable.chest);

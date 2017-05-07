@@ -72,7 +72,7 @@ public class FitnessQuestionsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         String fitnessId = getArguments().getString( ARG_FITNESS_ID );
-        fitness = DependencyFactory.getFitnessService( getActivity().getApplicationContext() ).getFitnessByName( fitnessId );
+        fitness = DependencyFactory.getFitnessService( getActivity().getApplicationContext() ).getFitnessById( fitnessId );
     }
 
     @Nullable

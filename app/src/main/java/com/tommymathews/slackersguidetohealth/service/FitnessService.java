@@ -5,10 +5,9 @@ import com.tommymathews.slackersguidetohealth.model.Fitness;
 import java.util.List;
 
 public interface FitnessService {
-//    public void addFitnessToPlaylist( Fitness fitness );
-//    public Fitness getFitnessById( String id );
-//    public List<Fitness> getAllFitnessesSorted();
+    public Fitness getFitnessById( String id );
+    List<Fitness> getFitnessesByName(String name);
+    public List<Fitness> getFitnessesByBodyPart(Fitness.BodyPart bodyPart);
     public List<Fitness> getAllFitness();
-    public Fitness getFitnessByName(String fitnessName);
     public void addFitness(Fitness fitness);
 }
