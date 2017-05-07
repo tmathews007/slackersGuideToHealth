@@ -47,8 +47,9 @@ public class LoginActivity extends Activity {
                     SharedPreferences.Editor editor=sharedPreferences.edit();
                     editor.putString(DbSchema.EMAIL, emailEditText.getText().toString());
                     editor.commit();
-
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
                 finish();
                 }
             }
@@ -57,8 +58,9 @@ public class LoginActivity extends Activity {
         signUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, SignUp.class));
-                finish();
+                Intent intent = new Intent(LoginActivity.this, SignUp.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
 
