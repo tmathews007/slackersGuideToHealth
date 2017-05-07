@@ -233,15 +233,33 @@ public class SQLiteFitnessService implements FitnessService {
     private void prepopulate(Context context) {
         //eggplant
         //TODO
-        Fitness f1 = new Fitness();
-        Fitness f2 = new Fitness();
-        Fitness f3 = new Fitness();
-        Fitness f4 = new Fitness();
-        Fitness f5 = new Fitness();
-        Fitness f6 = new Fitness();
-        Fitness f7 = new Fitness();
-        Fitness f8 = new Fitness();
-        Fitness f9 = new Fitness();
+        Fitness f1 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f2 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f3 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f4 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f5 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f6 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f7 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f8 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f9 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+                " width apart, and extend your body while keeping your it above the ground. Bend " +
+                "your arms and have your chin touch the floor. Do 20 of these", null);
 
         addFitness(f1);
         addFitness(f2);
