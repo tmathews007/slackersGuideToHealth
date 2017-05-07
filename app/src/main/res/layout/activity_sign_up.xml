@@ -82,7 +82,7 @@
         </RadioGroup>
 
         <RelativeLayout
-            android:id="@+id/age_Layout"
+            android:id="@+id/age_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/weight_layout"
@@ -147,7 +147,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/height_Layout"
+            android:id="@+id/height_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/weight_layout"
@@ -187,7 +187,7 @@
             android:id="@+id/goal_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/height_Layout"
+            android:layout_below="@+id/height_layout"
             android:entries="@array/workout_levels"
             android:paddingTop="15dp"/>
 

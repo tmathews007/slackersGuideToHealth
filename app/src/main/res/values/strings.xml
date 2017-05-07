@@ -172,6 +172,12 @@
     <string name="back_button">Back</string>
     <string name="save_settings_button">Save</string>
 
+
+    <!-- Fitness-->
+    <string name="exerciseSteps">Exercise Steps</string>
+    <string name="prevStep">Previous Step</string>
+    <string name="nextStep">Next Step</string>
+    <string name="complete">YOU DID IT</string>
     <string name="playlist_workout_button"> Workout Playlist </string>
     <string name="instructions"> Instructions </string>
     <string name="create_fitness_title"> Create Your Own Fitness </string>
@@ -272,5 +278,11 @@
         <item>\"I\'d far rather be happy than right any day.\"</item>
         <item>\"I was created to fulfill a function and I failed in it. I negated my own existence.\"</item>
         <item>\"If they don\’t keep exercising their lips, he thought, their brains start working.\"</item>
+    </string-array>
+    
+    <string-array name="main_list">
+        <item>Fitness</item>
+        <item>Food</item>
+        <item>Events</item>
     </string-array>
 </resources>
