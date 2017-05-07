@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 
 import com.tommymathews.slackersguidetohealth.DependencyFactory;
 import com.tommymathews.slackersguidetohealth.model.Fitness;
@@ -98,6 +99,7 @@ public class SQLitePlaylistService implements PlaylistService {
 
         contentValues.put(DbSchema.PlayListTable.Columns.ID, p.getId());
         contentValues.put(DbSchema.PlayListTable.Columns.NAME, p.getName());
+        contentValues.put(DbSchema.PlayListTable.Columns.THUMBNAIL, DbBitmapUtility.getBytes(p.getThumbNail()));
         contentValues.put(DbSchema.PlayListTable.Columns.LIKES, p.getLikes());
         contentValues.put(DbSchema.PlayListTable.Columns.FITNESS_1, p.getPlaylistDB()[0].getId());
         contentValues.put(DbSchema.PlayListTable.Columns.FITNESS_2, p.getPlaylistDB()[1].getId());
@@ -125,6 +127,7 @@ public class SQLitePlaylistService implements PlaylistService {
             String id = getString(getColumnIndex(DbSchema.PlayListTable.Columns.ID));
             String name = getString(getColumnIndex(DbSchema.PlayListTable.Columns.NAME));
             int likes = getInt(getColumnIndex(DbSchema.PlayListTable.Columns.LIKES));
+            Bitmap thumbNail = DbBitmapUtility.getImage(getBlob( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE)));
             List<Fitness> playlist = new ArrayList<Fitness>();
             playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1))));
             playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_2))));
@@ -138,7 +141,7 @@ public class SQLitePlaylistService implements PlaylistService {
             playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_10))));
 
 
-            Playlist retlist = new Playlist(name, playlist);
+            Playlist retlist = new Playlist(name, thumbNail, playlist);
 
             retlist.setId(id);
             retlist.setLikes(likes);

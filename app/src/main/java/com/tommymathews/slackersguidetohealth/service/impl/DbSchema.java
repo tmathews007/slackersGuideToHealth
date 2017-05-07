@@ -106,6 +106,7 @@ public class DbSchema {
         public static final class Columns {
             public static final String ID = "ID";
             public static final String NAME = "NAME";
+            public static final String THUMBNAIL = "THUMBNAIL";
             public static final String LIKES = "LIKES";
             public static final String FITNESS_1 = "FITNESS_1";
             public static final String FITNESS_2 = "FITNESS_2";

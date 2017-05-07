@@ -76,7 +76,6 @@ public class FitnessFragment extends Fragment {
                         startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
 
-
                     case QUADS:
                         Log.d("Clicked", "QUADS");
                         startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));

@@ -1,10 +1,10 @@
 package com.tommymathews.slackersguidetohealth.model;
 
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -13,14 +13,16 @@ import java.util.UUID;
 
 public class Playlist implements Comparable<Playlist>{
     private Fitness[] playlist = {null, null, null, null, null, null, null, null, null, null};
+    private Bitmap thumbNail;
     private String name = "";
     private String id;
     private int likes;
 
-    public Playlist (String n, List<Fitness> lst) {
-        name = name;
+    public Playlist (String n, Bitmap image, List<Fitness> lst) {
+        name = n;
         likes = 0;
         id = UUID.randomUUID().toString();
+        thumbNail = image;
 
         int i = 0;
         while (i < lst.size() && i < playlist.length) {
@@ -29,16 +31,20 @@ public class Playlist implements Comparable<Playlist>{
         }
     }
 
-    public Playlist (String n, Fitness[] lst) {
-        name = name;
+    public Playlist (String n, Bitmap image, Fitness[] lst) {
+        name = n;
         likes = 0;
         id = UUID.randomUUID().toString();
-
+        thumbNail = image;
         int i = 0;
         while (i < lst.length && i < playlist.length) {
             playlist[i] = lst[i];
             ++i;
         }
+    }
+
+    public void setThumbNail(Bitmap i) {
+        thumbNail = i;
     }
 
     public void setLikes(int i) {
@@ -108,6 +114,10 @@ public class Playlist implements Comparable<Playlist>{
 
     public void subtractLike() {
         --likes;
+    }
+
+    public Bitmap getThumbNail() {
+        return thumbNail;
     }
 
     public String getId() {

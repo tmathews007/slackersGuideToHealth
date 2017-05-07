@@ -95,6 +95,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 " _id integer primary key autoincrement, " +
                 DbSchema.PlayListTable.Columns.ID + ", " +
                 DbSchema.PlayListTable.Columns.NAME + ", " +
+                DbSchema.PlayListTable.Columns.THUMBNAIL + ", " +
                 DbSchema.PlayListTable.Columns.LIKES + ", " +
                 DbSchema.PlayListTable.Columns.FITNESS_1 + ", " +
                 DbSchema.PlayListTable.Columns.FITNESS_2 + ", " +
