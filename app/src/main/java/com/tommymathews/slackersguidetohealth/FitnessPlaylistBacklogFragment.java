@@ -115,7 +115,7 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = FitnessQuestionsActivity.newIntent(getActivity(), playlist.getId() );
+            Intent intent = FitnessPlaylistActivity.newIntent(getActivity(), playlist.getId() );
 
             startActivityForResult( intent, REQUEST_CODE_CREATE_FITNESS );
         }

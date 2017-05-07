@@ -97,6 +97,8 @@
 
         <activity android:name=".FitnessBacklogActivity" />
         <activity android:name=".FitnessQuestionsActivity" />
+        <activity android:name=".FitnessPlaylistActivity" />
+        <activity android:name=".FitnessPlaylistBacklogActivity" />
 
     </application>
 </manifest>
