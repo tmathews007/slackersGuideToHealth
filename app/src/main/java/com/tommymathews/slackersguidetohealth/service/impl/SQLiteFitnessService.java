@@ -252,23 +252,15 @@ public class SQLiteFitnessService implements FitnessService {
         f2.setSteps(steps2);
 
 
-        Fitness f3 = new Fitness("Towel Bicep Curls", 2, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
-
-        //TODO
-        Fitness f4 = new Fitness("Push Ups", 3, 20, "", null);
-        Fitness f5 = new Fitness("Push Ups", 4, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
-        Fitness f6 = new Fitness("Push Ups", 5, 20, "", null);
+        //TODO Fix
+        Fitness f3 = new Fitness("Towel Bicep Curls", 2, 20, "TBC", null);
+        Fitness f4 = new Fitness("Double-Leg Calf Raise", 3, 20, "TODO Double-Leg Calf Raise", null);
+        Fitness f5 = new Fitness("Chest Dips", 4, 20, "TODO Chest Dips", null);
+        Fitness f6 = new Fitness("Glutes Exercise TODO", 5, 20, "TODO glutes", null);
+        Fitness f7 = new Fitness("Leg Extension", 6, 20, "TODO Leg Extension", null);
+        Fitness f8 = new Fitness("Handstand Push Ups", 7, 20, "", null);
 
 
-        Fitness f7 = new Fitness("Handstand Push Ups", 6, 20, "", null);
-
-
-        //TODO
-        Fitness f8 = new Fitness("Push Ups", 7, 20, "", null);
 
         Fitness f9 = new Fitness("Push Ups", 8, 20, "Push Ups are a great triceps exercise.", null);
         ArrayList<String> steps9 = new ArrayList<>();
