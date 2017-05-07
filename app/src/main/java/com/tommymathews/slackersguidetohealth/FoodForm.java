@@ -1,6 +1,8 @@
 package com.tommymathews.slackersguidetohealth;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,10 +16,14 @@ import android.widget.Toast;
 
 import com.tommymathews.slackersguidetohealth.model.Food;
 import com.tommymathews.slackersguidetohealth.service.FoodService;
+import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 import java.io.File;
 
 public class FoodForm extends ActivityWithMenu {
+    private final static int REQUEST_CODE_RECIPE = 0;
+    private final static int REQUEST_CODE_SUBMIT_RECIPE = 0;
+
     private ImageView iv;
     private ImageButton ib;
     private EditText recipeTitle;
@@ -25,10 +31,12 @@ public class FoodForm extends ActivityWithMenu {
     private EditText recipeIngredients;
     private EditText recipeInstructions;
     private Button submit;
+    private Uri uri;
+
+    private SQLiteDatabase database;
 
     private static final int REQUEST_PHOTO = 300;
     private File f;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +63,7 @@ public class FoodForm extends ActivityWithMenu {
                     if (f==null)
                         ib.setEnabled(false);
                     else {
-                        Uri uri = Uri.fromFile(f);
+                        uri = Uri.fromFile(f);
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         startActivityForResult(intent, REQUEST_PHOTO);
                     }
@@ -64,9 +72,7 @@ public class FoodForm extends ActivityWithMenu {
         });
 
         submit = (Button) findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener(
-
-        ) {
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (checkInputs()) {
@@ -92,6 +98,37 @@ public class FoodForm extends ActivityWithMenu {
         }
 
         return new File(ePD, "IMG_" + System.currentTimeMillis() + ".jpg");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if( requestCode == REQUEST_PHOTO && resultCode == RESULT_OK ) {
+            Uri selectedImageUri = (data == null) ? uri : data.getData();
+            if( selectedImageUri != null ) {
+//                if( requestCode == REQUEST_PHOTO ) {
+//                    Intent mediaScanIntent = new Intent( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE );
+//                    mediaScanIntent.setData( selectedImageUri );
+//                    this.sendBroadcast( mediaScanIntent );
+//                }
+                Cursor cursor = getContentResolver().query( uri,
+                        new String[] {
+                                MediaStore.Images.ImageColumns.DATA
+                        },
+                        null,
+                        null,
+                        null,
+                        null
+                );
+                cursor.moveToFirst();
+                String imageFilePath = cursor.getString( 0 );
+                cursor.close();
+
+                if( imageFilePath != null ) {
+                    database.execSQL("INSERT INTO TABLE_NAME VALUES(' "+imageFilePath+" ');");
+                }
+            }
+        }
     }
 
     private boolean checkInputs() {

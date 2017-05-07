@@ -25,6 +25,7 @@ public class FoodMain extends ActivityWithMenu {
             public void onClick(View view) {
                 Intent i = new Intent(FoodMain.this, FoodManager.class);
                 startActivity(i);
+                overridePendingTransition( 0,0 );
             }
         });
 
@@ -35,6 +36,7 @@ public class FoodMain extends ActivityWithMenu {
             public void onClick(View view) {
                 Intent i = new Intent(FoodMain.this, FoodForm.class);
                 startActivity(i);
+                overridePendingTransition( 0,0 );
             }
         });
 
