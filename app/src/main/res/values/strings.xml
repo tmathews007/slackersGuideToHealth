@@ -172,6 +172,12 @@
     <string name="back_button">Back</string>
     <string name="save_settings_button">Save</string>
 
+
+    <!-- Fitness-->
+    <string name="exerciseSteps">Exercise Steps</string>
+    <string name="prevStep">Previous Step</string>
+    <string name="nextStep">Next Step</string>
+    <string name="complete">YOU DID IT</string>
     <string name="playlist_workout_button"> Workout Playlist </string>
     <string name="instructions"> Instructions </string>
     <string name="create_fitness_title"> Create Your Own Fitness </string>

@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/step_text"
-        android:text="take the blah blah blah blah blah"/>
+        android:text="@string/exerciseSteps"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:id="@+id/previous_step_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Previous Step"
+            android:text="@string/prevStep"
             android:layout_weight="1.0"
             android:visibility="gone"/>
 
@@ -37,7 +37,7 @@
             android:id="@+id/next_step_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next Step"
+            android:text="@string/nextStep"
             android:layout_weight="1.0"/>
 
 
