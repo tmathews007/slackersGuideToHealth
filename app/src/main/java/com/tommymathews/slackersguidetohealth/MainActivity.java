@@ -1,7 +1,6 @@
 package com.tommymathews.slackersguidetohealth;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
@@ -12,60 +11,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-
-import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-    private ImageButton profileButton;
-    private ImageButton settingsButton;
-    private ImageButton logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        profileButton = (ImageButton) findViewById(R.id.profileButton);
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(profileIntent);
-                finish();
-            }
-        });
-
-        settingsButton = (ImageButton) this.findViewById(R.id.settings_button);
-        settingsButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Settings.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        logoutButton = (ImageButton) findViewById(R.id.logOutButton);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.clear();
-                editor.commit();
-
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-
-            }
-        });
-
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         /* Use this to switch between tabs. */
