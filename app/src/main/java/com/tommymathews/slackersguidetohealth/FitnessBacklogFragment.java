@@ -20,8 +20,6 @@ import android.widget.TextView;
 import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class FitnessBacklogFragment extends Fragment {
@@ -122,10 +120,10 @@ public class FitnessBacklogFragment extends Fragment {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            fitnessImageView = ( ImageView ) itemView.findViewById( R.id.list_item_fitness_image );
-            fitnessNameTextView = (TextView)itemView.findViewById(R.id.list_item_fitness_name);
-            numRepsTextView = (TextView)itemView.findViewById(R.id.list_item_num_reps);
-            bodyPartTextView = ( TextView ) itemView.findViewById( R.id.list_item_body_part );
+            fitnessImageView = ( ImageView ) itemView.findViewById( R.id.playlist_fitness_image);
+//            fitnessNameTextView = (TextView)itemView.findViewById(R.id.list_item_fitness_name);
+//            numRepsTextView = (TextView)itemView.findViewById(R.id.list_item_num_reps);
+//            bodyPartTextView = ( TextView ) itemView.findViewById( R.id.list_item_body_part );
         }
 
         public void bindStory(Fitness fitness) {

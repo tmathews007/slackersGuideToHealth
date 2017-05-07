@@ -165,6 +165,7 @@
     <string name="back_button">Back</string>
     <string name="save_settings_button">Save</string>
 
+    <string name="playlist_workout_button"> Workout Playlist </string>
     <string name="instructions"> Instructions </string>
     <string name="create_fitness_title"> Create Your Own Fitness </string>
     <string name="fitness_name"> Fitness Name </string>
@@ -193,6 +194,9 @@
     <string name="photo"> Photo </string>
     <string name="save_button"> Save </string>
     <string name="cancel_button"> Cancel </string>
+    
+    <string name="playlist_fitness_title"> Playlist of Workouts </string>
+    <string name="playlist_caution"> NOTE: This list will have up to 10 workouts. </string>
 
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>

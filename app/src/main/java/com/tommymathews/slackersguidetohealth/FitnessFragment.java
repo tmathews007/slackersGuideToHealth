@@ -24,7 +24,7 @@ import com.tommymathews.slackersguidetohealth.service.FitnessService;
 import java.util.ArrayList;
 
 public class FitnessFragment extends Fragment {
-    private final String EXTRA_FITNESS_CREATED = "EXTRA_FITNESS_CREATED";
+    private final String EXTRA_PLAYLIST_CREATED = "EXTRA_PLAYLIST_CREATED";
 
     private final int MATCH_DISTANCE = 10;
 
@@ -35,6 +35,7 @@ public class FitnessFragment extends Fragment {
     private final int BACKVIEW = Color.YELLOW;
 
     private Button createWorkoutButton;
+    private Button playlistWorkoutButton;
 
     private Fitness fitness;
 
@@ -128,6 +129,16 @@ public class FitnessFragment extends Fragment {
 
 
                 intent.putExtra("ID", test.getId());
+                startActivity( intent );
+            }
+        }
+        );
+
+        playlistWorkoutButton = ( Button ) view.findViewById( R.id.playlist_workout );
+        playlistWorkoutButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( getActivity(), FitnessPlaylistBacklogActivity.class );
                 startActivity( intent );
             }
         }
