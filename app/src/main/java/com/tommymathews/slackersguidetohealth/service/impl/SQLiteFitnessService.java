@@ -235,8 +235,23 @@ public class SQLiteFitnessService implements FitnessService {
         //TODO
         Fitness f1 = new Fitness();
         Fitness f2 = new Fitness();
-        Fitness f2 = new Fitness();
+        Fitness f3 = new Fitness();
+        Fitness f4 = new Fitness();
+        Fitness f5 = new Fitness();
+        Fitness f6 = new Fitness();
+        Fitness f7 = new Fitness();
+        Fitness f8 = new Fitness();
+        Fitness f9 = new Fitness();
 
+        addFitness(f1);
+        addFitness(f2);
+        addFitness(f3);
+        addFitness(f4);
+        addFitness(f5);
+        addFitness(f6);
+        addFitness(f7);
+        addFitness(f8);
+        addFitness(f9);
     }
 
     private class FitnessCursorWrapper extends CursorWrapper {
