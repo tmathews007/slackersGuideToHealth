@@ -9,6 +9,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,7 +30,7 @@ import java.io.File;
  * Created by Ashley on 4/19/17.
  */
 
-public class ProfileActivity extends ActivityWithMenu{
+public class ProfileActivity extends AppCompatActivity{
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private UserService userService;
@@ -173,5 +177,49 @@ public class ProfileActivity extends ActivityWithMenu{
             Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getPath());
             profilePicButton.setImageBitmap(bitmap);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menuItem) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_navigation_profile, menuItem);
+        return super.onCreateOptionsMenu(menuItem);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settingsItem:
+                Intent intent = new Intent(ProfileActivity.this, Settings.class);
+                startActivity(intent);
+                return true;
+            case R.id.exerciseItem:
+                intent = new Intent(getApplicationContext(), FitnessActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+            case R.id.foodItem:
+                intent = new Intent(getApplicationContext(), FoodMain.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+            case R.id.funItem:
+                intent = new Intent(getApplicationContext(), Events.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+            case R.id.mainItem:
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 }
