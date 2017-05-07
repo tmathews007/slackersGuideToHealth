@@ -53,7 +53,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:text="MENTAL HEALTH"
+                    android:text="@string/mentalHealth"
                     android:textColor="@color/darkBlue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                     app:srcCompat="@drawable/mental_health_brain"/>
 
                 <TextView
-                    android:text="PHYSICAL HEALTH"
+                    android:text="@string/physicalHealth"
                     android:textColor="@color/orange"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                     app:srcCompat="@drawable/physical_health_running"/>
 
                 <TextView
-                    android:text="EMOTIONAL HEALTH"
+                    android:text="@string/emotionalHealth"
                     android:textColor="@color/darkOrchid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

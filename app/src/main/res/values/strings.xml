@@ -123,6 +123,9 @@
     <string name="stateReq">Enter your state abbreviation.</string>
     <string name="cityEvents">Please enter in the name of your city below.</string>
     <string name="cityReq">Enter your city.</string>
+    <string name="mentalHealth">MENTAL HEALTH</string>
+    <string name="physicalHealth">PHYSICAL HEALTH</string>
+    <string name="emotionalHealth">EMOTIONAL HEALTH</string>
 
     <!-- Strings related to login -->
     <string name="prompt_name">Name</string>
