@@ -141,7 +141,7 @@
                 android:id="@+id/weight_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight (lbs):"/>
+                android:text="@string/weight"/>
 
         </RelativeLayout>
 
