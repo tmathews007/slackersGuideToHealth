@@ -6,10 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
@@ -80,16 +80,22 @@ public class Events extends ActivityWithMenu {
 
 
     public void dialog(){
-        new AlertDialog.Builder(this)
-                .setTitle("Give Your Thoughts").setMessage("Did you like any events that you viewed?")
-                .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SharedPreferences sp = getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
-                String username = sp.getString(DbSchema.EMAIL, null);
-                DependencyFactory.getUserService(getApplicationContext()).incrementEventsProgress(username);
-            }
-        }).create().show();
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+
+                new AlertDialog.Builder(Events.this)
+                        .setTitle("Give Your Thoughts").setMessage("Did you like any events that you viewed?")
+                        .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sp = getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
+                        String username = sp.getString(DbSchema.EMAIL, null);
+                        DependencyFactory.getUserService(getApplicationContext()).incrementEventsProgress(username);
+                    }
+                }).create().show();
+                }
+        }, 1000);
+
     }
 
 }

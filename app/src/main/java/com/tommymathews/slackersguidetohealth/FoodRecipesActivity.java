@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,15 +45,18 @@ public class FoodRecipesActivity extends ActivityWithMenu {
         Intent intent = getIntent();
         if (intent.getSerializableExtra(FOOD) != null) {
             Food food = (Food) intent.getSerializableExtra(FOOD);
-            Uri uri = Uri.parse(food.getImagePath());
-            Bitmap bitmap = null;
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                picImageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (food.getImagePath().length() > 0) {
+                Uri uri = Uri.parse(food.getImagePath());
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    picImageView.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                picImageView.setVisibility(View.GONE);
             }
-
             if (food.getRecommendation().length() == 0) {
                 foodSuggestionTextView.setText("This food must be delicious because it's only "+
                         food.getCalorieLevel() +" calories!");

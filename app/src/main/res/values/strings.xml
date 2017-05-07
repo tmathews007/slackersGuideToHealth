@@ -37,6 +37,10 @@
     <string name="none">none</string>
     <string name="hardCodeInputDiet">Trying to eat less fat and more food that helps build strength</string>
 
+    <!-- Food Form -->
+    <string name="recipeTitle">Recipe Title: </string>
+    <string name="recipeCalories">Enter calories level of recipe: </string>
+
     <!-- Recipe Default: Eggplant Fries -->
     <string name="foodSuggestion">We recommend that you eat a vegetable dish. Try these 350 calorie
         eggplant fries; they will help fit more veggies into your diet as a snack instead of as a meal!</string>

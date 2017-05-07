@@ -103,23 +103,6 @@ public class Settings extends ActivityWithMenu {
         passwordEditText = (EditText) findViewById(R.id.pass_one);
         passwordEditText.setText(user.getPassword());
         confirmPasswordEditText = (EditText) findViewById(R.id.pass_confirm);
-        confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (!confirmPasswordEditText.getText().toString().equals(passwordEditText.getText().toString()))
-                    Toast.makeText(getApplicationContext(), "Password must match", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         age = user.getAge();
         ageTextView = (TextView) findViewById(R.id.txt_age);

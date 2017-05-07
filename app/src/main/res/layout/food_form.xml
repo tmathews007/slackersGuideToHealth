@@ -9,54 +9,52 @@
     style="@style/margins">
 
     <TextView
-        android:text="Title of the recipe:"
+        android:text="@string/recipeTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/titleTextView"/>
+        android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/titleEditText"
+        android:id="@+id/recipeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="Recipe Title"/>
+        android:hint="Vegan Rhino Cutlet"/>
 
     <TextView
-        android:text="Enter in the calorie level of your recipe below"
+        android:text="@string/recipeCalories"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/calorieTextView"/>
+        android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/calorieEditText"
+        android:id="@+id/recipeCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="600"
+        android:hint="600"
         android:inputType="number"/>
 
     <TextView
         android:text="Ingredients:"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ingredientsTV"/>
+        android:layout_height="wrap_content"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="ingredients here"/>
+        android:id="@+id/recipeIngredients"
+        android:hint="50 eggs, 20 rhinos, 3 stalks of broccoli..."/>
 
     <TextView
         android:text="Process:"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/dietPlanDetails"/>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="how to make the recipe..."/>
+        android:id="@+id/recipeInstructions"
+        android:hint="Mash the eggs and the beetles..."/>
 
     <ImageView android:layout_height="80dp"
         android:layout_width="80dp"
@@ -71,7 +69,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="submit form"
+        android:text="Submit Form"
         android:id="@+id/submit"/>
 
 
