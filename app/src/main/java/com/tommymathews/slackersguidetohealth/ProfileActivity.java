@@ -62,33 +62,6 @@ public class ProfileActivity extends AppCompatActivity{
         String email = sharedPreferences.getString(DbSchema.EMAIL,null);
         User user = userService.getUserByEmail(email);
 
-        logoutButton = (Button) findViewById(R.id.logOutButton);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.clear();
-                editor.commit();
-
-                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-
-            }
-        });
-
-        settingsButton = (Button) this.findViewById(R.id.settings_button);
-        settingsButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, Settings.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
         profilePicButton = (ImageButton) this.findViewById(R.id.profilePic);
         profilePicButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +189,17 @@ public class ProfileActivity extends AppCompatActivity{
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 overridePendingTransition(0,0);
+                break;
+            case R.id.logoutItem:
+                SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+
+                intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
