@@ -55,10 +55,11 @@
                 <TextView
                     android:text="@string/mentalHealth"
                     android:textColor="@color/darkBlue"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView"
-                    style="@style/FontAndSizeTitle" />
+                    android:textSize="22sp"
+                    android:layout_gravity="center"/>
 
                 <ImageView
                     android:id="@+id/mental"
@@ -70,10 +71,11 @@
                 <TextView
                     android:text="@string/physicalHealth"
                     android:textColor="@color/orange"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView2"
-                    style="@style/FontAndSizeTitle" />
+                    android:textSize="22sp"
+                    android:layout_gravity="center" />
 
                 <ImageView
                     android:id="@+id/physical"
@@ -85,10 +87,10 @@
                 <TextView
                     android:text="@string/emotionalHealth"
                     android:textColor="@color/darkOrchid"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView3"
-                    style="@style/FontAndSizeTitle" />
+                    android:textSize="22sp"
+                    android:layout_gravity="center" />
 
                 <ImageView
                     android:id="@+id/emotional"
