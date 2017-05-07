@@ -12,7 +12,7 @@
         android:textStyle="bold"
         android:textSize="30sp"
         android:id="@+id/description_title"
-        android:text="Exercise Title" />
+        android:text="@string/exerciseTitle" />
 
     <ImageView
         android:id="@+id/description_image"
@@ -29,14 +29,14 @@
         android:textStyle="bold"
 
         android:id="@+id/description_label"
-        android:text="Description:" />
+        android:text="@string/descTitle" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/description_text"
-        android:text="Description Goes Here"/>
+        android:text="@string/descriptionEx"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:id="@+id/look_at_fitness_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Look At Steps"
+            android:text="@string/stepsDirs"
             android:layout_weight="1.0"/>
 
 

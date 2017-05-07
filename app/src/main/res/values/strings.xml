@@ -178,6 +178,13 @@
     <string name="prevStep">Previous Step</string>
     <string name="nextStep">Next Step</string>
     <string name="complete">YOU DID IT</string>
+    <string name="exerciseTitle">Exercise Title</string>
+    <string name="descTitle">Description: </string>
+    <string name="descriptionEx">Description Goes Here</string>
+    <string name="stepsDirs">Look At Steps</string>
+    <string name="createWorkout">Create Workout</string>
+    <string name="backView">Back View</string>
+    <string name="frontView">Front View</string>
     <string name="playlist_workout_button"> Workout Playlist </string>
     <string name="instructions"> Instructions </string>
     <string name="create_fitness_title"> Create Your Own Fitness </string>
