@@ -5,7 +5,7 @@
     >
     <ImageView
         android:id="@+id/fitness_image_front"
-        android:layout_width="fill_parent"
+        android:layout_width="272dp"
         android:layout_height="fill_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/fitness_image_front"
