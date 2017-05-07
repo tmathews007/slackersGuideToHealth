@@ -273,4 +273,10 @@
         <item>\"I was created to fulfill a function and I failed in it. I negated my own existence.\"</item>
         <item>\"If they don\’t keep exercising their lips, he thought, their brains start working.\"</item>
     </string-array>
+    
+    <string-array name="main_list">
+        <item>Fitness</item>
+        <item>Food</item>
+        <item>Events</item>
+    </string-array>
 </resources>
