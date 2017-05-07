@@ -1,6 +1,5 @@
 package com.tommymathews.slackersguidetohealth;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -28,7 +27,7 @@ import java.util.regex.Pattern;
  * Created by Ashley on 4/29/17.
  */
 
-public class Settings extends Activity {
+public class Settings extends ActivityWithMenu {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);

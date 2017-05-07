@@ -1,10 +1,16 @@
 package com.tommymathews.slackersguidetohealth;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -12,6 +18,8 @@ import android.widget.TextView;
 import com.tommymathews.slackersguidetohealth.model.User;
 import com.tommymathews.slackersguidetohealth.service.UserService;
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
+
+import java.io.File;
 
 /**
  * Created by Ashley on 4/19/17.
@@ -32,6 +40,9 @@ public class ProfileActivity extends ActivityWithMenu{
     private TextView fitnessPointsView;
     private TextView foodPointsView;
     private TextView eventsPointsView;
+    private ImageButton profilePicButton;
+    private File photoFile;
+    private static final int REQUEST_PHOTO = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,26 @@ public class ProfileActivity extends ActivityWithMenu{
         userService = DependencyFactory.getUserService(getApplicationContext());
         String email = sharedPreferences.getString(DbSchema.EMAIL,null);
         User user = userService.getUserByEmail(email);
+
+        profilePicButton = (ImageButton) this.findViewById(R.id.profilePic);
+        profilePicButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                if (intent.resolveActivity(getPackageManager()) != null){
+                    photoFile = getPhotoFile();
+                    if (photoFile != null) {
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                        startActivityForResult(intent, REQUEST_PHOTO);
+                    } else {
+                        profilePicButton.setEnabled(false);
+                    }
+                } else {
+                    profilePicButton.setEnabled(false);
+                }
+            }
+        });
 
         String username = user.getName();
         usernameView = (TextView) this.findViewById(R.id.username);
@@ -93,5 +124,24 @@ public class ProfileActivity extends ActivityWithMenu{
         }
         eventsPointsView = (TextView) this.findViewById(R.id.events_points);
         eventsPointsView.setText(Integer.toString(user.getEventsProgress()) + "/5");
+    }
+
+    private File getPhotoFile(){
+        File externalPhotoDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        if(externalPhotoDir == null){
+            return null;
+        }
+
+        return new File(externalPhotoDir, "IMG_" + System.currentTimeMillis() + ".jpg");
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_PHOTO) {
+            Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getPath());
+            profilePicButton.setImageBitmap(bitmap);
+        }
     }
 }
