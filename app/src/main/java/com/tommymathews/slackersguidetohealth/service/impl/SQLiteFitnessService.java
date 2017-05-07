@@ -233,13 +233,15 @@ public class SQLiteFitnessService implements FitnessService {
     private void prepopulate(Context context) {
         //eggplant
         //TODO
-        Fitness f1 = new Fitness("Push Ups", 0, 20, "Push Ups are a great abs exercise.", null);
+        Fitness f1 = new Fitness("Crunches", 0, 30, "Crunches are a great abs exercise.", null);
         ArrayList<String> steps1 = new ArrayList<>();
-        steps1.add("Put your hands on the floor, shoulders, width apart");
-        steps1.add("Extend your body while keeping your it above the ground");
-        steps1.add("Bend your arms and have your chin touch the floor");
-        steps1.add("Do 20 of these");
+        steps1.add("Lay on your back with your feet on the floor and knees facing forward.");
+        steps1.add("Cross your arms across your chest");
+        steps1.add("Use only your upper body to rise up and make your elbows touch your knees");
+        steps1.add("Do 30 of these");
         f1.setSteps(steps1);
+
+        //TODO
         Fitness f2 = new Fitness("Pull Ups", 1, 20, "Pull Ups are a great back exercise", null);
         ArrayList<String> steps2 = new ArrayList<>();
         steps2.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
@@ -248,27 +250,34 @@ public class SQLiteFitnessService implements FitnessService {
         steps2.add("Take a slight pause and lower yourself all the way back down");
         steps2.add("Do 20 of these");
         f2.setSteps(steps2);
-        Fitness f3 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+
+
+        Fitness f3 = new Fitness("Towel Bicep Curls", 2, 20, "Put your hands on the floor, shoulders" +
                 " width apart, and extend your body while keeping your it above the ground. Bend " +
                 "your arms and have your chin touch the floor. Do 20 of these", null);
-        Fitness f4 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
+
+        //TODO
+        Fitness f4 = new Fitness("Push Ups", 3, 20, "", null);
+        Fitness f5 = new Fitness("Push Ups", 4, 20, "Put your hands on the floor, shoulders" +
                 " width apart, and extend your body while keeping your it above the ground. Bend " +
                 "your arms and have your chin touch the floor. Do 20 of these", null);
-        Fitness f5 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
-        Fitness f6 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
-        Fitness f7 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
-        Fitness f8 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
-        Fitness f9 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f6 = new Fitness("Push Ups", 5, 20, "", null);
+
+
+        Fitness f7 = new Fitness("Handstand Push Ups", 6, 20, "", null);
+
+
+        //TODO
+        Fitness f8 = new Fitness("Push Ups", 7, 20, "", null);
+
+        Fitness f9 = new Fitness("Push Ups", 8, 20, "Push Ups are a great triceps exercise.", null);
+        ArrayList<String> steps9 = new ArrayList<>();
+        steps9.add("Put your hands on the floor, shoulders, width apart");
+        steps9.add("Extend your body while keeping your it above the ground");
+        steps9.add("Bend your arms and have your chin touch the floor");
+        steps9.add("Do 20 of these");
+        f9.setSteps(steps9);
+
 
         addFitness(f1);
         addFitness(f2);
