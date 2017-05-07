@@ -230,6 +230,15 @@ public class SQLiteFitnessService implements FitnessService {
         return contentValues;
     }
 
+    private void prepopulate(Context context) {
+        //eggplant
+        //TODO
+        Fitness f1 = new Fitness();
+        Fitness f2 = new Fitness();
+        Fitness f2 = new Fitness();
+
+    }
+
     private class FitnessCursorWrapper extends CursorWrapper {
         public FitnessCursorWrapper(Cursor cursor) {
             super(cursor);
