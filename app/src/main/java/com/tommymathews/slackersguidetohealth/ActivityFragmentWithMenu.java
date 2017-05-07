@@ -13,7 +13,7 @@ public abstract class ActivityFragmentWithMenu extends SingleFragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_navigation2, menu);
+        inflater.inflate(R.menu.menu_navigation_both, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -47,12 +47,6 @@ public abstract class ActivityFragmentWithMenu extends SingleFragmentActivity {
                 break;
             case R.id.profileItem:
                 intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                overridePendingTransition(0,0);
-                break;
-            case R.id.settingsItem:
-                intent = new Intent(getApplicationContext(), Settings.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 overridePendingTransition(0,0);

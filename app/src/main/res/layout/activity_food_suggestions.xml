@@ -12,20 +12,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/recipeIdea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recipeIdea"
+            android:layout_gravity="center"
+            style="@style/FontAndSizeTitle"/>
+
     <ImageView
         android:id="@+id/foodPic"
         android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         app:srcCompat="@drawable/eggplant"
         android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/recipeIdea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/recipeIdea"
-        android:layout_gravity="center"
-        style="@style/FontAndSizeTitle"/>
 
         <TextView
             android:id="@+id/foodSuggestion"
@@ -43,7 +44,7 @@
         android:layout_height="wrap_content"
         android:text="@string/ingredients"
         style="@style/FontAndSizeInstructions"
-        />
+        android:layout_marginBottom="18dp"/>
 
     <TextView
         android:id="@+id/process"

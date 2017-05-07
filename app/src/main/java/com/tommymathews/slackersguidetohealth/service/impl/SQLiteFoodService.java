@@ -118,7 +118,7 @@ public class SQLiteFoodService implements FoodService {
 
     private void prepopulate(Context context) {
         //eggplant
-        Food food = new Food(120, context.getResources().getString(R.string.foodSuggestion),
+        Food food = new Food(350, context.getResources().getString(R.string.foodSuggestion),
                 context.getResources().getString(R.string.process),
                 context.getResources().getString(R.string.recipeIdea),
                 context.getResources().getString(R.string.ingredients),

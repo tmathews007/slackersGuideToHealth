@@ -255,4 +255,15 @@
     <!-- Food Main Page -->
     <string name="submit_food_recipe_button">Submit a recipe</string>
     <string name="get_food_recipe_button">Get a recipe</string>
+
+    <!-- Main Page -->
+    <string-array name="quotes">
+        <item>\"Don\'t panic.\"</item>
+        <item>\"Time is an illusion. Lunchtime doubly so.\"</item>
+        <item>\"He felt that his whole life was some kind of dream
+            and he sometimes wondered whose it was and whether they were enjoying it.\"</item>
+        <item>\"I\'d far rather be happy than right any day.\"</item>
+        <item>\"I was created to fulfill a function and I failed in it. I negated my own existence.\"</item>
+        <item>\"If they don\’t keep exercising their lips, he thought, their brains start working.\"</item>
+    </string-array>
 </resources>

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -41,6 +42,8 @@ public class ProfileActivity extends ActivityWithMenu{
     private TextView foodPointsView;
     private TextView eventsPointsView;
     private ImageButton profilePicButton;
+    private Button logoutButton;
+    private Button settingsButton;
     private File photoFile;
     private static final int REQUEST_PHOTO = 1;
 
@@ -54,6 +57,33 @@ public class ProfileActivity extends ActivityWithMenu{
         userService = DependencyFactory.getUserService(getApplicationContext());
         String email = sharedPreferences.getString(DbSchema.EMAIL,null);
         User user = userService.getUserByEmail(email);
+
+        logoutButton = (Button) findViewById(R.id.logOutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences=getSharedPreferences(DbSchema.LOGIN, 0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        settingsButton = (Button) this.findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, Settings.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         profilePicButton = (ImageButton) this.findViewById(R.id.profilePic);
         profilePicButton.setOnClickListener(new View.OnClickListener() {

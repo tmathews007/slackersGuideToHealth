@@ -104,6 +104,7 @@ public class SignUp extends Activity {
         ageTextView = (TextView) findViewById(R.id.txt_age);
         ageSeekBar = (SeekBar) findViewById(R.id.seekbar_age);
         ageTextView.setText("16");
+        age = 16;
         ageSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -124,6 +125,7 @@ public class SignUp extends Activity {
 
         weightTextView = (TextView) findViewById(R.id.weight_display_text);
         weightTextView.setText("50 lbs.");
+        weight = 50;
         weightSeekBar = (SeekBar) findViewById(R.id.weight_bar);
         weightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -146,6 +148,7 @@ public class SignUp extends Activity {
         heightTextView = (TextView) findViewById(R.id.txt_height);
         heightSeekBar = (SeekBar) findViewById(R.id.seekbar_height);
         heightTextView.setText("4' 0");
+        height = 4 * 12;
         heightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {

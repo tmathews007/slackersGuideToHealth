@@ -74,7 +74,7 @@ public class FoodRecipesActivity extends ActivityWithMenu {
     private void dialogPopup() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setMessage("Did you make the food?")
+                .setMessage("Did you make "+ recipeIdeaTextView.getText() + "?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {
                     @Override
