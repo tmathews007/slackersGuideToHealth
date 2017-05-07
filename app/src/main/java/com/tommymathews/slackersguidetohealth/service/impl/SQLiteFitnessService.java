@@ -233,9 +233,13 @@ public class SQLiteFitnessService implements FitnessService {
     private void prepopulate(Context context) {
         //eggplant
         //TODO
-        Fitness f1 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
-                " width apart, and extend your body while keeping your it above the ground. Bend " +
-                "your arms and have your chin touch the floor. Do 20 of these", null);
+        Fitness f1 = new Fitness("Push Ups", 0, 20, "Push Ups are a great abs exercise.", null);
+        ArrayList<String> steps1 = new ArrayList<>();
+        steps1.add("Put your hands on the floor, shoulders, width apart");
+        steps1.add("Extend your body while keeping your it above the ground");
+        steps1.add("Bend your arms and have your chin touch the floor");
+        steps1.add("Do 20 of these");
+        f1.setSteps(steps1);
         Fitness f2 = new Fitness("Push Ups", 0, 20, "Put your hands on the floor, shoulders" +
                 " width apart, and extend your body while keeping your it above the ground. Bend " +
                 "your arms and have your chin touch the floor. Do 20 of these", null);
