@@ -25,8 +25,8 @@ public class FitnessFragmentBack extends Fragment {
     private final int CALFS = Color.CYAN;
     private final int GLUTES = Color.GREEN;
     private final int SHOULDERS = Color.RED;
-    private final int FRONTVIEW = Color.YELLOW;
 
+    private Button frontViewButton;
 
     public static Fragment newInstance() {
         FitnessFragmentBack fragment = new FitnessFragmentBack();
@@ -68,16 +68,22 @@ public class FitnessFragmentBack extends Fragment {
                         Log.d("Clicked", "SHOULDERS");
                         startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
                         break;
-
-                    case FRONTVIEW:
-                        Log.d("Clicked", "FRONTVIEW");
-                        startActivity(new Intent(getActivity(), FitnessActivity.class));
-                        break;
-
                 }
                 return true;
             }
         });
+
+        frontViewButton = ( Button ) view.findViewById( R.id.front_view_button);
+        frontViewButton.setOnClickListener( new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {
+                                                   getActivity().finish();
+                                                   Intent intent = new Intent( getActivity(), FitnessActivity.class);
+                                                   startActivity(intent);
+                                               }
+                                           }
+        );
+
         return view;
     }
 

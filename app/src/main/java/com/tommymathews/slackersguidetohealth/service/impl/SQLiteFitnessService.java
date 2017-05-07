@@ -6,8 +6,11 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import com.tommymathews.slackersguidetohealth.R;
 import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
 
@@ -17,9 +20,13 @@ import java.util.List;
 public class SQLiteFitnessService implements FitnessService {
 
     private SQLiteDatabase database;
+    private Context context;
 
-    public SQLiteFitnessService(Context context) {
-        database = new DbHelper(context).getWritableDatabase();
+    public SQLiteFitnessService(Context c) {
+        context = c;
+        database = new DbHelper(c).getWritableDatabase();
+        prepopulate(c);
+
     }
 
     protected SQLiteDatabase getDatabase() {
@@ -110,12 +117,13 @@ public class SQLiteFitnessService implements FitnessService {
 
         Cursor cursorImages;
 
-        if (whereClause.equals(DbSchema.FitnessTable.Columns.ID + "=?")) {
-            cursorSteps = database.query(DbSchema.StepsTable.STEPS_NAME, null, DbSchema.StepsTable.Columns.STEPN + "=?", whereArgs, null, null, orderBy);
-            cursorImages = database.query(DbSchema.ImagesTable.IMAGE_NAME, null, DbSchema.ImagesTable.Columns.IMAGEN + "=?", whereArgs, null, null, orderBy);
-        } else {
+        if (whereClause == null) {
             cursorSteps = database.query(DbSchema.StepsTable.STEPS_NAME, null, null, whereArgs, null, null, orderBy);
             cursorImages = database.query(DbSchema.ImagesTable.IMAGE_NAME, null, null, whereArgs, null, null, orderBy);
+        } else {
+            cursorSteps = database.query(DbSchema.StepsTable.STEPS_NAME, null, DbSchema.StepsTable.Columns.STEPN + "=?", whereArgs, null, null, orderBy);
+            cursorImages = database.query(DbSchema.ImagesTable.IMAGE_NAME, null, DbSchema.ImagesTable.Columns.IMAGEN + "=?", whereArgs, null, null, orderBy);
+
         }
 
         FitnessCursorWrapper wrapper = new FitnessCursorWrapper(cursor);
@@ -233,43 +241,157 @@ public class SQLiteFitnessService implements FitnessService {
     private void prepopulate(Context context) {
         //eggplant
         //TODO
-        Fitness f1 = new Fitness("Crunches", 0, 30, "Crunches are a great abs exercise.", null);
-        ArrayList<String> steps1 = new ArrayList<>();
-        steps1.add("Lay on your back with your feet on the floor and knees facing forward.");
-        steps1.add("Cross your arms across your chest");
-        steps1.add("Use only your upper body to rise up and make your elbows touch your knees");
-        steps1.add("Do 30 of these");
-        f1.setSteps(steps1);
+        Drawable image = context.getResources().getDrawable(R.drawable.bicycle_crunch);
+        Bitmap img = ((BitmapDrawable) image).getBitmap();
+
+        Fitness f1 = new Fitness("Crunches", Fitness.BodyPart.ABS.ordinal(), 30, "Crunches are a great abs exercise.", img);
+
+        ArrayList<String> steps = new ArrayList<>();
+        steps.add("Lay on your back with your feet on the floor and knees facing forward.");
+        steps.add("Cross your arms across your chest");
+        steps.add("Use only your upper body to rise up and make your elbows touch your knees");
+        steps.add("Do 30 of these");
+
+        ArrayList<Bitmap> images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f1.setSteps(steps);
+        f1.setStepImages(images);
 
         //TODO
-        Fitness f2 = new Fitness("Pull Ups", 1, 20, "Pull Ups are a great back exercise", null);
-        ArrayList<String> steps2 = new ArrayList<>();
-        steps2.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+        Fitness f2 = new Fitness("Pull Ups", Fitness.BodyPart.BACK.ordinal(), 20, "Pull Ups are a great back exercise", img);
+        steps = new ArrayList<>();
+        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
-        steps2.add("Pull yourself up until your chin is above the bar.");
-        steps2.add("Take a slight pause and lower yourself all the way back down");
-        steps2.add("Do 20 of these");
-        f2.setSteps(steps2);
+        steps.add("Pull yourself up until your chin is above the bar.");
+        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Do 20 of these");
 
+        images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f2.setSteps(steps);
+        f2.setStepImages(images);
 
         //TODO Fix
-        Fitness f3 = new Fitness("Towel Bicep Curls", 2, 20, "TBC", null);
-        Fitness f4 = new Fitness("Double-Leg Calf Raise", 3, 20, "TODO Double-Leg Calf Raise", null);
-        Fitness f5 = new Fitness("Chest Dips", 4, 20, "TODO Chest Dips", null);
-        Fitness f6 = new Fitness("Glutes Exercise TODO", 5, 20, "TODO glutes", null);
-        Fitness f7 = new Fitness("Leg Extension", 6, 20, "TODO Leg Extension", null);
-        Fitness f8 = new Fitness("Handstand Push Ups", 7, 20, "", null);
+        Fitness f3 = new Fitness("Towel Bicep Curls", 2, 20, "TBC", img);
+        steps = new ArrayList<>();
+        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+                "and hang all the way down");
+        steps.add("Pull yourself up until your chin is above the bar.");
+        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Do 20 of these");
+
+        images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f3.setSteps(steps);
+        f3.setStepImages(images);
+
+        Fitness f4 = new Fitness("Double-Leg Calf Raise", 3, 20, "TODO Double-Leg Calf Raise", img);
+        steps = new ArrayList<>();
+        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+                "and hang all the way down");
+        steps.add("Pull yourself up until your chin is above the bar.");
+        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Do 20 of these");
+
+        images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f4.setSteps(steps);
+        f4.setStepImages(images);
+
+        Fitness f5 = new Fitness("Chest Dips", 4, 20, "TODO Chest Dips", img);
+        steps = new ArrayList<>();
+        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+                "and hang all the way down");
+        steps.add("Pull yourself up until your chin is above the bar.");
+        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Do 20 of these");
+
+        images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f5.setSteps(steps);
+        f5.setStepImages(images);
+
+        Fitness f6 = new Fitness("Glutes Exercise TODO", 5, 20, "TODO glutes", img);
+        steps = new ArrayList<>();
+        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+                "and hang all the way down");
+        steps.add("Pull yourself up until your chin is above the bar.");
+        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Do 20 of these");
+
+        images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f6.setSteps(steps);
+        f6.setStepImages(images);
+
+        Fitness f7 = new Fitness("Leg Extension", 6, 20, "TODO Leg Extension", img);
+        steps = new ArrayList<>();
+        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+                "and hang all the way down");
+        steps.add("Pull yourself up until your chin is above the bar.");
+        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Do 20 of these");
+
+        images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f7.setSteps(steps);
+        f7.setStepImages(images);
+
+        Fitness f8 = new Fitness("Handstand Push Ups", 7, 20, "", img);
+        steps = new ArrayList<>();
+        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
+                "and hang all the way down");
+        steps.add("Pull yourself up until your chin is above the bar.");
+        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Do 20 of these");
+
+        images = new ArrayList<>();
+        images.add(img);
+        images.add(img);
+        images.add(img);
+        images.add(img);
+
+        f8.setSteps(steps);
+        f8.setStepImages(images);
 
 
-
-        Fitness f9 = new Fitness("Push Ups", 8, 20, "Push Ups are a great triceps exercise.", null);
+        Fitness f9 = new Fitness("Push Ups", 8, 20, "Push Ups are a great triceps exercise.", img);
         ArrayList<String> steps9 = new ArrayList<>();
         steps9.add("Put your hands on the floor, shoulders, width apart");
         steps9.add("Extend your body while keeping your it above the ground");
         steps9.add("Bend your arms and have your chin touch the floor");
         steps9.add("Do 20 of these");
-        f9.setSteps(steps9);
 
+        f9.setSteps(steps9);
+        f9.setStepImages(images);
 
         addFitness(f1);
         addFitness(f2);

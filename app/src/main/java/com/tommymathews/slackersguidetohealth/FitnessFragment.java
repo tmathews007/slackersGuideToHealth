@@ -19,9 +19,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
+import com.tommymathews.slackersguidetohealth.model.Playlist;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FitnessFragment extends Fragment {
     private final String EXTRA_PLAYLIST_CREATED = "EXTRA_PLAYLIST_CREATED";
@@ -35,11 +37,7 @@ public class FitnessFragment extends Fragment {
     private final int BACKVIEW = Color.YELLOW;
 
     private Button createWorkoutButton;
-    private Button playlistWorkoutButton;
-
-    private Fitness fitness;
-
-    private Button createWorkout;
+    private Button backViewButton;
 
     public static Fragment newInstance() {
         FitnessFragment fragment = new FitnessFragment();
@@ -64,7 +62,16 @@ public class FitnessFragment extends Fragment {
                 switch(color) {
                     case ABS:
                         Log.d("Clicked", "ABS");
-                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
+                        List<Fitness> fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.ABS);
+                        Drawable thumbNail = getResources().getDrawable(R.drawable.abs);
+                        Bitmap img = ((BitmapDrawable) thumbNail).getBitmap();
+                        Playlist playlist = new Playlist("Ab Workouts" ,img, fitnesses);
+                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+
+                        Intent intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent.putExtra("ID", playlist.getId());
+                        startActivity(intent);
+
                         break;
 
                     case BICEPS:
@@ -80,11 +87,6 @@ public class FitnessFragment extends Fragment {
                     case QUADS:
                         Log.d("Clicked", "QUADS");
                         startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
-                        break;
-
-                    case BACKVIEW:
-                        Log.d("Clicked", "BACKVIEW");
-                        startActivity(new Intent(getActivity(), FitnessActivityBack.class));
                         break;
                 }
                 return true;
@@ -134,15 +136,18 @@ public class FitnessFragment extends Fragment {
         }
         );
 
-        playlistWorkoutButton = ( Button ) view.findViewById( R.id.playlist_workout );
-        playlistWorkoutButton.setOnClickListener( new View.OnClickListener() {
+        backViewButton = ( Button ) view.findViewById( R.id.back_view_button);
+        backViewButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( getActivity(), FitnessPlaylistBacklogActivity.class );
-                startActivity( intent );
+                getActivity().finish();
+                Intent intent = new Intent( getActivity(), FitnessActivityBack.class);
+                startActivity(intent);
             }
         }
         );
+
+
 
         return view;
     }
@@ -159,36 +164,5 @@ public class FitnessFragment extends Fragment {
 
     }
 
-    /* Local comparator for colors.  For our purposes, the two colors only need to be
-     * similar to each other.  In order to avoid problems from changes between devices or stretching
-     * of the image, the colors can be within MATCH_DISTANCE of one another.
-     *
-     * Compares using the absolute values of individual RGB colors from color1 and color2.
-     */
-    private boolean match (int color1, int color2) {
-        if ((((int) Math.abs(Color.red(color1) - Color.red(color2))) > MATCH_DISTANCE)  ||
-                (((int) Math.abs(Color.green(color1) - Color.green(color2))) > MATCH_DISTANCE) ||
-                (((int) Math.abs(Color.blue(color1) - Color.blue(color2))) > MATCH_DISTANCE)) {
-
-            Log.d("Color1", "R" + Color.red(color1));
-            Log.d("Color1", "G" + Color.green(color1));
-            Log.d("Color1", "B" + Color.blue(color1));
-
-            Log.d("Color2", "R" + Color.red(color2));
-            Log.d("Color2", "G" + Color.green(color2));
-            Log.d("Color2", "B" + Color.blue(color2));
-
-            Log.d("Color", "Does not Equal");
-            return false;
-
-        } else {
-            Log.d("Color1", "" + color1);
-            Log.d("Color2", "" + color2);
-            Log.d("Color", "Equals");
-
-            return true;
-
-        }
-    }
 
 }
