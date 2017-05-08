@@ -18,7 +18,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (ListView) findViewById(R.id.list_view);
+        String[] itemname ={
+                "Fitness",
+                "Food",
+                "Events"
+        };
+
+        Integer[] imgid={
+                R.drawable.run,
+                R.drawable.food,
+                R.drawable.fun
+        };
+
+        CustomListAdapter adapter = new CustomListAdapter(this, itemname, imgid);
+        listView = (ListView)findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Intent intent;
