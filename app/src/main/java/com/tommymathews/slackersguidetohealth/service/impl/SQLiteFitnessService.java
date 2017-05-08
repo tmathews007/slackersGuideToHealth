@@ -238,7 +238,7 @@ public class SQLiteFitnessService implements FitnessService {
             int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
             int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
             String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
-            File imageFile = new File(getString(getColumnIndex(DbSchema.FoodTable.Columns.IMAGE_PATH)));
+            File imageFile = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE)));
             File image = imageFile;
 
             String steps[] = {
