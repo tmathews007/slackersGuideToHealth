@@ -217,7 +217,7 @@ public class Settings extends AppCompatActivity {
 //                    UserService userService = DependencyFactory.getUserService(getApplication());
                     userService.addUser(user);
 
-                    startActivity(new Intent(Settings.this, MainActivity.class));
+                    startActivity(new Intent(Settings.this, ProfileActivity.class));
                     finish();
                     //store everything in shared preferences for now
                 }
