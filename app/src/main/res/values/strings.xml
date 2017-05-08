@@ -110,6 +110,14 @@
         then cut into squares and serve.</string>
 
     <string name="title_activity_food_form">Recipe Submission Tab</string>
+    <string name="foodExampleIng">50 eggs, 20 rhinos, 3 stalks of broccoli...</string>
+    <string name="foodExRecTitle">Vegan Rhino Cutlet</string>
+    <string name="sixHunna">600</string>
+    <string name="ingredTitle">Ingredients:</string>
+    <string name="processTitle">Process:</string>
+    <string name="foodExInstr">Mash the eggs and the beetles...</string>
+    <string name="submitForm">Submit Form</string>
+
 
     <!--Events-->
     <string name="eventsDesc"> Promoting MENTAL, PHYSICAL, and EMOTIONAL health. </string>
@@ -187,9 +195,9 @@
     <string name="backView">Back View</string>
     <string name="frontView">Front View</string>
     <string name="playlist_workout_button"> Workout Playlist </string>
-    <string name="instructions"> Instructions </string>
-    <string name="create_fitness_title"> Create Your Own Fitness </string>
-    <string name="fitness_name"> Fitness Name </string>
+    <string name="instructions">Instructions</string>
+    <string name="create_fitness_title">Create Your Own Fitness</string>
+    <string name="fitness_name">Fitness Name</string>
     <string name="fitness_name_sample"> Push Ups, Wide Grip </string>
     <string name="body_part"> Body Part </string>
     <string-array name="spinner_body_part">
@@ -218,6 +226,7 @@
     
     <string name="playlist_fitness_title"> Playlist of Workouts </string>
     <string name="playlist_caution"> NOTE: This list will have up to 10 workouts. </string>
+    <string name="playlistTitle">Playlist Title</string>
 
     <!-- ChestWorkout Activity: Dips -->
     <string name="chest_workout_dips"> Dips, Chair Assisted </string>

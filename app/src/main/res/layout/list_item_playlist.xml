@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:textSize="30dp"
-        tools:text="Playlist Title"
+        tools:text="@string/playlistTitle"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="60dp" />
