@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.SectionIndexer;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -23,14 +24,14 @@ public class Fitness implements Serializable {
     private double numReps;
     private BodyPart bodyPart;
     private String[] steps = {null, null, null, null, null, null, null, null, null, null};
-    private Bitmap[] images = {null, null, null, null, null, null, null, null, null, null};
+    private File[] images = {null, null, null, null, null, null, null, null, null, null};
     private int likes;
     private String id;
     private String instructions;
-    private Bitmap image;
+    private File image;
 
 
-    public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, Bitmap image ) {
+    public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, File image ) {
         this.fitnessName = fitnessName;
         this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
         this.numReps = numReps;
@@ -48,7 +49,7 @@ public class Fitness implements Serializable {
         return likes;
     }
 
-    public Bitmap[] getImagesDB() {return images;}
+    public File[] getImagesDB() {return images;}
 
     public String[] getStepsDB() {return steps; }
 
@@ -68,7 +69,7 @@ public class Fitness implements Serializable {
 
         int i = 0;
         while (i < images.length && images[i] != null) {
-            b.add(images[i]);
+            b.add(BitmapFactory.decodeFile(images[i].getPath()));
             ++i;
         }
         return b;
@@ -90,8 +91,12 @@ public class Fitness implements Serializable {
         return this.instructions;
     }
 
-    public Bitmap getImage() {
+    public File getImageDb() {
         return this.image;
+    }
+
+    public Bitmap getImage() {
+        return BitmapFactory.decodeFile(image.getPath());
     }
 
     public void setId(String i) {
@@ -118,13 +123,23 @@ public class Fitness implements Serializable {
         this.instructions = instructions;
     }
 
-    public void setImage( Bitmap image ) {
+    public void setImage( File image ) {
         this.image = image;
     }
 
-    public void setImagesDB(Bitmap[] imgs) { images = imgs;}
+    public void setImagesDB(File[] imgs) {
+        int i = 0;
+        while(i < imgs.length) {
+            images[i] = imgs[i];
+            ++i;
+        }
+        while(i < images.length) {
+            images[i] = null;
+            ++i;
+        }
+    }
 
-    public void setStepImages(ArrayList<Bitmap> imgs) {
+    public void setStepImages(ArrayList<File> imgs) {
         int i = 0;
         while (i < imgs.size() && i < images.length) {
             images[i] = imgs.get(i);

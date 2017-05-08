@@ -7,6 +7,8 @@ package com.tommymathews.slackersguidetohealth;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.tommymathews.slackersguidetohealth.model.Fitness;
+import com.tommymathews.slackersguidetohealth.model.Playlist;
+
+import java.io.File;
+import java.util.List;
 
 public class FitnessFragmentBack extends Fragment {
     private final int MATCH_DISTANCE = 10;
@@ -47,26 +55,59 @@ public class FitnessFragmentBack extends Fragment {
                 int y = (int) event.getY();
                 int color = getColor(R.id.fitness_image_back, x, y);
 
+                List<Fitness> fitnesses;
+                File img;
+                Playlist playlist;
+                Intent intent;
+
                 switch(color) {
 
                     case BACK:
                         Log.d("Clicked", "BACK");
-                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
+                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.BACK);
+                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
+                        playlist = new Playlist("Back Workouts" , img, fitnesses);
+                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+
+                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent.putExtra("ID", playlist.getId());
+                        startActivity(intent);
                         break;
 
                     case CALFS:
                         Log.d("Clicked", "CALFS");
-                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
+                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.CALFS);
+                        img = new File("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
+                        playlist = new Playlist("Calf Workouts" , img, fitnesses);
+                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+
+                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent.putExtra("ID", playlist.getId());
+                        startActivity(intent);
                         break;
 
                     case GLUTES:
                         Log.d("Clicked", "GLUTES");
-                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
+                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.GLUTES);
+                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
+                        playlist = new Playlist("Glute Workouts" , img, fitnesses);
+                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+
+                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent.putExtra("ID", playlist.getId());
+                        startActivity(intent);
                         break;
 
                     case SHOULDERS:
                         Log.d("Clicked", "SHOULDERS");
-                        startActivity(new Intent(getActivity(), FitnessDescriptionActivity.class));
+                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.SHOULDERS);
+                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
+                        playlist = new Playlist("Shoulder Workouts" , img, fitnesses);
+                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+
+                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent.putExtra("ID", playlist.getId());
+                        startActivity(intent);
                         break;
                 }
                 return true;

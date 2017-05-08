@@ -1,8 +1,10 @@
 package com.tommymathews.slackersguidetohealth.model;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -13,12 +15,12 @@ import java.util.UUID;
 
 public class Playlist implements Comparable<Playlist>{
     private Fitness[] playlist = {null, null, null, null, null, null, null, null, null, null};
-    private Bitmap thumbNail;
+    private File thumbNail;
     private String name = "";
     private String id;
     private int likes;
 
-    public Playlist (String n, Bitmap image, List<Fitness> lst) {
+    public Playlist (String n, File image, List<Fitness> lst) {
         name = n;
         likes = 0;
         id = UUID.randomUUID().toString();
@@ -31,7 +33,7 @@ public class Playlist implements Comparable<Playlist>{
         }
     }
 
-    public Playlist (String n, Bitmap image, Fitness[] lst) {
+    public Playlist (String n, File image, Fitness[] lst) {
         name = n;
         likes = 0;
         id = UUID.randomUUID().toString();
@@ -43,7 +45,7 @@ public class Playlist implements Comparable<Playlist>{
         }
     }
 
-    public void setThumbNail(Bitmap i) {
+    public void setThumbNail(File i) {
         thumbNail = i;
     }
 
@@ -116,7 +118,11 @@ public class Playlist implements Comparable<Playlist>{
         --likes;
     }
 
-    public Bitmap getThumbNail() {
+    public Bitmap getThumbNailBitmap() {
+        return BitmapFactory.decodeFile(thumbNail.getPath());
+    }
+
+    public File getThumbNail() {
         return thumbNail;
     }
 

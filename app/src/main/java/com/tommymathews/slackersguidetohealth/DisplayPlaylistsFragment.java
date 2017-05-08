@@ -82,7 +82,7 @@ public class DisplayPlaylistsFragment extends Fragment {
         public void bindPlaylist(Playlist p) {
             this.playlist = p;
             name.setText(playlist.getName());
-            image.setImageBitmap(playlist.getThumbNail());
+            image.setImageBitmap(playlist.getThumbNailBitmap());
         }
 
         @Override

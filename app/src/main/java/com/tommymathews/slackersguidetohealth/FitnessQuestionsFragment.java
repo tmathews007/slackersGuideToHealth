@@ -153,7 +153,6 @@ public class FitnessQuestionsFragment extends Fragment {
                 if( bitmap == null ) {
                     bitmap = null;
                 } else {
-                    fitness.setImage( bitmap );
                 }
 //                fitness.setImage( cameraImage.getDrawingCache() );
 

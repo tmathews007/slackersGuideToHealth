@@ -12,6 +12,7 @@ import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.model.Playlist;
 import com.tommymathews.slackersguidetohealth.service.PlaylistService;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -98,7 +99,7 @@ public class SQLitePlaylistService implements PlaylistService {
 
         contentValues.put(DbSchema.PlayListTable.Columns.ID, p.getId());
         contentValues.put(DbSchema.PlayListTable.Columns.NAME, p.getName());
-        contentValues.put(DbSchema.PlayListTable.Columns.THUMBNAIL, DbBitmapUtility.getBytes(p.getThumbNail()));
+        contentValues.put(DbSchema.PlayListTable.Columns.THUMBNAIL, p.getThumbNail().getPath());
         contentValues.put(DbSchema.PlayListTable.Columns.LIKES, p.getLikes());
         contentValues.put(DbSchema.PlayListTable.Columns.FITNESS_1, p.getPlaylistDB()[0].getId());
         contentValues.put(DbSchema.PlayListTable.Columns.FITNESS_2, p.getPlaylistDB()[1].getId());
@@ -126,7 +127,7 @@ public class SQLitePlaylistService implements PlaylistService {
             String id = getString(getColumnIndex(DbSchema.PlayListTable.Columns.ID));
             String name = getString(getColumnIndex(DbSchema.PlayListTable.Columns.NAME));
             int likes = getInt(getColumnIndex(DbSchema.PlayListTable.Columns.LIKES));
-            Bitmap thumbNail = DbBitmapUtility.getImage(getBlob( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE)));
+            File thumbNail = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE)));
             List<Fitness> playlist = new ArrayList<Fitness>();
             playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1))));
             playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_2))));

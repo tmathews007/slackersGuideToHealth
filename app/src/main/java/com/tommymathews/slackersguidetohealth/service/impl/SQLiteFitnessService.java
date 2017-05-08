@@ -6,14 +6,17 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.util.Log;
 
 import com.tommymathews.slackersguidetohealth.R;
 import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,7 +141,7 @@ public class SQLiteFitnessService implements FitnessService {
         contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().toString());
         contentValues.put( DbSchema.FitnessTable.Columns.NUM_REPS, fitness.getNumReps() );
         contentValues.put( DbSchema.FitnessTable.Columns.INSTRUCTIONS, fitness.getInstructions() );
-        contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, DbBitmapUtility.getBytes( fitness.getImage() ) );
+        contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, fitness.getImageDb().getPath() );
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_1, fitness.getStepsDB()[0]);
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_2, fitness.getStepsDB()[1]);
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_3, fitness.getStepsDB()[2]);
@@ -151,36 +154,76 @@ public class SQLiteFitnessService implements FitnessService {
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_10, fitness.getStepsDB()[9]);
 
         if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_1, DbBitmapUtility.getBytes(fitness.getImagesDB()[0]));
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_1, ((fitness.getImagesDB()[0])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_1, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_2, DbBitmapUtility.getBytes(fitness.getImagesDB()[1]));
+
+        if (fitness.getImagesDB()[1] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_2, ((fitness.getImagesDB()[1])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_2, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_3, DbBitmapUtility.getBytes(fitness.getImagesDB()[2]));
+
+        if (fitness.getImagesDB()[2] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_3, ((fitness.getImagesDB()[2])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_3, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_4, DbBitmapUtility.getBytes(fitness.getImagesDB()[3]));
+
+        if (fitness.getImagesDB()[3] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_4, ((fitness.getImagesDB()[3])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_4, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_5, DbBitmapUtility.getBytes(fitness.getImagesDB()[4]));
+
+        if (fitness.getImagesDB()[4] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_5, ((fitness.getImagesDB()[4])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_5, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_6, DbBitmapUtility.getBytes(fitness.getImagesDB()[5]));
+
+        if (fitness.getImagesDB()[5] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_6, ((fitness.getImagesDB()[5])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_6, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_7, DbBitmapUtility.getBytes(fitness.getImagesDB()[6]));
+
+        if (fitness.getImagesDB()[6] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_7, ((fitness.getImagesDB()[6])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_7, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_8, DbBitmapUtility.getBytes(fitness.getImagesDB()[7]));
+
+        if (fitness.getImagesDB()[7] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_8, ((fitness.getImagesDB()[7])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_8, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_9, DbBitmapUtility.getBytes(fitness.getImagesDB()[8]));
+
+        if (fitness.getImagesDB()[8] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_9, ((fitness.getImagesDB()[8])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_9, "");
         }
-        if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_10, DbBitmapUtility.getBytes(fitness.getImagesDB()[9]));
+
+        if (fitness.getImagesDB()[9] != null) {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_10, ((fitness.getImagesDB()[9])).getPath());
+        } else {
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_10, "");
         }
+
         return contentValues;
+    }
+
+    private File getPhotoFile(){
+        File externalPhotoDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        if(externalPhotoDir == null){
+            return null;
+        }
+
+        return new File(externalPhotoDir, "IMG_" + System.currentTimeMillis() + ".jpg");
     }
 
     private class FitnessCursorWrapper extends CursorWrapper {
@@ -195,8 +238,8 @@ public class SQLiteFitnessService implements FitnessService {
             int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
             int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
             String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
-            byte[] image = getBlob( getColumnIndex( DbSchema.FitnessTable.Columns.IMAGE ) );
-
+            File imageFile = new File(getString(getColumnIndex(DbSchema.FoodTable.Columns.IMAGE_PATH)));
+            File image = imageFile;
 
             String steps[] = {
                     getString( getColumnIndex( DbSchema.FitnessTable.Columns.STEP_1)),
@@ -210,47 +253,25 @@ public class SQLiteFitnessService implements FitnessService {
                     getString( getColumnIndex( DbSchema.FitnessTable.Columns.STEP_9)),
                     getString( getColumnIndex( DbSchema.FitnessTable.Columns.STEP_10))};
 
-            Bitmap images[] = {null, null, null, null ,null, null, null, null, null, null};
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_1)) != null) {
-                images[0] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_1)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_2)) != null) {
-                images[1] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_2)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_3)) != null) {
-                images[2] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_3)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_4)) != null) {
-                images[3] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_4)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_5)) != null) {
-                images[4] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_5)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_6)) != null) {
-                images[5] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_6)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_7)) != null) {
-                images[6] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_7)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_8)) != null) {
-                images[7] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_8)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_9)) != null) {
-                images[8] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_9)));
-            }
-            if (getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_10)) != null) {
-                images[9] = DbBitmapUtility.getImage(getBlob(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_10)));
-            }
+            File images[] = {null, null, null, null ,null, null, null, null, null, null};
+            images[0] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_1)));
+            images[1] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_2)));
+            images[2] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_3)));
+            images[3] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_4)));
+            images[4] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_5)));
+            images[5] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_6)));
+            images[6] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_7)));
+            images[7] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_8)));
+            images[8] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_9)));
+            images[9] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_10)));
 
-
-            Fitness fitness = new Fitness( name, bodyPart, numReps, instructions, DbBitmapUtility.getImage(image));
+            Fitness fitness = new Fitness(name, bodyPart, numReps, instructions, image);
             fitness.setId(id);
             fitness.setLikes(likes);
             fitness.setFitnessName( name );
             fitness.setBodyPart( bodyPart );
             fitness.setNumReps( numReps );
             fitness.setInstructions( instructions );
-            fitness.setImage( DbBitmapUtility.getImage( image ));
             fitness.setStepsDB(steps);
             fitness.setImagesDB(images);
 
@@ -261,8 +282,8 @@ public class SQLiteFitnessService implements FitnessService {
     private void prepopulate(Context context) {
         //eggplant
         //TODO
-        Drawable image = context.getResources().getDrawable(R.drawable.bicycle_crunch);
-        Bitmap img = ((BitmapDrawable) image).getBitmap();
+
+        File img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.bicycle_crunch);
 
         Fitness f1 = new Fitness("Crunches", Fitness.BodyPart.ABS.ordinal(), 30, "Crunches are a great abs exercise.", img);
 
@@ -272,7 +293,7 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Use only your upper body to rise up and make your elbows touch your knees");
         steps.add("Do 30 of these");
 
-        ArrayList<Bitmap> images = new ArrayList<>();
+        ArrayList<File> images = new ArrayList<>();
         images.add(img);
         images.add(img);
         images.add(img);
