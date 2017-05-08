@@ -5,21 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class MentalHealth extends Activity {
+public class Health extends Activity {
 
-    WebView webViewMental;
+    WebView webViewPhysical;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health);
 
-        webViewMental = (WebView) findViewById(R.id.web_health);
+        webViewPhysical = (WebView) findViewById(R.id.web_health);
         String urlPart1 = "https://www.eventbrite.com/d/";
         String urlPart2 = "--";
-        String urlPart3 = "/mental-health/?crt=regular&sort=best";
-        String state = Events.yourState;
-        String city = Events.yourCity;
-        webViewMental.loadUrl(urlPart1+state+urlPart2+city+urlPart3);
+        String urlPart3 = "/"+ getIntent().getStringExtra(Events.EVENT_TYPE) +"/?crt=regular&sort=best";
+        String state = getIntent().getStringExtra(Events.STATE);
+        String city = getIntent().getStringExtra(Events.CITY);
+        webViewPhysical.loadUrl(urlPart1+state+urlPart2+city+urlPart3);
         Intent returnIntent = getIntent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
         finish();

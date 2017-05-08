@@ -1,8 +1,10 @@
 package com.tommymathews.slackersguidetohealth;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,60 +18,61 @@ import android.widget.Toast;
 
 import com.tommymathews.slackersguidetohealth.model.Food;
 import com.tommymathews.slackersguidetohealth.service.FoodService;
-import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
 import java.io.File;
 
 public class FoodForm extends ActivityWithMenu {
-    private final static int REQUEST_CODE_RECIPE = 0;
-    private final static int REQUEST_CODE_SUBMIT_RECIPE = 0;
 
-    private ImageView iv;
-    private ImageButton ib;
+    private static final int REQUEST_PHOTO = 800;
+
+    private ImageView imageView;
+    private ImageButton imageButton;
     private EditText recipeTitle;
     private EditText recipeCalories;
     private EditText recipeIngredients;
     private EditText recipeInstructions;
     private Button submit;
     private Uri uri;
+    private Bitmap bitmap;
+
+    private final String TAG = "FoodForm";
 
     private SQLiteDatabase database;
 
-    private static final int REQUEST_PHOTO = 300;
-    private File f;
+    private File photoFile;
+    private String mCurrentPhotoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_form);
 
-        ib = (ImageButton) findViewById(R.id.camera);
-        iv = (ImageView) findViewById(R.id.photo);
+        imageButton = (ImageButton) findViewById(R.id.camera);
+        imageView = (ImageView) findViewById(R.id.photo);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                if (intent.resolveActivity(getPackageManager()) != null){
+                    photoFile = getPhotoFile();
+                    if (photoFile != null) {
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                        startActivityForResult(intent, REQUEST_PHOTO);
+                    } else {
+                        imageButton.setEnabled(false);
+                    }
+                } else {
+                    imageButton.setEnabled(false);
+                }
+            }
+        });
 
         recipeTitle = (EditText) findViewById(R.id.recipeTitle);
         recipeCalories = (EditText) findViewById(R.id.recipeCalories);
         recipeIngredients = (EditText) findViewById(R.id.recipeIngredients);
         recipeInstructions = (EditText) findViewById(R.id.recipeInstructions);
-
-        ib.setEnabled(true);
-        ib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (intent.resolveActivity(getPackageManager()) == null)
-                    ib.setEnabled(false);
-                else {
-                    f = getPhotoFile();
-                    if (f==null)
-                        ib.setEnabled(false);
-                    else {
-                        uri = Uri.fromFile(f);
-                        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                        startActivityForResult(intent, REQUEST_PHOTO);
-                    }
-                }
-            }
-        });
+        mCurrentPhotoPath = "";
 
         submit = (Button) findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +80,8 @@ public class FoodForm extends ActivityWithMenu {
             public void onClick(View view) {
                 if (checkInputs()) {
                     int cal = Integer.parseInt(recipeCalories.getText().toString());
-                    Food food = new Food(cal, "", recipeTitle.getText().toString(), recipeIngredients.getText().toString(), "");
+                    Food food = new Food(cal, "", recipeTitle.getText().toString(), recipeIngredients.getText().toString(),
+                            recipeInstructions.getText().toString(), mCurrentPhotoPath);
                     FoodService foodService = DependencyFactory.getFoodService(getApplication());
                     foodService.addFood(food);
                     Intent intent = new Intent(FoodForm.this, FoodMain.class);
@@ -90,44 +94,24 @@ public class FoodForm extends ActivityWithMenu {
         });
     }
 
-    private File getPhotoFile(){
-        File ePD = getApplicationContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
-        if (ePD==null) {
+    private File getPhotoFile(){
+        File externalPhotoDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        if(externalPhotoDir == null){
             return null;
         }
 
-        return new File(ePD, "IMG_" + System.currentTimeMillis() + ".jpg");
+        return new File(externalPhotoDir, "IMG_" + System.currentTimeMillis() + ".jpg");
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if( requestCode == REQUEST_PHOTO && resultCode == RESULT_OK ) {
-            Uri selectedImageUri = (data == null) ? uri : data.getData();
-            if( selectedImageUri != null ) {
-//                if( requestCode == REQUEST_PHOTO ) {
-//                    Intent mediaScanIntent = new Intent( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE );
-//                    mediaScanIntent.setData( selectedImageUri );
-//                    this.sendBroadcast( mediaScanIntent );
-//                }
-                Cursor cursor = getContentResolver().query( uri,
-                        new String[] {
-                                MediaStore.Images.ImageColumns.DATA
-                        },
-                        null,
-                        null,
-                        null,
-                        null
-                );
-                cursor.moveToFirst();
-                String imageFilePath = cursor.getString( 0 );
-                cursor.close();
-
-                if( imageFilePath != null ) {
-                    database.execSQL("INSERT INTO TABLE_NAME VALUES(' "+imageFilePath+" ');");
-                }
-            }
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_PHOTO) {
+            bitmap = BitmapFactory.decodeFile(photoFile.getPath());
+            mCurrentPhotoPath = photoFile.getPath();
+            imageView.setImageBitmap(bitmap);
         }
     }
 
@@ -137,4 +121,6 @@ public class FoodForm extends ActivityWithMenu {
                 recipeInstructions.getText().length() > 0 &&
                 recipeIngredients.getText().length() > 0;
     }
+
+
 }

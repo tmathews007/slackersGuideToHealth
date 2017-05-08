@@ -5,24 +5,26 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
+
 public class Events extends ActivityWithMenu {
 
-    public ImageView emotional, mental, physical;
-    public static String yourState="";
-    public static String yourCity="";
-    EditText st, cy;
+    private ImageView emotional, mental, physical;
+    private static String yourState="";
+    private static String yourCity="";
+    private EditText st, cy;
     public static final int REQUEST_CODE_EVENT_WEBSITE= 1;
 
-
+    public static final String CITY = "CITY";
+    public static final String STATE = "STATE";
+    public static final String EVENT_TYPE = "EVENT_TYPE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,11 @@ public class Events extends ActivityWithMenu {
                 //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString().replaceAll(" ","-");
-//                String url = "https://www.eventbrite.com/d/" + yourState + "--" + yourCity + "/emotional-health/?crt=regular&sort=best";
-//                Intent intent = new Intent( Intent.ACTION_VIEW );
-//                intent.setData( Uri.parse( url ) );
-//                startActivity( intent );
-                startActivityForResult(new Intent(Events.this, EmotionalHealth.class), REQUEST_CODE_EVENT_WEBSITE);
+                Intent intent = new Intent(Events.this, Health.class);
+                intent.putExtra(EVENT_TYPE, "emotional-health");
+                intent.putExtra(CITY, yourCity);
+                intent.putExtra(STATE, yourState);
+                startActivityForResult(intent, REQUEST_CODE_EVENT_WEBSITE);
                 overridePendingTransition(0,0);
             }
         });
@@ -59,7 +61,11 @@ public class Events extends ActivityWithMenu {
                 //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString().replaceAll(" ","-");
-                startActivityForResult(new Intent(Events.this, MentalHealth.class), REQUEST_CODE_EVENT_WEBSITE);
+                Intent intent = new Intent(Events.this, Health.class);
+                intent.putExtra(EVENT_TYPE, "mental-health");
+                intent.putExtra(CITY, yourCity);
+                intent.putExtra(STATE, yourState);
+                startActivityForResult(intent, REQUEST_CODE_EVENT_WEBSITE);
                 overridePendingTransition(0,0);
             }
         });
@@ -71,7 +77,11 @@ public class Events extends ActivityWithMenu {
                 //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString().replaceAll(" ","-");
-                startActivityForResult(new Intent(Events.this, PhysicalHealth.class), REQUEST_CODE_EVENT_WEBSITE);
+                Intent intent = new Intent(Events.this, Health.class);
+                intent.putExtra(EVENT_TYPE, "physical-health");
+                intent.putExtra(CITY, yourCity);
+                intent.putExtra(STATE, yourState);
+                startActivityForResult(intent, REQUEST_CODE_EVENT_WEBSITE);
                 overridePendingTransition(0,0);
             }
         });
@@ -85,16 +95,21 @@ public class Events extends ActivityWithMenu {
 
 
     public void dialog(){
-        new AlertDialog.Builder(this)
-                .setTitle("Give Your Thoughts").setMessage("Did you like any events that you viewed?")
-                .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SharedPreferences sp = getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
-                String username = sp.getString(DbSchema.EMAIL, null);
-                DependencyFactory.getUserService(getApplicationContext()).incrementEventsProgress(username);
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+
+                new AlertDialog.Builder(Events.this)
+                        .setTitle("Give Your Thoughts").setMessage("Did you like any events that you viewed?")
+                        .setNegativeButton("no", null).setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sp = getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
+                        String username = sp.getString(DbSchema.EMAIL, null);
+                        DependencyFactory.getUserService(getApplicationContext()).incrementEventsProgress(username);
+                    }
+                }).create().show();
             }
-        }).create().show();
+        }, 1000);
     }
 
 }

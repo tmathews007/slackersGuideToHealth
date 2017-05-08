@@ -11,10 +11,13 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-feature
-        android:name="android.hardware.camera2"
+    <uses-feature android:name="android.hardware.camera2"
         android:required="false" >
     </uses-feature>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +27,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SplashScreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
@@ -74,16 +78,8 @@
             android:label="@string/events">
         </activity>
         <activity
-            android:name=".EmotionalHealth"
-            android:label="@string/title_activity_emotional_health">
-        </activity>
-        <activity
-            android:name=".PhysicalHealth"
-            android:label="@string/title_activity_physical_health">
-        </activity>
-        <activity
-            android:name=".MentalHealth"
-            android:label="@string/title_activity_mental_health">
+            android:name=".Health"
+            android:label="Health">
         </activity>
 
         <activity

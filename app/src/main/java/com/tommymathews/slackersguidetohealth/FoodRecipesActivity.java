@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -46,18 +47,23 @@ public class FoodRecipesActivity extends ActivityWithMenu {
         if (intent.getSerializableExtra(FOOD) != null) {
             Food food = (Food) intent.getSerializableExtra(FOOD);
             if (food.getImagePath().length() > 0) {
-                Uri uri = Uri.parse(food.getImagePath());
-                Bitmap bitmap = null;
-                try {
-                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                if (food.getImagePath().contains("android.resource://")) {
+                    Uri uri = Uri.parse(food.getImagePath());
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                        picImageView.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Bitmap bitmap = BitmapFactory.decodeFile(food.getImagePath());
                     picImageView.setImageBitmap(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
             } else {
                 picImageView.setVisibility(View.GONE);
             }
-            if (food.getRecommendation().length() == 0) {
+            if (food.getRecommendation() == null || food.getRecommendation().length() == 0) {
                 foodSuggestionTextView.setText("This food must be delicious because it's only "+
                         food.getCalorieLevel() +" calories!");
             } else {
