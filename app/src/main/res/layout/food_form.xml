@@ -70,7 +70,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submitForm"
-        android:id="@+id/submit"/>
+        android:id="@+id/submit"
+        style="@android:style/Widget.Button" />
 
 
 </LinearLayout>

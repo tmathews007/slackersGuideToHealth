@@ -198,14 +198,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:text="@string/back_button" />
+                android:text="@string/back_button"
+                style="@android:style/Widget.Button" />
 
             <Button
                 android:id="@+id/btn_save_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="@string/save_settings_button" />
+                android:text="@string/save_settings_button"
+                style="@android:style/Widget.Button" />
         </RelativeLayout>
 
     </LinearLayout>

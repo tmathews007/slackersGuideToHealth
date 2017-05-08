@@ -111,7 +111,8 @@
                 android:id="@+id/save_fitness_button"
                 android:layout_alignParentTop="true"
                 android:layout_toStartOf="@+id/cancel_fitness_button"
-                android:layout_marginEnd="25dp" />
+                android:layout_marginEnd="25dp"
+                style="@android:style/Widget.Button" />
 
             <Button
                 android:text="@string/cancel_button"
@@ -120,7 +121,8 @@
                 android:id="@+id/cancel_fitness_button"
                 android:layout_marginEnd="81dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                style="@android:style/Widget.Button" />
         </RelativeLayout>
 
     </LinearLayout>

@@ -31,7 +31,7 @@
 
             <Button
                 android:id="@+id/log_in_button"
-                style="?android:textAppearanceSmall"
+                style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -42,7 +42,8 @@
                 android:id="@+id/sign_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/sign_up"/>
+                android:text="@string/sign_up"
+                style="@android:style/Widget.Button" />
 
         </LinearLayout>
 </LinearLayout>
