@@ -180,7 +180,7 @@
     <string name="workouts_completed">Workouts Completed</string>
     <string name="back_button">Back</string>
     <string name="save_settings_button">Save</string>
-
+    <string name="sample_nothing"> JUST A TEST </string>
 
     <!-- Fitness-->
     <string name="exerciseSteps">Exercise Steps</string>
