@@ -119,10 +119,11 @@
     <string name="mentalHealthDescription">Mental Health Events</string>
     <string name="physicalHealthDescription">Physical Health Events</string>
     <string name="emotionalHealthDescription">Emotional Health Events</string>
-    <string name="stateEvents">Please enter in the 2-letter abbreviation of your state below.</string>
-    <string name="stateReq">Enter your state abbreviation.</string>
+    <string name="events_text"> Please enter your state and city. </string>
+    <string name="stateEvents"> Enter 2-letter abbreviation of your state.</string>
+    <string name="stateReq">Abbreviate state</string>
     <string name="cityEvents">Please enter in the name of your city below.</string>
-    <string name="cityReq">Enter your city.</string>
+    <string name="cityReq">Enter city</string>
     <string name="mentalHealth">MENTAL HEALTH</string>
     <string name="physicalHealth">PHYSICAL HEALTH</string>
     <string name="emotionalHealth">EMOTIONAL HEALTH</string>
