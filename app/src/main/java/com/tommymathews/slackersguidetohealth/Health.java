@@ -3,6 +3,7 @@ package com.tommymathews.slackersguidetohealth;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 
 public class Health extends Activity {
@@ -19,7 +20,8 @@ public class Health extends Activity {
         String urlPart3 = "/"+ getIntent().getStringExtra(Events.EVENT_TYPE) +"/?crt=regular&sort=best";
         String state = getIntent().getStringExtra(Events.STATE);
         String city = getIntent().getStringExtra(Events.CITY);
-        webViewPhysical.loadUrl(urlPart1+state+urlPart2+city+urlPart3);
+        String url = urlPart1+state+" "+urlPart2+city+urlPart3;
+        webViewPhysical.loadUrl(url);
         Intent returnIntent = getIntent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
         finish();
