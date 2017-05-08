@@ -283,8 +283,9 @@
     </string>
 
     <!-- Food Main Page -->
-    <string name="submit_food_recipe_button">Submit a recipe</string>
-    <string name="get_food_recipe_button">Get a recipe</string>
+    <string name="submit_food_recipe_button">Submit A Recipe</string>
+    <string name="get_food_recipe_button">Get A Recipe</string>
+    <string name="food_main_title"> Promoting healthy eating with incentives. </string>
 
     <!-- Main Page -->
     <string-array name="quotes">

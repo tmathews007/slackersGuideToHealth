@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -42,6 +43,10 @@ public class Events extends ActivityWithMenu {
                 //update the variables again
                 yourState=st.getText().toString();
                 yourCity=cy.getText().toString().replaceAll(" ","-");
+//                String url = "https://www.eventbrite.com/d/" + yourState + "--" + yourCity + "/emotional-health/?crt=regular&sort=best";
+//                Intent intent = new Intent( Intent.ACTION_VIEW );
+//                intent.setData( Uri.parse( url ) );
+//                startActivity( intent );
                 startActivityForResult(new Intent(Events.this, EmotionalHealth.class), REQUEST_CODE_EVENT_WEBSITE);
                 overridePendingTransition(0,0);
             }

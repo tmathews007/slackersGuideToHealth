@@ -15,29 +15,36 @@
         android:layout_height="wrap_content"
         android:text="@string/eventsDesc"
         style="@style/FontAndSizeInstructionsTitle"
-        android:textColor="@color/darkOrchid"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/stateEvents"/>
-    <EditText
-        android:id="@+id/state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/stateReq"
-        android:inputType="text"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cityEvents"/>
-    <EditText
-        android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/cityReq"
-        android:inputType="text"/>
+        android:text="@string/stateReq"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/cityReq"
+            android:inputType="text"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/state" />
+
+        <EditText
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/stateReq"
+            android:inputType="text"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/content"
@@ -49,26 +56,56 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:text="@string/mentalHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:layout_gravity="center"
+                android:fontFamily= "sans-serif-condensed"
+                android:textSize="20dp"
+                android:textColor="@color/darkBlue" />
+
             <ImageView
                 android:id="@+id/mental"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/health_expo"/>
+                app:srcCompat="@drawable/mental_health_brain"/>
+
+            <TextView
+                android:text="@string/physicalHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:layout_gravity="center"
+                android:fontFamily= "sans-serif-condensed"
+                android:textSize="20dp"
+                android:textColor="@color/green" />
 
             <ImageView
                 android:id="@+id/physical"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/danceathon"/>
+                app:srcCompat="@drawable/physical_health_running"/>
+
+            <TextView
+                android:text="@string/emotionalHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:layout_gravity="center"
+                android:fontFamily= "sans-serif-condensed"
+                android:textSize="20dp"
+                android:textColor="@color/pink" />
 
             <ImageView
                 android:id="@+id/emotional"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/wellness_expo"/>
+                app:srcCompat="@drawable/emotional_health_heart" />
         </LinearLayout>
 
     </FrameLayout>
