@@ -42,39 +42,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbSchema.FoodTable.Columns.IMAGE_PATH + ")"
         );
 
-        db.execSQL( "create table " + DbSchema.StepsTable.STEPS_NAME + "( " +
-                " _id integer primary key autoincrement, " +
-                DbSchema.StepsTable.Columns.STEPN + "," +
-                DbSchema.StepsTable.Columns.STEP_1 + "," +
-                DbSchema.StepsTable.Columns.STEP_2 + "," +
-                DbSchema.StepsTable.Columns.STEP_3 + "," +
-                DbSchema.StepsTable.Columns.STEP_4 + "," +
-                DbSchema.StepsTable.Columns.STEP_5 + "," +
-                DbSchema.StepsTable.Columns.STEP_6 + "," +
-                DbSchema.StepsTable.Columns.STEP_7 + "," +
-                DbSchema.StepsTable.Columns.STEP_8 + "," +
-                DbSchema.StepsTable.Columns.STEP_9 + "," +
-                DbSchema.StepsTable.Columns.STEP_10 +
-                " )"
-        );
-
-        db.execSQL( "create table " + DbSchema.ImagesTable.IMAGE_NAME + "( " +
-                " _id integer primary key autoincrement, " +
-                DbSchema.ImagesTable.Columns.IMAGEN + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_1 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_2 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_3 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_4 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_5 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_6 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_7 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_8 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_9 + "," +
-                DbSchema.ImagesTable.Columns.IMAGE_10 +
-                " )"
-        );
-
-
         /**
          * This is the fitness table that sets the various parts of the table for the database.
          */
@@ -87,7 +54,27 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbSchema.FitnessTable.Columns.NUM_REPS + ", " +
                 DbSchema.FitnessTable.Columns.INSTRUCTIONS + ", " +
                 DbSchema.FitnessTable.Columns.STEPS + ", " +
-                DbSchema.FitnessTable.Columns.IMAGE +
+                DbSchema.FitnessTable.Columns.IMAGE + ", " +
+                DbSchema.FitnessTable.Columns.STEP_1 + "," +
+                DbSchema.FitnessTable.Columns.STEP_2 + "," +
+                DbSchema.FitnessTable.Columns.STEP_3 + "," +
+                DbSchema.FitnessTable.Columns.STEP_4 + "," +
+                DbSchema.FitnessTable.Columns.STEP_5 + "," +
+                DbSchema.FitnessTable.Columns.STEP_6 + "," +
+                DbSchema.FitnessTable.Columns.STEP_7 + "," +
+                DbSchema.FitnessTable.Columns.STEP_8 + "," +
+                DbSchema.FitnessTable.Columns.STEP_9 + "," +
+                DbSchema.FitnessTable.Columns.STEP_10 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_1 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_2 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_3 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_4 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_5 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_6 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_7 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_8 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_9 + "," +
+                DbSchema.FitnessTable.Columns.IMAGE_10 +
                 " )"
         );
 

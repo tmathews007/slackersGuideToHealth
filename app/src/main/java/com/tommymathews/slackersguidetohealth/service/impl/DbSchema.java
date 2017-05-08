@@ -61,14 +61,6 @@ public class DbSchema {
             public static final String INSTRUCTIONS = "INSTRUCTIONS";
             public static final String STEPS = "STEPS";
             public static final String IMAGE = "IMAGE";
-        }
-    }
-
-
-    public static final class StepsTable {
-        public static final String STEPS_NAME = "STEPS";
-        public static final class Columns {
-            public static final String STEPN = "STEPN";
             public static final String STEP_1 = "STEP_1";
             public static final String STEP_2 = "STEP_2";
             public static final String STEP_3 = "STEP_3";
@@ -79,13 +71,6 @@ public class DbSchema {
             public static final String STEP_8 = "STEP_9";
             public static final String STEP_9 = "STEP_8";
             public static final String STEP_10 = "STEP_10";
-        }
-    }
-
-    public static final class ImagesTable {
-        public static final String IMAGE_NAME = "IMAGES";
-        public static final class Columns {
-            public static final String IMAGEN = "Name";
             public static final String IMAGE_1 = "IMAGE_1";
             public static final String IMAGE_2 = "IMAGE_2";
             public static final String IMAGE_3 = "IMAGE_3";
@@ -96,8 +81,6 @@ public class DbSchema {
             public static final String IMAGE_8 = "IMAGE_8";
             public static final String IMAGE_9 = "IMAGE_9";
             public static final String IMAGE_10 = "IMAGE_10";
-
-
         }
     }
 
