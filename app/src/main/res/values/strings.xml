@@ -121,12 +121,6 @@
 
     <!--Events-->
     <string name="eventsDesc"> Promoting MENTAL, PHYSICAL, and EMOTIONAL health. </string>
-    <string name="title_activity_mental_health">Mental Health Events</string>
-    <string name="title_activity_physical_health">Physical Health Events</string>
-    <string name="title_activity_emotional_health">Emotional Health Events</string>
-    <string name="mentalHealthDescription">Mental Health Events</string>
-    <string name="physicalHealthDescription">Physical Health Events</string>
-    <string name="emotionalHealthDescription">Emotional Health Events</string>
     <string name="events_text">Please enter your state and city.</string>
     <string name="stateEvents"> Enter 2-letter abbreviation of your state.</string>
     <string name="stateReq">Abbreviate state</string>
