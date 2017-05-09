@@ -194,7 +194,7 @@
     <string name="playlist_workout_button"> Workout Playlist </string>
     <string name="instructions">Instructions</string>
     <string name="create_fitness_title">Create Your Own Fitness</string>
-    <string name="upload_image">Upload Title Screen Image</string>
+    <string name="upload_image">Upload Image</string>
     <string name="fitness_name">Fitness Name</string>
     <string name="fitness_name_sample"> Push Ups, Wide Grip </string>
     <string name="body_part"> Body Part </string>

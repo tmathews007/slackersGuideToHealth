@@ -54,10 +54,9 @@ public class FitnessQuestionsFragment extends Fragment {
     private EditText instructions;
     private ImageButton cameraImage;
     private ImageView photoView;
-    private Button saveButton;
+    private Button  createFitnessStepsButton;
     private Button cancelButton;
     private Bitmap bitmap;
-    private UserService userService;
 
     private File photoFile;
 
@@ -142,8 +141,8 @@ public class FitnessQuestionsFragment extends Fragment {
 
         photoPathName = "";
 
-        saveButton = ( Button ) view.findViewById(R.id.create_fitness_steps);
-        saveButton.setOnClickListener( new View.OnClickListener() {
+        createFitnessStepsButton = ( Button ) view.findViewById(R.id.create_fitness_steps);
+        createFitnessStepsButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if( checkInputs() ) {
@@ -159,9 +158,10 @@ public class FitnessQuestionsFragment extends Fragment {
                     intent.putExtra("BODYPART", bodyPart);
                     intent.putExtra("REPS", reps);
                     intent.putExtra("DESCRIPTION", description);
-                    intent.putExtra("PHOTO", photoPathName);
+                    intent.putExtra("PHOTO", photo);
                     getActivity().finish();
                     startActivity(intent);
+
                 } else {
                     Toast.makeText(getActivity(), "FITNESS IS INCOMPLETE!!", Toast.LENGTH_SHORT).show();
                 }

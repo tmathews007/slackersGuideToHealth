@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +21,8 @@ import android.widget.ImageView;
 import com.tommymathews.slackersguidetohealth.model.Fitness;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,8 +42,8 @@ public class FitnessCreateFragment extends Fragment {
     private int bodyPart;
     private double reps;
     private String description;
-    private File image;
-    private List<File> images;
+    private String image;
+    private List<String> images;
     private List<String> steps;
     private int counter;
 
@@ -60,28 +64,45 @@ public class FitnessCreateFragment extends Fragment {
         bodyPart = getActivity().getIntent().getIntExtra("BODYPART", 0);
         reps = getActivity().getIntent().getDoubleExtra("REPS", 1.0);
         description = getActivity().getIntent().getStringExtra("DESCRIPTION");
-        image = new File(getActivity().getIntent().getStringExtra("PHOTO"));
+        image = getActivity().getIntent().getStringExtra("PHOTO");
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fitness_backlog, container, false);
-
+        View view = inflater.inflate(R.layout.fitness_create_fragment, container, false);
 
 
         stepText = (EditText)view.findViewById(R.id.fitness_edit_description);
-        if (fitness != null) {
-            stepText.setText(fitness.getFitnessName());
+        stepImage = (ImageView)view.findViewById(R.id.fitness_thumbnail);
+
+        String id = getActivity().getIntent().getStringExtra("ID");
+        if (id != null) {
+            fitness = DependencyFactory.getFitnessService(getActivity()).getFitnessById(id);
+
+            images = fitness.getStepImages();
+            steps = fitness.getSteps();
+
+            stepText.setText(steps.get(counter));
+            stepImage.setImageBitmap(retBitmap(images.get(counter)));
+        } else {
+            images = new ArrayList<>();
+            steps = new ArrayList<>();
         }
 
         backButton= (Button) view.findViewById(R.id.last_step_creation_button);
-        submitButton.setOnClickListener( new View.OnClickListener() {
+        backButton.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
+                if (counter > 1) {
+                    --counter;
+                    stepText.setText(fitness.getFitnessName());
+                    stepImage.setImageBitmap(retBitmap(images.get(counter)));
+                } else {
+                    getActivity().finish();
+                }
             }
 
         });
@@ -91,20 +112,20 @@ public class FitnessCreateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                if (!stepText.getText().toString().isEmpty() ||
-                    !(stepImage.getDrawable() == null)) {
 
-                    if (counter < 10) {
+                if (checkInput()) {
+                    if (counter < 9) {
+                        images.set(counter, "");
+                        steps.set(counter, stepText.getText().toString());
+
+                        ++counter;
                         if (counter <= images.size() && counter <= steps.size()) {
                             stepText.setText(steps.get(counter));
-                            stepImage.setImageBitmap(BitmapFactory.decodeFile(images.get(counter).getPath()));
+                            stepImage.setImageBitmap(retBitmap(images.get(counter)));
                         } else {
                             stepText.setText("");
                             stepImage.setImageDrawable(null);
                         }
-                        ++counter;
-                    } else {
-
                     }
                 }
             }
@@ -127,7 +148,8 @@ public class FitnessCreateFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
+                fitness = new Fitness(name, bodyPart, reps, description, image);
+                fitness.setStepImages(images);
                 fitness.setSteps(steps);
 
                 DependencyFactory.getFitnessService(getActivity()).addFitness(fitness);
@@ -140,5 +162,24 @@ public class FitnessCreateFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private boolean checkInput() {
+        if (!stepText.getText().toString().isEmpty() || !(stepImage.getDrawable() == null)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private Bitmap retBitmap(String i) {
+        Uri uri = Uri.parse(fitness.getStepImages().get(counter));
+        Bitmap bitmap = null;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
     }
 }

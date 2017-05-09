@@ -78,8 +78,8 @@ public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ++stepCounter;
-                if (stepCounter < steps.size()) {
+                if (stepCounter < steps.size() - 1) {
+                    ++stepCounter;
                     Uri uri = Uri.parse(images.get(stepCounter));
                     Bitmap bitmap = null;
                     try {
@@ -100,8 +100,8 @@ public class DisplayFitnessStepsFragment extends android.support.v4.app.Fragment
         previousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                --stepCounter;
-                if (stepCounter != -1) {
+                if (stepCounter > 1) {
+                    --stepCounter;
                     Uri uri = Uri.parse(images.get(stepCounter));
                     Bitmap bitmap = null;
                     try {

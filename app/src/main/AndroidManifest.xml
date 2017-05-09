@@ -101,7 +101,7 @@
             android:label="Exercises"/>
         <activity
             android:name=".FitnessQuestionsActivity"
-            android:label="Exercise Creation"/>
+            android:label="Exercises"/>
         <activity android:name=".FitnessPlaylistActivity" />
         <activity android:name=".FitnessPlaylistBacklogActivity" />
         <activity
