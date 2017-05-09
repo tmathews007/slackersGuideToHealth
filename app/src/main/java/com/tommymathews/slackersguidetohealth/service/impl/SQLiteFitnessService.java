@@ -284,9 +284,9 @@ public class SQLiteFitnessService implements FitnessService {
         //eggplant
         //TODO
 
-        String img = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.chest;
+        String img1 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.regular_crunches;
 
-        Fitness f1 = new Fitness("Crunches", Fitness.BodyPart.ABS.ordinal(), 30, "Crunches are a great abs exercise.", img);
+        Fitness f1 = new Fitness("Crunches", Fitness.BodyPart.ABS.ordinal(), 30, "Crunches are a great abs exercise.", img1);
 
         ArrayList<String> steps = new ArrayList<>();
         steps.add("Lay on your back with your feet on the floor and knees facing forward.");
@@ -295,16 +295,17 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 30 of these");
 
         ArrayList<String> images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img1);
+        images.add(img1);
+        images.add(img1);
+        images.add(img1);
 
         f1.setSteps(steps);
         f1.setStepImages(images);
 
         //TODO
-        Fitness f2 = new Fitness("Pull Ups", Fitness.BodyPart.BACK.ordinal(), 20, "Pull Ups are a great back exercise.", img);
+        String img2 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.pullup_narrow;
+        Fitness f2 = new Fitness("Pull Ups", Fitness.BodyPart.BACK.ordinal(), 20, "Pull Ups are a great back exercise.", img2);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -313,16 +314,17 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 20 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img2);
+        images.add(img2);
+        images.add(img2);
+        images.add(img2);
 
         f2.setSteps(steps);
         f2.setStepImages(images);
 
         //TODO Fix
-        Fitness f3 = new Fitness("Towel Bicep Curls", Fitness.BodyPart.BICEPS.ordinal(), 20, "Towel Bicep Curls are a great biceps exercise.", img);
+        String img3 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.tricep_towel;
+        Fitness f3 = new Fitness("Towel Bicep Curls", Fitness.BodyPart.BICEPS.ordinal(), 20, "Towel Bicep Curls are a great biceps exercise.", img3);
         steps = new ArrayList<>();
         steps.add("Hold each end of a towel and loop the middle of the towel under one foot." +
                 " You can stand with your back to the wall to help with balance.");
@@ -333,15 +335,16 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 15 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img3);
+        images.add(img3);
+        images.add(img3);
+        images.add(img3);
 
         f3.setSteps(steps);
         f3.setStepImages(images);
 
-        Fitness f4 = new Fitness("Double-Leg Calf Raise", Fitness.BodyPart.CALFS.ordinal(), 20, "The Double-Leg Calf Raise is great calf exercise.", img);
+        String img4 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.double_calf_raise;
+        Fitness f4 = new Fitness("Double-Leg Calf Raise", Fitness.BodyPart.CALFS.ordinal(), 20, "The Double-Leg Calf Raise is great calf exercise.", img4);
         steps = new ArrayList<>();
         steps.add("Stand with both feet on the edge of a step. The balls of" +
                 " your feet and toes should be the only parts of your foot on the platform.");
@@ -350,15 +353,16 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 10 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img4);
+        images.add(img4);
+        images.add(img4);
+        images.add(img4);
 
         f4.setSteps(steps);
         f4.setStepImages(images);
 
-        Fitness f5 = new Fitness("Chest Dips", Fitness.BodyPart.CHEST.ordinal(), 20, "Chest Dips are a great chest exercise.", img);
+        String img5 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.dips;
+        Fitness f5 = new Fitness("Chest Dips", Fitness.BodyPart.CHEST.ordinal(), 20, "Chest Dips are a great chest exercise.", img5);
         steps = new ArrayList<>();
         steps.add("For this exercise you will need access to parallel bars. To get yourself into the " +
                 "starting position, hold your body at arms length (arms locked) above the bars.");
@@ -369,17 +373,18 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 10 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img5);
+        images.add(img5);
+        images.add(img5);
+        images.add(img5);
 
         f5.setSteps(steps);
         f5.setStepImages(images);
 
-        Fitness f6 = new Fitness("Squats", Fitness.BodyPart.GLUTES.ordinal(), 20, "Squats are a great glutes exercise.", img);
+        String img6 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.weighted_squats;
+        Fitness f6 = new Fitness("Squats", Fitness.BodyPart.GLUTES.ordinal(), 20, "Squats are a great glutes exercise.", img6);
         steps = new ArrayList<>();
-        steps.add("Stand up straight while holding a dumbbell on each hand and position your legs using a shoulder " +
+        steps.add("Stand up straight with a dumbbell held in the center, and position your legs using a shoulder " +
                 "width medium stance with the toes slightly pointed out. Keep your head up while doing this.");
         steps.add("Begin to slowly lower your torso by bending the knees as you maintain a straight posture with the" +
                 " head up. Continue down until your thighs are parallel to the floor.");
@@ -388,15 +393,16 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 10 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img6);
+        images.add(img6);
+        images.add(img6);
+        images.add(img6);
 
         f6.setSteps(steps);
         f6.setStepImages(images);
 
-        Fitness f7 = new Fitness("Leg Extension", Fitness.BodyPart.QUADS.ordinal(), 20, "The Leg Extension is a great quads exercise", img);
+        String img7 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.alternating_lunges;
+        Fitness f7 = new Fitness("Alternating Lunges", Fitness.BodyPart.QUADS.ordinal(), 20, "Looking to kill two birds in one stone? Use this workout for cardio as well!", img7);
         steps = new ArrayList<>();
         steps.add("You will need a leg extension machine. Sit down on the machine with your legs under the bars." +
                 "and hold the handles on the machine");
@@ -407,15 +413,16 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 15 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img7);
+        images.add(img7);
+        images.add(img7);
+        images.add(img7);
 
         f7.setSteps(steps);
         f7.setStepImages(images);
 
-        Fitness f8 = new Fitness("Handstand Push Ups", Fitness.BodyPart.SHOULDERS.ordinal(), 20, "Handstand Push Ups are a great shoulders exercise.", img);
+        String img8 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.handstand_pushup;
+        Fitness f8 = new Fitness("Handstand Push Ups", Fitness.BodyPart.SHOULDERS.ordinal(), 20, "Handstand Push Ups are a great shoulders exercise.", img8);
         steps = new ArrayList<>();
         steps.add("With your back to the wall bend at the waist and place both hands on the floor at shoulder width.");
         steps.add("Kick yourself up against the wall with your arms straight. Your body should be upside down with the " +
@@ -425,31 +432,49 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Do 10 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img8);
+        images.add(img8);
+        images.add(img8);
+        images.add(img8);
+        images.add(img8);
 
         f8.setSteps(steps);
         f8.setStepImages(images);
 
-
-        Fitness f9 = new Fitness("Push Ups", Fitness.BodyPart.ABS.ordinal(), 20, "Push Ups are a great abs exercise.", img);
+        String img9 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.diamond_push_up;
+        Fitness f9 = new Fitness("Diamond Push Ups", Fitness.BodyPart.TRICEPS.ordinal(), 20, "Not only will workout the chest, but you will workout the triceps!", img9);
         steps = new ArrayList<>();
-        steps.add("Put your hands on the floor, shoulders width apart");
-        steps.add("Extend your body while keeping it above the ground");
-        steps.add("Bend your arms and have your chin touch the floor");
+        steps.add("Put your hands on the floor and form a diamond. Make sure your legs are extended on the floor wider than shoulder width.");
+        steps.add("Maintain your balance and go down.");
+        steps.add("Slowly push up.");
         steps.add("Do 20 of these");
 
         images = new ArrayList<>();
-        images.add(img);
-        images.add(img);
-        images.add(img);
-        images.add(img);
+        images.add(img9);
+        images.add(img9);
+        images.add(img9);
+        images.add(img9);
 
         f9.setSteps(steps);
         f9.setStepImages(images);
+
+        String img10 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.bicycle_crunch;
+        Fitness f10 = new Fitness("Bicycle Crunches", Fitness.BodyPart.ABS.ordinal(), 20, "A great workout that is more involved than crunches.", img10);
+        steps = new ArrayList<>();
+        steps.add("Lie on your back with your body flat to the ground.");
+        steps.add("Place your hands behind your head and your elbows flat to the ground.");
+        steps.add("As you curl forward, make sure your left elbow touches your right knee.");
+        steps.add("Rotate your body and let your right elbow touch your left knee.");
+        steps.add("Do 20 of these");
+
+        images = new ArrayList<>();
+        images.add(img10);
+        images.add(img10);
+        images.add(img10);
+        images.add(img10);
+
+        f10.setSteps(steps);
+        f10.setStepImages(images);
 
         addFitness(f1);
         addFitness(f2);
@@ -460,6 +485,7 @@ public class SQLiteFitnessService implements FitnessService {
         addFitness(f7);
         addFitness(f8);
         addFitness(f9);
+        addFitness(f10);
     }
 
 }

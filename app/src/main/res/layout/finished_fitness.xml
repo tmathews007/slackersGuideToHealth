@@ -32,7 +32,7 @@
                 android:layout_marginTop="32dp" />
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="157dp"
                 android:orientation="horizontal">
                 <ImageView
                     app:srcCompat="@drawable/confetti_emoji"
@@ -49,6 +49,15 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:text="@string/back_fitness_home_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/back_fitness_home"
+            style="@android:style/Widget.Button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

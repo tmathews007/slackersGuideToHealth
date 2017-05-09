@@ -221,6 +221,7 @@
     <string name="photo"> Photo </string>
     <string name="save_button"> Save </string>
     <string name="cancel_button"> Cancel </string>
+    <string name="back_fitness_home_button"> Fitness Home </string>
     
     <string name="playlist_fitness_title"> Playlist of Workouts </string>
     <string name="playlist_caution"> NOTE: This list will have up to 10 workouts. </string>
