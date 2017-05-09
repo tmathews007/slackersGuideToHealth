@@ -126,7 +126,6 @@ public class SQLiteFitnessService implements FitnessService {
             cursor.close();
 
             wrapper.close();
-
         }
 
         return fitness;
