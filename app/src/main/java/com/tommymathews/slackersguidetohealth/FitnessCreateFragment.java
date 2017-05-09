@@ -84,6 +84,8 @@ public class FitnessCreateFragment extends Fragment {
 
         thumbnailView = ( ImageView ) view.findViewById( R.id.fitness_thumbnail );
 
+        photoPathName = "";
+
         camera = ( ImageButton ) view.findViewById( R.id.camera_fitness_thumbnail );
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +105,6 @@ public class FitnessCreateFragment extends Fragment {
                 }
             }
         });
-
-        photoPathName = "";
 
         stepText = (EditText)view.findViewById(R.id.fitness_edit_description);
         stepImage = (ImageView)view.findViewById(R.id.fitness_thumbnail);
