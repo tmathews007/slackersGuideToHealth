@@ -51,66 +51,48 @@ public class FitnessFragment extends Fragment {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                int x = (int) event.getX();
-                int y = (int) event.getY();
-                int color = getColor(R.id.fitness_image_front, x, y);
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+                    int color = getColor(R.id.fitness_image_front, x, y);
 
-                List<Fitness> fitnesses;
-                File img;
-                Playlist playlist;
-                Intent intent;
+                    List<Fitness> fitnesses;
+                    File img;
+                    Playlist playlist;
+                    Intent intent;
 
-                switch(color) {
-                    case ABS:
-                        Log.d("Clicked", "ABS");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.ABS);
-                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
-                        playlist = new Playlist("Ab Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+                    switch (color) {
+                        case ABS:
+                            Log.d("Clicked", "ABS");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.ABS.ordinal());
+                            startActivity(intent);
+                            break;
 
-                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
+                        case BICEPS:
+                            Log.d("Clicked", "BICEPS");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.BICEPS.ordinal());
+                            startActivity(intent);
+                            break;
 
-                        break;
+                        case CHEST:
+                            Log.d("Clicked", "CHEST");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.CHEST.ordinal());
+                            startActivity(intent);
+                            break;
 
-                    case BICEPS:
-                        Log.d("Clicked", "BICEPS");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.BICEPS);
-                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.biceps);
-                        playlist = new Playlist("Bicep Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
-
-                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
-                        break;
-
-                    case CHEST:
-                        Log.d("Clicked", "CHEST");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.CHEST);
-                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.chest);
-                        playlist = new Playlist("Chest Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
-
-                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
-                        break;
-
-                    case QUADS:
-                        Log.d("Clicked", "QUADS");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.QUADS);
-                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.quadriceps);
-                        playlist = new Playlist("Quad Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
-
-                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
-                        break;
+                        case QUADS:
+                            Log.d("Clicked", "QUADS");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.QUADS.ordinal());
+                            startActivity(intent);
+                            break;
+                    }
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
 
@@ -118,7 +100,7 @@ public class FitnessFragment extends Fragment {
         createWorkoutButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( getActivity(), FitnessCreateActivity.class);
+                Intent intent = new Intent( getActivity(), FitnessQuestionsActivity.class);
                 startActivity( intent );
             }
         }

@@ -3,63 +3,117 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/margins">
+    style="@style/margins"
+    android:weightSum="1">
 
     <EditText
+        android:id="@+id/fitness_edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textStyle="bold"
+        android:text="Input Exercise Title"
         android:textSize="30sp"
-        android:id="@+id/fitness_edit_name"
-        android:text="@string/exerciseTitle" />
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:text="@string/upload_image"/>
+        android:text="@string/upload_image" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:gravity="center">
 
         <ImageView
             android:id="@+id/fitness_thumbnail"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="200dp"
             android:background="@android:color/darker_gray" />
 
         <ImageButton
+            android:id="@+id/camera_fitness_thumbnail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_camera"
-            android:id="@+id/camera_fitness_thumbnail"/>
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/fitness_thumbnail" />
 
-    </LinearLayout>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/fitness_edit_description"
-        android:text="@string/descriptionEx"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:layout_weight="0.32"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Step Instructions:"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/fitness_edit_description"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
+            android:text="Write Step Instructions Here"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
 
         <Button
-            android:id="@+id/create_fitness_steps_button"
+            android:id="@+id/last_step_creation_button"
+            style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_fitness_steps_button"
-            android:layout_weight="1.0"
-            style="@android:style/Widget.Button" />
 
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/save_fitness_button"
+            android:text="Back" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/next_step_creation_button"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/last_step_creation_button"
+            android:layout_alignBottom="@+id/last_step_creation_button"
+            android:layout_alignParentEnd="true"
+            android:text="Next Step" />
+
+        <Button
+            android:id="@+id/save_fitness_button"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/cancel_steps_button"
+            android:text="Submit" />
+
+        <Button
+            android:id="@+id/cancel_steps_button"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/cancel_button" />
+
+    </RelativeLayout>
+
 
 </LinearLayout>

@@ -3,13 +3,15 @@ package com.tommymathews.slackersguidetohealth;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by Thomas on 4/12/2017.
+ * Created by gregs on 5/6/2017.
  */
 
-public class ChestActivity extends ActivityFragmentWithMenu {
+public class DisplayPlaylistsActivity extends ActivityFragmentWithMenu {
 
     @Override
     protected Fragment createFragment() {
-        return ChestFragment.newInstance();
+        return DisplayPlaylistsFragment.newInstance();
     }
+
+
 }

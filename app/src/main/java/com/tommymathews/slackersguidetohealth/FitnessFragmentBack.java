@@ -51,66 +51,49 @@ public class FitnessFragmentBack extends Fragment {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                int x = (int) event.getX();
-                int y = (int) event.getY();
-                int color = getColor(R.id.fitness_image_back, x, y);
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+                    int color = getColor(R.id.fitness_image_back, x, y);
 
-                List<Fitness> fitnesses;
-                File img;
-                Playlist playlist;
-                Intent intent;
+                    List<Fitness> fitnesses;
+                    File img;
+                    Playlist playlist;
+                    Intent intent;
 
-                switch(color) {
+                    switch (color) {
 
-                    case BACK:
-                        Log.d("Clicked", "BACK");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.BACK);
-                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
-                        playlist = new Playlist("Back Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+                        case BACK:
+                            Log.d("Clicked", "BACK");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.BACK.ordinal());
+                            startActivity(intent);
+                            break;
 
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
-                        break;
+                        case CALFS:
+                            Log.d("Clicked", "CALFS");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.CALFS.ordinal());
+                            startActivity(intent);
+                            break;
 
-                    case CALFS:
-                        Log.d("Clicked", "CALFS");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.CALFS);
-                        img = new File("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
-                        playlist = new Playlist("Calf Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
+                        case GLUTES:
+                            Log.d("Clicked", "GLUTES");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.GLUTES.ordinal());
+                            startActivity(intent);
+                            break;
 
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
-                        break;
-
-                    case GLUTES:
-                        Log.d("Clicked", "GLUTES");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.GLUTES);
-                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
-                        playlist = new Playlist("Glute Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
-
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
-                        break;
-
-                    case SHOULDERS:
-                        Log.d("Clicked", "SHOULDERS");
-                        fitnesses = DependencyFactory.getFitnessService(getActivity()).getFitnessesByBodyPart(Fitness.BodyPart.SHOULDERS);
-                        img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.abs);
-                        playlist = new Playlist("Shoulder Workouts" , img, fitnesses);
-                        DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
-
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
-                        intent.putExtra("ID", playlist.getId());
-                        startActivity(intent);
-                        break;
+                        case SHOULDERS:
+                            Log.d("Clicked", "SHOULDERS");
+                            intent = new Intent(getActivity(), FitnessBacklogActivity.class);
+                            intent.putExtra("BODYPART", Fitness.BodyPart.SHOULDERS.ordinal());
+                            startActivity(intent);
+                            break;
+                    }
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
 
@@ -118,8 +101,8 @@ public class FitnessFragmentBack extends Fragment {
         frontViewButton.setOnClickListener( new View.OnClickListener() {
                                                @Override
                                                public void onClick(View v) {
-                                                   getActivity().finish();
                                                    Intent intent = new Intent( getActivity(), FitnessActivity.class);
+                                                   getActivity().finish();
                                                    startActivity(intent);
                                                }
                                            }

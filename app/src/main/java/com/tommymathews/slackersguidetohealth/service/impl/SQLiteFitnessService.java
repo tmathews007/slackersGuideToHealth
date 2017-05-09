@@ -28,7 +28,9 @@ public class SQLiteFitnessService implements FitnessService {
     public SQLiteFitnessService(Context c) {
         context = c;
         database = new DbHelper(c).getWritableDatabase();
-        prepopulate(c);
+        if (getAllFitness().isEmpty()) {
+            prepopulate(c);
+        }
 
     }
 
@@ -81,15 +83,15 @@ public class SQLiteFitnessService implements FitnessService {
 
     //Returns a list of all fitnesses that work out parameter body part.
     @Override
-    public List<Fitness> getFitnessesByBodyPart(Fitness.BodyPart bodyPart) {
+    public List<Fitness> getFitnessesByBodyPart(int bodyPart) {
         List<Fitness> fitness = getAllFitness();
         ArrayList<Fitness> temp = new ArrayList<Fitness>();
         for (int i = 0; i < fitness.size(); ++i) {
-            if ((fitness.get(i).getBodyPart()).equals(bodyPart)) {
+            if (fitness.get(i).getBodyPart().ordinal() == bodyPart) {
                 temp.add(fitness.get(i));
             }
         }
-        return fitness;
+        return temp;
     }
 
     //Returns a list of all fitnesses.
@@ -138,10 +140,10 @@ public class SQLiteFitnessService implements FitnessService {
         contentValues.put( DbSchema.FitnessTable.Columns.NAME, fitness.getFitnessName());
         contentValues.put( DbSchema.FitnessTable.Columns.ID, fitness.getId());
         contentValues.put( DbSchema.FitnessTable.Columns.LIKES, fitness.getLikes());
-        contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().toString());
+        contentValues.put( DbSchema.FitnessTable.Columns.BODY_PART, fitness.getBodyPart().ordinal());
         contentValues.put( DbSchema.FitnessTable.Columns.NUM_REPS, fitness.getNumReps() );
         contentValues.put( DbSchema.FitnessTable.Columns.INSTRUCTIONS, fitness.getInstructions() );
-        contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, fitness.getImageDb().getPath() );
+        contentValues.put( DbSchema.FitnessTable.Columns.IMAGE, fitness.getImage());
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_1, fitness.getStepsDB()[0]);
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_2, fitness.getStepsDB()[1]);
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_3, fitness.getStepsDB()[2]);
@@ -154,61 +156,61 @@ public class SQLiteFitnessService implements FitnessService {
         contentValues.put( DbSchema.FitnessTable.Columns.STEP_10, fitness.getStepsDB()[9]);
 
         if (fitness.getImagesDB()[0] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_1, ((fitness.getImagesDB()[0])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_1, ((fitness.getImagesDB()[0])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_1, "");
         }
 
         if (fitness.getImagesDB()[1] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_2, ((fitness.getImagesDB()[1])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_2, ((fitness.getImagesDB()[1])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_2, "");
         }
 
         if (fitness.getImagesDB()[2] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_3, ((fitness.getImagesDB()[2])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_3, ((fitness.getImagesDB()[2])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_3, "");
         }
 
         if (fitness.getImagesDB()[3] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_4, ((fitness.getImagesDB()[3])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_4, ((fitness.getImagesDB()[3])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_4, "");
         }
 
         if (fitness.getImagesDB()[4] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_5, ((fitness.getImagesDB()[4])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_5, ((fitness.getImagesDB()[4])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_5, "");
         }
 
         if (fitness.getImagesDB()[5] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_6, ((fitness.getImagesDB()[5])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_6, ((fitness.getImagesDB()[5])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_6, "");
         }
 
         if (fitness.getImagesDB()[6] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_7, ((fitness.getImagesDB()[6])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_7, ((fitness.getImagesDB()[6])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_7, "");
         }
 
         if (fitness.getImagesDB()[7] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_8, ((fitness.getImagesDB()[7])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_8, ((fitness.getImagesDB()[7])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_8, "");
         }
 
         if (fitness.getImagesDB()[8] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_9, ((fitness.getImagesDB()[8])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_9, ((fitness.getImagesDB()[8])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_9, "");
         }
 
         if (fitness.getImagesDB()[9] != null) {
-            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_10, ((fitness.getImagesDB()[9])).getPath());
+            contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_10, ((fitness.getImagesDB()[9])));
         } else {
             contentValues.put(DbSchema.FitnessTable.Columns.IMAGE_10, "");
         }
@@ -238,8 +240,7 @@ public class SQLiteFitnessService implements FitnessService {
             int bodyPart = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.BODY_PART ) );
             int numReps = getInt( getColumnIndex( DbSchema.FitnessTable.Columns.NUM_REPS ) );
             String instructions = getString( getColumnIndex( DbSchema.FitnessTable.Columns.INSTRUCTIONS ) );
-            File imageFile = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE)));
-            File image = imageFile;
+            String image  = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE));
 
             String steps[] = {
                     getString( getColumnIndex( DbSchema.FitnessTable.Columns.STEP_1)),
@@ -253,17 +254,17 @@ public class SQLiteFitnessService implements FitnessService {
                     getString( getColumnIndex( DbSchema.FitnessTable.Columns.STEP_9)),
                     getString( getColumnIndex( DbSchema.FitnessTable.Columns.STEP_10))};
 
-            File images[] = {null, null, null, null ,null, null, null, null, null, null};
-            images[0] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_1)));
-            images[1] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_2)));
-            images[2] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_3)));
-            images[3] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_4)));
-            images[4] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_5)));
-            images[5] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_6)));
-            images[6] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_7)));
-            images[7] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_8)));
-            images[8] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_9)));
-            images[9] = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_10)));
+            String images[] = {null, null, null, null ,null, null, null, null, null, null};
+            images[0] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_1));
+            images[1] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_2));
+            images[2] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_3));
+            images[3] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_4));
+            images[4] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_5));
+            images[5] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_6));
+            images[6] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_7));
+            images[7] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_8));
+            images[8] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_9));
+            images[9] = getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE_10));
 
             Fitness fitness = new Fitness(name, bodyPart, numReps, instructions, image);
             fitness.setId(id);
@@ -283,7 +284,7 @@ public class SQLiteFitnessService implements FitnessService {
         //eggplant
         //TODO
 
-        File img = new File ("android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.bicycle_crunch);
+        String img = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.chest;
 
         Fitness f1 = new Fitness("Crunches", Fitness.BodyPart.ABS.ordinal(), 30, "Crunches are a great abs exercise.", img);
 
@@ -293,7 +294,7 @@ public class SQLiteFitnessService implements FitnessService {
         steps.add("Use only your upper body to rise up and make your elbows touch your knees");
         steps.add("Do 30 of these");
 
-        ArrayList<File> images = new ArrayList<>();
+        ArrayList<String> images = new ArrayList<>();
         images.add(img);
         images.add(img);
         images.add(img);
@@ -321,7 +322,7 @@ public class SQLiteFitnessService implements FitnessService {
         f2.setStepImages(images);
 
         //TODO Fix
-        Fitness f3 = new Fitness("Towel Bicep Curls", 2, 20, "TBC", img);
+        Fitness f3 = new Fitness("Towel Bicep Curls", Fitness.BodyPart.BICEPS.ordinal(), 20, "TBC", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -338,7 +339,7 @@ public class SQLiteFitnessService implements FitnessService {
         f3.setSteps(steps);
         f3.setStepImages(images);
 
-        Fitness f4 = new Fitness("Double-Leg Calf Raise", 3, 20, "TODO Double-Leg Calf Raise", img);
+        Fitness f4 = new Fitness("Double-Leg Calf Raise", Fitness.BodyPart.CALFS.ordinal(), 20, "TODO Double-Leg Calf Raise", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -355,7 +356,7 @@ public class SQLiteFitnessService implements FitnessService {
         f4.setSteps(steps);
         f4.setStepImages(images);
 
-        Fitness f5 = new Fitness("Chest Dips", 4, 20, "TODO Chest Dips", img);
+        Fitness f5 = new Fitness("Chest Dips", Fitness.BodyPart.CHEST.ordinal(), 20, "TODO Chest Dips", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -372,7 +373,7 @@ public class SQLiteFitnessService implements FitnessService {
         f5.setSteps(steps);
         f5.setStepImages(images);
 
-        Fitness f6 = new Fitness("Glutes Exercise TODO", 5, 20, "TODO glutes", img);
+        Fitness f6 = new Fitness("Glutes Exercise TODO", Fitness.BodyPart.GLUTES.ordinal(), 20, "TODO glutes", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -389,7 +390,7 @@ public class SQLiteFitnessService implements FitnessService {
         f6.setSteps(steps);
         f6.setStepImages(images);
 
-        Fitness f7 = new Fitness("Leg Extension", 6, 20, "TODO Leg Extension", img);
+        Fitness f7 = new Fitness("Leg Extension", Fitness.BodyPart.QUADS.ordinal(), 20, "TODO Leg Extension", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -406,7 +407,7 @@ public class SQLiteFitnessService implements FitnessService {
         f7.setSteps(steps);
         f7.setStepImages(images);
 
-        Fitness f8 = new Fitness("Handstand Push Ups", 7, 20, "", img);
+        Fitness f8 = new Fitness("Handstand Push Ups", Fitness.BodyPart.CHEST.ordinal(), 20, "", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -424,7 +425,7 @@ public class SQLiteFitnessService implements FitnessService {
         f8.setStepImages(images);
 
 
-        Fitness f9 = new Fitness("Push Ups", 8, 20, "Push Ups are a great triceps exercise.", img);
+        Fitness f9 = new Fitness("Push Ups", Fitness.BodyPart.CHEST.ordinal(), 20, "Push Ups are a great triceps exercise.", img);
         ArrayList<String> steps9 = new ArrayList<>();
         steps9.add("Put your hands on the floor, shoulders, width apart");
         steps9.add("Extend your body while keeping your it above the ground");

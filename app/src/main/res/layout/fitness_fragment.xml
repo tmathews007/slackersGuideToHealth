@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <ImageView
         android:id="@+id/fitness_image_front"
-        android:layout_width="272dp"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/fitness_image_front"
         android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/fitness_image_front_overlay"
-        android:layout_width="273dp"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/fitness_image_front_overlay_v2"
         android:visibility="visible" />
@@ -25,23 +24,23 @@
 
         <Button
             android:id="@+id/create_workout_button"
+            style="@android:style/Widget.Button"
             android:layout_width="95dp"
             android:layout_height="wrap_content"
-            android:text="@string/createWorkout"
-            android:layout_below="@+id/back_view_button"
             android:layout_alignStart="@+id/back_view_button"
+            android:layout_below="@+id/back_view_button"
             android:layout_marginTop="20dp"
-            style="@android:style/Widget.Button" />
+            android:text="@string/createWorkout" />
 
         <Button
             android:id="@+id/back_view_button"
+            style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="37dp"
-            android:text="@string/backView"
-            style="@android:style/Widget.Button" />
+            android:text="@string/backView" />
     </RelativeLayout>
 
 </FrameLayout>

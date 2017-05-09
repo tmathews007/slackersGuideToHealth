@@ -52,13 +52,18 @@
             android:name=".FitnessActivity"
             android:label="@string/fitness"
             />
-        <activity android:name=".FitnessActivityBack"/>
-        <activity android:name=".FitnessDescriptionActivity"/>
-        <activity android:name=".DisplayFitnessSteps"/>
-        <activity android:name=".FitnessFinishedActivity"/>
-        <activity android:name=".AbsActivity"/>
-        <activity android:name=".ChestActivity"/>
-        <activity android:name=".QuadsActivity"/>
+        <activity
+            android:name=".FitnessActivityBack"
+            android:label="@string/fitness"/>
+        <activity
+            android:name=".FitnessDescriptionActivity"
+            android:label="Exercise Description"/>
+        <activity
+            android:name=".DisplayFitnessSteps"
+            android:label="Exercise Steps"/>
+        <activity
+            android:name=".FitnessFinishedActivity"
+            android:label="Exercise Finished"/>
         <activity
             android:name=".FoodMain"
             android:label="@string/food"/>
@@ -91,11 +96,17 @@
             android:name=".Settings">
         </activity>
 
-        <activity android:name=".FitnessBacklogActivity" />
-        <activity android:name=".FitnessQuestionsActivity" />
+        <activity
+            android:name=".FitnessBacklogActivity"
+            android:label="Exercises"/>
+        <activity
+            android:name=".FitnessQuestionsActivity"
+            android:label="Exercise Creation"/>
         <activity android:name=".FitnessPlaylistActivity" />
         <activity android:name=".FitnessPlaylistBacklogActivity" />
-        <activity android:name=".FitnessCreateActivity" />
+        <activity
+            android:name=".FitnessCreateActivity"
+            android:label="Exercise Creation"/>
 
     </application>
 </manifest>

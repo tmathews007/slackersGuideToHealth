@@ -2,7 +2,10 @@ package com.tommymathews.slackersguidetohealth;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,18 +23,19 @@ import android.widget.TextView;
 import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.service.FitnessService;
 
+import java.io.IOException;
 import java.util.List;
 
 public class FitnessBacklogFragment extends Fragment {
 
     private final String TAG = getClass().getSimpleName();
-    private final static String EXTRA_FITNESS_CREATED = "FitnessID";
     private static final int REQUEST_CODE_CREATE_FITNESS = 0;
 
     private FitnessService fitnessService;
 
     private RecyclerView fitnessRecyclerView;
     private FitnessAdapter adapter;
+    private int bodyPart;
 
     public static FitnessBacklogFragment newInstance() {
         FitnessBacklogFragment fragment = new FitnessBacklogFragment();
@@ -43,7 +47,8 @@ public class FitnessBacklogFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        fitnessService = DependencyFactory.getFitnessService( getActivity().getApplicationContext() );
+        fitnessService = DependencyFactory.getFitnessService(getActivity().getApplicationContext());
+        bodyPart = getActivity().getIntent().getIntExtra("BODYPART", -1);
     }
 
     @Nullable
@@ -59,33 +64,21 @@ public class FitnessBacklogFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != Activity.RESULT_OK) {
-            return;
-        }
-
-        if (requestCode == REQUEST_CODE_CREATE_FITNESS ) {
-            if (data == null) {
-                return;
-            }
-
-            Fitness fitnessCreated = FitnessQuestionsActivity.getFitnessCreated(data);
-            fitnessService.addFitness( fitnessCreated );
-            updateUI();
-        }
-    }
-
     private void updateUI() {
-        Log.d(TAG, "updating UI all stories");
+        Log.d(TAG, "updating UI all fitnesses");
+        List<Fitness> fitnesses;
 
-        List<Fitness> stories = fitnessService.getAllFitness();
+        if (bodyPart !=  -1) {
+            fitnesses = fitnessService.getFitnessesByBodyPart(bodyPart);
+        } else {
+            fitnesses = fitnessService.getAllFitness();
+        }
 
         if (adapter == null) {
-            adapter = new FitnessAdapter(stories);
+            adapter = new FitnessAdapter(fitnesses);
             fitnessRecyclerView.setAdapter( adapter );
         } else {
-            adapter.setStories(stories);
+            adapter.setFitnesses(fitnesses);
             adapter.notifyDataSetChanged();
         }
     }
@@ -111,8 +104,6 @@ public class FitnessBacklogFragment extends Fragment {
     private class FitnessHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView fitnessImageView;
         private TextView fitnessNameTextView;
-        private TextView numRepsTextView;
-        private TextView bodyPartTextView;
 
         private Fitness fitness;
 
@@ -120,34 +111,41 @@ public class FitnessBacklogFragment extends Fragment {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            fitnessImageView = ( ImageView ) itemView.findViewById( R.id.fitness_backlog_photo );
-            fitnessNameTextView = (TextView)itemView.findViewById(R.id.fitness_name);
+            fitnessImageView = (ImageView) itemView.findViewById( R.id.list_fitness_image);
+            fitnessNameTextView = (TextView) itemView.findViewById(R.id.list_fitness_name);
         }
 
         public void bindStory(Fitness fitness) {
             this.fitness = fitness;
 
-//            fitnessImageView.setImageBitmap( fitness.getImage() );
+            Uri uri = Uri.parse( fitness.getImage());
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            fitnessImageView.setImageBitmap(bitmap);
             fitnessNameTextView.setText( fitness.getFitnessName() );
         }
 
         @Override
         public void onClick(View view) {
-            Intent intent = FitnessQuestionsActivity.newIntent(getActivity(), fitness.getFitnessName() );
-
-            startActivityForResult( intent, REQUEST_CODE_CREATE_FITNESS );
+            Intent intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+            intent.putExtra("ID", fitness.getId());
+            startActivity(intent);
         }
     }
 
     private class FitnessAdapter extends RecyclerView.Adapter<FitnessHolder> {
-        private List<Fitness> fitness;
+        private List<Fitness> fitnesses;
 
-        public FitnessAdapter ( List<Fitness> fitness ) {
-            this.fitness = fitness;
+        public FitnessAdapter ( List<Fitness> fitnesses ) {
+            this.fitnesses = fitnesses;
         }
 
-        public void setStories( List<Fitness> fitness ) {
-            this.fitness = fitness;
+        public void setFitnesses( List<Fitness> fitnesses ) {
+            this.fitnesses = fitnesses;
         }
 
         @Override
@@ -159,13 +157,13 @@ public class FitnessBacklogFragment extends Fragment {
 
         @Override
         public void onBindViewHolder( FitnessHolder holder, int position ) {
-            Fitness story = fitness.get(position);
+            Fitness story = fitnesses.get(position);
             holder.bindStory(story);
         }
 
         @Override
         public int getItemCount() {
-            return fitness.size();
+            return fitnesses.size();
         }
     }
 }

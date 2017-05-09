@@ -142,24 +142,26 @@ public class FitnessQuestionsFragment extends Fragment {
 
         photoPathName = "";
 
-        saveButton = ( Button ) view.findViewById( R.id.save_fitness_button );
+        saveButton = ( Button ) view.findViewById(R.id.create_fitness_steps);
         saveButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if( checkInputs() ) {
-                    Fitness fitness = new Fitness(
-                            fitnessName.getText().toString(),
-                            bodyPartSelection.getSelectedItemPosition(),
-                            Double.parseDouble( numReps.getText().toString()),
-                            instructions.getText().toString(),
-                            photoPathName
-                    );
-                    FitnessService fitnessService = DependencyFactory.getFitnessService( getActivity().getApplication() );
-                    fitnessService.addFitness( fitness );
 
-                    Intent intent = new Intent( getActivity(), FitnessActivity.class);
-                    startActivity(intent);
+                    String name = fitnessName.getText().toString();
+                    int bodyPart = bodyPartSelection.getSelectedItemPosition();
+                    Double reps = Double.parseDouble( numReps.getText().toString());
+                    String description = instructions.getText().toString();
+                    String photo = photoPathName;
+
+                    Intent intent = new Intent( getActivity(), FitnessCreateActivity.class);
+                    intent.putExtra("NAME", name);
+                    intent.putExtra("BODYPART", bodyPart);
+                    intent.putExtra("REPS", reps);
+                    intent.putExtra("DESCRIPTION", description);
+                    intent.putExtra("PHOTO", photoPathName);
                     getActivity().finish();
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getActivity(), "FITNESS IS INCOMPLETE!!", Toast.LENGTH_SHORT).show();
                 }

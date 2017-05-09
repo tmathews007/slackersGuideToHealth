@@ -1,7 +1,10 @@
 package com.tommymathews.slackersguidetohealth;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
+
+import java.io.IOException;
 
 /**
  * Created by gregs on 4/26/2017.
@@ -26,6 +31,7 @@ public class FitnessDescriptionFragment  extends Fragment{
     TextView title;
     ImageView image;
     TextView description;
+    Button backButton;
     Button lookAtFitnessButton;
 
     public static Fragment newInstance() {
@@ -40,6 +46,7 @@ public class FitnessDescriptionFragment  extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        id = getActivity().getIntent().getStringExtra("ID");
         fitness = DependencyFactory.getFitnessService(getActivity()).getFitnessById(id);
     }
 
@@ -59,13 +66,28 @@ public class FitnessDescriptionFragment  extends Fragment{
 
         image = (ImageView) view.findViewById(R.id.description_image);
         if( image != null ) {
-            image.setImageBitmap(fitness.getImage());
+            Uri uri = Uri.parse(fitness.getImage());
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            image.setImageBitmap(bitmap);
         }
 
         description = (TextView) view.findViewById(R.id.description_text);
         if( description != null ) {
             description.setText(fitness.getInstructions());
         }
+
+        backButton = (Button) view.findViewById(R.id.back_to_fitness_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              getActivity().finish();
+            }
+        });
 
         lookAtFitnessButton = (Button) view.findViewById(R.id.look_at_fitness_button);
         lookAtFitnessButton.setOnClickListener(new View.OnClickListener() {

@@ -1,15 +1,20 @@
 package com.tommymathews.slackersguidetohealth.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.SectionIndexer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -24,24 +29,14 @@ public class Fitness implements Serializable {
     private double numReps;
     private BodyPart bodyPart;
     private String[] steps = {null, null, null, null, null, null, null, null, null, null};
-    private File[] images = {null, null, null, null, null, null, null, null, null, null};
+    private String[] images = {null, null, null, null, null, null, null, null, null, null};
     private int likes;
     private String id;
     private String instructions;
-    private File image;
-    private String imagePath;
+    private String image;
 
-    public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, String imagePath ) {
-        this.fitnessName = fitnessName;
-        this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
-        this.numReps = numReps;
-        this.instructions = instructions;
-        this.imagePath = imagePath;
-        this.id = UUID.randomUUID().toString();
-        this.likes = 0;
-    }
 
-    public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, File image ) {
+    public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, String image) {
         this.fitnessName = fitnessName;
         this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
         this.numReps = numReps;
@@ -51,6 +46,7 @@ public class Fitness implements Serializable {
         this.likes = 0;
     }
 
+
     public String getId(){
         return id;
     }
@@ -59,7 +55,7 @@ public class Fitness implements Serializable {
         return likes;
     }
 
-    public File[] getImagesDB() {return images;}
+    public String[] getImagesDB() {return images;}
 
     public String[] getStepsDB() {return steps; }
 
@@ -74,12 +70,12 @@ public class Fitness implements Serializable {
         return s;
     }
 
-    public ArrayList<Bitmap> getStepImages() {
-        ArrayList<Bitmap> b = new ArrayList<>();
+    public ArrayList<String> getStepImages() {
+        ArrayList<String> b = new ArrayList<>();
 
         int i = 0;
         while (i < images.length && images[i] != null) {
-            b.add(BitmapFactory.decodeFile(images[i].getPath()));
+            b.add(images[i]);
             ++i;
         }
         return b;
@@ -101,12 +97,8 @@ public class Fitness implements Serializable {
         return this.instructions;
     }
 
-    public File getImageDb() {
-        return this.image;
-    }
-
-    public Bitmap getImage() {
-        return BitmapFactory.decodeFile(image.getPath());
+    public String getImage() {
+        return image;
     }
 
     public void setId(String i) {
@@ -133,11 +125,11 @@ public class Fitness implements Serializable {
         this.instructions = instructions;
     }
 
-    public void setImage( File image ) {
+    public void setImage( String image ) {
         this.image = image;
     }
 
-    public void setImagesDB(File[] imgs) {
+    public void setImagesDB(String[] imgs) {
         int i = 0;
         while(i < imgs.length) {
             images[i] = imgs[i];
@@ -149,7 +141,7 @@ public class Fitness implements Serializable {
         }
     }
 
-    public void setStepImages(ArrayList<File> imgs) {
+    public void setStepImages(List<String> imgs) {
         int i = 0;
         while (i < imgs.size() && i < images.length) {
             images[i] = imgs.get(i);
@@ -164,7 +156,7 @@ public class Fitness implements Serializable {
 
     public void setStepsDB(String[] s) {steps = s;}
 
-    public void setSteps(ArrayList<String> s) {
+    public void setSteps(List<String> s) {
         int i = 0;
         while (i < s.size() && i < steps.length) {
             steps[i] = s.get(i);

@@ -7,7 +7,7 @@ import java.util.List;
 public interface FitnessService {
     public Fitness getFitnessById( String id );
     List<Fitness> getFitnessesByName(String name);
-    public List<Fitness> getFitnessesByBodyPart(Fitness.BodyPart bodyPart);
+    public List<Fitness> getFitnessesByBodyPart(int bodyPart);
     public List<Fitness> getAllFitness();
     public void addFitness(Fitness fitness);
 }

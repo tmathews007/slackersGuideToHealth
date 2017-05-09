@@ -2,7 +2,10 @@ package com.tommymathews.slackersguidetohealth;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,9 +17,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tommymathews.slackersguidetohealth.model.Fitness;
 import com.tommymathews.slackersguidetohealth.model.Playlist;
 import com.tommymathews.slackersguidetohealth.service.PlaylistService;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -32,7 +37,7 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
     private PlaylistService playlistService;
 
     private RecyclerView playlistFitnessRecyclerView;
-    private FitnessPlaylistBacklogFragment.PlaylistAdapter adapter;
+    private FitnessAdapter adapter;
 
     public static FitnessPlaylistBacklogFragment newInstance() {
         FitnessPlaylistBacklogFragment fragment = new FitnessPlaylistBacklogFragment();
@@ -52,7 +57,7 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_playlist_backlog, container, false);
 
-        playlistFitnessRecyclerView = (RecyclerView)view.findViewById(R.id.story_recycler_view);
+        playlistFitnessRecyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
         playlistFitnessRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
@@ -60,91 +65,86 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != Activity.RESULT_OK) {
-            return;
-        }
-
-        if (requestCode == REQUEST_CODE_CREATE_FITNESS ) {
-            if (data == null) {
-                return;
-            }
-
-//            Fitness fitnessCreated = FitnessQuestionsActivity.getFitnessCreated(data);
-            Playlist playlistCreated = FitnessPlaylistActivity.getFitnessCreated( data );
-            playlistService.addPlaylist( playlistCreated );
-            updateUI();
-        }
-    }
-
     private void updateUI() {
-        Log.d(TAG, "updating UI all stories");
+        Log.d(TAG, "updating UI all fitnesses in playlist");
 
-        List<Playlist> stories = playlistService.getAllPlaylists();
+        String id = getActivity().getIntent().getStringExtra("ID");
+        Playlist p = playlistService.getPlaylistById(id);
+        List<Fitness> playlist = p.getList();
 
         if (adapter == null) {
-            adapter = new FitnessPlaylistBacklogFragment.PlaylistAdapter(stories);
-            playlistFitnessRecyclerView.setAdapter( adapter );
+            adapter = new FitnessAdapter(playlist);
+            playlistFitnessRecyclerView.setAdapter(adapter);
         } else {
-            adapter.setPlaylist(stories);
+            adapter.setPlaylist(playlist);
             adapter.notifyDataSetChanged();
         }
     }
 
-    private class PlaylistHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView playlistImageView;
-        private TextView playlistNameTextView;
+    private class FitnessHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView fitnessName;
+        private ImageView fitnessImage;
 
-        private Playlist playlist;
+        private Fitness fitness;
 
-        public PlaylistHolder(View itemView) {
+        public FitnessHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            playlistImageView = ( ImageView ) itemView.findViewById( R.id.list_item_playlist_backlog_fitness_image);
-            playlistNameTextView = (TextView)itemView.findViewById(R.id.playlist_fitness_name);
+            fitnessName = (TextView)itemView.findViewById(R.id.list_fitness_name);
+            fitnessImage = ( ImageView ) itemView.findViewById( R.id.list_fitness_image);
+
         }
 
-        public void bindStory( Playlist playlist ) {
-            this.playlist = playlist;
-            playlistNameTextView.setText( playlist.getName() );
+        public void bindFitness(Fitness fitness) {
+            this.fitness = fitness;
+            fitnessName.setText(fitness.getFitnessName());
+            Uri uri = Uri.parse( fitness.getImage());
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            fitnessImage.setImageBitmap(bitmap);
         }
 
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(getActivity(), FitnessDescriptionActivity.class );
-            startActivityForResult( intent, REQUEST_CODE_CREATE_FITNESS );
+            intent.putExtra("ID", fitness.getId());
+            startActivity(intent);
         }
     }
 
-    private class PlaylistAdapter extends RecyclerView.Adapter<FitnessPlaylistBacklogFragment.PlaylistHolder> {
-        private List<Playlist> playlists;
+    private class FitnessAdapter extends RecyclerView.Adapter<FitnessHolder> {
+        private List<Fitness> playlist;
 
-        public PlaylistAdapter ( List<Playlist> fitness ) {
-            this.playlists = fitness;
+        public FitnessAdapter ( List<Fitness> playlist) {
+            this.playlist = playlist;
         }
 
-        public void setPlaylist( List<Playlist> playlist ) {
-            this.playlists = playlist;
+        public void setPlaylist( List<Fitness> playlist ) {
+            this.playlist = playlist;
         }
 
         @Override
-        public FitnessPlaylistBacklogFragment.PlaylistHolder onCreateViewHolder(ViewGroup parent, int viewType ) {
+        public FitnessHolder onCreateViewHolder(ViewGroup parent, int viewType ) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.fragment_playlist, parent, false);
-            return new FitnessPlaylistBacklogFragment.PlaylistHolder(view);
+            View view = layoutInflater.inflate(R.layout.list_item_fitness, parent, false);
+            FitnessHolder temp = new FitnessHolder(view);
+            return temp;
         }
 
         @Override
-        public void onBindViewHolder(FitnessPlaylistBacklogFragment.PlaylistHolder holder, int position ) {
-            Playlist story = playlists.get(position);
-            holder.bindStory(story);
+        public void onBindViewHolder(FitnessHolder holder, int position) {
+            Fitness fitness = playlist.get(position);
+            holder.bindFitness(fitness);
         }
 
         @Override
         public int getItemCount() {
-            return playlists.size();
+            return playlist.size();
         }
     }
 }
