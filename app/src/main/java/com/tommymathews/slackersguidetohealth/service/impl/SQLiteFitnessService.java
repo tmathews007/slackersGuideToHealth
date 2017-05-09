@@ -324,11 +324,13 @@ public class SQLiteFitnessService implements FitnessService {
         //TODO Fix
         Fitness f3 = new Fitness("Towel Bicep Curls", Fitness.BodyPart.BICEPS.ordinal(), 20, "Towel Bicep Curls are a great biceps exercise.", img);
         steps = new ArrayList<>();
-        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
-                "and hang all the way down");
-        steps.add("Pull yourself up until your chin is above the bar.");
-        steps.add("Take a slight pause and lower yourself all the way back down");
-        steps.add("Do 20 of these");
+        steps.add("Hold each end of a towel and loop the middle of the towel under one foot." +
+                " You can stand with your back to the wall to help with balance.");
+        steps.add("With your palms facing forwards, use your foot to provide resistance as you pull " +
+                "up on the towel as hard as you can by bending your arms at the elbows.");
+        steps.add("Hold this position at the top of the contraction for five seconds, pulling as hard " +
+                "as you can while providing enough resistance with your foot as if you want to tear the towel.");
+        steps.add("Do 15 of these");
 
         images = new ArrayList<>();
         images.add(img);
@@ -341,11 +343,11 @@ public class SQLiteFitnessService implements FitnessService {
 
         Fitness f4 = new Fitness("Double-Leg Calf Raise", Fitness.BodyPart.CALFS.ordinal(), 20, "The Double-Leg Calf Raise is great calf exercise.", img);
         steps = new ArrayList<>();
-        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
-                "and hang all the way down");
-        steps.add("Pull yourself up until your chin is above the bar.");
-        steps.add("Take a slight pause and lower yourself all the way back down");
-        steps.add("Do 20 of these");
+        steps.add("Stand with both feet on the edge of a step. The balls of" +
+                " your feet and toes should be the only parts of your foot on the platform.");
+        steps.add("Lift your heels by pressing up through your toes contracting your calf muscles.");
+        steps.add("Slowly lower your heels to the neutral starting position.");
+        steps.add("Do 10 of these");
 
         images = new ArrayList<>();
         images.add(img);
