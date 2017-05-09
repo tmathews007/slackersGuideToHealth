@@ -373,7 +373,7 @@ public class SQLiteFitnessService implements FitnessService {
         f5.setSteps(steps);
         f5.setStepImages(images);
 
-        Fitness f6 = new Fitness("Glutes Exercise TODO", Fitness.BodyPart.GLUTES.ordinal(), 20, "TODO glutes", img);
+        Fitness f6 = new Fitness("Squats", Fitness.BodyPart.GLUTES.ordinal(), 20, "TODO glutes", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
