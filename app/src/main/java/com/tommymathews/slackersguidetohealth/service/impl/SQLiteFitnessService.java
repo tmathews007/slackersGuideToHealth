@@ -358,11 +358,13 @@ public class SQLiteFitnessService implements FitnessService {
 
         Fitness f5 = new Fitness("Chest Dips", Fitness.BodyPart.CHEST.ordinal(), 20, "Chest Dips are a great chest exercise.", img);
         steps = new ArrayList<>();
-        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
-                "and hang all the way down");
-        steps.add("Pull yourself up until your chin is above the bar.");
-        steps.add("Take a slight pause and lower yourself all the way back down");
-        steps.add("Do 20 of these");
+        steps.add("For this exercise you will need access to parallel bars. To get yourself into the " +
+                "starting position, hold your body at arms length (arms locked) above the bars.");
+        steps.add("While breathing in, lower yourself slowly with your torso leaning forward around 30 " +
+                "degrees or so and your elbows flared out slightly until you feel a slight stretch in the chest.");
+        steps.add("Once you feel the stretch, use your chest to bring your body back to the starting position as you " +
+                "breathe out. Tip: Remember to squeeze the chest at the top of the movement for a second");
+        steps.add("Do 10 of these");
 
         images = new ArrayList<>();
         images.add(img);
@@ -375,11 +377,13 @@ public class SQLiteFitnessService implements FitnessService {
 
         Fitness f6 = new Fitness("Squats", Fitness.BodyPart.GLUTES.ordinal(), 20, "Squats are a great glutes exercise.", img);
         steps = new ArrayList<>();
-        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
-                "and hang all the way down");
-        steps.add("Pull yourself up until your chin is above the bar.");
-        steps.add("Take a slight pause and lower yourself all the way back down");
-        steps.add("Do 20 of these");
+        steps.add("Stand up straight while holding a dumbbell on each hand and position your legs using a shoulder " +
+                "width medium stance with the toes slightly pointed out. Keep your head up while doing this.");
+        steps.add("Begin to slowly lower your torso by bending the knees as you maintain a straight posture with the" +
+                " head up. Continue down until your thighs are parallel to the floor.");
+        steps.add("Begin to raise your torso as you exhale by pushing the floor with the heel of your foot mainly as " +
+                "you straighten the legs again and go back to the starting position.");
+        steps.add("Do 10 of these");
 
         images = new ArrayList<>();
         images.add(img);
