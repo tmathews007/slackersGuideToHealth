@@ -102,7 +102,7 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            playlistImageView = ( ImageView ) itemView.findViewById( R.id.playlist_fitness_image);
+            playlistImageView = ( ImageView ) itemView.findViewById( R.id.list_item_playlist_backlog_fitness_image);
             playlistNameTextView = (TextView)itemView.findViewById(R.id.playlist_fitness_name);
         }
 
@@ -132,7 +132,7 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
         @Override
         public FitnessPlaylistBacklogFragment.PlaylistHolder onCreateViewHolder(ViewGroup parent, int viewType ) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_item_fitness, parent, false);
+            View view = layoutInflater.inflate(R.layout.fragment_playlist, parent, false);
             return new FitnessPlaylistBacklogFragment.PlaylistHolder(view);
         }
 

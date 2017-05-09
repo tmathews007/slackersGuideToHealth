@@ -40,7 +40,7 @@
                     android:layout_width="225dp"
                     android:layout_height="125dp"
                     app:srcCompat="@color/black_overlay"
-                    android:id="@+id/playlist_fitness_image"
+                    android:id="@+id/list_item_playlist_backlog_fitness_image"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true" />
 
@@ -51,7 +51,7 @@
                     android:id="@+id/playlist_fitness_name"
                     android:layout_marginTop="36dp"
                     android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/playlist_fitness_image" />
+                    android:layout_toEndOf="@+id/list_item_playlist_backlog_fitness_image" />
             </RelativeLayout>
         </LinearLayout>
 

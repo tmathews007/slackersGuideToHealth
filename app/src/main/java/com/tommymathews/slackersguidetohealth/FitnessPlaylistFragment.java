@@ -64,7 +64,7 @@ public class FitnessPlaylistFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate( R.layout.fragment_playlist, container, false );
 
-        photoView = ( ImageView ) view.findViewById( R.id.playlist_fitness_image);
+        photoView = ( ImageView ) view.findViewById( R.id.list_item_playlist_backlog_fitness_image);
         photoView.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
