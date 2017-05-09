@@ -29,7 +29,17 @@ public class Fitness implements Serializable {
     private String id;
     private String instructions;
     private File image;
+    private String imagePath;
 
+    public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, String imagePath ) {
+        this.fitnessName = fitnessName;
+        this.bodyPart = BodyPart.values()[ bodyPart % 9 ];
+        this.numReps = numReps;
+        this.instructions = instructions;
+        this.imagePath = imagePath;
+        this.id = UUID.randomUUID().toString();
+        this.likes = 0;
+    }
 
     public Fitness( String fitnessName, int bodyPart, double numReps, String instructions, File image ) {
         this.fitnessName = fitnessName;

@@ -137,6 +137,7 @@ public class FitnessFragment extends Fragment {
                 getActivity().finish();
                 Intent intent = new Intent( getActivity(), FitnessActivityBack.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition( 0,0 );
             }
         }
         );

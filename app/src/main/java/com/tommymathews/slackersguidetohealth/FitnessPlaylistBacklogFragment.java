@@ -108,15 +108,12 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
 
         public void bindStory( Playlist playlist ) {
             this.playlist = playlist;
-
-//            playlistImageView.setImageBitmap(  );
             playlistNameTextView.setText( playlist.getName() );
         }
 
         @Override
         public void onClick(View view) {
-            Intent intent = FitnessPlaylistActivity.newIntent(getActivity(), playlist.getId() );
-
+            Intent intent = new Intent(getActivity(), FitnessDescriptionActivity.class );
             startActivityForResult( intent, REQUEST_CODE_CREATE_FITNESS );
         }
     }

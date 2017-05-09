@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -22,8 +23,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
+import com.tommymathews.slackersguidetohealth.service.FitnessService;
 import com.tommymathews.slackersguidetohealth.service.UserService;
 import com.tommymathews.slackersguidetohealth.service.impl.DbSchema;
 
@@ -32,6 +35,7 @@ import java.io.File;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
+import static com.tommymathews.slackersguidetohealth.R.id.imageView;
 
 public class FitnessQuestionsFragment extends Fragment {
     private final String TAG = getClass().getSimpleName();
@@ -114,52 +118,51 @@ public class FitnessQuestionsFragment extends Fragment {
 
         Log.d( TAG, "FitnessQuestionsFragment - cameraImage created" );
         cameraImage = ( ImageButton ) view.findViewById( R.id.camera );
-        cameraImage.setOnClickListener( new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-//                Log.d( TAG, "FitnessQuestionsFragment - checking for permission" );
-//                int permissionCheck = ContextCompat.checkSelfPermission( getActivity(), Manifest.permission.CAMERA );
-//                Log.d( TAG, "FitnessQuestionsFragment - permission given" );
-//                if( permissionCheck != PackageManager.PERMISSION_GRANTED ) {
-//                    Log.d( TAG, "FitnessQuestionsFragment - permission given" );
-//                    ActivityCompat.requestPermissions( getActivity(), new String[]{ Manifest.permission.CAMERA }, REQUEST_PHOTO );
-//                } else {
-                                                returnIntent();
-//                }
-                                            }
-                                        }
-        );
+        cameraImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    photoFile = getPhotoFile();
+                    if (photoFile != null) {
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                        startActivityForResult(intent, REQUEST_PHOTO);
+                    } else {
+                        cameraImage.setEnabled(false);
+                    }
+                } else {
+                    cameraImage.setEnabled(false);
+                }
+            }
+        });
 
         Log.d( TAG, "FitnessQuestionsFragment - photoView created" );
         photoView = ( ImageView ) view.findViewById( R.id.photo );
+
+        photoPathName = "";
 
         saveButton = ( Button ) view.findViewById( R.id.save_fitness_button );
         saveButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( fitness == null ) {
-                    fitness = new Fitness( null, 0, 0, null, null );
-                }
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(DbSchema.LOGIN, MODE_PRIVATE);
+                if( checkInputs() ) {
+                    Fitness fitness = new Fitness(
+                            fitnessName.getText().toString(),
+                            bodyPartSelection.getSelectedItemPosition(),
+                            Double.parseDouble( numReps.getText().toString()),
+                            instructions.getText().toString(),
+                            photoPathName
+                    );
+                    FitnessService fitnessService = DependencyFactory.getFitnessService( getActivity().getApplication() );
+                    fitnessService.addFitness( fitness );
 
-                userService = DependencyFactory.getUserService(getActivity().getApplicationContext());
-                String email = sharedPreferences.getString(DbSchema.EMAIL,null);
-                userService.incrementFitnessProgress(email);
-
-                fitness.setFitnessName( fitnessName.getText().toString() );
-                fitness.setBodyPartPosition( bodyPartSelection.getSelectedItemPosition() );
-                fitness.setNumReps( Double.parseDouble( numReps.getText().toString() ));
-                fitness.setInstructions( instructions.getText().toString() );
-                if( bitmap == null ) {
-                    bitmap = null;
+                    Intent intent = new Intent( getActivity(), FitnessActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
                 } else {
+                    Toast.makeText(getActivity(), "FITNESS IS INCOMPLETE!!", Toast.LENGTH_SHORT).show();
                 }
-//                fitness.setImage( cameraImage.getDrawingCache() );
-
-                Intent data = new Intent();
-                data.putExtra( EXTRA_FITNESS_CREATED, fitness );
-                getActivity().setResult(RESULT_OK, data);
-                getActivity().finish();
             }
         });
 
@@ -197,51 +200,34 @@ public class FitnessQuestionsFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if( requestCode == REQUEST_PHOTO && resultCode == Activity.RESULT_OK ) {
-            bitmap = BitmapFactory.decodeFile( photoFile.getPath() );
-            Log.d( TAG, "FitnessQuestionsFragment - Since the image was accepted, photoView has been set" );
-            photoView.setImageBitmap( bitmap );
-            galleryAddPic( getContext(), photoPathName );
-        }
-    }
-
     public static Fitness getFitnessCreated(Intent data) {
         return ( Fitness ) data.getSerializableExtra( EXTRA_FITNESS_CREATED );
     }
 
     private File getPhotoFile(){
-        File externalPhotoDir = getActivity().getExternalFilesDir( Environment.DIRECTORY_PICTURES );
-        if( externalPhotoDir == null ) {
+        File externalPhotoDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        if(externalPhotoDir == null){
             return null;
         }
-        return new File( externalPhotoDir, "IMG_" + System.currentTimeMillis() + ".jpg" );
+
+        return new File(externalPhotoDir, "IMG_" + System.currentTimeMillis() + ".jpg");
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-//        switch (requestCode) {
-//            case REQUEST_PHOTO: {
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    returnIntent();
-//                } else {
-//                    cameraImage.setEnabled( false );
-//                }
-//                return;
-//            } default:
-//                cameraImage.setEnabled( false );
-//        }
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_PHOTO) {
+            bitmap = BitmapFactory.decodeFile(photoFile.getPath());
+            photoPathName = photoFile.getPath();
+            photoView.setImageBitmap(bitmap);
+        }
+    }
 
-    private void galleryAddPic( Context context, String photoPath ) {
-        photoPath = photoFile.getAbsolutePath();
-        photoPathName = photoPath;
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File( photoPathName );
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
-        context.sendBroadcast( mediaScanIntent );
+    private boolean checkInputs() {
+        return fitnessName.getText().length() > 0 &&
+                bodyPartSelection.getId() > 0 &&
+                numReps.getText().length() > 0 &&
+                instructions.getText().length() > 0;
     }
 }

@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView5"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:fontFamily= "sans-serif-condensed"
                 android:textSize="20dp"
                 android:textColor="@color/darkBlue" />
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView6"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:fontFamily= "sans-serif-condensed"
                 android:textSize="20dp"
                 android:textColor="@color/green" />
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView7"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:fontFamily= "sans-serif-condensed"
                 android:textSize="20dp"
                 android:textColor="@color/pink" />

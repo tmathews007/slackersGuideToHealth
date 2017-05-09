@@ -121,9 +121,7 @@ public class FitnessBacklogFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             fitnessImageView = ( ImageView ) itemView.findViewById( R.id.playlist_fitness_image);
-//            fitnessNameTextView = (TextView)itemView.findViewById(R.id.list_item_fitness_name);
-//            numRepsTextView = (TextView)itemView.findViewById(R.id.list_item_num_reps);
-//            bodyPartTextView = ( TextView ) itemView.findViewById( R.id.list_item_body_part );
+            fitnessNameTextView = (TextView)itemView.findViewById(R.id.fitness_name);
         }
 
         public void bindStory(Fitness fitness) {
@@ -131,8 +129,6 @@ public class FitnessBacklogFragment extends Fragment {
 
 //            fitnessImageView.setImageBitmap( fitness.getImage() );
             fitnessNameTextView.setText( fitness.getFitnessName() );
-            numRepsTextView.setText( "" + fitness.getNumReps() );
-            bodyPartTextView.setText( fitness.getBodyPartPosition() );
         }
 
         @Override
