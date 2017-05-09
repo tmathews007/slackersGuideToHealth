@@ -304,7 +304,7 @@ public class SQLiteFitnessService implements FitnessService {
         f1.setStepImages(images);
 
         //TODO
-        Fitness f2 = new Fitness("Pull Ups", Fitness.BodyPart.BACK.ordinal(), 20, "Pull Ups are a great back exercise", img);
+        Fitness f2 = new Fitness("Pull Ups", Fitness.BodyPart.BACK.ordinal(), 20, "Pull Ups are a great back exercise.", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -322,7 +322,7 @@ public class SQLiteFitnessService implements FitnessService {
         f2.setStepImages(images);
 
         //TODO Fix
-        Fitness f3 = new Fitness("Towel Bicep Curls", Fitness.BodyPart.BICEPS.ordinal(), 20, "TBC", img);
+        Fitness f3 = new Fitness("Towel Bicep Curls", Fitness.BodyPart.BICEPS.ordinal(), 20, "Towel Bicep Curls are a great biceps exercise.", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -339,7 +339,7 @@ public class SQLiteFitnessService implements FitnessService {
         f3.setSteps(steps);
         f3.setStepImages(images);
 
-        Fitness f4 = new Fitness("Double-Leg Calf Raise", Fitness.BodyPart.CALFS.ordinal(), 20, "TODO Double-Leg Calf Raise", img);
+        Fitness f4 = new Fitness("Double-Leg Calf Raise", Fitness.BodyPart.CALFS.ordinal(), 20, "The Double-Leg Calf Raise is great calf exercise.", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -356,7 +356,7 @@ public class SQLiteFitnessService implements FitnessService {
         f4.setSteps(steps);
         f4.setStepImages(images);
 
-        Fitness f5 = new Fitness("Chest Dips", Fitness.BodyPart.CHEST.ordinal(), 20, "TODO Chest Dips", img);
+        Fitness f5 = new Fitness("Chest Dips", Fitness.BodyPart.CHEST.ordinal(), 20, "Chest Dips are a great chest exercise.", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -373,7 +373,7 @@ public class SQLiteFitnessService implements FitnessService {
         f5.setSteps(steps);
         f5.setStepImages(images);
 
-        Fitness f6 = new Fitness("Squats", Fitness.BodyPart.GLUTES.ordinal(), 20, "TODO glutes", img);
+        Fitness f6 = new Fitness("Squats", Fitness.BodyPart.GLUTES.ordinal(), 20, "Squats are a great glutes exercise.", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -390,7 +390,7 @@ public class SQLiteFitnessService implements FitnessService {
         f6.setSteps(steps);
         f6.setStepImages(images);
 
-        Fitness f7 = new Fitness("Leg Extension", Fitness.BodyPart.QUADS.ordinal(), 20, "TODO Leg Extension", img);
+        Fitness f7 = new Fitness("Leg Extension", Fitness.BodyPart.QUADS.ordinal(), 20, "The Leg Extension is a great quads exercise", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -407,7 +407,7 @@ public class SQLiteFitnessService implements FitnessService {
         f7.setSteps(steps);
         f7.setStepImages(images);
 
-        Fitness f8 = new Fitness("Handstand Push Ups", Fitness.BodyPart.CHEST.ordinal(), 20, "", img);
+        Fitness f8 = new Fitness("Handstand Push Ups", Fitness.BodyPart.CHEST.ordinal(), 20, "Handstand Push Ups are a great shoulders exercise.", img);
         steps = new ArrayList<>();
         steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
                 "and hang all the way down");
@@ -426,17 +426,10 @@ public class SQLiteFitnessService implements FitnessService {
 
 
         Fitness f9 = new Fitness("Push Ups", Fitness.BodyPart.CHEST.ordinal(), 20, "Push Ups are a great triceps exercise.", img);
-        ArrayList<String> steps9 = new ArrayList<>();
-        steps9.add("Put your hands on the floor, shoulders, width apart");
-        steps9.add("Extend your body while keeping your it above the ground");
-        steps9.add("Bend your arms and have your chin touch the floor");
-        steps9.add("Do 20 of these");
-
         steps = new ArrayList<>();
-        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
-                "and hang all the way down");
-        steps.add("Pull yourself up until your chin is above the bar.");
-        steps.add("Take a slight pause and lower yourself all the way back down");
+        steps.add("Put your hands on the floor, shoulders, width apart");
+        steps.add("Extend your body while keeping your it above the ground");
+        steps.add("Bend your arms and have your chin touch the floor");
         steps.add("Do 20 of these");
 
         images = new ArrayList<>();
