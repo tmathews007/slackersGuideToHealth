@@ -26,6 +26,7 @@ import java.util.List;
  */
 
 public class FitnessCreateFragment extends Fragment {
+    public final static String FITNESS_ID = "FITNESS_ID";
     private Fitness fitness;
 
     private Button cancelButton;
@@ -130,7 +131,7 @@ public class FitnessCreateFragment extends Fragment {
                 fitness.setSteps(steps);
 
                 DependencyFactory.getFitnessService(getActivity()).addFitness(fitness);
-                Intent intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                Intent intent = new Intent(getActivity(), FitnessPlaylistActivity.class);
                 intent.putExtra("ID", fitness.getId());
                 getActivity().finish();
                 startActivity(intent);
