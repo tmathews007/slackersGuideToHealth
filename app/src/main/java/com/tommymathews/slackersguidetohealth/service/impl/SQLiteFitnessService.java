@@ -392,11 +392,13 @@ public class SQLiteFitnessService implements FitnessService {
 
         Fitness f7 = new Fitness("Leg Extension", Fitness.BodyPart.QUADS.ordinal(), 20, "The Leg Extension is a great quads exercise", img);
         steps = new ArrayList<>();
-        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
-                "and hang all the way down");
-        steps.add("Pull yourself up until your chin is above the bar.");
-        steps.add("Take a slight pause and lower yourself all the way back down");
-        steps.add("Do 20 of these");
+        steps.add("You will need a leg extension machine. Sit down on the machine with your legs under the bars." +
+                "and hold the handles on the machine");
+        steps.add("Using your quadriceps, extend your legs to the maximum as you exhale. Ensure that the rest of " +
+                "the body remains stationary on the seat.");
+        steps.add("Take a slight pause and Slowly lower the weight back to the original position as you inhale, " +
+                "ensuring that you do not go past the 90-degree angle limit");
+        steps.add("Do 15 of these");
 
         images = new ArrayList<>();
         images.add(img);
@@ -407,15 +409,17 @@ public class SQLiteFitnessService implements FitnessService {
         f7.setSteps(steps);
         f7.setStepImages(images);
 
-        Fitness f8 = new Fitness("Handstand Push Ups", Fitness.BodyPart.CHEST.ordinal(), 20, "Handstand Push Ups are a great shoulders exercise.", img);
+        Fitness f8 = new Fitness("Handstand Push Ups", Fitness.BodyPart.SHOULDERS.ordinal(), 20, "Handstand Push Ups are a great shoulders exercise.", img);
         steps = new ArrayList<>();
-        steps.add("Grab a bar with a grip slightly wider than shoulder width, with your hands facing away from you," +
-                "and hang all the way down");
-        steps.add("Pull yourself up until your chin is above the bar.");
-        steps.add("Take a slight pause and lower yourself all the way back down");
-        steps.add("Do 20 of these");
+        steps.add("With your back to the wall bend at the waist and place both hands on the floor at shoulder width.");
+        steps.add("Kick yourself up against the wall with your arms straight. Your body should be upside down with the " +
+                "arms and legs fully extended. Keep your whole body as straight as possible.");
+        steps.add("Slowly lower yourself to the ground as you inhale until your head almost touches the floor.");
+        steps.add("Push yourself back up slowly as you exhale until your elbows are nearly locked.");
+        steps.add("Do 10 of these");
 
         images = new ArrayList<>();
+        images.add(img);
         images.add(img);
         images.add(img);
         images.add(img);
@@ -425,7 +429,7 @@ public class SQLiteFitnessService implements FitnessService {
         f8.setStepImages(images);
 
 
-        Fitness f9 = new Fitness("Push Ups", Fitness.BodyPart.CHEST.ordinal(), 20, "Push Ups are a great triceps exercise.", img);
+        Fitness f9 = new Fitness("Push Ups", Fitness.BodyPart.TRICEPS.ordinal(), 20, "Push Ups are a great triceps exercise.", img);
         steps = new ArrayList<>();
         steps.add("Put your hands on the floor, shoulders, width apart");
         steps.add("Extend your body while keeping your it above the ground");
