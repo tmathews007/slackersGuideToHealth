@@ -15,7 +15,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="163dp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:id="@+id/step_text"
         android:textSize="25dp"
@@ -44,13 +44,5 @@
             style="@android:style/Widget.Button"
             android:layout_toEndOf="@+id/previous_step_button" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-
-    </LinearLayout>
 
 </LinearLayout>
