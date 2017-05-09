@@ -178,6 +178,9 @@ public class FitnessCreateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
+            if(checkInput()) {
+                images.set(counter, photoPathName);
+                steps.set(counter, stepText.getText().toString());
 
                 fitness = new Fitness(name, bodyPart, reps, description, image);
                 fitness.setStepImages(images);
@@ -188,6 +191,7 @@ public class FitnessCreateFragment extends Fragment {
                 intent.putExtra("ID", fitness.getId());
                 getActivity().finish();
                 startActivity(intent);
+            }
             }
 
         });

@@ -192,7 +192,7 @@
     <string name="backView">Back View</string>
     <string name="frontView">Front View</string>
     <string name="playlist_workout_button"> Workout Playlist </string>
-    <string name="instructions">Instructions</string>
+    <string name="instructions">Description</string>
     <string name="create_fitness_title">Create Your Own Fitness</string>
     <string name="upload_image">Upload Image</string>
     <string name="fitness_name">Fitness Name</string>
