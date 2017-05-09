@@ -60,8 +60,8 @@ public class FitnessCreateFragment extends Fragment {
 
     private File photoFile;
 
-    public static FitnessBacklogFragment newInstance() {
-        FitnessBacklogFragment fragment = new FitnessBacklogFragment();
+    public static FitnessCreateFragment newInstance() {
+        FitnessCreateFragment fragment = new FitnessCreateFragment();
 
         return fragment;
     }
