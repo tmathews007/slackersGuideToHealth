@@ -433,7 +433,7 @@ public class SQLiteFitnessService implements FitnessService {
         f8.setStepImages(images);
 
 
-        Fitness f9 = new Fitness("Push Ups", Fitness.BodyPart.TRICEPS.ordinal(), 20, "Push Ups are a great triceps exercise.", img);
+        Fitness f9 = new Fitness("Push Ups", Fitness.BodyPart.ABS.ordinal(), 20, "Push Ups are a great abs exercise.", img);
         steps = new ArrayList<>();
         steps.add("Put your hands on the floor, shoulders width apart");
         steps.add("Extend your body while keeping it above the ground");
