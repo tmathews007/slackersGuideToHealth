@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.tommymathews.slackersguidetohealth.model.Fitness;
@@ -31,12 +33,18 @@ import java.util.List;
 
 public class FitnessCreateFragment extends Fragment {
     public final static String FITNESS_ID = "FITNESS_ID";
+    private final static int REQUEST_PHOTO = 1;
+
+    private String photoPathName;
+    private Bitmap bitmap;
     private Fitness fitness;
 
     private Button cancelButton;
     private Button submitButton;
     private Button nextButton;
     private Button backButton;
+    private ImageButton camera;
+    private ImageView thumbnailView;
 
     private String name;
     private int bodyPart;
@@ -50,6 +58,7 @@ public class FitnessCreateFragment extends Fragment {
     EditText stepText;
     ImageView stepImage;
 
+    private File photoFile;
 
     public static FitnessBacklogFragment newInstance() {
         FitnessBacklogFragment fragment = new FitnessBacklogFragment();
@@ -73,6 +82,29 @@ public class FitnessCreateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fitness_create_fragment, container, false);
 
+        thumbnailView = ( ImageView ) view.findViewById( R.id.fitness_thumbnail );
+
+        camera = ( ImageButton ) view.findViewById( R.id.camera_fitness_thumbnail );
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    photoFile = getPhotoFile();
+                    if (photoFile != null) {
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                        startActivityForResult(intent, REQUEST_PHOTO);
+                    } else {
+                        camera.setEnabled(false);
+                    }
+                } else {
+                    camera.setEnabled(false);
+                }
+            }
+        });
+
+        photoPathName = "";
 
         stepText = (EditText)view.findViewById(R.id.fitness_edit_description);
         stepImage = (ImageView)view.findViewById(R.id.fitness_thumbnail);
@@ -108,14 +140,13 @@ public class FitnessCreateFragment extends Fragment {
         });
 
         nextButton = (Button) view.findViewById(R.id.next_step_creation_button);
-        submitButton.setOnClickListener( new View.OnClickListener() {
-
+        nextButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (checkInput()) {
                     if (counter < 9) {
-                        images.set(counter, "");
+                        images.set(counter, photoPathName);
                         steps.set(counter, stepText.getText().toString());
 
                         ++counter;
@@ -153,7 +184,7 @@ public class FitnessCreateFragment extends Fragment {
                 fitness.setSteps(steps);
 
                 DependencyFactory.getFitnessService(getActivity()).addFitness(fitness);
-                Intent intent = new Intent(getActivity(), FitnessPlaylistActivity.class);
+                Intent intent = new Intent(getActivity(), DisplayFitnessSteps.class);
                 intent.putExtra("ID", fitness.getId());
                 getActivity().finish();
                 startActivity(intent);
@@ -181,5 +212,25 @@ public class FitnessCreateFragment extends Fragment {
             e.printStackTrace();
         }
         return bitmap;
+    }
+
+    private File getPhotoFile(){
+        File externalPhotoDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        if(externalPhotoDir == null){
+            return null;
+        }
+
+        return new File(externalPhotoDir, "IMG_" + System.currentTimeMillis() + ".jpg");
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_PHOTO) {
+            bitmap = BitmapFactory.decodeFile(photoFile.getPath());
+            photoPathName = photoFile.getPath();
+            thumbnailView.setImageBitmap(bitmap);
+        }
     }
 }
