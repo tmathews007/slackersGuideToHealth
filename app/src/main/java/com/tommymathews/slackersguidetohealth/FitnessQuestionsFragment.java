@@ -159,7 +159,6 @@ public class FitnessQuestionsFragment extends Fragment {
                     intent.putExtra("REPS", reps);
                     intent.putExtra("DESCRIPTION", description);
                     intent.putExtra("PHOTO", photo);
-                    getActivity().finish();
                     startActivity(intent);
 
                 } else {
