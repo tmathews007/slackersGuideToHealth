@@ -27,15 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FitnessFragment extends Fragment {
-    private final String EXTRA_PLAYLIST_CREATED = "EXTRA_PLAYLIST_CREATED";
-
-    private final int MATCH_DISTANCE = 10;
-
     private final int ABS = Color.BLUE;
     private final int BICEPS = Color.RED;
     private final int CHEST = Color.GREEN;
     private final int QUADS = Color.CYAN;
-    private final int BACKVIEW = Color.YELLOW;
 
     private Button createWorkoutButton;
     private Button backViewButton;
@@ -61,7 +56,6 @@ public class FitnessFragment extends Fragment {
                 int color = getColor(R.id.fitness_image_front, x, y);
 
                 List<Fitness> fitnesses;
-                Drawable thumbNail;
                 File img;
                 Playlist playlist;
                 Intent intent;
@@ -74,7 +68,7 @@ public class FitnessFragment extends Fragment {
                         playlist = new Playlist("Ab Workouts" , img, fitnesses);
                         DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
 
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
                         intent.putExtra("ID", playlist.getId());
                         startActivity(intent);
 
@@ -87,7 +81,7 @@ public class FitnessFragment extends Fragment {
                         playlist = new Playlist("Bicep Workouts" , img, fitnesses);
                         DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
 
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
                         intent.putExtra("ID", playlist.getId());
                         startActivity(intent);
                         break;
@@ -99,7 +93,7 @@ public class FitnessFragment extends Fragment {
                         playlist = new Playlist("Chest Workouts" , img, fitnesses);
                         DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
 
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
                         intent.putExtra("ID", playlist.getId());
                         startActivity(intent);
                         break;
@@ -111,7 +105,7 @@ public class FitnessFragment extends Fragment {
                         playlist = new Playlist("Quad Workouts" , img, fitnesses);
                         DependencyFactory.getPlaylistService(getActivity()).addPlaylist(playlist);
 
-                        intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
+                        intent = new Intent(getActivity(), FitnessPlaylistBacklogActivity.class);
                         intent.putExtra("ID", playlist.getId());
                         startActivity(intent);
                         break;

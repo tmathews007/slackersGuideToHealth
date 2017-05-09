@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ public class FitnessDescriptionFragment  extends Fragment{
         View view = inflater.inflate(R.layout.fitness_description_fragment, container, false);
 
         id = getActivity().getIntent().getStringExtra("ID");
+
+        Log.d("Fitness Id is", id);
 
         Fitness temp = DependencyFactory.getFitnessService(getActivity()).getFitnessById(id);
 

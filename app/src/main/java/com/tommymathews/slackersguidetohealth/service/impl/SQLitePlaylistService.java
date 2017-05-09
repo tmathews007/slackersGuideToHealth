@@ -129,17 +129,36 @@ public class SQLitePlaylistService implements PlaylistService {
             int likes = getInt(getColumnIndex(DbSchema.PlayListTable.Columns.LIKES));
             File thumbNail = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE)));
             List<Fitness> playlist = new ArrayList<Fitness>();
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_2))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_3))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_4))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_5))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_6))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_7))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_8))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_9))));
-            playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_10))));
-
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_2))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_3))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_4))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_5))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_6))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_7))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_8))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_9))));
+            }
+            if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
+                playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_10))));
+            }
 
             Playlist retlist = new Playlist(name, thumbNail, playlist);
 
