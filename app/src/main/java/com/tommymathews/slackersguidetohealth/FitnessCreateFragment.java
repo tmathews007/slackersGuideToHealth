@@ -51,8 +51,8 @@ public class FitnessCreateFragment extends Fragment {
     ImageView stepImage;
 
 
-    public static FitnessBacklogFragment newInstance() {
-        FitnessBacklogFragment fragment = new FitnessBacklogFragment();
+    public static FitnessCreateFragment newInstance() {
+       FitnessCreateFragment fragment = new FitnessCreateFragment();
 
         return fragment;
     }
@@ -108,7 +108,7 @@ public class FitnessCreateFragment extends Fragment {
         });
 
         nextButton = (Button) view.findViewById(R.id.next_step_creation_button);
-        submitButton.setOnClickListener( new View.OnClickListener() {
+        nextButton.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -153,7 +153,7 @@ public class FitnessCreateFragment extends Fragment {
                 fitness.setSteps(steps);
 
                 DependencyFactory.getFitnessService(getActivity()).addFitness(fitness);
-                Intent intent = new Intent(getActivity(), FitnessPlaylistActivity.class);
+                Intent intent = new Intent(getActivity(), FitnessDescriptionActivity.class);
                 intent.putExtra("ID", fitness.getId());
                 getActivity().finish();
                 startActivity(intent);
