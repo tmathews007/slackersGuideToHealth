@@ -92,7 +92,7 @@ public class FitnessPlaylistBacklogFragment extends Fragment {
 
         }
 
-        public void bindFitness( Fitness fitness) {
+        public void bindFitness(Fitness fitness) {
             this.fitness = fitness;
             fitnessName.setText(fitness.getFitnessName());
             fitnessImage.setImageBitmap(fitness.getImage());

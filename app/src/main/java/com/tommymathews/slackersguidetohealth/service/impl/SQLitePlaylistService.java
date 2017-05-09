@@ -127,7 +127,7 @@ public class SQLitePlaylistService implements PlaylistService {
             String id = getString(getColumnIndex(DbSchema.PlayListTable.Columns.ID));
             String name = getString(getColumnIndex(DbSchema.PlayListTable.Columns.NAME));
             int likes = getInt(getColumnIndex(DbSchema.PlayListTable.Columns.LIKES));
-            File thumbNail = new File(getString(getColumnIndex(DbSchema.FitnessTable.Columns.IMAGE)));
+            File thumbNail = new File(getString(getColumnIndex(DbSchema.PlayListTable.Columns.THUMBNAIL)));
             List<Fitness> playlist = new ArrayList<Fitness>();
             if (getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1)) != null ) {
                 playlist.add(DependencyFactory.getFitnessService(context).getFitnessById(getString(getColumnIndex(DbSchema.PlayListTable.Columns.FITNESS_1))));
