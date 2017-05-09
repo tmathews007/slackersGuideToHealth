@@ -404,7 +404,7 @@ public class SQLiteFitnessService implements FitnessService {
         String img7 = "android.resource://com.tommymathews.slackersguidetohealth/" + R.drawable.alternating_lunges;
         Fitness f7 = new Fitness("Alternating Lunges", Fitness.BodyPart.QUADS.ordinal(), 20, "Looking to kill two birds in one stone? Use this workout for cardio as well!", img7);
         steps = new ArrayList<>();
-        steps.add("You will need a leg extension machine. Sit down on the machine with your legs under the bars." +
+        steps.add("You will need a leg extension machine. Sit down on the machine with your legs under the bars " +
                 "and hold the handles on the machine");
         steps.add("Using your quadriceps, extend your legs to the maximum as you exhale. Ensure that the rest of " +
                 "the body remains stationary on the seat.");
