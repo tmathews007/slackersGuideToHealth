@@ -120,7 +120,7 @@ public class FitnessBacklogFragment extends Fragment {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            fitnessImageView = ( ImageView ) itemView.findViewById( R.id.playlist_fitness_image);
+            fitnessImageView = ( ImageView ) itemView.findViewById( R.id.fitness_backlog_photo );
             fitnessNameTextView = (TextView)itemView.findViewById(R.id.fitness_name);
         }
 

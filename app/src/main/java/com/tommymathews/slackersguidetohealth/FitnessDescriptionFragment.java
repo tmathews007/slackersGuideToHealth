@@ -19,7 +19,9 @@ import com.tommymathews.slackersguidetohealth.model.Fitness;
  */
 
 public class FitnessDescriptionFragment  extends Fragment{
+    private static final String EXTRA_PLAYLIST_CREATED = "PlaylistCreated";
 
+    private Fitness fitness;
     String id;
     TextView title;
     ImageView image;
@@ -31,6 +33,16 @@ public class FitnessDescriptionFragment  extends Fragment{
         return fragment;
     }
 
+    public static Fitness getFitnessCreated(Intent data) {
+        return (Fitness) data.getSerializableExtra(EXTRA_PLAYLIST_CREATED);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        fitness = DependencyFactory.getFitnessService(getActivity()).getFitnessById(id);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,16 +52,20 @@ public class FitnessDescriptionFragment  extends Fragment{
 
         Log.d("Fitness Id is", id);
 
-        Fitness temp = DependencyFactory.getFitnessService(getActivity()).getFitnessById(id);
-
         title = (TextView) view.findViewById(R.id.description_title);
-        title.setText(temp.getFitnessName());
+        if( title != null ) {
+            title.setText(fitness.getFitnessName());
+        }
 
         image = (ImageView) view.findViewById(R.id.description_image);
-        image.setImageBitmap(temp.getImage());
+        if( image != null ) {
+            image.setImageBitmap(fitness.getImage());
+        }
 
         description = (TextView) view.findViewById(R.id.description_text);
-        description.setText(temp.getInstructions());
+        if( description != null ) {
+            description.setText(fitness.getInstructions());
+        }
 
         lookAtFitnessButton = (Button) view.findViewById(R.id.look_at_fitness_button);
         lookAtFitnessButton.setOnClickListener(new View.OnClickListener() {
