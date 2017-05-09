@@ -9,6 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <ImageView
+            android:layout_width="185dp"
+            android:layout_height="165dp"
+            app:srcCompat="@drawable/clapping_hands_emoji"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,35 +28,28 @@
             android:gravity="center"
             android:textAppearance="@style/BoldFont"
             android:textColor="@color/darkerOrchid"
-            android:layout_below="@+id/imageView2"
-            android:layout_alignParentStart="true"
             android:layout_marginStart="13dp"
             android:layout_marginTop="32dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                app:srcCompat="@drawable/confetti_emoji"
+                android:id="@+id/imageView3"
+                android:layout_marginBottom="77dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
 
-        <ImageView
-            android:layout_width="185dp"
-            android:layout_height="165dp"
-            app:srcCompat="@drawable/clapping_hands_emoji"
-            android:id="@+id/imageView2"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            <ImageView
+                android:layout_width="150dp"
+                app:srcCompat="@drawable/confetti_horn_emoji"
+                android:id="@+id/imageView4"
+                android:layout_height="150dp" />
 
-        <ImageView
-            app:srcCompat="@drawable/confetti_emoji"
-            android:id="@+id/imageView3"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textView"
-            android:layout_marginBottom="77dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
+        </LinearLayout>
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="150dp"
-            app:srcCompat="@drawable/confetti_horn_emoji"
-            android:id="@+id/imageView4"
-            android:layout_alignTop="@+id/imageView3"
-            android:layout_alignParentEnd="true"
-            android:layout_height="150dp" />
     </RelativeLayout>
 
 </LinearLayout>
